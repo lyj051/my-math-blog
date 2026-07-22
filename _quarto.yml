@@ -3,16 +3,27 @@ project:
   output-dir: docs
 
 website:
-  title: "My Math Blog"
+  title: "Wonderings of Lee"
   navbar:
+    background: "#ffffff"
+    left:
+      - href: index.qmd
+        text: Posts
+      - href: about.qmd
+        text: About
     right:
       - icon: github
-        href: https://github.com
-      
+        href: https://github.com/lyj051
+      - icon: rss
+        href: index.xml
 
 format:
   html:
-    theme: cosmo
+    theme: 
+      light: [flatly, light.scss]
+      dark: [darkly, dark.scss]
     css: styles.css
     toc: true
+    toc-location: right
+    code-fold: true
     html-math-method: mathjax
