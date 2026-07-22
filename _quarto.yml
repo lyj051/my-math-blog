@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "My Math Blog"
+  navbar:
+    right:
+      - icon: github
+        href: https://github.com
+      
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    html-math-method: mathjax

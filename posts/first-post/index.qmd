@@ -1,0 +1,6 @@
+---
+title: "Spaces with functions"
+author: "Eugene Lee"
+date: "2026-07-22"
+categories: [Algebraic Geometry, Preliminary]
+---
