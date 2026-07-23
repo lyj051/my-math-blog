@@ -4,8 +4,6 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, 
                "Source Serif Pro", "Noto Serif SC", "Songti SC", serif;
-  color: #2c3e50;
-  background-color: #fdfdfd; /* 微微发暖的白，不刺眼 */
   line-height: 1.75;
   font-size: 1.15rem;
 }
@@ -38,19 +36,7 @@ h2 { font-size: 1.5rem; border-bottom: 1px solid #eaeaea; padding-bottom: 0.3rem
   margin: 1.2em 0;
 }
 
-/* 5. 休闲博客的“灵感/注记框” (Callouts)：柔和、圆角、低饱和度 */
-.callout {
-  border-radius: 6px !important;
-  border: none !important;
-  border-left: 4px solid #34495e !important;
-  background-color: #f8f9fa !important;
-}
 
-.callout-header {
-  background-color: transparent !important;
-  font-weight: 600;
-  color: #34495e !important;
-}
 
 /* 6. 博客元信息（发布日期、标签）微调 */
 .quarto-title-meta {
@@ -58,4 +44,5 @@ h2 { font-size: 1.5rem; border-bottom: 1px solid #eaeaea; padding-bottom: 0.3rem
   color: #7f8c8d;
 }
 /* styles.css */
+
 

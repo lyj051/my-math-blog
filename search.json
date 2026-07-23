@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "posts/first-post/index.html",
+    "href": "posts/first-post/index.html",
+    "title": "Spaces with functions",
+    "section": "",
+    "text": "ImportantPreface\n\n\n\n\nReading Notes: Algebraic Varieties by G.Kempf\nThus, it is suggested that we should consider topological spaces together with specific functions on them. From my perspective,these functions can be seen as local coodinates of space which may take values in a field \\(k\\) and we expect that there are rules of calculus like classcial calculus in \\(\\mathbb{R}^{n}\\). Precisely prescribling the behaviors of these functions to achieve this goal is difficult for me. I will, nevertheless, first introduce the definition given in the textbook.\nCondition (a) implies that a function is regular if and only if it is locally regular.\nCondition (b) allows us to do division \\(\\frac{g}{f}\\) of regular functions in the open set \\(D(f)\\) where the denominator \\(f\\) doesn’t take \\(0\\)."
+  },
+  {
+    "objectID": "posts/first-post/index.html#section",
+    "href": "posts/first-post/index.html#section",
+    "title": "Spaces with functions",
+    "section": "",
+    "text": "Reading Notes: Algebraic Varieties by G.Kempf"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "What I cannot create, I don’t understand.",
