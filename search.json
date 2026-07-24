@@ -4,20 +4,20 @@
     "href": "posts/first-post/index.html",
     "title": "Spaces with functions",
     "section": "",
-    "text": "ImportantPreface\n\n\n\n\nReading Notes: Algebraic Varieties by G.Kempf\nThus, it is suggested that we should consider topological spaces together with specific functions on them. From my perspective,these functions can be seen as local coodinates of space which may take values in a field \\(k\\) and we expect that there are rules of calculus like classcial calculus in \\(\\mathbb{R}^{n}\\). Precisely prescribling the behaviors of these functions to achieve this goal is difficult for me. I will, nevertheless, first introduce the definition given in the textbook.\nCondition (a) implies that a function is regular if and only if it is locally regular.\nCondition (b) allows us to do division \\(\\frac{g}{f}\\) of regular functions in the open set \\(D(f)\\) where the denominator \\(f\\) doesn’t take \\(0\\)."
-  },
-  {
-    "objectID": "posts/first-post/index.html#section",
-    "href": "posts/first-post/index.html#section",
-    "title": "Spaces with functions",
-    "section": "",
-    "text": "Reading Notes: Algebraic Varieties by G.Kempf"
+    "text": "ImportantPreface\n\n\n\nReading Notes: Algebraic Varieties by G.Kempf\n\n\n\n\n\n\n\n\nImportantExample\n\n\n\nRoughly speaking, different geometric objects (in our intuition) cannot be distinguished by their topological structures alone.\nThe complex plane \\(\\mathbb{C}\\) is homeomorphic to the open unit disk \\(\\mathbb{D}:=\\{z:|z| &lt; 1\\}\\). But they are totally different if we care about holomorphic functions on them (by Liouville’s Theorem).\n\n\nThus, it is suggested that we should consider topological spaces together with specific functions on them. From my perspective,these functions can be seen as local coodinates of space which may take values in a field \\(k\\) and we expect that there are rules of calculus like classcial calculus in \\(\\mathbb{R}^{n}\\). Precisely prescribling the behaviors of these functions to achieve this goal is difficult for me. I will, nevertheless, first introduce the definition given in the textbook.\n\n\n\n\n\n\nImportantDefinition\n\n\n\nLet \\(k\\) be a fixed field, \\(X\\) be a topological space. The space \\(X\\) is called a space with functions if every open set \\(U\\) of \\(X\\) is equipped with a \\(k\\)-algebra, \\(\\mathcal{O}_X(U)\\), of \\(k\\)-valued functions on \\(U\\), satisfying the following conditions:\n\nLet \\(U\\) be the union of a family of open sets \\(U_i\\). Then a \\(k\\)-valued function \\(f\\) belongs to \\(\\mathcal{O}_X(U)\\) if and only if every restriction \\(f|_{U_{i}} \\in \\mathcal{O}_X(U_{i})\\)\nLet \\(f \\in \\mathcal{O}_X(U)\\) for some open set \\(U\\). Then \\(D(f):=\\{u \\in U:f(u) \\neq 0  \\}\\) is open and \\(\\frac{1}{f} \\in \\mathcal{O}_X(D(f))\\).\n\nWe will call the functions in \\(\\mathcal{O}_X(U)\\) regular function.\n\n\nCondition (a) implies that a function is regular if and only if it is locally regular.\nCondition (b) allows us to do division \\(\\frac{g}{f}\\) of regular functions in the open set \\(D(f)\\) where the denominator \\(f\\) doesn’t take \\(0\\).\n\n\n\n\n\n\nTipTODO\n\n\n\nWe should state (a) in categorical language (gluing condition): TODO\nWe should distinguish the characterization of open set \\(D(f)\\) with “bump function” on smooth manifold which also characterizes open set.So here can we use the pure algebraic structure \\(k\\)-algebra to recover a family of basic open sets of \\(X\\): TODO\n\n\n\n\n\n\nNoteExample\n\n\n\nLet \\(X\\) be a space with functions \\(\\mathcal{O}_{X}(U)\\). Suppose that \\(Y \\subseteq X\\) and \\(Y\\) is an open set equipped with the subspace topology. Then \\(Y\\) is also a space with functions with the structure: \\(\\mathcal{O}_{Y}(U)=\\mathcal{O}_{X}(U)\\), where \\(U\\) is open set of \\(Y\\).\n\n\n\n\n\n\n\n\nImportantDefinition\n\n\n\nA morphism \\(f\\) from \\((X, \\mathcal{O}_{X}(U))\\) to \\((Y, \\mathcal{O}_Y(U))\\) sends \\(X\\) to \\(Y\\) and pulls-back \\(\\mathcal{O}_Y(U)\\) into \\(\\mathcal{O}_{X}(U)\\) satisfying two conditions:\n\n\\(X \\xrightarrow{f} Y\\) is continuous.\nif \\(g(v) \\in \\mathcal{O}_Y(V)\\) then $f^{*}(g)(u)=g(f(u)) _{X}(f^{-1}(V)).\n\n\n\n\n\n\n\n\n\nCautionTODO\n\n\n\nWe should consider all spaces with functions as a category (depends on \\(k\\) loose the condition that \\(k\\) is a field ?) What are functions? maps between sets + what structures analysis: local (pointwise) property algebra: we want to do divison at some point and differentiate and integral topology: the category \\(Ring\\) of commutative ring with identity,can we recover a (some) topological space(s) such that \\(Ring\\) are the functions on them satisfying the conditions in definition at first?"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "What I cannot create, I don’t understand.",
     "section": "",
-    "text": "Spaces with functions\n\n\n\nAlgebraic Geometry\n\nPreliminary\n\n\n\n\n\n\n\n\n\nJul 22, 2026\n\n\nEugene Lee\n\n\n\n\n\nNo matching items"
+    "text": "Curves\n\n\n\nDifferential Geometry\n\nPreliminary\n\n\n\n\n\n\n\n\n\nJul 24, 2026\n\n\nEugene Lee\n\n\n\n\n\n\n\n\n\n\n\n\nSpaces with functions\n\n\n\nAlgebraic Geometry\n\nPreliminary\n\n\n\n\n\n\n\n\n\nJul 22, 2026\n\n\nEugene Lee\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "posts/first-post/2index.html",
+    "href": "posts/first-post/2index.html",
+    "title": "Curves",
+    "section": "",
+    "text": "ImportantPreface\n\n\n\nReading notes: Differential Geometry Of Curves & Surfaces by P.DO CARMO"
   }
 ]
