@@ -185,7 +185,7 @@ window.Quarto = {
 <h1 class="title">Spaces with functions</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Algebraic Geometry</div>
-    <div class="quarto-category">Preliminary</div>
+    <div class="quarto-category">Preliminary，Algebraic Varieties by G.Kempf</div>
   </div>
   </div>
 
@@ -306,34 +306,116 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(X\)</span> be a space with functions <span class="math inline">\(\mathcal{O}_{X}(U)\)</span>. Suppose that <span class="math inline">\(Y \subseteq X\)</span> and <span class="math inline">\(Y\)</span> is an open set equipped with the subspace topology. Then <span class="math inline">\(Y\)</span> is also a space with functions with the structure: <strong><span class="math inline">\(\mathcal{O}_{Y}(U)=\mathcal{O}_{X}(U)\)</span></strong>, where <span class="math inline">\(U\)</span> is open set of <span class="math inline">\(Y\)</span>.</p>
+<p>Consider the complex plane <span class="math inline">\(\mathbb{C}\)</span> with Euclidean Topology and assign the ring of all holomorphic functions <span class="math inline">\(\mathcal{O}_{\mathbb{C}} (U)\)</span> to every open set <span class="math inline">\(U\)</span>. This is a space with functions defined above since <span class="math inline">\(D(f) =\{u \in U:f(u) \neq 0\}\)</span> is open and <span class="math inline">\((\frac{1}{f})^{\prime}=-\frac{f^{\prime}}{f^{2}}\)</span> on <span class="math inline">\(D(f)\)</span>.</p>
+<p>In the example above, we consider the zeroes of a holomorphic function <span class="math inline">\(f \not\equiv 0\)</span> on a open set <span class="math inline">\(U\)</span>, denoted by <span class="math inline">\(\{z_{i}\}_{i \in I}\)</span>. Then <span class="math inline">\(\frac{1}{f}\)</span> is holomorphic on <span class="math inline">\(U-\{z_{i}\}_{i \in I} = D(f)\)</span>. By definition condition (a), <span class="math inline">\(\forall f,g \in \mathcal{O}_{C}(U), \frac{f}{g} \in \mathcal{O}_{C}( D(g))\)</span> which is a meromorphic function on <span class="math inline">\(U\)</span> as we defined below:</p>
+<p>Suppose that <span class="math inline">\(U \subseteq \mathbb{C}\)</span> is open. A <span class="math inline">\(\mathbb{C}\)</span>-valued function <span class="math inline">\(f\)</span> is called meromorphic on <span class="math inline">\(u\)</span> if <span class="math inline">\(\forall p \in U\)</span>, there exists an open nbhd <span class="math inline">\(V_{p} \subseteq U, g_p,h_p \in \mathcal{O}(V_{p})(h_p \not\equiv 0 \ \text{on} \ V_{p})\)</span>, such that:</p>
+<p><span class="math inline">\(f\restriction_{V_{p}}=\frac{g_{p}}{h_{p}}\)</span></p>
+<p>We see that, in definition, the meromorphic function is always a quotient of two holomorphic functions locally and in the example <span class="math inline">\(\frac{f}{g}\)</span> is meromorphic where we take <span class="math inline">\(f_{p}=f\)</span> and <span class="math inline">\(g_{p}=g\)</span> for every point <span class="math inline">\(p\)</span> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>Conversely: Does every meromorphic function on <span class="math inline">\(U\)</span> admit such a representation? i.e.&nbsp;suppose that <span class="math inline">\(\cup U_{\alpha}\)</span> is an open cover of <span class="math inline">\(U\)</span> and <span class="math inline">\(\frac{g_{\alpha}}{f_{\alpha}} \in \mathcal{O}_{U_{\alpha}}(D(f_{\alpha}) )\)</span> where <span class="math inline">\(g_{\alpha},f_{\alpha} \in \mathcal{O}_{\mathbb{C}}({U_{\alpha}})\)</span>, and further suppose that <span class="math inline">\(\textcolor{green}{\frac{g_{\alpha}}{f_{\alpha}}=\frac{g_{\alpha^{\prime}}}{f_{\alpha^{\prime}}} \ \text{on} \ U_{\alpha} \cap U_{\alpha^{\prime}}}\)</span> (as functions) for all <span class="math inline">\(\alpha\)</span>, is there a quotient function <span class="math inline">\(\frac{g}{f} \in \mathcal{O}_{U}(D(f))\)</span> where <span class="math inline">\(f,g \in \mathcal{O}_{\mathbb{C}}(U)\)</span> such that <span class="math inline">\(\frac{g}{f} \restriction_{U_{\alpha}}=\frac{g_{\alpha}}{f_{\alpha}}\)</span> for every <span class="math inline">\(\alpha\)</span>?</p>
+<p>Yes! But it really depends on <span class="math inline">\(\mathbb{C}\)</span> and it fails when the topological spaces are higher dimension complex manifords. Hence we omit the technical proof (depend on Werierstrass factoring theorem of Mittag-Laffer theorem).Therefore, we have:</p>
+<p><span class="math inline">\(\textcolor{blue}{\mathcal{M}(U)=\{\frac{f}{g}:f,g \in \mathcal{O}(U), g \not\equiv 0 \}}\)</span></p>
 </div>
 </div>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Definition ">
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Denote all the meromorphic functions on <span class="math inline">\(U\)</span> by <span class="math inline">\(\mathcal{M}(U)\)</span>. This imlies that <span class="math inline">\(\{\frac{f}{g}:f,g \in \mathcal{O}(U), g \not\equiv 0 \} \subseteq \mathcal{M}(U)\)</span>.</p></div></div><p><span class="math inline">\(\mathcal{O}_{X}(U)\)</span> is defined as a <span class="math inline">\(k\)</span>-algebra consisting of <span class="math inline">\(k\)</span>-valued functions above. This is kind of ac.hoc. Hence we may generalize this concept as follows, though it’s hard to pin down who invented it. It seems reasonable to the connection between the extension problems (such as analytic continuations).</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Definition" style="color: #6c3483">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Definition
+<span class="screen-reader-only">Tip</span>Definition
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> A <strong>morphism</strong> <span class="math inline">\(f\)</span> from <span class="math inline">\((X, \mathcal{O}_{X}(U))\)</span> to <span class="math inline">\((Y, \mathcal{O}_Y(U))\)</span> sends <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> and pulls-back <span class="math inline">\(\mathcal{O}_Y(U)\)</span> into <span class="math inline">\(\mathcal{O}_{X}(U)\)</span> satisfying two conditions:</p>
+<p>Let <span class="math inline">\(X\)</span> be a topological space. A presheaf <span class="math inline">\(\mathcal{F}\)</span> of sets on <span class="math inline">\(X\)</span> is a contravariant functor from <span class="math inline">\(Top(X)\)</span> to <span class="math inline">\(Set\)</span>.</p>
+<p><span class="math inline">\(Top(X)\)</span>: Obj:open subsets of <span class="math inline">\(X\)</span> Morphism:inclusion map <span class="math inline">\(V \subseteq U\)</span></p>
+<p>Recall that a contravariant functor satisfies the following conditions:</p>
 <ol type="a">
-<li><p><span class="math inline">\(X \xrightarrow{f} Y\)</span> is continuous.</p></li>
-<li><p>if <span class="math inline">\(g(v) \in \mathcal{O}_Y(V)\)</span> then <span class="math inline">\(f^{*}(g)(u)=g(f(u)) \in \mathcal{O}_{X}(f^{-1}(V))\)</span>.</p></li>
+<li><span class="math inline">\(\mathcal{F}(\emptyset)=\{*\}\)</span>, where <span class="math inline">\(\{*\}\)</span> is the terminal object in <span class="math inline">\(Set\)</span>.</li>
+<li><span class="math inline">\(\mathcal{F}(Id_{U})=Id_{\mathcal{F}(U)}\)</span></li>
+<li><span class="math inline">\(\mathcal{F}(i_{U \subseteq V}):=\mathcal{F}(V) \to \mathcal{F}(U)\)</span></li>
+<li>$(i_{V W} i_{U V})=(i_{U V}) (i_{V W}) $</li>
+</ol>
+<p>Further suppose the following conditions hold, then <span class="math inline">\(\mathcal{F}\)</span> is a sheaf:</p>
+<ol start="5" type="a">
+<li><p><strong>local axiom</strong>: Suppose that <span class="math inline">\(U_{i}\)</span> is an open cover of open set <span class="math inline">\(U\)</span> in <span class="math inline">\(X\)</span> and <span class="math inline">\(s,t \in \mathcal{F}(U)\)</span>. If <span class="math inline">\(s\restriction_{U_{i}}=t\restriction_{U_{i}}\)</span> for every <span class="math inline">\(i\)</span>, then <span class="math inline">\(s=t\)</span>. (wlog. suppose that <span class="math inline">\(U_{i}\subseteq U\)</span>)</p></li>
+<li><p><strong>gluing axiom</strong>: Suppose that <span class="math inline">\(U_{i}\)</span> is an open cover of open set <span class="math inline">\(U\)</span> in <span class="math inline">\(X\)</span>, and if we have sections <span class="math inline">\(s_{i} \in \mathcal{F}(U_{i})\)</span> such that <span class="math inline">\(s_{i}=s_{j}\)</span> on <span class="math inline">\(U_{i} \cap U_{j}\)</span> for evry pair <span class="math inline">\((i,j)\)</span>, i.e.<span class="math inline">\(s_{i} \restriction_{U_{i} \cap U_{j}}=s_{j} \restriction_{U_{i} \cap U_{j}}\)</span>, then there is a section <span class="math inline">\(s \in \mathcal{F}(U)\)</span> such that <span class="math inline">\(s \restriction_{U_{i}}=s_{i}\)</span> for each <span class="math inline">\(U_{i}\)</span>.</p></li>
 </ol>
 </div>
 </div>
-<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;We should consider all spaces with functions as a category (depends on <span class="math inline">\(k\)</span> loose the condition that <span class="math inline">\(k\)</span> is a field ?)</p></div><div class="">
+<p>It’s straightforward to see that <span class="math inline">\(\mathcal{F}(U):=\{f:U \to \mathbb{C}: f \ \text{is holomorphic}\}\)</span> and <span class="math inline">\(\mathcal{F}(U):=\{f:U \to \mathbb{C}: f \ \text{is meromorphic}\}\)</span> are sheaves on <span class="math inline">\(C\)</span> with Euclidean topology.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>spaces with functions VS sheaf
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Condition (a) <span class="math inline">\(\Leftrightarrow\)</span> local axiom and gluing axiom is straightforward.</p>
+<p>As functions which are pointwisely defined, the local and gluing axioms are naturally satisfied (Just define the global function pointwisely). (But when the functions don’t agree on some intersection, like <span class="math inline">\(logz\)</span> and <span class="math inline">\(\sqrt{z}\)</span> on <span class="math inline">\(\mathbb{C}\)</span>, we cannot define a global function on the whole topological space. And maybe we should create a new and more natural underlying space to glue local functions)</p>
+<p>In fact, the concept of <strong>Sheaf</strong> generalize local regular functions to local algebraic data <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Provided the conditions (c) and (d), we can restrict data to smaller spaces. Provided axioms (e) and (f) we can obtain global data from local.</p>
+<p>However, for general sheaves, <span class="math inline">\(\mathcal{F}(U)\)</span> doesn’t carry any algebraic structures (<span class="math inline">\(k\)</span>-algebra in spaces with functions).</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;“The concept of a <em>sheaf</em> provides a systematic way of keeping track of local algebraic data on a topological space.” — Hartshorne,<em>Algebraic Geometry</em></p></div><div class="">
+<p>Constant sheaf subsheaf skyscraper sheaf TODO</p>
+</div></div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(X\)</span> be a space with functions <span class="math inline">\(\mathcal{O}_{X}(U)\)</span>. Suppose that <span class="math inline">\(Y \subseteq X\)</span> and <span class="math inline">\(Y\)</span> is an open set equipped with the subspace topology. Then <span class="math inline">\(Y\)</span> is also a space with functions with the structure: <strong><span class="math inline">\(\mathcal{O}_{Y}(U)=\mathcal{O}_{X}(U)\)</span></strong>, where <span class="math inline">\(U\)</span> is open set of <span class="math inline">\(Y\)</span>.</p>
+</div>
+</div>
+<div id="imp-def-mor" class="callout callout-style-default callout-important no-icon callout-titled" title="Definition ">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important&nbsp;1: Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> A <strong>morphism</strong> <span class="math inline">\(f\)</span> from <span class="math inline">\((X, \mathcal{O}_{X}(U))\)</span> to <span class="math inline">\((Y, \mathcal{O}_Y(U))\)</span> sends <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> and pulls-back (<span class="math inline">\(f^{*}\)</span>) <span class="math inline">\(\mathcal{O}_Y(U)\)</span> into <span class="math inline">\(\mathcal{O}_{X}(f^{-1}(U))\)</span> satisfying two conditions:</p>
+<ol type="a">
+<li><p><span class="math inline">\(X \xrightarrow{f} Y\)</span> is continuous.</p></li>
+<li><p>if <span class="math inline">\(g(v) \in \mathcal{O}_Y(U)\)</span> then <span class="math inline">\(f^{*}(g)(u)=g(f(u)) \in \mathcal{O}_{X}(f^{-1}(U))\)</span>.</p></li>
+</ol>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;We should consider all spaces with functions as a category (depends on <span class="math inline">\(k\)</span> loose the condition that <span class="math inline">\(k\)</span> is a field ?)</p></div></div><p>Indeed, <span class="math inline">\(f^{*}\)</span> is a <span class="math inline">\(k\)</span>-algebra map from <span class="math inline">\(\mathcal{O}_{Y}(U)\)</span> to <span class="math inline">\(\mathcal{O}_{X}(f^{-1}(U))\)</span>. Like above we should generalize it to morphisms between abstract sheaves:</p>
+<p><span class="math inline">\((X,\mathcal{F}) \xrightarrow{f} (Y,\mathcal{G})\)</span> consists of the following data:</p>
+<ol type="a">
+<li><p><span class="math inline">\(X \xrightarrow{f} Y\)</span> is a continuous map between topological spaces <span class="math inline">\(X,Y\)</span></p></li>
+<li><p>A natural transform from <span class="math inline">\(\mathcal{G}\)</span> to <span class="math inline">\(\mathcal{F}\)</span>.</p></li>
+</ol>
+<p><span class="math display">\[
+\begin{array}{ccc}
+f^{-1}(V) \subseteq f^{-1}(U) \subseteq X &amp; \xrightarrow{\quad f \text{ is continuous} \quad} &amp; Y \supseteq U \supseteq V \\[1.2em]
+\mathcal{F}(f^{-1}(U)) &amp; \xleftarrow{\hspace{4.5em}} &amp; \mathcal{G}(U) \\
+\Big\downarrow &amp; &amp; \Big\downarrow \\
+\mathcal{F}(f^{-1}(V)) &amp; \xleftarrow{\hspace{4.5em}} &amp; \mathcal{G}(V)
+\end{array}
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
 <p>What are functions?</p>
 <p>maps between sets + what structures</p>
 <p>analysis: local (pointwise) property</p>
 <p>algebra: we want to do divison at some point and differentiate and integral</p>
-<p>topology: the category <span class="math inline">\(Ring\)</span> of commutative ring with identity,can we recover a (some) topological space(s) such that <span class="math inline">\(Ring\)</span> are the functions on them satisfying the conditions in definition at first?</p>
-</div></div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Ex 1.1.1">
+<p>topology: the category <span class="math inline">\(Ring\)</span> of commutative ring with identity, can we recover a (some) topological space(s) such that <span class="math inline">\(Ring\)</span> are the functions on them satisfying the conditions in definition at first?</p>
+<p><strong>Etale space</strong></p>
+</div></div><div class="callout callout-style-default callout-note no-icon callout-titled" title="Ex 1.1.1">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -347,7 +429,7 @@ Warning
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -356,7 +438,7 @@ Warning
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Suppose that <span class="math inline">\(X_1 \xrightarrow{f} X_2\)</span> is continuous and <span class="math inline">\(g:U \to \mathbb{R}(resp.\mathbb{C})\)</span> is continuous. We want to show that <span class="math inline">\(f^{*}(g) \equiv g\circ f\)</span> is continuous in <span class="math inline">\(f^{-1}(U)\)</span>. Let <span class="math inline">\(V \subseteq \mathbb{R}(resp.\mathbb{C})\)</span> be an open set, then clearly <span class="math inline">\((g \circ f)^{-1}(V)=f^{-1} \circ g^{-1} (V) \subseteq f^{-1}(U)\)</span> is an open set.</p>
 </div>
@@ -376,7 +458,7 @@ Warning
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -385,13 +467,13 @@ Warning
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-Suppose that <span class="math inline">\(X_1 \xrightarrow{f_1} X_2 \xrightarrow{f_2} X_3\)</span> and <span class="math inline">\(g \in \mathcal{O}_{X_3}(U)\)</span>$
-<span class="math display">\[\begin{aligned}
+<p>Suppose that <span class="math inline">\(X_1 \xrightarrow{f_1} X_2 \xrightarrow{f_2} X_3\)</span> and <span class="math inline">\(g \in \mathcal{O}_{X_3}(U)\)</span> <span class="math display">\[
+\begin{aligned}
 g \circ f_2 \in \mathcal{O}_{X_1}(f_{2}^{-1}(U)) \\ g \circ f_2 \circ f_1 \in \mathcal{O}_{X_1}(f_{1}^{-1} \circ f_{2}^{-1}(U))
-\end{aligned}\]</span>
-<p>$$</p>
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 </div>
@@ -409,7 +491,7 @@ g \circ f_2 \in \mathcal{O}_{X_1}(f_{2}^{-1}(U)) \\ g \circ f_2 \circ f_1 \in \m
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -418,7 +500,7 @@ g \circ f_2 \in \mathcal{O}_{X_1}(f_{2}^{-1}(U)) \\ g \circ f_2 \circ f_1 \in \m
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Suppose that <span class="math inline">\(i \circ g\)</span> is a morphism and <span class="math inline">\(h(v) \in \mathcal{O}_{X}(V)\)</span>, then <span class="math inline">\((i \circ g)^{*} (h) \equiv h \circ i \circ g\)</span> is a regular function on <span class="math inline">\(g^{-1}\circ i^{-1}(V) \equiv g^{-1}(V \cap U)\)</span>. We want to show that <span class="math inline">\(\forall f \in \mathcal{O}_U(V)=\mathcal{O}_X(V)\)</span> (since <span class="math inline">\(U\)</span> is open) <span class="math inline">\(f \circ g\)</span> is regular. It’s clear since <span class="math inline">\(g^{*}(f) \equiv f \circ i \circ g\)</span> is a regular function on <span class="math inline">\(g^{-1}(V)\)</span>.</p>
 </div>
@@ -438,7 +520,7 @@ g \circ f_2 \in \mathcal{O}_{X_1}(f_{2}^{-1}(U)) \\ g \circ f_2 \circ f_1 \in \m
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -447,7 +529,7 @@ g \circ f_2 \in \mathcal{O}_{X_1}(f_{2}^{-1}(U)) \\ g \circ f_2 \circ f_1 \in \m
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Suppose that <span class="math inline">\(f\)</span> is a morphism. We have <span class="math inline">\(f^{*}(g),(g \in \mathcal{O}_{Y}(V_{\alpha}) )\equiv g \circ f\)</span> is regular on <span class="math inline">\(f^{-1}(V_{\alpha}) \supseteq U_{\alpha}\)</span>. By defintion condition (a), <span class="math inline">\(f_{\alpha}\)</span> is regular on <span class="math inline">\(U_{\alpha}\)</span>. Suppose that <span class="math inline">\(f_{\alpha}\)</span> is regular and <span class="math inline">\(V \subseteq Y\)</span> is an open set and <span class="math inline">\(v \in \mathcal{O}_{Y}(V)\)</span>.We have <span class="math inline">\(V=\bigcup{V\cap V_{\alpha}}\)</span> and <span class="math inline">\(f^{-1}(V)=\bigcup{f^{-1}(V)\cap f^{-1}(V_{\alpha})}\supseteq \bigcup{f^{-1}(V)\cap U_{\alpha}}\)</span> Then <span class="math inline">\(f \circ g\)</span> is regular on <span class="math inline">\({f^{-1}(V)\cap U_{\alpha}}\)</span>(since <span class="math inline">\(f_{\alpha}\)</span> is morphism) and hence, by definition 1, <span class="math inline">\(f\)</span> is regular on <span class="math inline">\(f^{-1}(V)\)</span>.</p>
 </div>

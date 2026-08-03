@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://lyj051.github.io/my-math-blog/posts/first-post/index.html</loc>
-    <lastmod>2026-07-25T15:17:48.540Z</lastmod>
+    <lastmod>2026-08-03T10:14:34.202Z</lastmod>
+  </url>
+  <url>
+    <loc>https://lyj051.github.io/my-math-blog/posts/first-post/2index.html</loc>
+    <lastmod>2026-07-24T07:24:05.803Z</lastmod>
   </url>
   <url>
     <loc>https://lyj051.github.io/my-math-blog/index.html</loc>
     <lastmod>2026-07-23T14:24:11.637Z</lastmod>
   </url>
   <url>
-    <loc>https://lyj051.github.io/my-math-blog/posts/first-post/2index.html</loc>
-    <lastmod>2026-07-24T07:24:05.803Z</lastmod>
+    <loc>https://lyj051.github.io/my-math-blog/posts/first-post/3index.html</loc>
+    <lastmod>2026-08-03T10:55:51.175Z</lastmod>
   </url>
 </urlset>
