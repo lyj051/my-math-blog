@@ -1,0 +1,48 @@
+/* styles.css */
+
+/* 1. 字体排版：正文采用温润的高级衬线字体，屏幕阅读极佳 */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, 
+               "Source Serif Pro", "Noto Serif SC", "Songti SC", serif;
+  line-height: 1.75;
+  font-size: 1.15rem;
+}
+
+/* 2. 链接：使用温和的学术蓝或主题色，去掉了死板的粗下划线 */
+a {
+  color: #2980b9;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: #e74c3c;
+  text-decoration: underline;
+}
+
+/* 3. 标题：保持克制但现代，字重适中 */
+h1, h2, h3, h4 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 600;
+  color: #1a252f;
+  margin-top: 1.8em;
+  margin-bottom: 0.6em;
+}
+
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.5rem; border-bottom: 1px solid #eaeaea; padding-bottom: 0.3rem; }
+
+/* 4. 数学公式微调：给行间公式适当的上下呼吸空间 */
+.displaymath {
+  margin: 1.2em 0;
+}
+
+
+
+/* 6. 博客元信息（发布日期、标签）微调 */
+.quarto-title-meta {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+}
+/* styles.css */
+
+

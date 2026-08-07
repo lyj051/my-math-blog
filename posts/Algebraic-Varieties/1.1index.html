@@ -80,20 +80,9 @@ ul.task-list li input[type="checkbox"] {
     overflow-y: hidden;
   }
 </style>
-<script>
-  window.MathJax = {
-    loader: {load: ['[tex]/boldsymbol']},
-    tex: {
-      tags: 'ams', // 自动给公式编号 (AMS 风格)
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      processEscapes: true
-    }
-  };
-</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -185,7 +174,8 @@ window.Quarto = {
 <h1 class="title">Spaces with functions</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Algebraic Geometry</div>
-    <div class="quarto-category">Preliminary，Algebraic Varieties by G.Kempf</div>
+    <div class="quarto-category">Preliminary</div>
+    <div class="quarto-category">Algebraic Varieties by G.Kempf</div>
   </div>
   </div>
 
@@ -215,19 +205,7 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Preface">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Preface
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Reading Notes: <em>Algebraic Varieties</em> by G.Kempf</p>
-</div>
-</div>
+<p><strong><em>Reading Notes: Algebraic Varieties by G.Kempf</em></strong></p>
 <div class="callout callout-style-default callout-important no-icon callout-titled" title="Example">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -277,7 +255,7 @@ Warning
 <p>Let <span class="math inline">\(Y\)</span> be an open subset of <span class="math inline">\(X\)</span>. Suppose <span class="math inline">\(f\)</span> is a local regular function on <span class="math inline">\(Y\)</span>, is there a global regular function defined on <span class="math inline">\(X\)</span> such that its restriction on <span class="math inline">\(Y\)</span> is <span class="math inline">\(f\)</span>?</p>
 <p>No! We have example.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Example">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -286,7 +264,7 @@ Warning
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Let <span class="math inline">\(k\)</span> be an infinite field equipped with the co-finite topology(in fact, equal to Zariski Topology of affine line <span class="math inline">\(\mathbb{A}_k^{1}\)</span>). <span class="math inline">\(\mathcal{O}_{k}(k)=p(t)\)</span> where <span class="math inline">\(p(t)\)</span> is a polynomial function.</p>
 <p>Consider the open set <span class="math inline">\(k-\{{0}\}\)</span> on which <span class="math inline">\(\frac{1}{t}\)</span> is regular (condition b). Suppose that there existes a global regular function <span class="math inline">\(F\)</span> such that the restriction of it is <span class="math inline">\(\frac{1}{t}\)</span>.Then <span class="math inline">\(F(t)t=1 \ \forall t \in k-\{{0}\}\)</span> and this is impossible.</p>
@@ -429,7 +407,7 @@ f^{-1}(V) \subseteq f^{-1}(U) \subseteq X &amp; \xrightarrow{\quad f \text{ is c
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -438,7 +416,7 @@ f^{-1}(V) \subseteq f^{-1}(U) \subseteq X &amp; \xrightarrow{\quad f \text{ is c
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Suppose that <span class="math inline">\(X_1 \xrightarrow{f} X_2\)</span> is continuous and <span class="math inline">\(g:U \to \mathbb{R}(resp.\mathbb{C})\)</span> is continuous. We want to show that <span class="math inline">\(f^{*}(g) \equiv g\circ f\)</span> is continuous in <span class="math inline">\(f^{-1}(U)\)</span>. Let <span class="math inline">\(V \subseteq \mathbb{R}(resp.\mathbb{C})\)</span> be an open set, then clearly <span class="math inline">\((g \circ f)^{-1}(V)=f^{-1} \circ g^{-1} (V) \subseteq f^{-1}(U)\)</span> is an open set.</p>
 </div>
@@ -458,7 +436,7 @@ f^{-1}(V) \subseteq f^{-1}(U) \subseteq X &amp; \xrightarrow{\quad f \text{ is c
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -467,7 +445,7 @@ f^{-1}(V) \subseteq f^{-1}(U) \subseteq X &amp; \xrightarrow{\quad f \text{ is c
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-14" class="callout-14-contents callout-collapse collapse">
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Suppose that <span class="math inline">\(X_1 \xrightarrow{f_1} X_2 \xrightarrow{f_2} X_3\)</span> and <span class="math inline">\(g \in \mathcal{O}_{X_3}(U)\)</span> <span class="math display">\[
 \begin{aligned}
@@ -491,7 +469,7 @@ g \circ f_2 \in \mathcal{O}_{X_1}(f_{2}^{-1}(U)) \\ g \circ f_2 \circ f_1 \in \m
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -500,7 +478,7 @@ g \circ f_2 \in \mathcal{O}_{X_1}(f_{2}^{-1}(U)) \\ g \circ f_2 \circ f_1 \in \m
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Suppose that <span class="math inline">\(i \circ g\)</span> is a morphism and <span class="math inline">\(h(v) \in \mathcal{O}_{X}(V)\)</span>, then <span class="math inline">\((i \circ g)^{*} (h) \equiv h \circ i \circ g\)</span> is a regular function on <span class="math inline">\(g^{-1}\circ i^{-1}(V) \equiv g^{-1}(V \cap U)\)</span>. We want to show that <span class="math inline">\(\forall f \in \mathcal{O}_U(V)=\mathcal{O}_X(V)\)</span> (since <span class="math inline">\(U\)</span> is open) <span class="math inline">\(f \circ g\)</span> is regular. It’s clear since <span class="math inline">\(g^{*}(f) \equiv f \circ i \circ g\)</span> is a regular function on <span class="math inline">\(g^{-1}(V)\)</span>.</p>
 </div>
@@ -520,7 +498,7 @@ g \circ f_2 \in \mathcal{O}_{X_1}(f_{2}^{-1}(U)) \\ g \circ f_2 \circ f_1 \in \m
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -529,7 +507,7 @@ g \circ f_2 \in \mathcal{O}_{X_1}(f_{2}^{-1}(U)) \\ g \circ f_2 \circ f_1 \in \m
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Suppose that <span class="math inline">\(f\)</span> is a morphism. We have <span class="math inline">\(f^{*}(g),(g \in \mathcal{O}_{Y}(V_{\alpha}) )\equiv g \circ f\)</span> is regular on <span class="math inline">\(f^{-1}(V_{\alpha}) \supseteq U_{\alpha}\)</span>. By defintion condition (a), <span class="math inline">\(f_{\alpha}\)</span> is regular on <span class="math inline">\(U_{\alpha}\)</span>. Suppose that <span class="math inline">\(f_{\alpha}\)</span> is regular and <span class="math inline">\(V \subseteq Y\)</span> is an open set and <span class="math inline">\(v \in \mathcal{O}_{Y}(V)\)</span>.We have <span class="math inline">\(V=\bigcup{V\cap V_{\alpha}}\)</span> and <span class="math inline">\(f^{-1}(V)=\bigcup{f^{-1}(V)\cap f^{-1}(V_{\alpha})}\supseteq \bigcup{f^{-1}(V)\cap U_{\alpha}}\)</span> Then <span class="math inline">\(f \circ g\)</span> is regular on <span class="math inline">\({f^{-1}(V)\cap U_{\alpha}}\)</span>(since <span class="math inline">\(f_{\alpha}\)</span> is morphism) and hence, by definition 1, <span class="math inline">\(f\)</span> is regular on <span class="math inline">\(f^{-1}(V)\)</span>.</p>
 </div>
