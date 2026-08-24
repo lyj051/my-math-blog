@@ -42,6 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -92,6 +93,52 @@ MathJax = {
   tex: { macros: { Spec: "\\operatorname{Spec}" } }
 };
 </script>
+<style>
+.Lemma {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Theorem {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Definition {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Question {
+  --color1: #e67e22;
+  --color2: #d35400;
+}
+.Corollary {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Proposition {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Geometric Interpretation {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Remark {
+  --color1: #e67e22;
+  --color2: #d35400;
+}
+.Example {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Claim {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Exercise {
+  --color1: #e67e22;
+  --color2: #d35400;
+}
+</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
@@ -425,7 +472,7 @@ f=f_{d_1}+\dots+f_{d_m}, f_{d_i} \text{ is the homogeneous component}
 </div>
 </div>
 <div class="proof">
-<p><span class="proof-title"><em>Proof</em>. </span>By <a href="../../../Reading/Algebraic-Varieties/CH01-space-with-functions/1.5.html#nte-lemma-if-a-map-is-mor">the exercise</a>, <span class="math inline">\(f\)</span> is a morphism if and only if <span class="math inline">\(\mathbb{P}^n \xrightarrow{\iota \circ f} \mathbb{A}^{n}\)</span> is; Then the component functions (by <a href="#tip-component">the lemma</a>) are regular functions which are constant and thus the image is just a single point.</p>
+<p><span class="proof-title"><em>Proof</em>. </span>By <a href="../CH01-space-with-functions/1.5.qmd#nte-lemma-if-a-map-is-mor">the exercise</a>, <span class="math inline">\(f\)</span> is a morphism if and only if <span class="math inline">\(\mathbb{P}^n \xrightarrow{\iota \circ f} \mathbb{A}^{n}\)</span> is; Then the component functions (by <a href="#tip-component">the lemma</a>) are regular functions which are constant and thus the image is just a single point.</p>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
@@ -521,7 +568,7 @@ f=f_{d_1}+\dots+f_{d_m}, f_{d_i} \text{ is the homogeneous component}
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Eugene Lee">
+<meta name="dcterms.date" content="2026-07-22">
+
+<title>Spaces with functions – Wonderings of Lee</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>
+  /* 设置正文两端对齐 */
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+<style>
+.Example {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Corollary {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Exercise {
+  --color1: #e67e22;
+  --color2: #d35400;
+}
+.Theorem {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Proposition {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Remark {
+  --color1: #e67e22;
+  --color2: #d35400;
+}
+.Claim {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Definition {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Geometric Interpretation {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Question {
+  --color1: #e67e22;
+  --color2: #d35400;
+}
+.Lemma {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles-html.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Wonderings of Lee</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../Reading/index.html"> 
+<span class="menu-text">Reading Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../Reconstrcution/index.html"> 
+<span class="menu-text">Digestion</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/lyj051"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Spaces with functions</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Algebraic Geometry</div>
+    <div class="quarto-category">Preliminary</div>
+    <div class="quarto-category">Algebraic Varieties by G.Kempf</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eugene Lee </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">July 22, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong><em>Reading Notes: Algebraic Varieties by G.Kempf</em></strong></p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Roughly speaking, different geometric objects (in our intuition) cannot be distinguished by their topological structures alone.</p>
+<p>The complex plane <span class="math inline">\(\mathbb{C}\)</span> is homeomorphic to the open unit disk <span class="math inline">\(\mathbb{D}:=\{z:|z| &lt; 1\}\)</span>. But they are totally different if we care about holomorphic functions on them (by Liouville’s Theorem).</p>
+</div>
+</div>
+<p>Thus, it is suggested that we should consider topological spaces together with specific functions on them. From my perspective,these functions can be seen as local coodinates of space which may take values in a field <span class="math inline">\(k\)</span> and we expect that there are rules of calculus like classcial calculus in <span class="math inline">\(\mathbb{R}^{n}\)</span>. Precisely prescribling the behaviors of these functions to achieve this goal is difficult for me. I will, nevertheless, first introduce the definition given in the textbook.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Definition">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(k\)</span> be a fixed field, <span class="math inline">\(X\)</span> be a topological space. The space <span class="math inline">\(X\)</span> is called a <strong>space with functions</strong> if every open set <span class="math inline">\(U\)</span> of <span class="math inline">\(X\)</span> is equipped with a <span class="math inline">\(k\)</span>-algebra, <span class="math inline">\(\mathcal{O}_X(U)\)</span>, of <span class="math inline">\(k\)</span>-valued functions on <span class="math inline">\(U\)</span>, satisfying the following conditions:</p>
+<ol type="a">
+<li><p>Let <span class="math inline">\(U\)</span> be the union of a family of open sets <span class="math inline">\(U_i\)</span>. Then a <span class="math inline">\(k\)</span>-valued function <span class="math inline">\(f\)</span> belongs to <span class="math inline">\(\mathcal{O}_X(U)\)</span> if and only if every restriction <span class="math inline">\(f|_{U_{i}} \in \mathcal{O}_X(U_{i})\)</span></p></li>
+<li><p>Let <span class="math inline">\(f \in \mathcal{O}_X(U)\)</span> for some open set <span class="math inline">\(U\)</span>. Then <span class="math inline">\(D(f):=\{u \in U:f(u) \neq 0  \}\)</span> is open and <span class="math inline">\(\frac{1}{f} \in \mathcal{O}_X(D(f))\)</span>.</p></li>
+</ol>
+<p>We will call the functions in <span class="math inline">\(\mathcal{O}_X(U)\)</span> <strong>regular function</strong>.</p>
+</div>
+</div>
+<p>Condition (a) implies that a function is regular if and only if it is locally regular.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;We should state (a) in categorical language (gluing condition): TODO</p></div><div id="fn2"><p><sup>2</sup>&nbsp;We should distinguish the characterization of open set <span class="math inline">\(D(f)\)</span> with “bump function” on smooth manifold which also characterizes open set.So here can we use the pure algebraic structure <span class="math inline">\(k\)</span>-algebra to recover a family of basic open sets of <span class="math inline">\(X\)</span>: TODO</p></div></div><p>Condition (b) allows us to do division <span class="math inline">\(\frac{g}{f}\)</span> of regular functions in the open set <span class="math inline">\(D(f)\)</span> where the denominator <span class="math inline">\(f\)</span> doesn’t take <span class="math inline">\(0\)</span>.This condition is equivalent to saying that stalk of every point of <span class="math inline">\(X\)</span> is a local ring (<span class="math inline">\(R,\mathfrak{m},k\)</span>).<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider <span class="math inline">\(X=\mathbb{R}\)</span> with Euclidean topology and open set <span class="math inline">\(U \in \mathbb{R}\)</span>.Define that regular functions on <span class="math inline">\(U\)</span> is the restrictions of polynomial functions on <span class="math inline">\(U\)</span>.This is not a space with functions! It doesn’t satisfy condition (b). Just take <span class="math inline">\(f(x)=x\)</span> which is a regular function but <span class="math inline">\(\frac{1}{x}\)</span> is not a local regular function on <span class="math inline">\(D(f)\)</span></p>
+<p>Let <span class="math inline">\(Y\)</span> be an open subset of <span class="math inline">\(X\)</span>. Suppose <span class="math inline">\(f\)</span> is a local regular function on <span class="math inline">\(Y\)</span>, is there a global regular function defined on <span class="math inline">\(X\)</span> such that its restriction on <span class="math inline">\(Y\)</span> is <span class="math inline">\(f\)</span>?</p>
+<p>No! We have example.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(k\)</span> be an infinite field equipped with the co-finite topology(in fact, equal to Zariski Topology of affine line <span class="math inline">\(\mathbb{A}_k^{1}\)</span>). <span class="math inline">\(\mathcal{O}_{k}(k)=p(t)\)</span> where <span class="math inline">\(p(t)\)</span> is a polynomial function.</p>
+<p>Consider the open set <span class="math inline">\(k-\{{0}\}\)</span> on which <span class="math inline">\(\frac{1}{t}\)</span> is regular (condition b). Suppose that there existes a global regular function <span class="math inline">\(F\)</span> such that the restriction of it is <span class="math inline">\(\frac{1}{t}\)</span>.Then <span class="math inline">\(F(t)t=1 \ \forall t \in k-\{{0}\}\)</span> and this is impossible.</p>
+</div>
+</div>
+</div>
+<p>Therefore we should treat local and global functions carefully.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Consider the complex plane <span class="math inline">\(\mathbb{C}\)</span> with Euclidean Topology and assign the ring of all holomorphic functions <span class="math inline">\(\mathcal{O}_{\mathbb{C}} (U)\)</span> to every open set <span class="math inline">\(U\)</span>. This is a space with functions defined above since <span class="math inline">\(D(f) =\{u \in U:f(u) \neq 0\}\)</span> is open and <span class="math inline">\((\frac{1}{f})^{\prime}=-\frac{f^{\prime}}{f^{2}}\)</span> on <span class="math inline">\(D(f)\)</span>.</p>
+<p>In the example above, we consider the zeroes of a holomorphic function <span class="math inline">\(f \not\equiv 0\)</span> on a open set <span class="math inline">\(U\)</span>, denoted by <span class="math inline">\(\{z_{i}\}_{i \in I}\)</span>. Then <span class="math inline">\(\frac{1}{f}\)</span> is holomorphic on <span class="math inline">\(U-\{z_{i}\}_{i \in I} = D(f)\)</span>. By definition condition (a), <span class="math inline">\(\forall f,g \in \mathcal{O}_{C}(U), \frac{f}{g} \in \mathcal{O}_{C}( D(g))\)</span> which is a meromorphic function on <span class="math inline">\(U\)</span> as we defined below:</p>
+<p>Suppose that <span class="math inline">\(U \subseteq \mathbb{C}\)</span> is open. A <span class="math inline">\(\mathbb{C}\)</span>-valued function <span class="math inline">\(f\)</span> is called meromorphic on <span class="math inline">\(u\)</span> if <span class="math inline">\(\forall p \in U\)</span>, there exists an open nbhd <span class="math inline">\(V_{p} \subseteq U, g_p,h_p \in \mathcal{O}(V_{p})(h_p \not\equiv 0 \ \text{on} \ V_{p})\)</span>, such that:</p>
+<p><span class="math inline">\(f\restriction_{V_{p}}=\frac{g_{p}}{h_{p}}\)</span></p>
+<p>We see that, in definition, the meromorphic function is always a quotient of two holomorphic functions locally and in the example <span class="math inline">\(\frac{f}{g}\)</span> is meromorphic where we take <span class="math inline">\(f_{p}=f\)</span> and <span class="math inline">\(g_{p}=g\)</span> for every point <span class="math inline">\(p\)</span> <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>Conversely: Does every meromorphic function on <span class="math inline">\(U\)</span> admit such a representation? i.e.&nbsp;suppose that <span class="math inline">\(\cup U_{\alpha}\)</span> is an open cover of <span class="math inline">\(U\)</span> and <span class="math inline">\(\frac{g_{\alpha}}{f_{\alpha}} \in \mathcal{O}_{U_{\alpha}}(D(f_{\alpha}) )\)</span> where <span class="math inline">\(g_{\alpha},f_{\alpha} \in \mathcal{O}_{\mathbb{C}}({U_{\alpha}})\)</span>, and further suppose that <span class="math inline">\(\textcolor{green}{\frac{g_{\alpha}}{f_{\alpha}}=\frac{g_{\alpha^{\prime}}}{f_{\alpha^{\prime}}} \ \text{on} \ U_{\alpha} \cap U_{\alpha^{\prime}}}\)</span> (as functions) for all <span class="math inline">\(\alpha\)</span>, is there a quotient function <span class="math inline">\(\frac{g}{f} \in \mathcal{O}_{U}(D(f))\)</span> where <span class="math inline">\(f,g \in \mathcal{O}_{\mathbb{C}}(U)\)</span> such that <span class="math inline">\(\frac{g}{f} \restriction_{U_{\alpha}}=\frac{g_{\alpha}}{f_{\alpha}}\)</span> for every <span class="math inline">\(\alpha\)</span>?</p>
+<p>Yes! But it really depends on <span class="math inline">\(\mathbb{C}\)</span> and it fails when the topological spaces are higher dimension complex manifords. Hence we omit the technical proof (depend on Werierstrass factoring theorem of Mittag-Laffer theorem).Therefore, we have:</p>
+<p><span class="math inline">\(\textcolor{blue}{\mathcal{M}(U)=\{\frac{f}{g}:f,g \in \mathcal{O}(U), g \not\equiv 0 \}}\)</span></p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Denote all the meromorphic functions on <span class="math inline">\(U\)</span> by <span class="math inline">\(\mathcal{M}(U)\)</span>. This imlies that <span class="math inline">\(\{\frac{f}{g}:f,g \in \mathcal{O}(U), g \not\equiv 0 \} \subseteq \mathcal{M}(U)\)</span>.</p></div></div><p><span class="math inline">\(\mathcal{O}_{X}(U)\)</span> is defined as a <span class="math inline">\(k\)</span>-algebra consisting of <span class="math inline">\(k\)</span>-valued functions above. This is kind of ac.hoc. Hence we may generalize this concept as follows, though it’s hard to pin down who invented it. It seems reasonable to the connection between the extension problems (such as analytic continuations).</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Definition" style="color: #6c3483">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(X\)</span> be a topological space. A presheaf <span class="math inline">\(\mathcal{F}\)</span> of sets on <span class="math inline">\(X\)</span> is a contravariant functor from <span class="math inline">\(Top(X)\)</span> to <span class="math inline">\(Set\)</span>.</p>
+<p><span class="math inline">\(Top(X)\)</span>: Obj:open subsets of <span class="math inline">\(X\)</span> Morphism:inclusion map <span class="math inline">\(V \subseteq U\)</span></p>
+<p>Recall that a contravariant functor satisfies the following conditions:</p>
+<ol type="a">
+<li><span class="math inline">\(\mathcal{F}(\emptyset)=\{*\}\)</span>, where <span class="math inline">\(\{*\}\)</span> is the terminal object in <span class="math inline">\(Set\)</span>.</li>
+<li><span class="math inline">\(\mathcal{F}(Id_{U})=Id_{\mathcal{F}(U)}\)</span></li>
+<li><span class="math inline">\(\mathcal{F}(i_{U \subseteq V}):=\mathcal{F}(V) \to \mathcal{F}(U)\)</span></li>
+<li><span class="math inline">\(\mathcal{F}(i_{V \subseteq W} \circ i_{U \subseteq V})=\mathcal{F}(i_{U \subseteq V}) \circ \mathcal{F}(i_{V \subseteq W})\)</span></li>
+</ol>
+<p>Further suppose the following conditions hold, then <span class="math inline">\(\mathcal{F}\)</span> is a sheaf:</p>
+<ol start="5" type="a">
+<li><p><strong>local axiom</strong>: Suppose that <span class="math inline">\(U_{i}\)</span> is an open cover of open set <span class="math inline">\(U\)</span> in <span class="math inline">\(X\)</span> and <span class="math inline">\(s,t \in \mathcal{F}(U)\)</span>. If <span class="math inline">\(s\restriction_{U_{i}}=t\restriction_{U_{i}}\)</span> for every <span class="math inline">\(i\)</span>, then <span class="math inline">\(s=t\)</span>. (wlog. suppose that <span class="math inline">\(U_{i}\subseteq U\)</span>)</p></li>
+<li><p><strong>gluing axiom</strong>: Suppose that <span class="math inline">\(U_{i}\)</span> is an open cover of open set <span class="math inline">\(U\)</span> in <span class="math inline">\(X\)</span>, and if we have sections <span class="math inline">\(s_{i} \in \mathcal{F}(U_{i})\)</span> such that <span class="math inline">\(s_{i}=s_{j}\)</span> on <span class="math inline">\(U_{i} \cap U_{j}\)</span> for evry pair <span class="math inline">\((i,j)\)</span>, i.e.<span class="math inline">\(s_{i} \restriction_{U_{i} \cap U_{j}}=s_{j} \restriction_{U_{i} \cap U_{j}}\)</span>, then there is a section <span class="math inline">\(s \in \mathcal{F}(U)\)</span> such that <span class="math inline">\(s \restriction_{U_{i}}=s_{i}\)</span> for each <span class="math inline">\(U_{i}\)</span>.</p></li>
+</ol>
+</div>
+</div>
+<p>It’s straightforward to see that <span class="math inline">\(\mathcal{F}(U):=\{f:U \to \mathbb{C}: f \ \text{is holomorphic}\}\)</span> and <span class="math inline">\(\mathcal{F}(U):=\{f:U \to \mathbb{C}: f \ \text{is meromorphic}\}\)</span> are sheaves on <span class="math inline">\(C\)</span> with Euclidean topology.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>spaces with functions VS sheaf
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Condition (a) <span class="math inline">\(\Leftrightarrow\)</span> local axiom and gluing axiom is straightforward.</p>
+<p>As functions which are pointwisely defined, the local and gluing axioms are naturally satisfied (Just define the global function pointwisely). (But when the functions don’t agree on some intersection, like <span class="math inline">\(logz\)</span> and <span class="math inline">\(\sqrt{z}\)</span> on <span class="math inline">\(\mathbb{C}\)</span>, we cannot define a global function on the whole topological space. And maybe we should create a new and more natural underlying space to glue local functions)</p>
+<p>In fact, the concept of <strong>Sheaf</strong> generalize local regular functions to local algebraic data <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Provided the conditions (c) and (d), we can restrict data to smaller spaces. Provided axioms (e) and (f) we can obtain global data from local.</p>
+<p>However, for general sheaves, <span class="math inline">\(\mathcal{F}(U)\)</span> doesn’t carry any algebraic structures (<span class="math inline">\(k\)</span>-algebra in spaces with functions).</p>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn4"><p><sup>4</sup>&nbsp;“The concept of a <em>sheaf</em> provides a systematic way of keeping track of local algebraic data on a topological space.” — Hartshorne,<em>Algebraic Geometry</em></p></div><div class="">
+<p>Constant sheaf subsheaf skyscraper sheaf TODO</p>
+</div></div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(X\)</span> be a space with functions <span class="math inline">\(\mathcal{O}_{X}(U)\)</span>. Suppose that <span class="math inline">\(Y \subseteq X\)</span> and <span class="math inline">\(Y\)</span> is an open set equipped with the subspace topology. Then <span class="math inline">\(Y\)</span> is also a space with functions with the structure: <strong><span class="math inline">\(\mathcal{O}_{Y}(U)=\mathcal{O}_{X}(U)\)</span></strong>, where <span class="math inline">\(U\)</span> is open set of <span class="math inline">\(Y\)</span>.</p>
+</div>
+</div>
+<div id="imp-def-mor" class="callout callout-style-default callout-important no-icon callout-titled" title="Definition ">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important&nbsp;1: Definition
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a> A <strong>morphism</strong> <span class="math inline">\(f\)</span> from <span class="math inline">\((X, \mathcal{O}_{X}(U))\)</span> to <span class="math inline">\((Y, \mathcal{O}_Y(U))\)</span> sends <span class="math inline">\(X\)</span> to <span class="math inline">\(Y\)</span> and pulls-back (<span class="math inline">\(f^{*}\)</span>) <span class="math inline">\(\mathcal{O}_Y(U)\)</span> into <span class="math inline">\(\mathcal{O}_{X}(f^{-1}(U))\)</span> satisfying two conditions:</p>
+<ol type="a">
+<li><p><span class="math inline">\(X \xrightarrow{f} Y\)</span> is continuous.</p></li>
+<li><p>if <span class="math inline">\(g(v) \in \mathcal{O}_Y(U)\)</span> then <span class="math inline">\(f^{*}(g)(u)=g(f(u)) \in \mathcal{O}_{X}(f^{-1}(U))\)</span>.</p></li>
+</ol>
+</div>
+</div>
+<div class="no-row-height column-margin column-container"><div id="fn5"><p><sup>5</sup>&nbsp;We should consider all spaces with functions as a category (depends on <span class="math inline">\(k\)</span> loose the condition that <span class="math inline">\(k\)</span> is a field ?)</p></div></div><p>Indeed, <span class="math inline">\(f^{*}\)</span> is a <span class="math inline">\(k\)</span>-algebra map from <span class="math inline">\(\mathcal{O}_{Y}(U)\)</span> to <span class="math inline">\(\mathcal{O}_{X}(f^{-1}(U))\)</span>. Like above we should generalize it to morphisms between abstract sheaves:</p>
+<p><span class="math inline">\((X,\mathcal{F}) \xrightarrow{f} (Y,\mathcal{G})\)</span> consists of the following data:</p>
+<ol type="a">
+<li><p><span class="math inline">\(X \xrightarrow{f} Y\)</span> is a continuous map between topological spaces <span class="math inline">\(X,Y\)</span></p></li>
+<li><p>A natural transform from <span class="math inline">\(\mathcal{G}\)</span> to <span class="math inline">\(\mathcal{F}\)</span>.</p></li>
+</ol>
+<p><span class="math display">\[
+\begin{array}{ccc}
+f^{-1}(V) \subseteq f^{-1}(U) \subseteq X &amp; \xrightarrow{\quad f \text{ is continuous} \quad} &amp; Y \supseteq U \supseteq V \\[1.2em]
+\mathcal{F}(f^{-1}(U)) &amp; \xleftarrow{\hspace{4.5em}} &amp; \mathcal{G}(U) \\
+\Big\downarrow &amp; &amp; \Big\downarrow \\
+\mathcal{F}(f^{-1}(V)) &amp; \xleftarrow{\hspace{4.5em}} &amp; \mathcal{G}(V)
+\end{array}
+\]</span></p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>What are functions?</p>
+<p>maps between sets + what structures</p>
+<p>analysis: local (pointwise) property</p>
+<p>algebra: we want to do divison at some point and differentiate and integral</p>
+<p>topology: the category <span class="math inline">\(Ring\)</span> of commutative ring with identity, can we recover a (some) topological space(s) such that <span class="math inline">\(Ring\)</span> are the functions on them satisfying the conditions in definition at first?</p>
+<p><strong>Etale space</strong></p>
+</div></div><div class="callout callout-style-default callout-note no-icon callout-titled" title="Ex 1.1.1">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Ex 1.1.1
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If <span class="math inline">\(k=\mathbb{R} \text{ or } \mathbb{C}\)</span> and <span class="math inline">\(X\)</span> is any topological space,then <span class="math inline">\(X\)</span> has a natural structure of a space with functions. Just take <span class="math inline">\(\mathcal{O}_{X}(U)\)</span> as the <span class="math inline">\(k\)</span>-algebra of all continuous functions: <span class="math inline">\(U \to k\)</span>. Show that any continuous mapping <span class="math inline">\(X_1 \to X_2\)</span> is a morphism.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Sol
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose that <span class="math inline">\(X_1 \xrightarrow{f} X_2\)</span> is continuous and <span class="math inline">\(g:U \to \mathbb{R}(resp.\mathbb{C})\)</span> is continuous. We want to show that <span class="math inline">\(f^{*}(g) \equiv g\circ f\)</span> is continuous in <span class="math inline">\(f^{-1}(U)\)</span>. Let <span class="math inline">\(V \subseteq \mathbb{R}(resp.\mathbb{C})\)</span> be an open set, then clearly <span class="math inline">\((g \circ f)^{-1}(V)=f^{-1} \circ g^{-1} (V) \subseteq f^{-1}(U)\)</span> is an open set.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Ex 1.1.2">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Ex 1.1.2
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Prove that the identity of a space with functions is a morphism and the composition of morphisms is a morphism.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Sol
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-13" class="callout-13-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose that <span class="math inline">\(X_1 \xrightarrow{f_1} X_2 \xrightarrow{f_2} X_3\)</span> and <span class="math inline">\(g \in \mathcal{O}_{X_3}(U)\)</span> <span class="math display">\[
+\begin{aligned}
+g \circ f_2 \in \mathcal{O}_{X_1}(f_{2}^{-1}(U)) \\ g \circ f_2 \circ f_1 \in \mathcal{O}_{X_1}(f_{1}^{-1} \circ f_{2}^{-1}(U))
+\end{aligned}
+\]</span></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Ex 1.1.3">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Ex 1.1.3
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(U\)</span> be an open space of a space with functions <span class="math inline">\(X\)</span>. Then show that the inclusion <span class="math inline">\(i:U \to X\)</span> is a morphsim and if <span class="math inline">\(Y\)</span> is another space with functions and <span class="math inline">\(g:Y \to U\)</span> is a mapping, then <span class="math inline">\(g\)</span> is a morphsim if and only if <span class="math inline">\(i \circ g:Y \to X\)</span> is.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Sol
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-15" class="callout-15-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose that <span class="math inline">\(i \circ g\)</span> is a morphism and <span class="math inline">\(h(v) \in \mathcal{O}_{X}(V)\)</span>, then <span class="math inline">\((i \circ g)^{*} (h) \equiv h \circ i \circ g\)</span> is a regular function on <span class="math inline">\(g^{-1}\circ i^{-1}(V) \equiv g^{-1}(V \cap U)\)</span>. We want to show that <span class="math inline">\(\forall f \in \mathcal{O}_U(V)=\mathcal{O}_X(V)\)</span> (since <span class="math inline">\(U\)</span> is open) <span class="math inline">\(f \circ g\)</span> is regular. It’s clear since <span class="math inline">\(g^{*}(f) \equiv f \circ i \circ g\)</span> is a regular function on <span class="math inline">\(g^{-1}(V)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Ex 1.1.4">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Ex 1.1.4
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(f:X \to Y\)</span> be a mapping between spaces with functions. Given open covers <span class="math inline">\(X=\cup U_{\alpha}\)</span> and <span class="math inline">\(Y=\cup V_{\alpha}\)</span> such that <span class="math inline">\(f(U_{\alpha}) \subseteq V_{\alpha}\)</span>. Show that <span class="math inline">\(f\)</span> is a morphism if and only if each <span class="math inline">\(f_{\alpha}:U_{\alpha} \to V_{\alpha}\)</span> is.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Sol">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Sol
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose that <span class="math inline">\(f\)</span> is a morphism. We have <span class="math inline">\(f^{*}(g),(g \in \mathcal{O}_{Y}(V_{\alpha}) )\equiv g \circ f\)</span> is regular on <span class="math inline">\(f^{-1}(V_{\alpha}) \supseteq U_{\alpha}\)</span>. By defintion condition (a), <span class="math inline">\(f_{\alpha}\)</span> is regular on <span class="math inline">\(U_{\alpha}\)</span>. Suppose that <span class="math inline">\(f_{\alpha}\)</span> is regular and <span class="math inline">\(V \subseteq Y\)</span> is an open set and <span class="math inline">\(v \in \mathcal{O}_{Y}(V)\)</span>.We have <span class="math inline">\(V=\bigcup{V\cap V_{\alpha}}\)</span> and <span class="math inline">\(f^{-1}(V)=\bigcup{f^{-1}(V)\cap f^{-1}(V_{\alpha})}\supseteq \bigcup{f^{-1}(V)\cap U_{\alpha}}\)</span> Then <span class="math inline">\(f \circ g\)</span> is regular on <span class="math inline">\({f^{-1}(V)\cap U_{\alpha}}\)</span>(since <span class="math inline">\(f_{\alpha}\)</span> is morphism) and hence, by definition 1, <span class="math inline">\(f\)</span> is regular on <span class="math inline">\(f^{-1}(V)\)</span>.</p>
+</div>
+</div>
+</div>
+
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

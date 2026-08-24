@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Eugene Lee">
+<meta name="dcterms.date" content="2026-08-22">
+
+<title>Differential Forms in Euclidean Space – Wonderings of Lee</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+  window.MathJax = {
+    tex: {
+      packages: {'[+]': ['tikzcd']}
+    },
+    loader: {load: ['[tex]/tikzcd']}
+  };
+</script>
+<style>
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+<script>
+MathJax = {
+  tex: { macros: { Spec: "\\operatorname{Spec}" } }
+};
+</script>
+<style>
+.Geometric Interpretation {
+  --color1: #c6f6db;
+  --color2: #d3f0e0;
+}
+.Definition {
+  --color1: #c6f6db;
+  --color2: #d3f0e0;
+}
+.Question {
+  --color1: #be9e83;
+  --color2: #d35400;
+}
+.Corollary {
+  --color1: #83a3b8;
+  --color2: #2c3e50;
+}
+.Example {
+  --color1: #c6f6db;
+  --color2: #d3f0e0;
+}
+.Proposition {
+  --color1: #83a3b8;
+  --color2: #2c3e50;
+}
+.Exercise {
+  --color1: #be9e83;
+  --color2: #d35400;
+}
+.Lemma {
+  --color1: #83a3b8;
+  --color2: #2c3e50;
+}
+.Claim {
+  --color1: #83a3b8;
+  --color2: #2c3e50;
+}
+.Theorem {
+  --color1: #83a3b8;
+  --color2: #2c3e50;
+}
+.Remark {
+  --color1: #be9e83;
+  --color2: #d35400;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles-html.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Wonderings of Lee</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../Reading/index.html"> 
+<span class="menu-text">Reading Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../Reconstrcution/index.html"> 
+<span class="menu-text">Digestion</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/lyj051"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#differential-forms-in-mathbbr3" id="toc-differential-forms-in-mathbbr3" class="nav-link active" data-scroll-target="#differential-forms-in-mathbbr3">Differential forms in <span class="math inline">\(\mathbb{R}^3\)</span></a>
+  <ul class="collapse">
+  <li><a href="#notations" id="toc-notations" class="nav-link" data-scroll-target="#notations">Notations</a></li>
+  <li><a href="#notations-1" id="toc-notations-1" class="nav-link" data-scroll-target="#notations-1">Notations</a></li>
+  </ul></li>
+  <li><a href="#differential-forms-in-mathbbrn" id="toc-differential-forms-in-mathbbrn" class="nav-link" data-scroll-target="#differential-forms-in-mathbbrn">Differential forms in <span class="math inline">\(\mathbb{R}^n\)</span></a>
+  <ul class="collapse">
+  <li><a href="#substitution-of-variables" id="toc-substitution-of-variables" class="nav-link" data-scroll-target="#substitution-of-variables">Substitution of Variables</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Differential Forms in Euclidean Space</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Differential Forms by do Carmo</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eugene Lee </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 22, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="differential-forms-in-mathbbr3" class="level1">
+<h1>Differential forms in <span class="math inline">\(\mathbb{R}^3\)</span></h1>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It’s quite important for beginners to make the convention: <span class="math inline">\((dx_i)_p\)</span> denotes the <a href="../../../Reading/Differential-Forms/Classical-Analysis/0.1.html#differential-of-coordinate-function">differential of the coordinate function <span class="math inline">\(x_i\)</span></a> at the point <span class="math inline">\(p \in \mathbb{R}^n\)</span> which is a linear mapping;</p>
+<p><span class="math inline">\(dx_i\)</span> denotes the differential form of degree 1, as we shall define below.</p>
+</div>
+</div>
+<section id="notations" class="level3">
+<h3 data-anchor-id="notations">Notations</h3>
+<ul>
+<li><p><span class="math inline">\(\mathbb{R}^{3}\)</span> is defined to be the set of all real triples; the element of it is called <em>point</em>.</p></li>
+<li><p>Let <span class="math inline">\(p\)</span> be a point of <span class="math inline">\(\mathbb{R}^3\)</span>; The set of vectors which have origin at <span class="math inline">\(p\)</span>, i.e., <span class="math inline">\(\{q-p: q \in \mathbb{R}^3\}\)</span>, is called the <em>tangent space</em> of <span class="math inline">\(\mathbb{R}^3\)</span> at <span class="math inline">\(p\)</span> and will be denoted by <span class="math inline">\(\mathbb{R}_{p}^3\)</span>; Clearly it has the structure of <span class="math inline">\(\mathbb{R}\)</span>-vector-sapce of which the canonical basis is denoted by <span class="math inline">\(\{e_1,e_2,e_3\}\)</span> (with subtle abuse of notations, we will drop the subscript <span class="math inline">\(p\)</span>).</p></li>
+<li><p>A <em>vector field</em> in <span class="math inline">\(\mathbb{R}^3\)</span> is a map <span class="math display">\[
+  v:\mathbb{R}^3 \rightarrow \bigsqcup_{p \in \mathbb{R}^3}{\mathbb{R}_{p}^3}
+  \]</span> which associates to each point <span class="math inline">\(p\)</span> a vector <span class="math inline">\(v(p)\in \mathbb{R}_{p}^3\)</span>; Thus we can write <span class="math inline">\(v\)</span> as <span class="math display">\[
+  v(p)=a_1(p)e_1+a_2(p)e_2+a_3(p)e_3
+  \]</span> thereby defining three functions <span class="math inline">\(a_i:\mathbb{R}^3 \to \mathbb{R}\)</span> that characterize the vector field <span class="math inline">\(v\)</span>.</p>
+<p>We say that a vector field <span class="math inline">\(v\)</span> is <em>differentiable</em> if the functions <span class="math inline">\(a_i\)</span> which define it are differentiable.</p></li>
+<li><p>To each tangent space <span class="math inline">\(\mathbb{R}_{p}^3\)</span> we can associate its <em>dual space</em> <span class="math inline">\((\mathbb{R}_p^3)^{*}\)</span>; i.e.&nbsp;the set of all linear maps (also called linear forms) <span class="math inline">\(\varphi: \mathbb{R}_{p}^3 \to \mathbb{R}\)</span>.</p>
+<p>The canonical dual basis of <span class="math inline">\((\mathbb{R}_p^3)^{*}\)</span> is denoted by <span class="math inline">\(\{(dx_1)_p,(dx_2)_p,(dx_3)_p\}\)</span>; by definition of dual basis we have: <span class="math display">\[
+(dx_i)_p(e_j)=1 \text{ if } i=j; \ =0 \text{ if } i\neq j
+\]</span></p></li>
+</ul>
+<p>Indeed, <span class="math inline">\((dx_i)_p\)</span>’s as dual basis defined above are the <a href="../../../Reading/Differential-Forms/Classical-Analysis/0.1.html#differential-of-coordinate-function">differentials of the coordinate functions <span class="math inline">\(x_i\)</span>’s at the point <span class="math inline">\(p\)</span></a>.</p>
+<div id="a-field-of-linear-forms" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 1: </strong>A field of linear forms</summary><div>
+<p>A <em>field of linear forms</em> (also called <em>exterior form of degree 1</em>) in <span class="math inline">\(\mathbb{R}^3\)</span> is a map <span class="math inline">\(\omega\)</span> that associates to each point <span class="math inline">\(p\in \mathbb{R}^3\)</span> an element <span class="math inline">\(\omega(p) \in (\mathbb{R}_p^3)^{*}\)</span>; <span class="math inline">\(\omega\)</span> can be written as: <span class="math display">\[
+\omega(p)=a_1(p)(dx_1)_p+a_2(p)(dx_2)_p+a_3(p)(dx_3)_p
+\]</span> thus we may write <span class="math display">\[
+\omega=\sum_{i=1}^{3}a_idx_i
+\]</span> where <span class="math inline">\(a_i\)</span> are real functions in <span class="math inline">\(\mathbb{R}^3\)</span>.</p>
+<p>If the functions <span class="math inline">\(a_i\)</span> are differentiable, <span class="math inline">\(\omega\)</span> is called a <em>differential form of degree <span class="math inline">\(1\)</span></em>.</p>
+<p>As the convention we made at first, <span class="math inline">\(dx_i\)</span> is the differential form of degree form of degree <span class="math inline">\(1\)</span> which associates to each point <span class="math inline">\(p\)</span> the differential of the <span class="math inline">\(i\)</span>-th coordinate function; i.e.&nbsp;<span class="math inline">\((dx_i)_p\)</span></p>
+</div></details>
+</div>
+<p>Note that <em>field of linear forms</em> and <em>vector field</em> are the same except for the codomain.</p>
+</section>
+<section id="notations-1" class="level3">
+<h3 data-anchor-id="notations-1">Notations</h3>
+<ul>
+<li><p><span class="math inline">\(\wedge^{2}(\mathbb{R}^{3}_{p})^*\)</span></p>
+<p><span class="math inline">\(\wedge^{2}(\mathbb{R}^{3}_{p})^*\)</span> is defined to be the set of maps <span class="math inline">\(\varphi: \mathbb{R}^3_p \times \mathbb{R}^3_p \rightarrow \mathbb{R}\)</span> that are bilinear and alternate;i.e.&nbsp;<span class="math inline">\(\varphi(x_1,x_2)=-\varphi(x_2,x_1)\)</span>.</p>
+<p>With the usual opeartions of functions the set <span class="math inline">\(\wedge^{2}(\mathbb{R}^{3}_{p})^*\)</span> becomes a vector space naturally.</p></li>
+<li><p>Conversely, when two functions <span class="math inline">\(\varphi_1,\varphi_2 \in (\mathbb{R}^3_p)\)</span> are given, we can obtain an element $_1 <em>2 <sup>{2}(</sup>{3}</em>{p})^* $ by setting: <span class="math display">\[
+  (\varphi_1 \wedge \varphi_2)(v_1,v_2)=\operatorname{det}(\varphi_i({v_j}))
+  \]</span></p></li>
+<li><p>The element <span class="math inline">\((dx_1)_p \wedge (dx_2)_p \in \wedge^{2}(\mathbb{R}^3_{p})^*\)</span> will be denoted by <span class="math inline">\((dx_1 \wedge dx_2)_p\)</span>. It is easy to see that the set <span class="math inline">\(\{(dx_i \wedge dx_j)_p: 1 \leq i &lt; j \leq 3\}\)</span> is a basis for <span class="math inline">\(\wedge^2(\mathbb{R}^3_p)^*\)</span>; Furthermore we have <span class="math display">\[
+  (dx_i \wedge dx_j)_p=-(dx_i \wedge dx_j)_p, \ i \neq j; \ (dx_i \wedge dx_i)_p=0
+  \]</span></p></li>
+<li><p>Geometric Interpretation <span class="math display">\[\
+  (\omega_ \wedge \nu )(V_1,V_2)=\pm \operatorname{area}[(\omega(V_1),\nu(V_1)),(\omega(V_2),\nu(V_2))]
+  \]</span> where <span class="math inline">\(\omega,\nu \in (\mathbb{R}^3_p)^*\)</span></p></li>
+</ul>
+<div id="field-of-bilinear-alternating-forms" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 2: </strong>Field of bilinear alternating forms</summary><div>
+<p>A <em>field of bilinear alternating forms</em> or <em>exterior form of degree of 2</em> in <span class="math inline">\(\mathbb{R}^3\)</span> is a map <span class="math inline">\(\omega\)</span> that associates to each <span class="math inline">\(p \in \mathbb{R}^3\)</span> an element <span class="math inline">\(\omega(p) \in \wedge^{2}(\mathbb{R}^{3}_{p})^*\)</span>; thus <span class="math inline">\(\omega\)</span> admits the form: <span class="math display">\[
+\omega(p)=a_{12}(p)(dx_1 \wedge dx_2)_p + a_{13}(p)(dx_1 \wedge dx_3)_p +a_{23}(p)(dx_2 \wedge dx_3)_p
+\]</span> or <span class="math display">\[
+\omega=\sum_{i &lt;j }a_{ij}dx_i \wedge dx_j \qquad  i,j=1,2,3
+\]</span> where <span class="math inline">\(a_{ij}\)</span> are real functions in <span class="math inline">\(\mathbb{R}^3\)</span>. When the functions <span class="math inline">\(a_{ij}\)</span> are differentiable, <span class="math inline">\(\omega\)</span> is said to be a <em>differential form of degree 2</em>.</p>
+</div></details>
+</div>
+</section>
+</section>
+<section id="differential-forms-in-mathbbrn" class="level1">
+<h1>Differential forms in <span class="math inline">\(\mathbb{R}^n\)</span></h1>
+<p>Let <span class="math inline">\(\wedge^k(\mathbb{R}^n_p)^*\)</span> be the set of all <span class="math inline">\(k\)</span>-linear alternating maps: <span class="math display">\[
+\varphi: \mathbb{R}^n_p \times \dots \times \mathbb{R}^n_p \rightarrow \mathbb{R}^n_p
+\]</span></p>
+<p>Given <span class="math inline">\(\varphi_1, \dots, \varphi_k \in (\mathbb{R}^n_p)^*\)</span>, we can obtain an element <span class="math inline">\(\varphi_1\wedge \dots\wedge \varphi_k \in \wedge^k(\mathbb{R}^n_p)^*\)</span> by setting <span class="math display">\[
+(\varphi_1\wedge \dots\wedge \varphi_k) (v_1,\dots,v_k)=\operatorname{det}(\varphi_i(v_j))
+\]</span> In particular, <span class="math inline">\((dx_{i_1})_p\wedge\dots\wedge(dx_{i_k})_p \in \wedge^k(\mathbb{R}^n_p)^*\)</span> where <span class="math inline">\(i_j \in \{1,2, \dots,n\}\)</span>. We will denote this element by <span class="math inline">\((dx_{i_1}\wedge\dots\wedge dx_{i_k})_p\)</span>.</p>
+<div id="cnb-3-Proposition" class="Proposition">
+<details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 1</strong></summary><div>
+<p>The set <span class="math display">\[
+(dx_{i_1}\wedge\dots\wedge dx_{i_k})_p \qquad 1\leq i_1 &lt; \dots &lt; i_k \leq n
+\]</span> is a basis for the vector space <span class="math inline">\(\wedge^k(\mathbb{R}^n_p)^*\)</span>.</p>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<ul>
+<li><p>The elements of the set are linearly independent.</p>
+<p>Suppose that <span class="math display">\[
+\sum_{i_1 &lt;\dots&lt;i_k}a_{i_1\dots i_k}(dx_{i_1}\wedge\dots\wedge dx_{i_k})_p=0
+\]</span> Then <span class="math display">\[
+(\sum_{i_1 &lt;\dots&lt;i_k}a_{i_1\dots i_k}(dx_{i_1}\wedge\dots\wedge dx_{i_k})_p)(e_{j_1},\dots,e_{j_k})=a_{j_1\dots j_k}=0
+\]</span> where <span class="math inline">\(j_1&lt;\dots&lt;j_k\)</span> and <span class="math inline">\(j_l \in \{1,\dots,n\}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(f\in \wedge^k(\mathbb{R}^n_p)^*\)</span>, <span class="math inline">\(f\)</span> is a linear combination of the form: <span class="math display">\[
+f=\sum_{i_1 &lt;\dots&lt;i_k}a_{i_1\dots i_k}(dx_{i_1}\wedge\dots\wedge dx_{i_k})_p
+\]</span> For this, set <span class="math inline">\(g\in\wedge^k(\mathbb{R}^n_p)^*\)</span>: <span class="math display">\[
+g=\sum_{i_1 &lt;\dots&lt;i_k}f(e_{i_1},\dots,e_{i_k})(dx_{i_1}\wedge\dots\wedge dx_{i_k})_p
+\]</span> Then we have <span class="math inline">\(g(e_{i_1},\dots,e_{i_k})=f(e_{i_1},\dots,e_{i_k})\)</span> for any <span class="math inline">\((e_i)\)</span>;thus <span class="math inline">\(f=g \in \wedge^k(\mathbb{R}^n_p)^*\)</span>.</p></li>
+</ul>
+</div>
+<div id="exterior-k-form" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 3: </strong>Exterior <span class="math inline">\(k\)</span>-form</summary><div>
+<p>An <em>exterior <span class="math inline">\(k\)</span>-form</em> in <span class="math inline">\(\mathbb{R}^n\)</span> is a map <span class="math inline">\(\omega\)</span> that associates to each <span class="math inline">\(p\in \mathbb{R}^n\)</span> an element <span class="math inline">\(\omega(p)\)</span> in <span class="math inline">\(\wedge^k(\mathbb{R}^n_p)^*\)</span>; by proposition 1, <span class="math inline">\(\omega\)</span> can be written as <span class="math display">\[
+\omega(p)=\sum_{i_1 &lt;\dots&lt;i_k}a_{i_1\dots i_k}(p)(dx_{i_1}\wedge\dots\wedge dx_{i_k})_p
+\]</span> or (for notational convenience) <span class="math display">\[
+\omega=\sum_{I}a_{I}dx_{I}
+\]</span> where index set <span class="math inline">\(I\)</span> runs over all sets of the form <span class="math inline">\(\{i_1&lt;\dots&lt;i_k:i_j\in \{1,\dots,n\}\}\)</span> and each <span class="math inline">\(a_I\)</span> is a real functon in <span class="math inline">\(\mathbb{R}^n\)</span>. When the <span class="math inline">\(a_I\)</span>’s are differentiable, <span class="math inline">\(\omega\)</span> is said to be a <em>differential <span class="math inline">\(k\)</span>-form</em>.</p>
+<p>We also set the convention that a differential <span class="math inline">\(0\)</span>-form is a differentiable function <span class="math inline">\(f:\mathbb{R}^n \to \mathbb{R}\)</span>.</p>
+</div></details>
+</div>
+<p>From now on, we will restrict ourselves to differential forms and we will call them <span class="math inline">\(k\)</span>-forms for convenience.</p>
+<p>We are going to define some operations on <span class="math inline">\(k\)</span>-forms in <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(\omega\)</span> and <span class="math inline">\(\varphi\)</span> are two <span class="math inline">\(k\)</span>-forms: <span class="math display">\[
+\omega=\sum_Ia_Idx_I, \qquad \varphi=\sum_Ib_Idx_I
+\]</span> we can define their sum <span class="math display">\[
+\omega+\varphi=\sum_I(a_I+b_I)dx_I
+\]</span></p></li>
+<li><p>If <span class="math inline">\(\omega\)</span> is a <span class="math inline">\(k\)</span>-form and <span class="math inline">\(\varphi\)</span> is an <span class="math inline">\(s\)</span>-form, we can define their <em>exterior product</em> <span class="math inline">\(\omega \wedge\varphi\)</span>, which is an <span class="math inline">\((s+k)\)</span>-form, as follows:</p></li>
+</ol>
+<div id="exterior-product-of-two-forms" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 4: </strong>Exterior product of two forms</summary><div>
+<p>Let <span class="math display">\[
+\begin{aligned}
+&amp;\omega=\sum_{I}a_Idx_I, \qquad I=(i_1,\dots,i_k), \qquad 1\leq i_1&lt;\dots&lt;i_k\leq n \\
+&amp; \varphi=\sum_{I}a_Jdx_J, \qquad J=(j_1,\dots,j_s), \qquad 1\leq j_1&lt;\dots&lt;j_s\leq n
+\end{aligned}
+\]</span> By definition, <span class="math display">\[
+\omega \wedge \varphi:=\sum_{IJ}a_Ib_Jdx_I\wedge dx_J
+\]</span></p>
+</div></details>
+</div>
+<div id="cnb-6-Proposition" class="Proposition">
+<details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 2</strong></summary><div>
+<p>Let <span class="math inline">\(\omega\)</span> be a <span class="math inline">\(k\)</span>-form, <span class="math inline">\(\varphi\)</span> be an <span class="math inline">\(s\)</span>-form and <span class="math inline">\(\theta\)</span> be an <span class="math inline">\(r\)</span>-form. Then: <span class="math display">\[
+\begin{aligned}
+&amp;(a):\ (\omega \wedge \varphi)\wedge \theta=\omega \wedge (\varphi \wedge \theta) \\
+&amp;(b):\ (\omega \wedge \varphi)=(-1)^{ks}(\varphi \wedge \omega) \\
+&amp;(c):\ \omega \wedge (\varphi+\theta)=\omega\wedge\varphi+\omega\wedge\theta, \quad \text{if } r=s
+\end{aligned}
+\]</span></p>
+</div></details>
+</div>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Although <span class="math inline">\(dx_i \wedge dx_i =0\)</span>, it is not true that for any form <span class="math inline">\(\omega \wedge \omega=0\)</span>. For instance, if <span class="math display">\[
+\omega=x_1dx_1\wedge dx_2+x_2dx_3\wedge dx_4,
+\]</span> then <span class="math display">\[
+\omega\wedge\omega=2x_1x_2dx_1\wedge dx_2\wedge dx_3 \wedge dx_4
+\]</span></p>
+</div>
+</div>
+<section id="substitution-of-variables" class="level2">
+<h2 data-anchor-id="substitution-of-variables">Substitution of Variables</h2>
+<p>One of the most important features of differential forms is the way they behave under differentiable maps.</p>
+<div id="cnb-7-Definition" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 5</strong></summary><div>
+<p>Let <span class="math inline">\(f: \mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> be a differentiable map. Then <span class="math inline">\(f\)</span> induces a map <span class="math inline">\(f^*\)</span> that takes <span class="math inline">\(k\)</span>-forms in <span class="math inline">\(\mathbb{R}^m\)</span> into <span class="math inline">\(k\)</span>-forms in <span class="math inline">\(\mathbb{R}^n\)</span> and is defined as follow;let <span class="math inline">\(\omega\)</span> be a <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbb{R}^m\)</span>. By definition, <span class="math inline">\(f^*(\omega)\)</span> is the <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbb{R}^n\)</span> given by <span class="math display">\[
+(f^*\omega)(p)(v_1,\dots,v_k)=\omega(f(p))(df_p(v_1),\dots,df_p(v_k))
+\]</span> Here <span class="math inline">\(p \in \mathbb{R}^n\)</span>, <span class="math inline">\(v_1,\dots,v_k\in \mathbb{R}^n_p\)</span>, and <span class="math inline">\(df_p: \mathbb{R}^n_p \rightarrow \mathbb{R}^m_{f(p)}\)</span> is the <a href="../../../Reading/Differential-Forms/Classical-Analysis/0.1.html#differentiable-mapping-and-its-differential-at-a-point">differential of the map <span class="math inline">\(f\)</span> at <span class="math inline">\(p\)</span></a></p>
+<p>We set the convention that if <span class="math inline">\(g\)</span> is a <span class="math inline">\(0\)</span>-form, <span class="math display">\[
+f^*(g)=g\circ f
+\]</span></p>
+</div></details>
+</div>
+<div id="cnb-8-Proposition" class="Proposition">
+<details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 3</strong></summary><div>
+<p>Let <span class="math inline">\(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> be a differentiable map, <span class="math inline">\(\omega\)</span> and <span class="math inline">\(\varphi\)</span> be <span class="math inline">\(k\)</span>-forms on <span class="math inline">\(\mathbb{R}^m\)</span> and <span class="math inline">\(g:\mathbb{R}^m\rightarrow \mathbb{R}\)</span> be a <span class="math inline">\(0\)</span>-form on <span class="math inline">\(\mathbb{R}^m\)</span>. Then: 1. <span class="math inline">\(f^*(\omega+\varphi)=f^*\omega+f^*\varphi\)</span> 2. <span class="math inline">\(f^*(g\omega)=f^*(g)f^*(\omega)\)</span> 3. If <span class="math inline">\(\varphi_1,\dots,\varphi_k\)</span> are <span class="math inline">\(1\)</span>-forms in <span class="math inline">\(\mathbb{R}^m\)</span>, <span class="math inline">\(f^*(\varphi_1\wedge\dots\wedge\varphi_k)=f^*(\varphi_1)\wedge\dots\wedge f^*(\varphi_k)\)</span>.</p>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<ol type="1">
+<li><p><span class="math display">\[
+\begin{equation}
+\begin{split}
+f^*(\omega+\varphi)(p)(-)&amp;=(\omega+\varphi)(f(p))(df_p(-))
+\\
+&amp;=\omega(f(p))(df_p(-))+\varphi(f(p))(df_p(-))
+\\
+&amp;=f^*(\omega)(p)(-)+f^*(\varphi)(p)(-)
+\end{split}
+\end{equation}
+\]</span></p></li>
+<li><p><span class="math display">\[
+\begin{equation}
+\begin{split}
+f^*(g\omega)(p)(-)&amp;=(g\omega)(f(p))(df_p(-))
+\\
+&amp;=g(f(p)) \cdot \omega(f(p))(df_p(-))
+\\
+&amp;=f^*(g)f^*(\omega)
+\end{split}
+\end{equation}
+\]</span></p></li>
+<li><p><span class="math display">\[
+\begin{equation}
+\begin{split}
+f^*(\varphi_1\wedge\varphi_2)(p)(v_1,v_2)&amp;=(\varphi_1\wedge\varphi_2)(f(p))(df_p(v_1),df_p(v_2))
+\\
+&amp;=\operatorname{det}(\varphi_i(df_p(v_j)))
+\\
+&amp;=\operatorname{det}(f^*(\varphi_i)(p)(v_j))
+\\
+&amp;=(f^*(\varphi_1)\wedge f^*(\varphi_2))(p)
+\end{split}
+\end{equation}
+\]</span></p></li>
+</ol>
+</div>
+<hr>
+<p>We can now present the promised interpretation of <span class="math inline">\(f^*\)</span>. Let <span class="math inline">\((x_1,\dots,x_n)\)</span> br coordinates in <span class="math inline">\(\mathbb{R}^n\)</span>, <span class="math inline">\((y_1,\dots,y_m)\)</span> be coordinates in <span class="math inline">\(\mathbb{R}^m\)</span> and let <span class="math inline">\(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> be written as <span class="math display">\[
+y_1=f_1(x_1,\dots,x_n),\dots,y_m=f_m(x_1,\dots,x_n)  \quad \tag{$\star$}
+\]</span> Let <span class="math inline">\(\omega=\sum_{I}a_Idy_I\)</span> be a <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbb{R}^m\)</span>. By using the above properties of <span class="math inline">\(f^*\)</span>, we obtain: <span class="math display">\[
+f^*\omega=\sum_{I}f^*(a_I)(f^*dy_{i_1})\wedge\dots\wedge(f^*dy_{i_k})
+\]</span> Since <span class="math display">\[
+f^*(dy_i)(p)(v)=dy_i(f(p))(df_p(v))=(dy_i(f(p)) \circ df_p)(v)=d(y_i \circ f)(v)={df_{i}}_{p}(v),
+\]</span> we have <span class="math display">\[
+f^*\omega=\sum_Ia_I(f_1(x_1,\dots,x_n),\dots,f_m(x_1,\dots,x_n))df_{i_1}\wedge\dots\wedge f_{i_k}
+\]</span> <span style="color: #FF00FF">Thus to apply <span class="math inline">\(f^*\)</span> to <span class="math inline">\(\omega\)</span> is equivalent to ‘substitute’ in <span class="math inline">\(\omega\)</span> the variables <span class="math inline">\(y_i\)</span> and their differentials by the functions of <span class="math inline">\(x_k\)</span> and <span class="math inline">\(dx_k\)</span> obtained from <span class="math inline">\(\star\)</span>.</span></p>
+<div id="cnb-9-Remark" class="Remark">
+<details class="Remark fobx-simplebox fobx-default" open=""><summary><strong>Remark 1</strong></summary><div>
+<p>In various situations, it is convenient to use differential forms defined only on some open set <span class="math inline">\(U\subset \mathbb{R}^n\)</span> and not on the entire <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
+<p>It is clear that everything done so far extends trivially to this situation.</p>
+</div></details>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eugene Lee">
-<meta name="dcterms.date" content="2026-08-07">
+<meta name="dcterms.date" content="2026-07-30">
 
-<title>The Nullstellensatz – Wonderings of Lee</title>
+<title>Varieties – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -42,6 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,15 +70,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-  window.MathJax = {
-    tex: {
-      packages: {'[+]': ['tikzcd']}
-    },
-    loader: {load: ['[tex]/tikzcd']}
-  };
-</script>
 <style>
+  /* 设置正文两端对齐 */
   body, p, li {
     text-align: justify;
     text-justify: inter-word;
@@ -87,11 +81,52 @@ ul.task-list li input[type="checkbox"] {
     overflow-y: hidden;
   }
 </style>
-<script>
-MathJax = {
-  tex: { macros: { Spec: "\\operatorname{Spec}" } }
-};
-</script>
+<style>
+.Question {
+  --color1: #e67e22;
+  --color2: #d35400;
+}
+.Example {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Theorem {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Definition {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Geometric Interpretation {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Remark {
+  --color1: #e67e22;
+  --color2: #d35400;
+}
+.Proposition {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Corollary {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Claim {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Lemma {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Exercise {
+  --color1: #e67e22;
+  --color2: #d35400;
+}
+</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
@@ -186,7 +221,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The Nullstellensatz</h1>
+<h1 class="title">Varieties</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Algebraic Geometry</div>
     <div class="quarto-category">Preliminary</div>
@@ -208,7 +243,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 7, 2026</p>
+      <p class="date">July 30, 2026</p>
     </div>
   </div>
   
@@ -220,127 +255,123 @@ window.Quarto = {
 </header>
 
 
-<p><strong><em>The objective of this note is to prove the Hilbert’s Nullstellensatz which says that <span class="math inline">\(\operatorname{Spec} A\)</span> has enough points so that the following morphism is injective.</em></strong></p>
+<p><strong><em>We shall assume the field <span class="math inline">\(k\)</span> is algebraically closed in this note.</em></strong></p>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be spaces with functions. The global effect of pull-back defines a mapping</p>
 <p><span class="math display">\[
-\phi:A \rightarrow \mathcal{O}(\Spec A)
+*: Morphism(X,Y) \to k \text{-}Alg \text{-} Hom_{k}(\mathcal{O}(Y),\mathcal{O}(X))
 \]</span></p>
-<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Defintion">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Warning
+<span class="screen-reader-only">Important</span>Defintion
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>In this theorem, we need to impose that 1. base field <span class="math inline">\(k\)</span> is algebracially closed 2. <span class="math inline">\(A\)</span> is a finitely generated <span class="math inline">\(k\)</span>-algebra without nilpotents</p>
-<p><span style="color: #FFA500">For several statements in this note, the imposed condition turns out to be superfluous. Nevertheless, we should still clarify the prerequisites of Nullstellensatz and resist the temptation to generalize it in certain directions, so as to concentrate our attention on the main theorem.</span></p>
-</div>
-</div>
-<p>To the end, we need few technical lemmas from commutative algebra as follows.</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Theorem">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Theorem
-</div>
-</div>
-<section id="noethers-normalization-lemma" class="level3 callout-body-container callout-body">
-<h3 data-anchor-id="noethers-normalization-lemma">Noether’s Normalization Lemma</h3>
-<p>Let <span class="math inline">\(k\)</span> be a field and <span class="math inline">\(A\)</span> be a non-zero finitely-generated <span class="math inline">\(k\)</span>-algebra. Then there exists an injection <span class="math inline">\(B\xrightarrow{\subset}A\)</span> where <span class="math inline">\(B\)</span> is a polynomial ring <span class="math inline">\(k[X_1,\dots,X_d]\)</span> i.e there exist <span class="math inline">\(d\geq0\)</span> algebraically independent elements <span class="math inline">\(x_1,\dots,x_d \in A\)</span>, such that <span class="math inline">\(A\)</span> is a finitely generated <span class="math inline">\(B\)</span>-module.</p>
+<section id="affine-variety" class="level4">
+<h4 data-anchor-id="affine-variety">Affine Variety</h4>
+<p>Provided that <span class="math inline">\(\mathcal{O}(Y)\)</span> is a finitely generated <span class="math inline">\(k\)</span>-algebra, a space with functions <span class="math inline">\(Y\)</span> is said to be an <em>affine variety</em> if the mapping <span class="math inline">\(*\)</span> defined above is bijective for every space with functions <span class="math inline">\(X\)</span>.</p>
+</section>
+<section id="algebraic-variety" class="level4">
+<h4 data-anchor-id="algebraic-variety">Algebraic Variety</h4>
+<p>An <em>algebraic variety</em> <span class="math inline">\(X\)</span> is defined to be a space with functions <span class="math inline">\(X\)</span> which has a finite open covering <span class="math inline">\(U_{1},\dots,U_{n}\)</span> where each <span class="math inline">\(U_{i}\)</span> is affine. (Recall that an <span style="color: red;">open</span> subset of a space with functions carries the structure of space with functions naturally)</p>
+</section>
+<section id="morphism" class="level4">
+<h4 data-anchor-id="morphism">Morphism</h4>
+<p>A <em>morphism</em> between algebraic varieties is just a morphism of spaces with functions.</p>
 </section>
 </div>
-<div style="color: #999999;">
-<p>Preparation:</p>
-<p>Suppose that <span class="math inline">\(B \subseteq A\)</span> are rings and <span class="math inline">\(A\)</span> is finitely generated as <span class="math inline">\(B\)</span>-algebra. Then we have: <span class="math display">\[
-A \ \text{is integral over} \ B  \iff A \ \text{is finitely generated as} \ B \text{-module}
-\]</span></p>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Proof">
+<p>Next we give the first examples of varieties: the <em>affine line</em> <span class="math inline">\(\mathbb{A}^{1}\)</span> and the <em>projective line</em> <span class="math inline">\(\mathbb{P}^{1}\)</span>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Example">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Proof
+<span class="screen-reader-only">Note</span>Example
 </div>
 </div>
-<section id="this-proof-is-from-andrea-ferrettis-commutative-algebra" class="level4 callout-body-container callout-body">
-<h4 data-anchor-id="this-proof-is-from-andrea-ferrettis-commutative-algebra">this proof is from Andrea Ferretti’s <em>Commutative Algebra</em></h4>
-<p>Let <span class="math inline">\(y_1,\dots,y_m\)</span> be a minimal set of generators of <span class="math inline">\(A\)</span>. We argue by induction over <span class="math inline">\(m\)</span>, the base case <span class="math inline">\(m=0,1\)</span> is trivial.</p>
-<p>If <span class="math inline">\(y_1,\dots,y_m\)</span> are already algebracially independent then there is nothing to prove (just take <span class="math inline">\(B=A\)</span> which is obviously finite), so assume that there is some polynomial <span class="math inline">\(f\)</span> over <span class="math inline">\(k\)</span> such that <span class="math inline">\(f(y_1,\dots,y_m)=0\)</span>. (wlog. we can also assume that $y_{i} $ is not nilpotent) <span style="color: #ee82ee;">We can try to alter the set of generators and use the relation given by <span class="math inline">\(f\)</span> to write one of the generators in terms of the other ones.</span></p>
-<p>We perform the change of variable <span class="math display">\[
-z_i=y_i-y_1^{r^{i-1}}
-\]</span> for <span class="math inline">\(i\geq 2\)</span>, where <span class="math inline">\(r\)</span> to be chosen later. This is clearly an invertible change of variable which has the effect of increasing the degree of <span class="math inline">\(y_1\)</span> inside <span class="math inline">\(f\)</span>. More precisely, in the equation <span class="math display">\[
-f(y_1,z_2+y_1^{r},\dots,z_m+y_1^{r^{m-1}})=0
-\]</span> we can look at the exponent of <span class="math inline">\(y_1\)</span> in the various monomials. For a monomial of multidegree <span class="math inline">\((\alpha_1,\dots,\alpha_m)\)</span> (in the <span class="math inline">\(y_{i}\)</span>), the highest exponent of <span class="math inline">\(y_1\)</span> in <span class="math inline">\(c_{(\alpha_1,\dots,\alpha_m)}y_{1}^{\alpha_1} \dots (z_{m}+y_1^{r^{m-1}})^{\alpha_{m}}\)</span> after the change of variables is <span class="math display">\[
-\alpha_1+\alpha_2r+\dots+\alpha_mr^{m-1}
-\]</span> And the corresponding term is <span class="math display">\[
-c_{(\alpha_1,\dots,\alpha_m)}y_{1}^{\alpha_1+\alpha_2r+ \dots +\alpha_{m}r^{m-1}}
-\]</span> Suppose that <span class="math display">\[
-M=\max{\{c_{(\alpha_1,\dots,\alpha_m)}y_1^{\alpha_1}\dots y_m^{\alpha_m} \ \text{is a monomial in} \ f :(\alpha_1+\alpha_2r+ \dots +\alpha_{m}r^{m-1})\}}
-\]</span> Then we collect all the terms like <span class="math inline">\(cy_1^{M}\)</span> : <span class="math display">\[
-M=\alpha_1^{1}+\alpha_2^{1}r+ \dots +\alpha_{m}^{1}r^{m-1}=\dots=\alpha_1^{t}+\alpha_2^{t}r+ \dots +\alpha_{m}^{t}r^{m-1}
+<section id="mathbba1" class="level4 callout-body-container callout-body">
+<h4 data-anchor-id="mathbba1"><span class="math inline">\(\mathbb{A}^{1}\)</span></h4>
+<p>The underlying set of <span class="math inline">\(\mathbb{A}^{1}\)</span> is just the field <span class="math inline">\(k\)</span>.</p>
+<p>The topology of it is the <em>cofinite topology</em>, i.e.&nbsp;the closed subsets of <span class="math inline">\(\mathbb{A}^{1}\)</span> are the whole set and the finite subsets.</p>
+<p>The regular functions on open set <span class="math inline">\(U\)</span>: if <span class="math inline">\(U\)</span> is empty, <span class="math inline">\(\mathcal{O}(U)=\{0\}\)</span>. Otherwise, if <span class="math inline">\(U=\mathbb{A}^{1}-\{x_{1},\dots,x_{n}\}\)</span> then <span class="math inline">\(\mathcal{O}(U)\)</span> consists of the rational functions <span class="math inline">\(g\)</span> such that <span class="math inline">\(g\)</span> has no poles anywhere in <span class="math inline">\(U\)</span>; i.e.&nbsp;<span class="math inline">\(g\)</span> admits a representation: <span class="math display">\[
+U\to k, x \mapsto \frac{p(x)}{\prod(x-x_{i})^{m_{i}}} \ \text{where $p$ is a polynomial and the $m_{i}$ non-negative integers.}
 \]</span></p>
-<p>Then we get the term: <span class="math display">\[
-(\sum_{i=1}^{t} c_{(\alpha_1^{i},\dots,\alpha_m^{i})}) y_{1}^{M}
-\]</span></p>
-<p>In fact, there is some trouble: <span class="math display">\[
-\sum_{i=1}^{t} c_{(\alpha_1^{i},\dots,\alpha_m^{i})}
-\]</span> might vanish. But we can fix the trouble easily:</p>
-<p>For <span class="math inline">\(r\)</span> big enough (such that <span class="math inline">\(t=1\)</span>), we see that this single monomial which will be of maximum degree for <span class="math inline">\(y_1\)</span> such that the <span class="math inline">\(z_i\)</span> do not appear in this monomial.<span style="color: #e4782b;"> This means that the transformed equation shows that <span class="math inline">\(y_1\)</span> is integral over <span class="math inline">\(B:=k[z_1,\dots,z_m]\)</span>.</span></p>
-<p>By induction, <span class="math inline">\(B\)</span> already has the desired form of an integral extension of a polynomial ring and the thesis follows.</p>
+<p>In particular, <span class="math inline">\(\mathcal{O}(\mathbb{A}^{1}) \cong k[T]\)</span> is (isomorphic to) a polynomial ring in one variable.</p>
 </section>
 </div>
-<p>When <span class="math inline">\(k\)</span> is infinite one can use a linear change of variables in the above proof. The only thing that is needed is that in the resulting polynomial relation, <span class="math inline">\(y_1\)</span> appears with maximum degree in a monomial that contains no other indeterminates.</p>
-<p>Consider a change of variables of the form: <span class="math display">\[
-z_i=y_i-\lambda_iy_1
-\]</span> This change of variables preserves the total degree of monomials, so consider the homogeneous part of maximum degree of <span class="math inline">\(f\)</span>, call it <span class="math inline">\(F\)</span>. We want to ensure that in <span class="math inline">\(F\)</span> there appears a monomial containing only <span class="math inline">\(y_{1}\)</span>. Let <span class="math inline">\(t\)</span> be the degree of <span class="math inline">\(F\)</span>.</p>
-<p>The coefficient of <span class="math inline">\(y_{1}^{t}\)</span> in <span class="math display">\[
-F(y_{1},z_{2}+\lambda_{2}y_{1},\dots,z_{m}+\lambda_{m}y_{1})
-\]</span> is a nonzero polynomial in <span class="math inline">\(\lambda_2,\dots,\lambda_m\)</span>. Since <span class="math inline">\(k\)</span> is infinite, there exists a choice of <span class="math inline">\(\lambda_2,\dots,\lambda_m\)</span> such that the coefficient don’t vanish, which is enough to show that <span class="math inline">\(y_{1}\)</span> is integral over <span class="math inline">\(k[z_2,\dots,z_m]\)</span>.</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Theorem">
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Theorem
+<span class="screen-reader-only">Note</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Assume that <span class="math inline">\(k\)</span> is an algebracially closed field. Let <span class="math inline">\(k \subseteq B \subseteq A\)</span> be <span class="math inline">\(k\)</span>-algebras such that <span class="math inline">\(A\)</span> is a finitely generated <span class="math inline">\(B\)</span>-module. Then composition gives a surjection <span class="math display">\[
-Hom_{k}(A,k) \rightarrow Hom_{k}(B,k)
-\]</span></p>
+<p>Verify that <span class="math inline">\(\mathbb{A}^{1}\)</span> is a space with functions.</p>
 </div>
 </div>
-<div style="color: #999999;">
-<p>Preparation:</p>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <ol type="1">
-<li><span class="math inline">\(A\hookrightarrow B\)</span>, <span class="math inline">\(I\unlhd A\)</span>, denote <span class="math inline">\(I \cdot B\)</span> by <span class="math inline">\(I^{e}\)</span>; <span class="math inline">\(J\unlhd B\)</span>,denote <span class="math inline">\(J \cap A \unlhd A\)</span> by <span class="math inline">\(J^{c}\)</span>, then we have <span class="math display">\[
-I^{ec}\supseteq I,J^{ce}\subseteq J
-\]</span></li>
+<li>Suppose that open set <span class="math inline">\(U=k-\{x_{1},\dots,x_{n}\}\)</span> is the union of a family of open subsets <span class="math inline">\(U_{\alpha}\)</span> where <span class="math inline">\(U_{\alpha}=k-\{x_{\alpha_{1}},\dots,x_{\alpha_{k_{\alpha}}}\}\)</span> where <span class="math inline">\(k_{\alpha}\)</span> is finite for each <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\bigcap{\{x_{\alpha_{1}},\dots,x_{\alpha_{k_{\alpha}}}\}=\{x_{1},\dots,x_{n}\}}\)</span>. If <span class="math inline">\(f\)</span> is a regular function on <span class="math inline">\(U\)</span> then <span class="math inline">\(f\)</span> admits a representation of <span class="math inline">\(\frac{p(x)}{\prod_{i=1}^{n}(x-x_{i})^{m_{i}}}, m_{i} \in \mathbb{Z}_{\geq 0}\)</span>, then clearly <span class="math inline">\(f\)</span> adimits a form <span class="math inline">\(\frac{p(x)}{\prod_{i=1}^{n}(x-x_{i})^{m_{i}}}\)</span> on <span class="math inline">\(U_{\alpha}\)</span> since <span class="math inline">\(U_{\alpha} \subseteq U\)</span> and <span class="math inline">\(f \restriction_{U_{\alpha}} \in \mathcal{O}(U_{\alpha})\)</span> since <span class="math inline">\(\{x_{1},\dots,x_{n}\} \subseteq\{x_{\alpha_{1}},\dots,x_{\alpha_{k_{\alpha}}}\}\)</span>.</li>
 </ol>
-<p>Hence we have <span class="math inline">\(A/I\hookrightarrow B/I^e\)</span>.</p>
+<div class="callout callout-style-default callout-caution no-icon callout-titled" title="Observation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Observation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Given <span class="math inline">\(U=k-\{x_1,\dots,x_n\}\)</span>, we observe that we characterize <span class="math inline">\(f=\frac{p(x)}{\prod_{i=1}^{n}(x-x_{i})^{m_{i}}}, m_{i} \in \mathbb{Z}_{\geq 0}\)</span> as <span class="math inline">\(\frac{p(x)}{q(x)}\)</span> where polynomial <span class="math inline">\(q(x)\)</span> vanishes nowhere in <span class="math inline">\(U\)</span>.</li>
+<li>Given any two open sets <span class="math inline">\(U_1,U_2\)</span>, <span class="math inline">\(U_1 \cap U_2\)</span> is an infinite set since <span class="math inline">\(k\)</span> is infinite.</li>
+</ol>
+</div>
+</div>
+<p><span style="color: #DE5D83;"> Conversely, if <span class="math inline">\(f:U \to k\)</span> takes the form of <span class="math inline">\(\frac{p_{\alpha}(x)}{q_{\alpha}(x)}\)</span> (as we observed) on each <span class="math inline">\(U_{\alpha}\)</span>, then clearly <span class="math inline">\(\frac{p_{\alpha}(x)}{q_{\alpha}(x)}=\frac{p_{\beta}(x)}{q_{\beta}(x)}\)</span> on <span class="math inline">\(U_{\alpha} \cap U_{\beta}\)</span> since they are all restricted by <span class="math inline">\(f\)</span> which implies that <span class="math inline">\(p_{\alpha}(x){q_{\beta}(x)}-{p_{\beta}(x)}{q_{\alpha}(x)}\)</span> has infinitely many roots for observation 2. It follows that <span class="math inline">\(\frac{p_{\alpha}(x)}{q_{\alpha}(x)}=\frac{p_{\beta}(x)}{q_{\beta}(x)}\)</span> on the whole <span class="math inline">\(U\)</span> for any <span class="math inline">\(\alpha,\beta\)</span>, and thus the global function <span class="math inline">\(f\)</span> admits a representation <span class="math inline">\(\frac{p(x)}{q(x)} \in k(x)\)</span>.</span></p>
+<p>Now we show that <span class="math inline">\(q(x)\)</span> has no roots in <span class="math inline">\(U\)</span> which leads to that it’s a constant. Assume not: $q(x_0)=0,x_0 U_{_0} U $. Then in the field of fractional functions <span class="math inline">\(k(x)\)</span> we have <span class="math inline">\(\frac{p(x)}{q(x)}=\frac{p_{\alpha_{0}}(x)}{q_{\alpha_{0}}(x)} \in \mathcal{O}(U_{\alpha_{0}})\)</span> and here we can assume <span class="math inline">\(gcd(p,q)=1\)</span> (implies that they have no commen roots in <span class="math inline">\(k\)</span>). It follows that <span class="math inline">\(p(x)q_{\alpha_{0}}(x)=p_{\alpha_{0}}(x)q(x)\)</span> which implies that <span class="math inline">\(q_{\alpha_{0}}(x_0)=0\)</span>. Contradiction with <span class="math inline">\(q_{\alpha_0}\)</span> vanishes nowhere in <span class="math inline">\(U_{\alpha_0}\)</span>. Hence <span class="math inline">\(q(x)=c\prod(x-t_i)^{s_i},t_i \in k-U\)</span> and we get the form <span class="math inline">\(\frac{1}{c}p(x)/\prod(x-t_i)^{s_i},t_i \in k-U\)</span> as we expected.</p>
+<p></p>
 <ol start="2" type="1">
-<li><p>Let <span class="math inline">\(I\unlhd \mathfrak{M} \unlhd R\)</span> where <span class="math inline">\(\mathfrak{M}\)</span> is a maximal ideal. Then we have <span class="math inline">\(R/I \hookrightarrow R/\mathfrak{M}\)</span>.</p></li>
-<li><p>Let <span class="math inline">\(A \in R^{n \times n}\)</span> over a commutative ring <span class="math inline">\(R\)</span>. The adjugate <span class="math inline">\(\operatorname{adj}(A)\)</span> is defined by:</p></li>
+<li>Suppose that <span class="math display">\[
+g=\frac{p(x)}{\prod(x-x_i)^{m_i }}\in\mathcal{O}(U)
+\]</span>，then <span class="math inline">\(D(g)=\{x\in U:p(x) \neq0\}=k-\{x_{1},\dots,x_{n}\}-\{r_1,\dots,r_{m}\}\)</span> where <span class="math inline">\(r_j\)</span> are the roots of <span class="math inline">\(p\)</span> in <span class="math inline">\(k\)</span> is an open set. And <span class="math inline">\(\frac{1}{g(x)}=\frac{\prod(x-x_i)^{m_i}}{(x-r_{j})^{k_j}}\in D(g)\)</span> where <span class="math inline">\(p\)</span> splits into <span class="math inline">\(\prod(x-r_{j})^{k_j}\)</span> in <span class="math inline">\(k\)</span> since <span class="math inline">\(k\)</span> is algebraically closed.</li>
 </ol>
-<p><span class="math display">\[
-[\operatorname{adj}(A)]_{ij} = (-1)^{i+j} \det(A_{ji})
-\]</span></p>
-<p>Then:</p>
-<p><span class="math display">\[
-A \cdot \operatorname{adj}(A) = \operatorname{adj}(A) \cdot A = \det(A) \cdot I_n
-\]</span></p>
-<p>If <span class="math inline">\(\det(A)\)</span> is a unit in <span class="math inline">\(R\)</span>, then:</p>
-<p><span class="math display">\[
-A^{-1} = \frac{\operatorname{adj}(A)}{\det(A)}
-\]</span></p>
 </div>
+</div>
+<p>This is a technical and detailed proof. We may need the following elementary result (use Bézout theorem to verify): <span class="math display">\[
+(f, g) = 1 \text{ in } k[x]   \Longleftrightarrow  (f, g) = 1 \text{ in } K[x] \ \forall K/k \Longleftrightarrow  \nexists \alpha \in \bar{k} : f(\alpha) = g(\alpha) = 0.
+\]</span></p>
+<p>Next we show that <span class="math inline">\(\mathbb{A}^{1}\)</span> is indeed an affine variety.</p>
+<p>Let <span class="math inline">\(Y\)</span> be any space with functions. A mapping <span class="math inline">\(f:Y \to \mathbb{A}^{1}=k\)</span> is just a <span class="math inline">\(k\)</span>-valued function.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Claim">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Claim
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><span class="math inline">\(f\)</span> is a morphism if and only if <span class="math inline">\(f\)</span> is regular on <span class="math inline">\(Y\)</span>.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Proof">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -351,216 +382,37 @@ A^{-1} = \frac{\operatorname{adj}(A)}{\det(A)}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(\psi :B \rightarrow k\)</span> be a <span class="math inline">\(k\)</span>-algebra homomorphism. Let <span class="math inline">\(m\)</span> be the kernel of <span class="math inline">\(\psi\)</span>. Consider the ideal <span class="math inline">\(mA\)</span> in <span class="math inline">\(A\)</span>. If <span class="math inline">\(mA \neq A\)</span>, we can find a maximal ideal <span class="math inline">\(n\)</span> of <span class="math inline">\(A\)</span> such that <span class="math inline">\(mA \subseteq n\)</span>. Then <span class="math inline">\(A/n\)</span> is a finite field extension of <span class="math inline">\(B/m=k\)</span>, for (by preparation) <span class="math display">\[
-k \cong B/m\hookrightarrow A/m^{e}\hookrightarrow A/n
+<p>“Only if”: The coordinate function <span class="math inline">\(x:k\to k; t \mapsto t\)</span> is regular on <span class="math inline">\(\mathbb{A}^1\)</span> and then <span class="math inline">\(f(x)\)</span> is regular on <span class="math inline">\(Y\)</span> since <span class="math inline">\(f\)</span> is a morphism and <span class="math inline">\(f^{-1}(k)=Y\)</span>.</p>
+<p>“if”: Suppose that <span class="math inline">\(f\)</span> is regular on <span class="math inline">\(Y\)</span>. <span class="math inline">\(f\)</span> is continuous since <span class="math inline">\(f^{-1}(\{t_1,\dots,t_n\})=Y-D(F)\)</span>, where <span class="math inline">\(F=\prod_{i=1}^{n} (f-t_{i})\)</span>, is the complement of an open set <span class="math inline">\(D(f)\)</span>. To show that <span class="math inline">\(f\)</span> pulls back regualr function <span class="math inline">\(g=\frac{p(x)}{q(x)}\)</span> on <span class="math inline">\(U=\mathbb{A}^1-\{t_1,\dots,t_n\}\)</span>, we notice that: <span class="math display">\[
+g \circ f=\frac{p(f(y))}{q(f(y))}=\frac{p(f(y))}{\prod_{i=1}^{n} (f(y)-t_i)^{m_{i}}}
+\]</span> which is regular on <span class="math inline">\(D(f)=f^{-1}(k-\{t_1,\dots,t_n\})\)</span> by definition.</p>
+</div>
+</div>
+<p>At last we obtain that <span class="math inline">\(\mathbb{A}^{1}\)</span> is affine: <span class="math display">\[
+*:Morphism(Y,\mathbb{A}^{1}) \cong \mathcal{O}(Y) \cong k \text{-} Alg \text{-} Hom (\mathcal{O}(\mathbb{A}^1),\mathcal{O}(Y))
+\]</span> The last equality holds for that <span class="math inline">\(\mathcal{O}(\mathbb{A}^1)=k[T]\)</span> and the <span class="math inline">\(k\)</span>-algebra maps are totally determined by the regular functions on <span class="math inline">\(Y\)</span> as the images of <span class="math inline">\(T\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Example
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>As a set <span class="math inline">\(\mathbb{P}^{1}=k \cup \{\infty\}\)</span> where <span class="math inline">\(\infty\)</span> is a set disjoint from <span class="math inline">\(\mathbb{P}^{1}\)</span>.</p>
+<p>Topolgy:The closed subsets are finite sets, i.e.&nbsp;the open sets are like <span class="math inline">\(\mathbb{P}^{1}-\{x_1,\dots,x_n\}\)</span>.</p>
+<p>Regular functions: The regular functions <span class="math inline">\(g\in \mathcal{O}(\mathbb{P}^1-\{x_1,\dots,x_n\})\)</span> admit a form of rational functions without poles except at <span class="math inline">\(x_1,\dots,x_n\)</span> where <span class="math inline">\(g\)</span> has no poles at <span class="math inline">\(\infty\)</span> is equvalent to saying <span class="math inline">\(g(\frac{1}{y})\)</span> has no pole at <span class="math inline">\(y=0\)</span>.</p>
+<p>It is a space with functions.</p>
+<p>To see that it is indeed a variety, it has an open covering <span class="math inline">\((\mathbb{P}^{1}-\{\infty\})\cup (\mathbb{P}^{1}-\{0\})\)</span> isomorphic to two affine lines: <span class="math display">\[
+\begin{aligned}
+\mathbb{P}^{1}-\{\infty\} &amp; \xrightarrow[Id]{\simeq} \mathbb{A}^1 \\
+\mathbb{P}^{1}-\{0\} &amp; \xrightarrow[\frac{1}{x}]{\simeq} \mathbb{A}^1 \quad \text{where} \frac{1}{\infty}=0
+\end{aligned}
 \]</span></p>
-<p>Thus <span class="math inline">\(A/n=k\)</span> as <span class="math inline">\(k\)</span> is algebraically closed and the quotient mapping <span class="math inline">\(A \rightarrow k\)</span> is an extension of <span class="math inline">\(\psi\)</span> i.e.&nbsp;the diagram commutes</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="diagrams/1.4.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
-</figure>
-</div>
-<p>It remains to show that <span class="math inline">\(mA=A\)</span> is impossible. Let <span class="math inline">\(A=B^{r}/R\)</span> as a <span class="math inline">\(B\)</span>-module where <span class="math inline">\(R\)</span> is a <span class="math inline">\(B\)</span>-submodule of <span class="math inline">\(B^{r}\)</span> where <span class="math inline">\(r\)</span> is finite. Let <span class="math inline">\(e_1,\dots,e_r\)</span> be the unit vectors in <span class="math inline">\(B^r\)</span> and we have <span class="math inline">\(\bar{e_1},\dots,\bar{e_r}\)</span> generates <span class="math inline">\(A=mA\)</span>. Then for <span class="math inline">\(1 \leq i \leq r\)</span>, it follows that <span class="math inline">\(\bar{e_i}=\sum_{j=1}^{t}m_{j}^{i}(\sum_{l=1}^{r}b_{l}^{i}\bar{e_l})=\)</span>, thus we can write <span class="math inline">\(e_i=\sum_{k=1}^{r}m_{k}^{i}e_{k}+r_{i},m_{k}^{i}\in m,r_{i}\in R\)</span>. We have <span class="math display">\[
-\begin{bmatrix}
-b_1^1 &amp; \dots &amp; b_r^1 \\
-\vdots &amp; \ddots &amp; \vdots \\
-b_r^1 &amp; \dots &amp; b_r^r
-\end{bmatrix}
-\begin{bmatrix}
-e_1 \\
-\vdots \\
-e_r
-\end{bmatrix}
-=
-\begin{bmatrix}
-r_1 \\
-\vdots \\
-r_r
-\end{bmatrix}
-\]</span> where <span class="math display">\[
-b_{u}^{v}=
-\begin{cases}
-1-m_u^v, &amp; \text{if } u=v \\
--m_u^v, &amp; \text{if } u \neq
-\end{cases}
-\]</span></p>
-<p>And hence, by easy calculus, <span class="math display">\[
-det(b_u^v)\equiv 1_B (\operatorname{mod}m)
-\]</span></p>
-<p>By the following lemma (called Cramer’s rule on the textbook): <span class="math display">\[
-\operatorname{adj}(M)\cdot M =M\cdot\operatorname{adj}(M)  =\operatorname{det}(M)\cdot I_n
-\]</span></p>
-<p>It follows that <span class="math inline">\(det(b_u^v)e_i\)</span> is a linear combination of <span class="math inline">\(r_j\)</span>, and thus <span class="math inline">\(det(b_u^v)A=0\)</span>. In particular, <span class="math inline">\(det(b_u^v)\cdot1_A=0\)</span> in <span class="math inline">\(A\)</span> which implies that <span class="math inline">\(det(b_u^v)=0\)</span> in <span class="math inline">\(A\)</span> and also in <span class="math inline">\(B\)</span>. This is a contradiction to the fact that <span class="math inline">\(det(b_u^v)\equiv 1_B (\operatorname{mod}m)\)</span> since <span class="math inline">\(0 \notin m\)</span>.</p>
-</div>
-</div>
-<p>Now it’s not hard to prove the Nullstellensatz i.e. <span class="math display">\[
-\phi:A \rightarrow \mathcal{O}(\Spec A)
-\]</span> is injective for <span style="color: red;">finitely generated <span class="math inline">\(k\)</span>-algebra <span class="math inline">\(A\)</span>(<span class="math inline">\(k\)</span> is algebraically closed) without nilpotents. </span></p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof of Nullstellensatz">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Proof of Nullstellensatz
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(a\)</span> be a non-zero element of <span class="math inline">\(A\)</span>. Consider the localization <span class="math inline">\(A_{(a)}\)</span>. This is non-zero since <span class="math inline">\(A\)</span> has no nilpotents. In fact, by the exercise in the last section, <span class="math inline">\(A_{(a)}\)</span> is also <span class="math inline">\(k\)</span>-f.g (and reduced). Thus by the <strong>Noether’s Normalization Lemma</strong>, we have an inclusion <span class="math inline">\(k[X_1,\dots,X_r]\subseteq A_{(a)}\)</span>.</p>
-<p>We need to find a point <span class="math inline">\(x\)</span> of <span class="math inline">\(\Spec A\)</span> such that <span class="math inline">\(\phi(a)(x) \equiv x(a)\)</span> is non-zero where <span class="math inline">\(x: A \rightarrow k\)</span> is a <span class="math inline">\(k\)</span>-algebra homomorphism (this means non-zero element <span class="math inline">\(a\)</span> cannot be sent to a non-zero function on <span class="math inline">\(\Spec A\)</span> by <span class="math inline">\(\phi\)</span>).</p>
-<p>Let <span class="math inline">\(z:k[X_1,\dots,X_r] \rightarrow k\)</span> be any <span class="math inline">\(k\)</span>-algebra homomorphism (it clearly always exists). By the second lemma, we may lift (by composition) <span class="math inline">\(z\)</span> to a <span class="math inline">\(k\)</span>-algebra homomorphism <span class="math inline">\(y:A_{(a)} \rightarrow k\)</span>. Let <span class="math inline">\(x\)</span> be the composition <span class="math inline">\(A \rightarrow A_{(a)} \rightarrow k\)</span>. Then <span class="math display">\[
-1_k=x(1_A)=y(1_A/1_A)=y(a/a)=y(a/1_A)y(1_A/a)=x(a)y(1_A/a)
-\]</span></p>
-<p>Therefore <span class="math inline">\(x(a)\)</span> is non-zero. This proves the Nullstellensatz.</p>
-</div>
-</div>
-<p>We use the trick called <em>determinant trick</em> again in the next famous and useful lemma:</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise.Nakayama's Lemma">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Exercise.Nakayama’s Lemma
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(M\)</span> be a f.g module over a commutative ring <span class="math inline">\(A\)</span>. Assume that there is an ideal <span class="math inline">\(I \unlhd A\)</span> such that <span class="math inline">\(M=I \cdot M\)</span>. Then there is an element <span class="math inline">\(a\)</span> of <span class="math inline">\(1+I\)</span> such that <span class="math inline">\(aM=\{0\}\)</span>.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Suppose that <span class="math inline">\(M=A[x_1,\dots,x_n]\)</span>. Then we have (totally same with the second lemma) <span class="math display">\[
-x_j=\sum_{k=1}^{n}y_k^jx_k \Rightarrow \sum_{k\neq j}(-y_k^j)x_k+(1-y_j^j)x_j=0
-\]</span></p>
-<p>Then we write it in the form of matrix: <span class="math display">\[
-(I_n-M)\vec{x}=0 \Rightarrow \operatorname{det}(I_n-M)\vec{x}=0
-\]</span></p>
-<p>And we know that <span class="math inline">\(\operatorname{det}(I_n-M)\equiv 1 (\operatorname{mod}I)\)</span>, then take <span class="math inline">\(a=\operatorname{det}(I_n-M)\)</span>.</p>
-</div>
-</div>
-<p>Henceforth, by Nullstellensatz, we shall identify <span class="math inline">\(A\)</span> with a ring of regular functions, as <span class="math inline">\(a \neq b \in A \Rightarrow \phi(a) \neq \phi(b) \in \mathcal{o}(\Spec A)\)</span>. Next we will give a reformulation of the Nullstellensatz which resembles Hilbert’s original statement.</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Theorem">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Theorem
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Suppose that <span class="math inline">\(k\)</span> is algebraically closed and <span class="math inline">\(A\)</span> is a f.g. <span class="math inline">\(k\)</span>-algebra without nilpotents. If <span class="math inline">\(I\)</span> is an ideal of <span class="math inline">\(A\)</span>, <span class="math display">\[
-\{a\in A: a(x)=0 \ \text{for all} \ x \in \ \text{zeroes}(I)\}=\sqrt{I}
-\]</span> where <span class="math inline">\(\sqrt{I}=\{a \in A: a^n \in I \ \text{for some} \ n&gt;0\}\)</span>.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>One checks that <span class="math inline">\(\sqrt{I}\)</span> is an ideal. Then <span class="math inline">\(A^\prime=A/\sqrt{I}\)</span> is a f.g. <span class="math inline">\(k\)</span>-algebra which has no nilpotents. Let <span class="math inline">\(b\)</span> be an element of <span class="math inline">\(A-\sqrt{I}\)</span>, then <span class="math inline">\(b^\prime=b+\sqrt{I}\)</span> is a non-zero element of <span class="math inline">\(A^\prime\)</span>. Hence there exists a homomorphism <span class="math inline">\(x^\prime:A^\prime \rightarrow k\)</span> such that <span class="math inline">\(x^\prime(b^\prime) \neq 0\)</span>. Let <span class="math inline">\(x:A \rightarrow A^\prime \xrightarrow{x^\prime} k\)</span> be the composition. Then by construction <span class="math inline">\(x\)</span> is a point of <span class="math inline">\(zeroes(I)\)</span> and <span class="math inline">\(b(x) \neq 0\)</span>. This proves the desired inclusion “<span class="math inline">\(\subseteq\)</span>”. The reverse inclusion is trivial because <span class="math inline">\(b^n(x)=0 \iff b(x)=0 \ \text{if } n &gt;0\)</span>.</p>
-</div>
-</div>
-<p>Some special cases will be useful.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Corollary">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Corollary
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Given a subset <span class="math inline">\(J\)</span> of <span class="math inline">\(A\)</span> then $zeroes(J)==_{}a_kj_k &nbsp; a_k A, j_k J $.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Set <span class="math inline">\(I=JA\)</span>. Hence if <span class="math inline">\(\text{zeroes}(J)=\emptyset\)</span>, then <span class="math inline">\(\text{zereos}(I)=\emptyset\)</span>. Then <span class="math display">\[
-\{a\in A: a(x)=0 \ \text{for all} \ x \in \ \text{zeroes}(I)\}=A=\sqrt{I}
-\]</span> i.e.&nbsp;<span class="math inline">\(1=1^n \in JA\)</span> which is the second statement. The converse is obvious.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Corollary">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Corollary
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(f_{i}\)</span> be elements of <span class="math inline">\(A\)</span> and <span class="math inline">\(n_i\)</span> be any positive integers. Then there exist <span class="math inline">\(a_i\)</span> such that: <span class="math display">\[
-\Spec A=\bigcup D(f_i) \iff 1=\sum_{\text{finite}} a_if_i
-\]</span></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math display">\[
-\Spec A=\bigcup D(f_i) \iff \emptyset=\bigcap{D(f_i)^{c}}=\bigcap{\operatorname{zeroes}(f_i)}=\bigcap{\operatorname{zeroes}(f_i^{n_i})}=\operatorname{zeroes}(\{f_i^{n_i}\})
-\]</span></p>
-<p>Then by the corollary above (take <span class="math inline">\(\{f_i^{n_i}\}\)</span> as <span class="math inline">\(J\)</span>) it’s equivalent to <span class="math inline">\(1=\sum_{\text{finite}}a_if_i^{n_i}\)</span> for some <span class="math inline">\(a_i \in A\)</span>.</p>
-</div>
-</div>
-<p>This result has an interesting topological consequence.</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Theorem">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Theorem
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math inline">\(\Spec A\)</span> is quasi-compact.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>By the exercise in the last section <span class="math inline">\(D(f_i)\)</span> is a basis for the topology of <span class="math inline">\(\Spec A\)</span>. If <span class="math inline">\(\Spec A=\bigcup {D(f_i)}\)</span> is an open cover by this then <span class="math inline">\(1=\sum_{J \text{ is finite}}a_jf_j\)</span> for some <span class="math inline">\(a_j \in A\)</span>. Then <span class="math inline">\(\Spec A= \bigcup_{j \in J}D(f_j)\)</span> is a finite subcover.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
@@ -573,23 +425,8 @@ x_j=\sum_{k=1}^{n}y_k^jx_k \Rightarrow \sum_{k\neq j}(-y_k^j)x_k+(1-y_j^j)x_j=0
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Prove that a point of <span class="math inline">\(\Spec A\)</span> is a closed subset.</p>
+<p>Verify that <span class="math inline">\(\mathcal{O}(\mathbb{P}^{1})=k\)</span></p>
 </div>
-</div>
-<div style="color: #999999;">
-<p>Preparation: 1. If <span class="math inline">\(A\)</span> is a <span class="math inline">\(k\)</span>-algebra, <span class="math inline">\(A\xrightarrow{\varphi}k\)</span> is onto where <span class="math inline">\(\varphi \in \operatorname{Hom}_k(A,k)\)</span>. Then <span class="math inline">\(\operatorname{ker}(\varphi)\)</span> is maximal ideal.</p>
-<ol start="2" type="1">
-<li>If <span class="math inline">\(x,y \in \operatorname{Hom}_{k}(A,K)\)</span> and further <span class="math inline">\(\operatorname{ker}(x)=\operatorname{ker}(y)\)</span>, then <span class="math inline">\(x \equiv y\)</span>.</li>
-</ol>
-Proof: $$
-<span class="math display">\[\begin{aligned}
-&amp;\overline{x} \circ \overline{y}^{-1} \equiv id_{k} \\
-&amp; \Rightarrow \overline{x} \circ \overline{y}^{-1} \circ \overline{y} \equiv id_{k} \circ \overline{y}  \\
-&amp; \Rightarrow \overline{x} \equiv \overline{y}\\
-&amp; \Rightarrow \overline{x} \circ \pi \equiv \overline{y} \circ \pi \\
-&amp; \Rightarrow x \equiv y
-\end{aligned}\]</span>
-<p>$$</p>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
 <div class="callout-header d-flex align-content-center">
@@ -601,7 +438,61 @@ Proof: $$
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(x \in \Spec A\)</span>, we expect that <span class="math inline">\(\overline{\{x\}}=\{x\}\)</span>. If <span class="math inline">\(y\neq x \in \overline{\{x\}}\)</span>, then <span class="math inline">\(a(x)=0 \implies a(y)=0\)</span> which is equivalent to <span class="math inline">\(\operatorname{ker}(x) \subseteq \operatorname{ker}(y)\)</span>. Then by preparation we know that <span class="math inline">\(x\equiv y\)</span>.</p>
+<p>Suppose that <span class="math inline">\(f \in \mathcal{O}(\mathbb{P}^{1})\)</span>, then <span class="math inline">\(f \restriction_{(\mathbb{P}^{1}-\{\infty\})\cap(\mathbb{P}^{1}-\{0\})=k^{\times}}\)</span> admits a representation</p>
+<p><span class="math inline">\(f \restriction_{(\mathbb{P}^{1}-\{\infty\})}\)</span> admits a representation <span class="math inline">\(\frac{p_{1}(x)}{q_{1}(x)}\)</span> where <span class="math inline">\(deg(p_{1}(x)) \leq deg(q_{1}(x)) \quad \text{or} \quad =\text{constant}\)</span> and $ f _{(^{1}-{})}$ admits a representation <span class="math inline">\(p_{2}(x)\)</span>. Therefore, <span class="math inline">\(\frac{p_{1}(x)}{q_{1}(x)}=p_{2}(x)\)</span> or <span class="math inline">\(p_{2}(x)=\text{constant}\)</span> on <span class="math inline">\((\mathbb{P}^{1}-\{\infty\})\cap(\mathbb{P}^{1}-\{0\})=k^{\times}\)</span> which only happens when <span class="math inline">\(f \restriction_{(\mathbb{P}^{1}-\{\infty\})}\)</span> and <span class="math inline">\(f \restriction_{(\mathbb{P}^{1}-\{0\})}\)</span> are constant. Hence <span class="math inline">\(f \in \mathcal{O}(\mathbb{P}^{1})\)</span> if and only if <span class="math inline">\(f=\text{constant}\in k\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Show that <span class="math inline">\(\mathbb{P}^{1}\)</span> is not affine.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose not, <span class="math inline">\(\mathbb{P}^{1}\)</span> is an affine variety. By definition, for the field <span class="math inline">\({k}\)</span> we have <span class="math inline">\(Mor(\mathbb{A}^{1},\mathbb{P}^{1}) \cong Hom_{k}(\mathcal{O}(\mathbb{P}^{1}),\mathcal{O}(\mathbb{A}^{1})) \cong Hom_{k}(k,k[T])\)</span>. But the latter corresponds to the ideals (<span class="math inline">\(0,k\)</span>) of <span class="math inline">\(k\)</span> which contradicts the fact that the first has at least two nontrivial morphisms (<span class="math inline">\(0,\mathbb{A}^{1} \to \mathbb{P}^{1}-\{0\},\mathbb{A}^{1} \to \mathbb{P}^{1}-\{\infty\}\)</span>).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Exercise
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two affine varieties. Show that <span class="math inline">\(X \cong Y\)</span> as spaces with functions if and only if <span class="math inline">\(\mathcal{O}(X) \cong \mathcal{O}(Y)\)</span> as <span class="math inline">\(k\)</span>-algebras.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Suppose that <span class="math inline">\(X \cong Y\)</span>, then for some morphism <span class="math inline">\(g:X \to Y\)</span>, we have <span class="math inline">\(f: Y \to X\)</span> such that <span class="math inline">\(f\circ g=id_{X}\)</span> and <span class="math inline">\(g \circ f=id_{Y}\)</span>. Then <span class="math inline">\(g^{*} \circ f^{*}=id_{\mathcal{O}(X)}\)</span> and <span class="math inline">\(f^{*} \circ g^{*}=id_{\mathcal{O}(Y)}\)</span> where <span class="math inline">\(g^{*}:\mathcal{O}(Y) \to \mathcal{O}(X)\)</span> and <span class="math inline">\(f^{*}:\mathcal{O}(X) \to \mathcal{O}(Y)\)</span>.</p>
+<p>Conversely we suppose that <span class="math inline">\(X,Y\)</span> are affine varieties and as <span class="math inline">\(k\)</span>-algebras <span class="math inline">\(\mathcal{O}(X) \cong \mathcal{O}(Y)\)</span>. Then for some map <span class="math inline">\(G:\mathcal{O}(Y) \to \mathcal{O}(X)\)</span> we have <span class="math inline">\(F:\mathcal{O}(X) \to \mathcal{O}(Y)\)</span> such that <span class="math inline">\(F \circ G =id_{\mathcal{O}(Y)}, G \circ F =id_{\mathcal{O}(X)}\)</span>. Since <span class="math inline">\(X,Y\)</span> are affine varieties (<span class="math inline">\(*\)</span> is bijective), there exist unique morphisms <span class="math inline">\(g:X \to Y\)</span> and <span class="math inline">\(f: Y \to X\)</span> such that <span class="math inline">\(g^{*}=G,f^{*}=F\)</span> and thus <span class="math inline">\(g\circ f=id_{Y},f\circ g=id_{X}\)</span>.</p>
 </div>
 </div>
 
@@ -674,7 +565,7 @@ Proof: $$
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
