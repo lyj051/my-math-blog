@@ -94,27 +94,19 @@ MathJax = {
 };
 </script>
 <style>
-.Geometric Interpretation {
-  --color1: #c6f6db;
-  --color2: #d3f0e0;
-}
-.Definition {
-  --color1: #c6f6db;
-  --color2: #d3f0e0;
+.Corollary {
+  --color1: #83a3b8;
+  --color2: #2c3e50;
 }
 .Question {
   --color1: #be9e83;
   --color2: #d35400;
 }
-.Corollary {
-  --color1: #83a3b8;
-  --color2: #2c3e50;
-}
 .Example {
   --color1: #c6f6db;
   --color2: #d3f0e0;
 }
-.Proposition {
+.Theorem {
   --color1: #83a3b8;
   --color2: #2c3e50;
 }
@@ -122,21 +114,29 @@ MathJax = {
   --color1: #be9e83;
   --color2: #d35400;
 }
-.Lemma {
-  --color1: #83a3b8;
-  --color2: #2c3e50;
+.Definition {
+  --color1: #c6f6db;
+  --color2: #d3f0e0;
 }
 .Claim {
   --color1: #83a3b8;
   --color2: #2c3e50;
 }
-.Theorem {
+.Lemma {
+  --color1: #83a3b8;
+  --color2: #2c3e50;
+}
+.Proposition {
   --color1: #83a3b8;
   --color2: #2c3e50;
 }
 .Remark {
   --color1: #be9e83;
   --color2: #d35400;
+}
+.Geometric Interpretation {
+  --color1: #c6f6db;
+  --color2: #d3f0e0;
 }
 </style>
 
@@ -238,6 +238,7 @@ window.Quarto = {
   <li><a href="#differential-forms-in-mathbbrn" id="toc-differential-forms-in-mathbbrn" class="nav-link" data-scroll-target="#differential-forms-in-mathbbrn">Differential forms in <span class="math inline">\(\mathbb{R}^n\)</span></a>
   <ul class="collapse">
   <li><a href="#substitution-of-variables" id="toc-substitution-of-variables" class="nav-link" data-scroll-target="#substitution-of-variables">Substitution of Variables</a></li>
+  <li><a href="#exterior-differential" id="toc-exterior-differential" class="nav-link" data-scroll-target="#exterior-differential">Exterior Differential</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -291,8 +292,15 @@ Warning
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>It’s quite important for beginners to make the convention: <span class="math inline">\((dx_i)_p\)</span> denotes the <a href="../../../Reading/Differential-Forms/Classical-Analysis/0.1.html#differential-of-coordinate-function">differential of the coordinate function <span class="math inline">\(x_i\)</span></a> at the point <span class="math inline">\(p \in \mathbb{R}^n\)</span> which is a linear mapping;</p>
-<p><span class="math inline">\(dx_i\)</span> denotes the differential form of degree 1, as we shall define below.</p>
+<p>Here by differentiable functions we mean smooth functions in the most textbooks.</p>
+<p>It’s quite important for beginners to make the convention: <span class="math inline">\((dx_i)_p \in  (\mathbb{R}^n_p)^*\)</span> denotes the <a href="../../../Reading/Differential-Forms/Classical-Analysis/0.1.html#differential-of-coordinate-function">differential of the coordinate function <span class="math inline">\(x_i\)</span></a> at the point <span class="math inline">\(p \in \mathbb{R}^n\)</span> which is a linear mapping;</p>
+<span class="math inline">\(dx_i\)</span> denotes the differential form of degree 1, as we shall define below. $$
+<span class="math display">\[\begin{aligned}
+dx_i:\mathbb{R}^n&amp;\rightarrow\bigsqcup_{p\in \mathbb{R}^n} (\mathbb{R}^n_p)^*\\
+p &amp;\mapsto (dx_i)_p
+
+\end{aligned}\]</span>
+<p>$$</p>
 </div>
 </div>
 <section id="notations" class="level3">
@@ -312,6 +320,9 @@ Warning
 \]</span></p></li>
 </ul>
 <p>Indeed, <span class="math inline">\((dx_i)_p\)</span>’s as dual basis defined above are the <a href="../../../Reading/Differential-Forms/Classical-Analysis/0.1.html#differential-of-coordinate-function">differentials of the coordinate functions <span class="math inline">\(x_i\)</span>’s at the point <span class="math inline">\(p\)</span></a>.</p>
+<ul>
+<li>clearly, <span class="math inline">\((df)_p \in (\mathbb{R}_p^3)^{*}\)</span> for any <span class="math inline">\(f\)</span> differentiable at <span class="math inline">\(p\)</span>.</li>
+</ul>
 <div id="a-field-of-linear-forms" class="Definition">
 <details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 1: </strong>A field of linear forms</summary><div>
 <p>A <em>field of linear forms</em> (also called <em>exterior form of degree 1</em>) in <span class="math inline">\(\mathbb{R}^3\)</span> is a map <span class="math inline">\(\omega\)</span> that associates to each point <span class="math inline">\(p\in \mathbb{R}^3\)</span> an element <span class="math inline">\(\omega(p) \in (\mathbb{R}_p^3)^{*}\)</span>; <span class="math inline">\(\omega\)</span> can be written as: <span class="math display">\[
@@ -331,7 +342,7 @@ Warning
 <li><p><span class="math inline">\(\wedge^{2}(\mathbb{R}^{3}_{p})^*\)</span></p>
 <p><span class="math inline">\(\wedge^{2}(\mathbb{R}^{3}_{p})^*\)</span> is defined to be the set of maps <span class="math inline">\(\varphi: \mathbb{R}^3_p \times \mathbb{R}^3_p \rightarrow \mathbb{R}\)</span> that are bilinear and alternate;i.e.&nbsp;<span class="math inline">\(\varphi(x_1,x_2)=-\varphi(x_2,x_1)\)</span>.</p>
 <p>With the usual opeartions of functions the set <span class="math inline">\(\wedge^{2}(\mathbb{R}^{3}_{p})^*\)</span> becomes a vector space naturally.</p></li>
-<li><p>Conversely, when two functions <span class="math inline">\(\varphi_1,\varphi_2 \in (\mathbb{R}^3_p)\)</span> are given, we can obtain an element $_1 <em>2 <sup>{2}(</sup>{3}</em>{p})^* $ by setting: <span class="math display">\[
+<li><p>Conversely, when two functions <span class="math inline">\(\varphi_1,\varphi_2 \in (\mathbb{R}^3_p)\)</span> are given, we can obtain an element <span class="math inline">\(\varphi_1 \wedge \varphi_2 \in \wedge^{2}(\mathbb{R}^{3}_{p})^*\)</span> by setting: <span class="math display">\[
   (\varphi_1 \wedge \varphi_2)(v_1,v_2)=\operatorname{det}(\varphi_i({v_j}))
   \]</span></p></li>
 <li><p>The element <span class="math inline">\((dx_1)_p \wedge (dx_2)_p \in \wedge^{2}(\mathbb{R}^3_{p})^*\)</span> will be denoted by <span class="math inline">\((dx_1 \wedge dx_2)_p\)</span>. It is easy to see that the set <span class="math inline">\(\{(dx_i \wedge dx_j)_p: 1 \leq i &lt; j \leq 3\}\)</span> is a basis for <span class="math inline">\(\wedge^2(\mathbb{R}^3_p)^*\)</span>; Furthermore we have <span class="math display">\[
@@ -507,15 +518,177 @@ y_1=f_1(x_1,\dots,x_n),\dots,y_m=f_m(x_1,\dots,x_n)  \quad \tag{$\star$}
 \]</span> Let <span class="math inline">\(\omega=\sum_{I}a_Idy_I\)</span> be a <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbb{R}^m\)</span>. By using the above properties of <span class="math inline">\(f^*\)</span>, we obtain: <span class="math display">\[
 f^*\omega=\sum_{I}f^*(a_I)(f^*dy_{i_1})\wedge\dots\wedge(f^*dy_{i_k})
 \]</span> Since <span class="math display">\[
-f^*(dy_i)(p)(v)=dy_i(f(p))(df_p(v))=(dy_i(f(p)) \circ df_p)(v)=d(y_i \circ f)(v)={df_{i}}_{p}(v),
+f^*(dy_i)(p)(v)=(dy_i)_{(f(p))}((df)_p(v))=((dy_i)_{(f(p))} \circ (df)_p)(v)=(d(y_i \circ f))_p(v)=({df_{i}})_{p}(v),
 \]</span> we have <span class="math display">\[
-f^*\omega=\sum_Ia_I(f_1(x_1,\dots,x_n),\dots,f_m(x_1,\dots,x_n))df_{i_1}\wedge\dots\wedge f_{i_k}
+f^*\omega=\sum_Ia_I(f_{1}(x_1,\dots,x_n),\dots,f_m(x_1,\dots,x_n))df_{i_1}\wedge\dots\wedge f_{i_k}
 \]</span> <span style="color: #FF00FF">Thus to apply <span class="math inline">\(f^*\)</span> to <span class="math inline">\(\omega\)</span> is equivalent to ‘substitute’ in <span class="math inline">\(\omega\)</span> the variables <span class="math inline">\(y_i\)</span> and their differentials by the functions of <span class="math inline">\(x_k\)</span> and <span class="math inline">\(dx_k\)</span> obtained from <span class="math inline">\(\star\)</span>.</span></p>
 <div id="cnb-9-Remark" class="Remark">
 <details class="Remark fobx-simplebox fobx-default" open=""><summary><strong>Remark 1</strong></summary><div>
 <p>In various situations, it is convenient to use differential forms defined only on some open set <span class="math inline">\(U\subset \mathbb{R}^n\)</span> and not on the entire <span class="math inline">\(\mathbb{R}^n\)</span>.</p>
 <p>It is clear that everything done so far extends trivially to this situation.</p>
 </div></details>
+</div>
+<div id="polar-coordinates" class="Example">
+<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 6: </strong>Polar coordinates</summary><div>
+<p>Let <span class="math inline">\(\omega\)</span> be the <span class="math inline">\(1\)</span>-form in <span class="math inline">\(\mathbb{R}^2-\{(0,0)\}\)</span> by <span class="math display">\[
+\omega=-\frac{y}{x^2+y^2}dx+\frac{x}{x^2+y^2}dy
+\]</span> Let <span class="math inline">\(U\)</span> be the set in the plane <span class="math inline">\((r,\theta)\)</span> given by <span class="math display">\[
+U=\{r&gt;0;0&lt;\theta&lt;2\pi\}
+\]</span> And let <span class="math inline">\(f:U \rightarrow \mathbb{R}^2\)</span> be the map: <span class="math display">\[
+f(r,\theta)=
+\begin{cases}
+x=r\cos \theta \\
+y=r\sin \theta
+\end{cases}
+\]</span> Let us compute <span class="math inline">\(f^*\omega\)</span>. Since <span class="math display">\[
+\begin{aligned}
+&amp;dx=d(r\cos \theta)=\cos\theta dr-r\sin \theta d\theta \\
+&amp;dy=d(r \sin \theta)=\sin \theta dr+r\cos \theta d\theta
+\end{aligned}
+\]</span> Doing substitution and we obtain <span class="math display">\[
+\begin{equation}
+\begin{split}
+&amp;f^*(-\frac{y}{x^2+y^2}dx+\frac{x}{x^2+y^2}dy) \\
+=&amp;-\frac{r\sin \theta}{r^2}(\cos \theta dr-r\sin\theta d\theta)+\frac{r\cos\theta}{r^2}(\sin\theta dr+r\cos \theta d\theta)\\
+=&amp;d\theta
+\end{split}
+\end{equation}
+\]</span></p>
+</div></details>
+</div>
+<p>Notice that the addition of differential forms commutes with the <em>substitution of variables</em>; We will now show that the same holds for the exterior product.</p>
+<div id="cnb-11-Proposition" class="Proposition">
+<details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 4</strong></summary><div>
+<p>Let <span class="math inline">\(f:\mathbb{R}^n\rightarrow\mathbb{R}^m\)</span> be a differentiable map. Then - <span class="math inline">\(f^*(\omega \wedge \varphi)=(f^*\omega)\wedge(f^*\varphi)\)</span>, where <span class="math inline">\(\omega\)</span> and <span class="math inline">\(\varphi\)</span> any two forms in <span class="math inline">\(\mathbb{R}^m\)</span>. - <span class="math inline">\((f\circ g)^*\omega=g^*(f^*\omega)\)</span>, where <span class="math inline">\(g:\mathbb{R}^p \rightarrow \mathbb{R}^n\)</span> is a differentiable map.</p>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>The proof are straightforward.</p>
+</div>
+<hr>
+</section>
+<section id="exterior-differential" class="level2">
+<h2 data-anchor-id="exterior-differential">Exterior Differential</h2>
+<p>We are now going to define an operation on differential form that generalizes the differentiation of functions. Let <span class="math inline">\(g:\mathbb{R}^n \rightarrow \mathbb{R}\)</span> be a <span class="math inline">\(0\)</span>-form (i.e.&nbsp;a differentiable function). Then the differential: <span class="math display">\[
+dg=\sum_{i=1}^n\frac{\partial g}{\partial x_i}dx_i
+\]</span> is a <span class="math inline">\(1\)</span>-form. We want to generalize this process by defining an operation that takes <span class="math inline">\(k\)</span>-forms into <span class="math inline">\((k+1)\)</span>-forms.</p>
+<div id="cnb-12-Definition" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 7</strong></summary><div>
+<p>Let <span class="math inline">\(\omega=\sum_{I}a_Idx_I\)</span> be a <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbb{R}^n\)</span>. The <em>exterior differential <span class="math inline">\(d\omega\)</span></em> of <span class="math inline">\(\omega\)</span> is defined by <span class="math display">\[
+d\omega=\sum_Ida_I\wedge dx_I
+\]</span></p>
+</div></details>
+</div>
+<div id="cnb-13-Example" class="Example">
+<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 8</strong></summary><div>
+<p>Let <span class="math inline">\(\omega=xyzdx+yzdy+(x+z)dz\)</span> and let us compute <span class="math inline">\(d\omega\)</span>: <span class="math display">\[
+\begin{aligned}
+d\omega&amp;=d(xyz)\wedge dx+d(yz) \wedge dy +d(x+z)\wedge dz \\
+&amp;=(yzdx+xzdy+xydz)\wedge dx+(ydz+zdy)\wedge dy+(dx+dz)\wedge dz \\
+&amp;=-xzdx\wedge dy+(1-xy)dx\wedge dz-ydy\wedge dz
+\end{aligned}
+\]</span></p>
+<p>We now present some properties of exterior differentiation. (3) is probably the most important one and (4) means that the operation <span class="math inline">\(d\)</span> commmutes with substitution of variables. :::{.Proposition} 1. <span class="math inline">\(d(\omega_1+\omega_2)=d\omega_1+d\omega_2\)</span>, where <span class="math inline">\(\omega_1,\omega_2\)</span> are <span class="math inline">\(k\)</span>-forms 2. <span class="math inline">\(d(\omega\wedge\varphi)=d\omega\wedge\varphi+(-1)^k\omega\wedge d\varphi\)</span>, where <span class="math inline">\(\omega\)</span> is a <span class="math inline">\(k\)</span>-form and <span class="math inline">\(\varphi\)</span> is an <span class="math inline">\(s\)</span>-form 3. <span class="math inline">\(d(d\omega)=d^2\omega=0\)</span> 4. <span class="math inline">\(d(f^*\omega)=f^*(d\omega)\)</span>, where <span class="math inline">\(\omega\)</span> is a <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbb{R}^m\)</span> and <span class="math inline">\(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> is a differentiable map.</p>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<ol start="2" type="1">
+<li><p>Let <span class="math inline">\(\omega=\sum_Ia_Idx_I\)</span> and <span class="math inline">\(\varphi=\sum_Jb_Jdx_J\)</span>; then <span class="math inline">\(\omega \wedge \varphi=\sum_{IJ}a_Ib_Jdx_I\wedge dx_J\)</span>; thus <span class="math display">\[
+\begin{aligned}
+d(\sum_{IJ}a_Ib_Jdx_I\wedge dx_J)&amp;=\sum_{IJ}d(a_Ib_J)\wedge dx_I \wedge dx_J \\
+&amp;=\sum_{IJ}a_Idb_J\wedge dx_I \wedge dx_J +\sum_{IJ}b_Jda_I\wedge dx_I\wedge dx_J \\
+&amp;=(-1)^k\omega\wedge d\varphi+d\omega\wedge\varphi
+\end{aligned}
+\]</span></p></li>
+<li><p>Let us first assume that <span class="math inline">\(\omega\)</span> is a <span class="math inline">\(0\)</span>-form, i.e., <span class="math inline">\(\omega\)</span> is a function <span class="math inline">\(f:\mathbb{R}^n\to\mathbb{R}\)</span> that associates to each <span class="math inline">\((x_1,\ldots,x_n)\in\mathbb{R}^n\)</span> the value <span class="math inline">\(f(x_1,\ldots,x_n)\)</span>. Then</p></li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+d(df)
+&amp;=d\left(\sum_{j=1}^n\frac{\partial f}{\partial x_j}\,dx_j\right)\\
+&amp;=\sum_{j=1}^n d\left(\frac{\partial f}{\partial x_j}\right)\wedge dx_j\\
+&amp;=\sum_{j=1}^n\left(\sum_{i=1}^n
+\frac{\partial^2f}{\partial x_i\partial x_j}\,dx_i\right)\wedge dx_j.
+\end{aligned}
+\]</span></p>
+<p>Since</p>
+<p><span class="math display">\[
+\frac{\partial^2f}{\partial x_i\partial x_j}
+=
+\frac{\partial^2f}{\partial x_j\partial x_i}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+dx_i\wedge dx_j=-dx_j\wedge dx_i,\qquad i\neq j,
+\]</span></p>
+<p>we obtain that</p>
+<p><span class="math display">\[
+d(df)
+=
+\sum_{i&lt;j}
+\left(
+\frac{\partial^2f}{\partial x_i\partial x_j}
+-
+\frac{\partial^2f}{\partial x_j\partial x_i}
+\right)
+dx_i\wedge dx_j
+=0.
+\]</span></p>
+<p>Now let</p>
+<p><span class="math display">\[
+\omega=\sum_i a_i\,dx_i.
+\]</span></p>
+<p>By 1, we can restrict ourselves to the case <span class="math inline">\(\omega=a_1dx_1\)</span> with <span class="math inline">\(a_1\neq0\)</span>. By 2, we have that</p>
+<p><span class="math display">\[
+d\omega
+=
+da_1\wedge dx_1+a_1d(dx_1).
+\]</span></p>
+<p>But</p>
+<p><span class="math display">\[
+d(dx_1)=d(1)\wedge dx_1=0.
+\]</span></p>
+<p>Therefore,</p>
+<p><span class="math display">\[
+\begin{aligned}
+d(d\omega)
+&amp;=d(da_1\wedge dx_1)\\
+&amp;=d(da_1)\wedge dx_1+da_1\wedge d(dx_1)\\
+&amp;=0,
+\end{aligned}
+\]</span></p>
+<p>since <span class="math inline">\(d(da_1)=0\)</span> and <span class="math inline">\(d(dx_1)=0\)</span>, which proves 3.</p>
+<ol start="4" type="1">
+<li>We will first prove the result for a <span class="math inline">\(0\)</span>-form. Let <span class="math inline">\(g:\mathbb{R}^m\to\mathbb{R}\)</span> be a differentiable function that associates to each <span class="math inline">\((y_1,\ldots,y_m)\)</span> the value <span class="math inline">\(g(y_1,\ldots,y_m)\)</span>. Then</li>
+</ol>
+<p><span class="math display">\[
+\begin{aligned}
+f^*(dg)
+&amp;=f^*\left(\sum_i\frac{\partial g}{\partial y_i}\,dy_i\right)\\
+&amp;=\sum_{ij}\frac{\partial g}{\partial y_i}
+\frac{\partial f_i}{\partial x_j}\,dx_j\\
+&amp;=\sum_j\frac{\partial(g\circ f)}{\partial x_j}\,dx_j\\
+&amp;=d(g\circ f)
+=d(f^*g).
+\end{aligned}
+\]</span></p>
+<p>Now, let</p>
+<p><span class="math display">\[
+\varphi=\sum_i a_i\,dx_I
+\]</span></p>
+<p>be a <span class="math inline">\(k\)</span>-form. By using the above, and the fact that <span class="math inline">\(f^*\)</span> commutes with the exterior product, we obtain</p>
+<p><span class="math display">\[
+\begin{aligned}
+d(f^*\varphi)
+&amp;=d\left(\sum_i f^*(a_i)f^*(dx_I)\right)\\
+&amp;=\sum_i d(f^*(a_i))\wedge f^*(dx_I)\\
+&amp;=\sum_i f^*(da_i)\wedge f^*(dx_I)\\
+&amp;=f^*\left(\sum_i da_i\wedge dx_I\right)\\
+&amp;=f^*(d\varphi),
+\end{aligned}
+\]</span></p>
+<p>which proves 4.</p>
 </div>
 
 

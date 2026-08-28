@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Eugene Lee">
+<meta name="dcterms.date" content="2026-08-18">
+
+<title>Graded Modules and Rings – Wonderings of Lee</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
+  window.MathJax = {
+    tex: {
+      packages: {'[+]': ['tikzcd']}
+    },
+    loader: {load: ['[tex]/tikzcd']}
+  };
+</script>
+<style>
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+<script>
+MathJax = {
+  tex: { macros: { Spec: "\\operatorname{Spec}" } }
+};
+</script>
+<style>
+.Remark {
+  --color1: #E8D5A3;
+}
+.Question {
+  --color1: #E8D5A3;
+}
+.Example {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Geometric Interpretation {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Claim {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Proposition {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Exercise {
+  --color1: #E8D5A3;
+}
+.Theorem {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Corollary {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Definition {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Lemma {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles-html.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Wonderings of Lee</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../Reading/index.html"> 
+<span class="menu-text">Reading Notes</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../Reconstrcution/index.html"> 
+<span class="menu-text">Digestion</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/lyj051"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#graded-commutative-groups" id="toc-graded-commutative-groups" class="nav-link active" data-scroll-target="#graded-commutative-groups">GRADED COMMUTATIVE GROUPS</a></li>
+  <li><a href="#graded-rings-and-modules" id="toc-graded-rings-and-modules" class="nav-link" data-scroll-target="#graded-rings-and-modules">GRADED RINGS AND MODULES</a></li>
+  <li><a href="#graded-polynomial-rings" id="toc-graded-polynomial-rings" class="nav-link" data-scroll-target="#graded-polynomial-rings">GRADED POLYNOMIAL RINGS</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Graded Modules and Rings</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Algebra by Bourbaki</div>
+  </div>
+  </div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eugene Lee </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 18, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p><strong><em>This note is entirely taken from <span class="math inline">\(\S11.1,\S 11.2\)</span> in Chapter <span class="math inline">\(\mathrm{II}\)</span> of Bourbaki’s Algebra and is for my own review only.</em></strong></p>
+<section id="graded-commutative-groups" class="level3">
+<h3 data-anchor-id="graded-commutative-groups">GRADED COMMUTATIVE GROUPS</h3>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="DEFINITION">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>DEFINITION
+</div>
+</div>
+<section id="graded-commutative-group-of-type-delta" class="level4 callout-body-container callout-body">
+<h4 data-anchor-id="graded-commutative-group-of-type-delta">Graded Commutative Group of Type <span class="math inline">\(\Delta\)</span></h4>
+<p>Given a commutative group <span class="math inline">\(G\)</span> written additively and a set <span class="math inline">\(\Delta\)</span>, a gradation of type <span class="math inline">\(\Delta\)</span> on <span class="math inline">\(G\)</span> is a family <span class="math inline">\((G_{\lambda})_{\lambda \in \Delta}\)</span> of subgroups of <span class="math inline">\(G\)</span>, of which <span class="math inline">\(G\)</span> is the direct sum, i.e <span class="math inline">\(G=\bigoplus_{\lambda \in \Delta}G_{\lambda}\)</span>. Then the set <span class="math inline">\(G\)</span>, with the structure defined by its group law and its gradation, is called a <em>graded (commutative) group of type <span class="math inline">\(\Delta\)</span></em>.</p>
+</section>
+</div>
+<div class="callout callout-style-default callout-caution no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>There is an another way to understand where the type comes from. Let <span class="math inline">\(G\)</span> be a commutative group; let <span class="math inline">\(G=\oplus_{i\in I}G_i\)</span> be a decomposition of it. Suppose that there is another set <span class="math inline">\(J\)</span> (may be equipped with some structures) such that there is an injection (set-theoretically) from <span class="math inline">\(I\)</span> into <span class="math inline">\(J\)</span>. Then <span class="math inline">\((G_i)\)</span> is said to be of type <span class="math inline">\(J\)</span>.</p>
+</div>
+</div>
+<p><strong>Some Notations</strong>:</p>
+<ul>
+<li><p><span class="math inline">\(\Delta\)</span> is called the <em>set of degrees</em> of <span class="math inline">\(G\)</span>. An element <span class="math inline">\(x \in G\)</span> is called <em>homogeneous</em> if it belongs to one of the <span class="math inline">\(G_{\lambda}\)</span>, <em>homogeous of degree <span class="math inline">\(\lambda\)</span></em> if <span class="math inline">\(x \in G_{\lambda}\)</span>.</p></li>
+<li><p>The element <span class="math inline">\(0\)</span> is therefore homogeneous of all degrees.</p></li>
+<li><p>If <span class="math inline">\(x \neq 0\)</span>, it belongs to only one of the <span class="math inline">\(G_{\lambda}\)</span>’s by definiton of direct sum; the index <span class="math inline">\(\lambda\)</span> such that <span class="math inline">\(x \in G_{\lambda}\)</span> is called the <em>degree of <span class="math inline">\(x\)</span></em> (or sometimes called <em>weight</em>) and is sometimes denoted by <span class="math inline">\(\operatorname{deg}(x)\)</span>.</p></li>
+<li><p>Every <span class="math inline">\(0 \neq y \in G\)</span> may be written uniquely as a finite sum <span class="math inline">\(\sum_{\lambda}y_{\lambda}\)</span> of homogeneous elements with <span class="math inline">\(y_{\lambda}\in G_{\lambda}\)</span>; <span class="math inline">\(y_{\lambda}\)</span> is called the <em>component of degree <span class="math inline">\(\lambda\)</span></em>.</p></li>
+</ul>
+<section id="examples-of-graded-groups" class="level4">
+<h4 data-anchor-id="examples-of-graded-groups">Examples of Graded Groups</h4>
+<ol type="1">
+<li><p>Given any commutative monoid with identity <span class="math inline">\(0\)</span> and a commutative group <span class="math inline">\(G\)</span>, a gradation <span class="math inline">\((G_{\lambda})_{\lambda \in \Delta}\)</span> is defined on <span class="math inline">\(G\)</span> by taking <span class="math inline">\(G_0=G\)</span> and <span class="math inline">\(G_{\lambda}=\{0\}, \lambda \neq 0\)</span>; this gradation is called <em>trivial</em>.</p></li>
+<li><p>Let <span class="math inline">\(\Delta,\Delta^{\prime}\)</span> be two sets and <span class="math inline">\(\rho\)</span> a mapping of <span class="math inline">\(\Delta \to \Delta^{\prime}\)</span>. Let <span class="math inline">\(G_{\lambda}\)</span> be a gradation of type <span class="math inline">\(\Delta\)</span> on a commutative group <span class="math inline">\(G\)</span>; for <span class="math inline">\(\mu \in \Delta^{\prime}\)</span>, let <span class="math inline">\(A_{\mu}\)</span> be the sum of the <span class="math inline">\(G_{\lambda}\)</span> such that <span class="math inline">\(\mu(\lambda)=\mu\)</span>; Clearly <span class="math inline">\(A_{\mu}\)</span> is a gradation of type <span class="math inline">\(\Delta^{\prime}\)</span> (by associativity of direct sum) on <span class="math inline">\(G\)</span>, said to be <em>derived</em> from <span class="math inline">\((G_{\lambda})_{\lambda \in \Delta}\)</span> by means of the mapping <span class="math inline">\(\rho\)</span>.</p></li>
+<li><p>(<strong>Product of gradations</strong>) If <span class="math inline">\(\Delta=\Delta_1 \times \Delta_2\)</span> is a product of two sets, a gradation of type <span class="math inline">\(\Delta\)</span> is called a <em>bigradation</em> of types <span class="math inline">\(\Delta_1,\Delta_2\)</span>.</p>
+<ul>
+<li><p>Suppose that the bigradation of type <span class="math inline">\(\Delta=\Delta_1 \times \Delta_2\)</span> is on some group <span class="math inline">\(G\)</span>. For all <span class="math inline">\(\lambda \in \Delta_1\)</span>, let <span class="math inline">\(A_{\lambda}=\bigoplus_{\mu \in \Delta_2}G_{(\lambda,\mu)}\)</span> and for <span class="math inline">\(\mu \in \Delta_2\)</span>, let <span class="math inline">\(B_{\lambda}=\bigoplus_{\lambda \in \Delta_1}G_{(\lambda,\mu)}\)</span>. Clearly <span class="math inline">\((A_{\lambda})_{\lambda \in \Delta_1}\)</span> is a gradation of type <span class="math inline">\(\Delta_1\)</span> on <span class="math inline">\(G\)</span> and <span class="math inline">\((B_{\mu})_{\mu \in \Delta_2}\)</span> is a gradation of type <span class="math inline">\(\Delta_2\)</span> on <span class="math inline">\(G\)</span>; these gradations are called the <span class="math inline">\(partial gradations\)</span> derived from the bigradationn <span class="math inline">\((G_{(\lambda,\mu)})_{\Delta}\)</span>. Note that <span class="math inline">\(G_{(\lambda,\mu)}=A_{\lambda} \cap B_{\mu}\)</span>.</p></li>
+<li><p>Conversely, if <span class="math inline">\((A_{\lambda})_{\lambda \in G_1}\)</span> and <span class="math inline">\((B_{\mu})_{\mu \in \Delta_2}\)</span> are two gradations on some group <span class="math inline">\(G\)</span> such that <span class="math inline">\(G\)</span> is the direct sum of <span class="math inline">\(G_{(\lambda,\mu)}=A_{\Lambda} \cap B_{\mu}\)</span>, then subgroups <span class="math inline">\(G_{(\lambda,\mu)}\)</span> consist of a bigradation of types <span class="math inline">\(\Delta_1,\Delta_2\)</span> on <span class="math inline">\(G\)</span>, of which <span class="math inline">\((A_{\lambda}),(B_{\mu})\)</span> are the partial gradations.</p></li>
+</ul></li>
+<li><p>Let <span class="math inline">\(\Delta_{0}\)</span> be a commutative monoid written additively, with identity element denoted by <span class="math inline">\(0\)</span>; let <span class="math inline">\(I\)</span> be any set and <span class="math inline">\(\Delta_{0}^{(I)}=\Delta\)</span> denote the submonoid of the product <span class="math inline">\(\Delta_0^{I}\)</span> consisting of the familys <span class="math inline">\((\lambda_{\iota})_{\iota \in I}\)</span> of finite support. Let <span class="math inline">\(\rho:\Delta \to \Delta_0\)</span> be the surjective homomorphism of <span class="math inline">\(\Delta\)</span> onto <span class="math inline">\(\Delta_0\)</span> defined by <span class="math inline">\(\rho((\lambda_{\iota})) \mapsto \sum_{\iota \in I}{\lambda_{\iota}}\)</span>. Given any gradation of type <span class="math inline">\(\Delta\)</span>, a gradation of type <span class="math inline">\(\Delta_0\)</span> is derived by means of <span class="math inline">\(\rho\)</span>; it is called the <em>total gradation</em> associated with the given <em>multigradation</em> of type <span class="math inline">\(\Delta\)</span>.</p>
+<ul>
+<li>For instance, consider the underlying group of <span class="math inline">\(k[x,y]\)</span>. Let <span class="math inline">\(\Delta_0\)</span> be <span class="math inline">\(\mathbb{N}_{\geq0}\)</span> and <span class="math inline">\(\Delta=\mathbb{N}^2\)</span>; let <span class="math inline">\((G_{(a,b)})\)</span> be <span class="math inline">\(\{cx^ay^b:c \in k\}\)</span>;Clearly it’s a gradation of type <span class="math inline">\(\mathbb{N}^2\)</span>. By definition, the total gradation of this bigradution is just <span class="math inline">\((G_{\lambda})_{\lambda \in \mathbb{N}}=(\{cx^ay^b:c \in k,a+b=\lambda\})\)</span>.</li>
+</ul></li>
+</ol>
+</section>
+</section>
+<section id="graded-rings-and-modules" class="level3">
+<h3 data-anchor-id="graded-rings-and-modules">GRADED RINGS AND MODULES</h3>
+<p>Henceforth we shall assume that <span class="math inline">\(\Delta\)</span> is always a commutative mononid with identity <span class="math inline">\(0\)</span>.</p>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="DEFINITION">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>DEFINITION
+</div>
+</div>
+<section id="graded-ring-of-type-delta" class="level4 callout-body-container callout-body">
+<h4 data-anchor-id="graded-ring-of-type-delta">Graded Ring of Type <span class="math inline">\(\Delta\)</span></h4>
+<p>Given a ring <span class="math inline">\(A\)</span> and a gradation <span class="math inline">\((A_{\lambda})\)</span> of type <span class="math inline">\(\Delta\)</span> on the additive group <span class="math inline">\(A\)</span>, this gradation is said to be compatible with the ring structure on <span class="math inline">\(A\)</span> if <span class="math display">\[
+A_{\lambda}A_{\mu} \subseteq A_{\lambda +\mu} \text{ for all } \lambda,\mu \in \Delta
+\]</span> The ring <span class="math inline">\(A\)</span> with this gradation is then called a graded ring of type <span class="math inline">\(\Delta\)</span>.</p>
+</section>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="PROPOSITION">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>PROPOSITION
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If every element of <span class="math inline">\(\Delta\)</span> is cancellable and <span class="math inline">\((A_{\lambda})\)</span> is a gradation of type <span class="math inline">\(\Delta\)</span> compatible with the structure of a ring <span class="math inline">\(A\)</span>, <span class="math inline">\(A_0\)</span> is a subring of <span class="math inline">\(A\)</span> (and in particular <span class="math inline">\(1 \in A\)</span>).</p>
+<p>proof:</p>
+<p>As <span class="math inline">\(A_0A_0 \subseteq A_0\)</span> by definition, it suffices to show that <span class="math inline">\(1 \in A_0\)</span>. Let <span class="math inline">\(1=\sum_{\lambda \in \Delta}e_{\lambda}\)</span> be the decomposition of <span class="math inline">\(1\)</span> into its homogeneous components. If <span class="math inline">\(x \in A_{\mu}\)</span>, then <span class="math inline">\(x=x \cdot 1=\sum_{\lambda \in \Delta}e_{\lambda}x\)</span>. Since <span class="math inline">\(xe_0 \in A_{\mu}A_{0}\subseteq A_{\mu}\)</span> (<span class="math inline">\(\lambda + \mu =\mu\)</span> implies <span class="math inline">\(\lambda\)</span> must be zero, this is why we require that <span class="math inline">\(\Delta\)</span> be cancellable), by the uniqueness of decomposition, <span class="math inline">\(xe_i=0\)</span> when <span class="math inline">\(i \neq 0\)</span> and <span class="math inline">\(xe_0=x\)</span> when <span class="math inline">\(i=0\)</span>. Since this relation holds ture for every homogeneous element of <span class="math inline">\(A\)</span>, it is true for all <span class="math inline">\(x \in A\)</span>; in particular, <span class="math inline">\(1=1 \cdot e_0=e_0\)</span>, and thus <span class="math inline">\(1 \in A_0\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="DEFINITION">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>DEFINITION
+</div>
+</div>
+<section id="graded-module-of-type-delta" class="level4 callout-body-container callout-body">
+<h4 data-anchor-id="graded-module-of-type-delta">Graded Module of Type <span class="math inline">\(\Delta\)</span></h4>
+<p>Let <span class="math inline">\(A\)</span> be a graded ring of type <span class="math inline">\(\Delta\)</span>, <span class="math inline">\((A_{\lambda})\)</span> its gradation and <span class="math inline">\(M\)</span> a left <span class="math inline">\(A\)</span>-module; a gradation <span class="math inline">\((M_{\lambda})\)</span> of type <span class="math inline">\(\Delta\)</span> on the additive group <span class="math inline">\(M\)</span> is compatible with the <span class="math inline">\(A\)</span>-module structure on <span class="math inline">\(M\)</span> if <span class="math display">\[
+A_{\lambda}M_{\mu} \subseteq M_{\lambda + \mu} \text{ for all } \lambda,\mu \in \Delta
+\]</span> The module <span class="math inline">\(M\)</span> with this gradation is then called a left <em>graded module of type <span class="math inline">\(\Delta\)</span></em> over the graded ring <span class="math inline">\(A\)</span>.</p>
+</section>
+</div>
+<p>When the elements of <span class="math inline">\(\Delta\)</span> are cancellable, it follows from Prop before that the <span class="math inline">\(M_{\lambda}\)</span> are <span class="math inline">\(A_0\)</span>-modules.</p>
+<p>Clearly if <span class="math inline">\(A\)</span> is a graded ring of type <span class="math inline">\(\Delta\)</span> then the left module <span class="math inline">\(A_s\)</span> is a graded module of type <span class="math inline">\(\Delta\)</span>.</p>
+<section id="examples-of-graded-rings-and-modules" class="level4">
+<h4 data-anchor-id="examples-of-graded-rings-and-modules">Examples of Graded Rings and Modules</h4>
+<ol type="1">
+<li><p>On any ring <span class="math inline">\(A\)</span>, the trivial gradation of type <span class="math inline">\(\Delta\)</span> is compatible with its structure of ring. For a gradation <span class="math inline">\((M_{\lambda})\)</span> of type <span class="math inline">\(\Delta\)</span> on an <span class="math inline">\(A\)</span>-module to be compatible with the <span class="math inline">\(A\)</span>-module structure, it is necessary and sufficient that the <span class="math inline">\(M_{\lambda}\)</span> be submodules of <span class="math inline">\(M\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(A\)</span> be a graded ring of type <span class="math inline">\(\Delta\)</span>, <span class="math inline">\(M\)</span> a graded <span class="math inline">\(A\)</span>-module of type <span class="math inline">\(\Delta\)</span> and <span class="math inline">\(\rho\)</span> a homomorphism of <span class="math inline">\(\Delta\)</span> into a commutative monoid <span class="math inline">\(\Delta^{\prime}\)</span>. Then <span class="math inline">\(A\)</span> is also a graded ring of type <span class="math inline">\(\Delta^{\prime}\)</span> for the gradation derived from <span class="math inline">\(\rho\)</span>; Same for <span class="math inline">\(M\)</span>. sketch of proof:</p></li>
+<li><p>If <span class="math inline">\(A^{\prime}_{\lambda^{\prime}}=\sum_{\rho(\lambda)=\lambda^{\prime}}A_{\lambda}\)</span>, <span class="math inline">\((A^{\prime}_{\lambda^{\prime}})\)</span> is the gradation derived from <span class="math inline">\(\Delta\)</span> by means of <span class="math inline">\(\rho\)</span> on the additive group <span class="math inline">\(A\)</span>.</p></li>
+<li><p>Check this gradation is compatible with the ring structure of <span class="math inline">\(A\)</span>: <span class="math display">\[
+  A^\prime_{\lambda^\prime}A\prime_{\lambda^\prime}\subseteq(\sum_{\rho(\lambda)=\lambda^{\prime}}A_{\lambda})(\sum_{\rho(\mu)=\mu^{\prime}}A_{\mu}) \subseteq \sum_{\rho(\lambda)+\rho(\mu)=\rho(\lambda+\mu)=\lambda^\prime+\mu^\prime}A_{\lambda}A_{\mu}\subseteq \sum_{\rho(\lambda)+\rho(\mu)=\rho(\lambda+\mu)=\lambda^\prime+\mu^\prime}A_{\lambda+\mu}=A^\prime_{\lambda^\prime+\lambda^\prime}
+  \]</span></p></li>
+</ol>
+<ul>
+<li><p>if <span class="math inline">\(\Delta=\Delta_1 \times \Delta_2\)</span> is a product of two commutative monoids, the projections <span class="math inline">\(\operatorname{pr}_1\)</span> and <span class="math inline">\(\operatorname{pr}_2\)</span> are homomorphisms and the corresponding gradations are just the <em>partial gradations</em> derived from the gradations of type <span class="math inline">\(\Delta\)</span>; these partial gradations are just compatible with the ring structure of <span class="math inline">\(A\)</span> and the module structure of <span class="math inline">\(M\)</span>.</p></li>
+<li><p>if <span class="math inline">\(\Delta=\Delta_0^{(I)}\)</span>, the <em>total gradation</em> of type <span class="math inline">\(\Delta_0\)</span> derived from the gradation of type <span class="math inline">\(\Delta\)</span> on <span class="math inline">\(A\)</span>(<span class="math inline">\(M\)</span>) by means of the codiagonal homomorphism is compatible with the ring structure of <span class="math inline">\(A\)</span>.(<span class="math inline">\(M\)</span>)</p></li>
+</ul>
+<ol start="3" type="1">
+<li><p>Let <span class="math inline">\(A\)</span> be a graded ring of type <span class="math inline">\(\Delta\)</span>, <span class="math inline">\(M\)</span> a graded module of type <span class="math inline">\(\Delta\)</span> and <span class="math inline">\(\lambda_0\)</span> be an element of <span class="math inline">\(\Delta\)</span>; for all <span class="math inline">\(\lambda \in \Delta\)</span>, let <span class="math inline">\(M^{\prime}_{\lambda}=M_{\lambda+\lambda_0}\)</span> and let <span class="math inline">\(M^\prime=\sum_{\lambda\in \Delta}M^\prime_{\lambda}\)</span>. As <span class="math inline">\(A_{\lambda}M^\prime_{\mu}=A_{\lambda}M_{\mu +\lambda_0}\subseteq M_{\lambda+\mu}^\prime\)</span>, <span class="math inline">\(M^\prime\)</span> is a <span class="math inline">\(A\)</span>-module and the <span class="math inline">\(M^\prime_{\lambda}\)</span>’s’ form a gradation of <span class="math inline">\(M^\prime\)</span> of type <span class="math inline">\(\Delta\)</span> compatible with the module strcuture of <span class="math inline">\(M^\prime\)</span>. This gradation is said to be obtained by <em>shifting by <span class="math inline">\(\lambda_0\)</span></em> and denoted by <span class="math inline">\(M(\lambda_0)\)</span>. Clearly when <span class="math inline">\(\Delta\)</span> is a group the underlying set of <span class="math inline">\(M\)</span> and <span class="math inline">\(M^\prime\)</span> are the same.</p></li>
+<li><p>Let <span class="math inline">\(B\)</span> be a commutative ring. The polynomial ring <span class="math inline">\(B[X]\)</span> in one indeterminate is graded of type <span class="math inline">\(\mathbb{N}_{\geq 0}\)</span> by the subgroups <span class="math inline">\(BX^n,n\geq 0\)</span>.</p></li>
+</ol>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Remark">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Remark
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The gradations most often used are of type <span class="math inline">\(\mathbb{Z}^{l}\)</span>; when we speak of <span class="math inline">\(graded modules and rings\)</span> without mentioning the type, it is understood that we mean gradations of type <span class="math inline">\(\mathbb{Z}^{l}\)</span>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="graded-polynomial-rings" class="level3">
+<h3 data-anchor-id="graded-polynomial-rings">GRADED POLYNOMIAL RINGS</h3>
+<div id="callout-definition-of-standard-grading" class="callout callout-style-default callout-note no-icon callout-titled" title="DEFINITION">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>DEFINITION
+</div>
+</div>
+<section id="standard-grading" class="level4 callout-body-container callout-body">
+<h4 data-anchor-id="standard-grading">Standard Grading</h4>
+<p>We will introduce a grading on the polynomial ring <span class="math inline">\(S=k[x_1,\dots,x_n]\)</span> over a field <span class="math inline">\(k\)</span>. Set <span class="math inline">\(\operatorname{deg}(x_i)=1\)</span> for each <span class="math inline">\(i\)</span> and <span class="math inline">\(\operatorname{deg}({x_1^{c_1}\dots x_n^{c_n}})=\sum c_i\)</span> for each monomial. For <span class="math inline">\(i \in \mathbb{N}_{\geq 0}\)</span>,we denote by <span class="math inline">\(S_i\)</span> the <span class="math inline">\(k\)</span>-vector space spanned by all monomials of degree <span class="math inline">\(i\)</span>. In particular, <span class="math inline">\(S_0=k\)</span>. A polynomial <span class="math inline">\(u\)</span> is said to be <em>homogeneous</em> if <span class="math inline">\(u \in S_i\)</span> for some <span class="math inline">\(i\)</span>, and in this case we say that <span class="math inline">\(u\)</span> has <em>degree <span class="math inline">\(i\)</span></em> and write <span class="math inline">\(\operatorname{deg}(u)=i\)</span>. Clearly we have a direct sum decomposition <span class="math inline">\(S=\oplus_{i \in \mathbb{N}}S_i\)</span> of <span class="math inline">\(S\)</span> as a group. Moreover <span class="math inline">\(S_iS_j \subseteq S_{i+j}\)</span> holds then <span class="math inline">\((S_i)_{i \in \mathbb{N}}\)</span> is a gradation of type <span class="math inline">\(\Delta=\mathbb{N}\)</span> on <span class="math inline">\(S\)</span>. We say that <span class="math inline">\(S\)</span> with this gradation is <em>standard graded</em>. The ideal generated by all polynomials of positive degree <span class="math inline">\((x_1,\dots,x_n)\)</span> and it is called the <em>irrelevant maximal ideal</em>.</p>
+<ul>
+<li><p>for instance, let <span class="math inline">\(A=k[x,y]\)</span>. In this case, <span class="math inline">\(A_0=k\)</span>, <span class="math inline">\(A_1\)</span> is the <span class="math inline">\(k\)</span>-vector-sapce of all linear forms, <span class="math inline">\(A_2\)</span> is the space of all quadrics, etc. The polynomial <span class="math inline">\(x^3y^2-2xy^4\)</span> is homogeneous as its terms all of degree <span class="math inline">\(5\)</span>. The polynomial <span class="math inline">\(x^3y^2-2xy^4+2y^3-10x^4\)</span> is not.</p></li>
+<li><p>The Laurant polynomial ring</p></li>
+</ul>
+<p>if <span class="math inline">\(A\)</span> is a ring; let <span class="math inline">\(R=A[X,X^{-1}]\)</span> be the ring of Laurant polynomials with the indeterminate <span class="math inline">\(X\)</span>. An element of <span class="math inline">\(R\)</span> is of the form <span class="math inline">\(\sum_{i\geq m}a_iX^i\)</span> with <span class="math inline">\(m \in \mathbb{Z}\)</span> and finitely many non-zero <span class="math inline">\(a_i\)</span>’s. Clearly <span class="math inline">\((AX^i)_{i \in \mathbb{Z}}\)</span> is a gradation of type <span class="math inline">\(\mathbb{Z}\)</span> on <span class="math inline">\(A\)</span>.</p>
+<ul>
+<li>Generally consider the ring <span class="math inline">\(R=A[(X_{i},X_{j}^{-1})_{i,j\in I}]\)</span> spanned by <span class="math inline">\(\prod_{i \in I}{X_i^{d_i}},d_i\in \mathbb{Z}\)</span> where <span class="math inline">\(d_i=0\)</span> for all but finite <span class="math inline">\(i\)</span> as <span class="math inline">\(A\)</span>-module. Set <span class="math inline">\(A_i\)</span> be the subspace <span class="math inline">\(A\prod_{i \in I}{X_i^{d_i}}\)</span> spanned by one monomial. Clearly <span class="math inline">\(A_iA_j \subseteq A_{i+j}\)</span>. Thus,by <a href="#examples-of-graded-rings-and-modules">example 4 before</a> we can obtain the <em>total gradation</em> of type <span class="math inline">\(\mathbb{Z}\)</span> from the <em>multigradation</em> of type <span class="math inline">\(\mathbb{Z}^{I}\)</span>; explicitly, the gradation is the submodule generated by <span class="math inline">\(A^{\prime}_d=\prod_{i \in I}{X_i^{d_i}}\)</span> where <span class="math inline">\(\sum d_i=d\)</span>.</li>
+</ul>
+<p>An ideal <span class="math inline">\(I\)</span> in <span class="math inline">\(S\)</span> is said to be <em>homogeneous</em> or <em>graded</em> if the relation <span class="math inline">\(f \in I\)</span> implies all homogeneous components of <span class="math inline">\(f\)</span> are in <span class="math inline">\(I\)</span>. However, we shall not restrict ourselves to polynomial rings. We shall study homogeneous ideals in general graded rings. - In <span class="math inline">\(k[x,y]\)</span>, the ideal <span class="math inline">\(I=(x^2+y^2)\)</span> is homogeneous and <span class="math inline">\(J=(x+y^2)\)</span> is not.</p>
+</section>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Lemma">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Lemma
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(A\)</span> be a graded ring of type <span class="math inline">\(\mathbb{N}\)</span>, <span class="math inline">\((A_i)\)</span> the gradation and <span class="math inline">\(J\)</span> a proper ideal of <span class="math inline">\(A\)</span>. The following statements are equivalent:</p>
+<ol type="1">
+<li><p><span class="math inline">\(J\)</span> is homogeneous.</p></li>
+<li><p>If <span class="math inline">\(f \in J\)</span>, then every homogeneous piece of <span class="math inline">\(f\)</span> is in <span class="math inline">\(J\)</span>.</p></li>
+<li><p><span class="math inline">\(J=\oplus_{i \in \mathbb{N}}J_i\)</span>, where <span class="math inline">\(J_i=A_i \cap J\)</span>.</p></li>
+<li><p>If <span class="math inline">\(J^\prime\)</span> is the ideal generated by all homogeneous elements in <span class="math inline">\(J\)</span>, then <span class="math inline">\(J=J^\prime\)</span>.</p></li>
+<li><p><span class="math inline">\(J\)</span> has a system of homogeneous generators, i.e.&nbsp;<span class="math inline">\(J=\sum_{\iota \in I}Aj_{\iota}\)</span> where <span class="math inline">\(j_{\iota} \in A_{\iota}\)</span>.</p></li>
+</ol>
+<p>In this case, the <span class="math inline">\(J_i\)</span>’s are called the homogeneous component of the ideal <span class="math inline">\(J\)</span>.</p>
+<p><strong>Proof</strong>:</p>
+<ul>
+<li><p><span class="math inline">\((1)\iff(2)\)</span> holds by definition.</p></li>
+<li><p>clearly <span class="math inline">\(\oplus_{i \in \mathbb{N}}(A_i \cap J) \subseteq J\)</span> holds; Suppose that <span class="math inline">\((2)\)</span> holds, <span class="math inline">\(f \in J\)</span> implies that <span class="math inline">\(f_i \in J\)</span> where <span class="math inline">\(f_i \in A_i\)</span> and thus <span class="math inline">\(f_i \in A_i \cap J\)</span>; <span class="math inline">\(f \in \oplus_{i \in \mathbb{N}}(A_i \cap J)\)</span> as <span class="math inline">\(f=\sum f_i, f_i \in A_i \cap J\)</span>; therefore <span class="math inline">\(J \subseteq \oplus_{i \in \mathbb{N}}(A_i \cap J)\)</span>.</p></li>
+<li><p>clearly <span class="math inline">\(J^\prime \subseteq J\)</span>; if <span class="math inline">\((3)\)</span> holds, <span class="math inline">\(\forall j \in J\)</span>, <span class="math inline">\(j=\sum a_{\iota}j_{\iota}\)</span> where <span class="math inline">\(j_{\iota} \in A_i \cap J\)</span> is homogeneous, then <span class="math inline">\(j\in J^\prime\)</span>; thus <span class="math inline">\(J \subseteq J^\prime\)</span>.</p></li>
+<li><p>Assume that <span class="math inline">\((4)\)</span> holds, clearly <span class="math inline">\((5)\)</span> holds.</p></li>
+<li><p>Suppose that <span class="math inline">\((5)\)</span> holds; if <span class="math inline">\(f \in J\)</span>, since <span class="math inline">\(J=\sum_{\iota \in I}Aj_{\iota}\)</span> is a direct sum decomposition, <span class="math inline">\(f=\sum_{\iota \in I}a_{\iota}j_{\iota}\)</span> where <span class="math inline">\(a_{\iota} \in A\)</span> is zero for all but finitely many <span class="math inline">\(\iota\)</span>. Write <span class="math inline">\(a_{\iota}\)</span> in the form of sum of homogeneous pieces: <span class="math inline">\(a_{\iota}=\sum_{n \in \mathbb{N}}a_{\iota_{n}},a_{\iota_{n}}\in A_n\)</span>; <span style="color: #ff5722">Using the technique of swapping the order of summation</span>, we have <span class="math display">\[
+f=\sum_{\iota \in I}a_{\iota}j_{\iota}=\sum_{\iota \in I}(\sum_{n \in \mathbb{N}}a_{\iota_{n}})j_{\iota}
+=\sum_{n \in \mathbb{N}}(\sum_{\iota \in I}j_{\iota}a_{\iota_{n}})
+\]</span> As <span class="math inline">\(\sum_{\iota \in I}j_{\iota}a_{\iota_{n}}\)</span> is a homogeneous element, if <span class="math inline">\(f_j\)</span> is one homogeneous component, <span class="math inline">\(f_j\)</span> admits a form of <span class="math inline">\(\sum_{n^\prime}\sum_{\iota \in I}j_{\iota}a_{\iota_{n^\prime}}\)</span> where <span class="math inline">\(n^\prime\)</span>’s are the indexs such that <span class="math inline">\(\sum_{\iota \in I}j_{\iota}a_{\iota_{n}} \in A_j\)</span>; Therefore <span class="math inline">\(f_j \in J\)</span>.</p></li>
+</ul>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

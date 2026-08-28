@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Reading Notes – Wonderings of Lee</title>
+<title>Algebra – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,32 +69,15 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Geometric Interpretation {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
 .Proposition {
   --color1: #3498db;
   --color2: #2c3e50;
 }
-.Exercise {
-  --color1: #E8D5A3;
-}
-.Remark {
-  --color1: #E8D5A3;
-}
-.Theorem {
+.Claim {
   --color1: #3498db;
   --color2: #2c3e50;
 }
-.Question {
-  --color1: #E8D5A3;
-}
-.Claim {
+.Theorem {
   --color1: #3498db;
   --color2: #2c3e50;
 }
@@ -102,11 +85,28 @@ ul.task-list li input[type="checkbox"] {
   --color1: #3498db;
   --color2: #2c3e50;
 }
+.Remark {
+  --color1: #E8D5A3;
+}
+.Example {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Exercise {
+  --color1: #E8D5A3;
+}
+.Question {
+  --color1: #E8D5A3;
+}
 .Corollary {
   --color1: #3498db;
   --color2: #2c3e50;
 }
-.Example {
+.Definition {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Geometric Interpretation {
   --color1: #2a7d4f;
   --color2: #1d5a3a;
 }
@@ -122,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Wonderings of Lee</span>
     </a>
   </div>
@@ -133,15 +133,15 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Reading/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../Reading/index.html"> 
 <span class="menu-text">Reading Notes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Reconstrcution/index.html"> 
+    <a class="nav-link" href="../../Reconstrcution/index.html"> 
 <span class="menu-text">Digestion</span></a>
   </li>  
 </ul>
@@ -152,7 +152,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -172,15 +172,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#algebra" id="toc-algebra" class="nav-link active" data-scroll-target="#algebra">Algebra</a>
-  <ul class="collapse">
-  <li><a href="#bourbaki---algebra" id="toc-bourbaki---algebra" class="nav-link" data-scroll-target="#bourbaki---algebra">Bourbaki - Algebra</a></li>
-  </ul></li>
-  <li><a href="#algebraic-geometry" id="toc-algebraic-geometry" class="nav-link" data-scroll-target="#algebraic-geometry">Algebraic Geometry</a>
-  <ul class="collapse">
-  <li><a href="#kempf-algebraic-varieties" id="toc-kempf-algebraic-varieties" class="nav-link" data-scroll-target="#kempf-algebraic-varieties">Kempf-Algebraic Varieties</a></li>
-  <li><a href="#do-carmo-differential-forms" id="toc-do-carmo-differential-forms" class="nav-link" data-scroll-target="#do-carmo-differential-forms">DO CARMO-Differential Forms</a></li>
-  </ul></li>
+  <li><a href="#bourbaki" id="toc-bourbaki" class="nav-link active" data-scroll-target="#bourbaki">Bourbaki</a></li>
+  <li><a href="#werner-greub" id="toc-werner-greub" class="nav-link" data-scroll-target="#werner-greub">Werner Greub</a></li>
   </ul>
 </nav>
     </div>
@@ -189,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Reading Notes</h1>
+<h1 class="title">Algebra</h1>
 </div>
 
 
@@ -206,28 +199,21 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>These are structured summaries and notes from textbooks, papers and monographs, focusing on preserving the original logical framework and detailed arguments.</p>
-<section id="algebra" class="level2">
-<h2 data-anchor-id="algebra">Algebra</h2>
-<section id="bourbaki---algebra" class="level3">
-<h3 data-anchor-id="bourbaki---algebra">Bourbaki - Algebra</h3>
-<p>about <em>Bourbaki’s</em> algebraic structure</p>
-<p><a href="../Reading/Algebra/Bourbaki-Chapter2/index.html">Chapter II →</a></p>
+<section id="bourbaki" class="level2">
+<h2 data-anchor-id="bourbaki">Bourbaki</h2>
+<ul>
+<li>[chapter 1]</li>
+<li><a href="../../Reading/Algebra/Bourbaki-Chapter2/index.html">chapter 2</a></li>
+</ul>
 </section>
-</section>
-<section id="algebraic-geometry" class="level2">
-<h2 data-anchor-id="algebraic-geometry">Algebraic Geometry</h2>
-<section id="kempf-algebraic-varieties" class="level3">
-<h3 data-anchor-id="kempf-algebraic-varieties">Kempf-Algebraic Varieties</h3>
-<p>about G.kempf’s <em>Algrbraic varieties</em></p>
-<p><a href="../Reading/Algebraic-Varieties/index.html">Kempf Notes →</a></p>
-</section>
-<section id="do-carmo-differential-forms" class="level3">
-<h3 data-anchor-id="do-carmo-differential-forms">DO CARMO-Differential Forms</h3>
-<p><a href="../Reading/Differential-Forms/inex.html">Differential Forms →</a></p>
+<section id="werner-greub" class="level2">
+<h2 data-anchor-id="werner-greub">Werner Greub</h2>
+<ul>
+<li><a href="W.Greub-linear-algebra/">linear algebra</a></li>
+<li>[multilinear algebra]</li>
+</ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

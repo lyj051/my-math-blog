@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Eugene Lee">
-<meta name="dcterms.date" content="2026-08-03">
 
-<title>The existence of affine varieties – Wonderings of Lee</title>
+<title>Bourbaki-Chapter-2 – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,42 +68,19 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-  window.MathJax = {
-    tex: {
-      packages: {'[+]': ['tikzcd']}
-    },
-    loader: {load: ['[tex]/tikzcd']}
-  };
-</script>
 <style>
-  body, p, li {
-    text-align: justify;
-    text-justify: inter-word;
-  }
-  mjx-container[display="true"] {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-</style>
-<script>
-MathJax = {
-  tex: { macros: { Spec: "\\operatorname{Spec}" } }
-};
-</script>
-<style>
-.Corollary {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Exercise {
+.Question {
   --color1: #E8D5A3;
 }
-.Claim {
+.Theorem {
   --color1: #3498db;
   --color2: #2c3e50;
 }
-.Geometric Interpretation {
+.Definition {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Example {
   --color1: #2a7d4f;
   --color2: #1d5a3a;
 }
@@ -113,61 +88,31 @@ MathJax = {
   --color1: #3498db;
   --color2: #2c3e50;
 }
+.Exercise {
+  --color1: #E8D5A3;
+}
 .Lemma {
   --color1: #3498db;
   --color2: #2c3e50;
 }
-.Example {
+.Geometric Interpretation {
   --color1: #2a7d4f;
   --color2: #1d5a3a;
 }
-.Theorem {
+.Corollary {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Claim {
   --color1: #3498db;
   --color2: #2c3e50;
 }
 .Remark {
   --color1: #E8D5A3;
 }
-.Question {
-  --color1: #E8D5A3;
-}
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
 </style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles-html.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -222,39 +167,28 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#linear-algebra" id="toc-linear-algebra" class="nav-link active" data-scroll-target="#linear-algebra">linear algebra</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The existence of affine varieties</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Algebraic Geometry</div>
-    <div class="quarto-category">Preliminary</div>
-    <div class="quarto-category">Algebraic Varieties by G.Kempf</div>
-  </div>
-  </div>
+<h1 class="title">Bourbaki-Chapter-2</h1>
+</div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Eugene Lee </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 3, 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -264,279 +198,14 @@ window.Quarto = {
 </header>
 
 
-<p><strong><em>The main work of this section is to explicitly construct all affine varieties.</em></strong></p>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Theorem">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Theorem
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(A\)</span> is a finitely generated <span class="math inline">\(k\)</span>-algebra with no nilpotents, then there is a canonically constructed affine variety <span class="math inline">\(\Spec A\)</span> with a natural isomorphism <span class="math display">\[
-A \cong \mathcal{O}(\Spec A)
-\]</span></p>
-</div>
-</div>
-<p>Recall that <span class="math inline">\(A\)</span> has no nilpotents(reduced) if <span class="math inline">\(a^{n}=0\)</span> for some <span class="math inline">\(n &gt; 0\)</span> implies that <span class="math inline">\(a=0\)</span> in <span class="math inline">\(A\)</span>. Since the <span class="math inline">\(k\)</span>-algebra of <span class="math inline">\(k\)</span>-valued functions is clearly reduced, the hypothesis of being reduced and finitely-generated is necessary for <span class="math inline">\(A\)</span> to be an affine variety. Therefore this theorem constructs all affine varieties up to isomorphism. (for <span class="math inline">\(X \cong Y \quad \text{iff} \quad \mathcal{O}(X) \cong \mathcal{O}(Y)\)</span>)</p>
-<p>As a set we define <span class="math display">\[
-\Spec A:=Hom_{k}(A,k)
-\]</span> Before giving strcuture on this set, we shall look at the <span class="math inline">\(k\)</span>-valued functions on <span class="math inline">\(\Spec A\)</span>.</p>
-<p>A <span class="math inline">\(k\)</span>-valued function <span class="math inline">\(f\)</span> which admits the following representation (which is straightforward to see that is well-defined) is clearlt a <span class="math inline">\(k\)</span>-valued fucntion on <span class="math inline">\(\Spec A\)</span>: <span class="math display">\[
-\begin{aligned}
-\Spec A &amp; \xrightarrow{f} k \\
-x &amp; \mapsto x(a) \quad \text{for some} \quad a\in A
-\end{aligned}
-\]</span></p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Lemma">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Lemma
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>There is a natural homomorphism <span class="math display">\[
-\begin{aligned}
-\phi:A &amp; \to \{k\text{-valued-functions on} \ \Spec A\}\\
-a &amp; \mapsto (x \mapsto x(a))
-\end{aligned}
-\]</span></p>
-<p><em>By abuse of notation, we denote <span class="math inline">\(\phi(a)(x)=x(a)\)</span> by <span class="math inline">\(a(x)\)</span>.</em></p>
-</div>
-</div>
-<p>Let <span class="math inline">\(I \subseteq A\)</span> be a subset of <span class="math inline">\(A\)</span>. Define <span class="math inline">\(\text{zeroes}(I):=\{x\in \Spec A : \phi(i)(x)=0 \quad \text{for all } i \in I\}\)</span></p>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Lemma">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Lemma
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The subsets <span class="math inline">\(\{\text{zeroes}(I)\}_{I \subseteq A}\)</span> form the closed subsets of a topology of <span class="math inline">\(\Spec A\)</span>.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><span class="math inline">\(\Spec A=\text{zeroes}(\{0\})\)</span> and <span class="math inline">\(\emptyset=\text{zeroes}(\{1\})\)</span></li>
-<li><span class="math inline">\(\text{zeroes}(I_{1}) \cup \text{zeroes}(I_{2})=\text{zeroes}(I_{1} \cdot I_{2})\)</span></li>
-<li><span class="math inline">\(\cap \text{zeroes}(I_{i})=\text{zeroes}(\cup I_{i})\)</span></li>
-</ol>
-</div>
-</div>
-<p>So far we have defined <span class="math inline">\(\Spec A\)</span> as a topological space (together with the homomorphism <span class="math inline">\(\phi :A \to \{f:\Spec A \to k\}\)</span>) and we introduce the regular functions on each open set now.</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Definition">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Definition
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(U\)</span> is an open subset of <span class="math inline">\(\Spec A\)</span>, a regular function on it is a <span class="math inline">\(k\)</span>-valued function such that there is an open covering <span class="math inline">\(U=\cup U_{i}\)</span> such that each <span class="math inline">\(f\restriction_{U_{i}}\)</span> admits the form <span class="math inline">\(\frac{\phi(a_{i})(x)}{\phi(b_{i})(x)},a_{i},b_{i}\in A,x \in U_{i}\)</span> where <span class="math inline">\(\phi(b_{i})\)</span> never vanishes on <span class="math inline">\(U_{i}\)</span>.</p>
-</div>
-</div>
-<p>Clearly <span class="math inline">\(\mathcal{O}(U)\)</span> is a <span class="math inline">\(k\)</span>-algebra and satisties the condition (a) of definition of spaces with functions. For condition (b) note that <span class="math inline">\(D(f)=\bigcup (U_{i}-\text{zeroes}(a_{i})\bigcap U_{i})\)</span> is open and <span class="math inline">\(\tfrac{1}{f}=\tfrac{\phi(b_{i})}{\phi(a_{i})}\)</span> is regular on <span class="math inline">\(D(f)\)</span>. Since <span class="math inline">\(\phi(a)=\tfrac{\phi(a)}{\phi(1)}\)</span>, the image of <span class="math inline">\(\phi\)</span> is contained in <span class="math inline">\(\mathcal{O}(\Spec A)\)</span>, that is, <span class="math display">\[
-\phi: A \to \mathcal{O}(\Spec A) \subseteq \{f:\Spec A \to k\}
-\]</span></p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Show that, for any ring A, the set of nilpotent elements <span class="math inline">\(\sqrt{0}=\{a \in  A: a^{n}=0 \ \text{for some} \ n&gt;0\}\)</span> is an ideal. And check that <span class="math inline">\(A=\sqrt{0} \iff A=\{0\}\)</span></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li>Suppose that <span class="math inline">\(a,b \in \sqrt{0}\)</span>, we have <span class="math inline">\((a+b)^{m}=0\)</span> for some <span class="math inline">\(m&gt;0\)</span> and <span class="math inline">\((ra)^{n}=0\)</span> for any <span class="math inline">\(r\in A\)</span>. Hence <span class="math inline">\(\sqrt{0}\)</span> is an ideal of <span class="math inline">\(A\)</span>.</li>
-<li>If <span class="math inline">\(A=\sqrt{0}\)</span> then <span class="math inline">\(1^{n}=0\)</span> which implies that <span class="math inline">\(1=0\)</span>.Hence <span class="math inline">\(A=\{0\}\)</span>.</li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Set-theoretically, what is <span class="math inline">\(\operatorname{Spec}A\)</span> when <span class="math inline">\(A\)</span> is the polynomial ring <span class="math inline">\(k[X_{1},\dots,X_{n}]\)</span>? Same if <span class="math inline">\(A=\frac{k[X_{1},\dots,X_{n}]}{(f_{1},\dots,f_{n},\dots)}\)</span> for some polynomials <span class="math inline">\(f_i \in k[X_{1},\dots,X_{n}]\)</span>.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><span class="math inline">\(Hom_{k}(k[X_{1},\dots,X_{n}],k) \simeq k^{n}\)</span></li>
-<li><span class="math inline">\(Hom_{k}(\frac{k[X_{1},\dots,X_{n}]}{(f_{1},\dots,f_{n},\dots)},k) \simeq \{(x_{1},\dots,x_{n})\in k^{n}: f_{i}(x_{1},\dots,x_{n})=0 \ \text{for all} \ f_{i}\}\)</span></li>
-</ol>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>If <span class="math inline">\(A\)</span> is a finitely generated ring with no nilpotents, let a be an element of <span class="math inline">\(A\)</span>. Consider the homomorphism <span class="math inline">\(\phi: A \rightarrow A_{(a)}\)</span>, where <span class="math inline">\(A_{(a)}\)</span> is a finitely generated <span class="math inline">\(k\)</span>-algebra with no nilpotents (Why?). Show that <span class="math inline">\(\phi\)</span> induces an isomorphism <span class="math inline">\(\operatorname{Spec}\left(A_{(a)}\right) \cong D(a) \subseteq \operatorname{Spec} A\)</span> where <span class="math inline">\(D(a)\)</span> is given the open subspace structure as a space with functions.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math display">\[
-\begin{aligned}
-\phi: A &amp; \rightarrow A_{(a)} \\
-      x &amp; \rightarrow \frac{x}{1}
-\end{aligned}
-\]</span> We have <span class="math inline">\(\frac{1}{a},\frac{g_{1}}{a},\dots,\frac{g_{n}}{a}\)</span> generate <span class="math inline">\(A_{(a)}\)</span> where <span class="math inline">\(g_1,\dots,g_n\)</span> generate <span class="math inline">\(A\)</span> since if <span class="math inline">\(x \in A_{(a)}\)</span> then it admits the form <span class="math inline">\(\frac{r}{a^{k}}=(\frac{1}{a})^{k}(f(g_1,\dots,g_n))\)</span> for some polynomial <span class="math inline">\(f \in k[X_1,\dots,X_n]\)</span>, i.e.&nbsp; <span class="math display">\[
-\begin{aligned}
-A_{(a)} &amp; \cong \frac{k[X_{1},\dots,X_{n},t]}{(I,at-1)} \\
-\text{If we say} \ A &amp; =k[g_1,\dots,g_n] \cong \frac{k[X_{1},\dots,X_{n}]}{I}
-\end{aligned}
-\]</span></p>
-<p>If <span class="math inline">\(A_{(a)}\)</span> has a nilpotent <span class="math inline">\(\frac{x}{a^{k}}\)</span>, then <span class="math inline">\(x^{m} \cdot a^{N}=0\)</span>. Then <span class="math inline">\((x \cdot a^{N})^{m}=0\)</span> which implies that <span class="math inline">\(x \cdot a^{N}=0\)</span> and we have <span class="math inline">\(\frac{x}{a^{k}}=\frac{0}{1}\)</span> by definition of <span class="math inline">\(A_{(a)}\)</span>.</p>
-<ol type="1">
-<li>As sets we have <span class="math inline">\(D(a)=\{x \in \Spec A:a(x)\neq0\}=\{f\in Hom_{k}(A,k):f(a) \neq 0 \in k^{\times}\}\)</span> and <span class="math inline">\(\Spec A_{(a)}=Hom_{k}(A_{(a)} \rightarrow k)\)</span>. Consider the map <span class="math inline">\(F\)</span>: <span class="math display">\[
-\begin{aligned}
-F: \operatorname{Spec} A_{(a)} &amp;\rightarrow D(a) \\
-y &amp;\mapsto y \circ \phi
-\end{aligned}
-\]</span></li>
-</ol>
-<p><span class="math inline">\(F\)</span> maps into <span class="math inline">\(D(a)\)</span> since <span class="math inline">\(F(y) \in Hom_{k}(A，k)\)</span> and <span class="math inline">\(F(y)(a)=y \circ \phi (a)=y({a}/{1}) \neq 0\)</span>. (<span class="math inline">\(y({a}/{1}) \neq 0\)</span> for <span class="math inline">\(y(1/1)=y(a/1 \cdot 1/a)=y(a/1) \cdot y(1/a) =1\)</span>). Define its inverse <span class="math inline">\(F^{-1}\)</span>: <span class="math display">\[
-\begin{aligned}
-F^{-1}: D(a) &amp;\rightarrow \Spec A_{(a)} \\
-f &amp;\mapsto (\tfrac{x}{a^{k}} \mapsto \tfrac{f(x)}{f(a^{k})})
-\end{aligned}
-\]</span></p>
-<p>It’s straightforward to show that <span class="math inline">\(F^{-1}\)</span> is well-defined and belongs to <span class="math inline">\(\Spec A_{(a)}\)</span>. Moreover we have <span class="math inline">\(F \circ F^{-1}=id_{D(a)},F^{-1} \circ F=id_{\Spec A_{(a)}}\)</span> as maps between sets.</p>
-<ol start="2" type="1">
-<li>We have closed subsets of <span class="math inline">\(D(a)\)</span> are of the form <span class="math display">\[
-\text{zeroes}(I) \cap D(a)=\{x \in \Spec A: i(x)=0 \ \text{for all} \ i \in I \subseteq A, a(x) \neq 0\}
-\]</span> which implies that <span class="math inline">\(I \cap (a)=\emptyset\)</span>. And closed subsets of <span class="math inline">\(\Spec A_{(a)}\)</span> are like <span class="math display">\[
-\text{zeroes}(J)=\{x\in \Spec A_{(a)}:j(x)=0 \ \text{for all} \ j \in J \subseteq A_{(a)}\}
-\]</span></li>
-</ol>
-<p>Then do some calculus as follows: <span class="math display">\[
-\begin{aligned}
-&amp;F^{-1}(\{m:A \rightarrow k | a \notin \operatorname{ker}(m), \operatorname{ker}(m) \supseteq I\}) \\
-&amp;=\{h \in Hom_k(A_{(a)},k)|(h \circ \phi) (a) \neq 0 , \operatorname{ker}(h \circ \phi) \supseteq I \}\\
-&amp;=\{h \in Hom_k(A_{(a)},k)|h(\tfrac{a}{1})  \neq 0 , \operatorname{ker}(h \circ \phi) \supseteq I \} \\
-&amp;=\{h \in Hom_k(A_{(a)},k)| \operatorname{ker}(h) \supseteq \phi(I) \}
-\end{aligned}
-\]</span></p>
-<p>Therefore <span class="math inline">\(F,F^{-1}\)</span> are continuous, thus homeomorphisms.</p>
-<ol start="3" type="1">
-<li>To show that <span class="math inline">\(h \circ F \in \mathcal{O}_{\Spec A_{(a)}}(F^{-1}(U))\)</span> First notice that <span class="math inline">\(h \in \mathcal{O}_{D(a)}(U)\)</span> has the form <span class="math inline">\(h(x)=\frac{a_i(x)}{b_i(x)},x \in U_i,a_i,b_i \in A\)</span>, where <span class="math inline">\(U=\bigcup U_{i}\)</span> and the denominator <span class="math inline">\(b_i(x)\)</span> vanishes nowhere on <span class="math inline">\(U_i\)</span>.</li>
-</ol>
-<p>Take <span class="math inline">\(t \in F^{-1}(U_{i})\)</span>. Expect that: <span class="math display">\[
-(h \circ F)(t)=\frac{a_i^{\prime}(t)}{b_i^{\prime}(t)},a_i^{\prime},b_i^{\prime}\in A_{(a)} \ \text{where} \ b_i^{\prime} \ \text{vanishes nowhere on} \ F^{-1}(U_{i})
-\]</span> Indeed <span class="math display">\[
-\begin{aligned}
-(h \circ F)(t)=h(F(t))=\frac{a_i(F(t))}{b_i(F(t))},F(t)\in U_i,a_i,b_i \in A \\
-\frac{a_i(F(t))}{b_i(F(t))}=\frac{a_i(t \circ \phi)}{b_i (t \circ \phi)}=\frac{(t \circ \phi)(a_i)}{ (t \circ \phi)(b_i)}=\frac{t(\phi(a_i))}{t(\phi(b_i))}=\frac{a_i^{\prime}(t)}{b_i^{\prime}(t)}
-\end{aligned}
-\]</span></p>
-<p>Hence <span class="math inline">\(F\)</span> is morphism. Totally same for <span class="math inline">\(F^{-1}\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="diagrams/1.svg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:25.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Exercise
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Show that the collection <span class="math inline">\(D(a)_{a \in A}\)</span> is a basis of the topological space <span class="math inline">\(\Spec A\)</span> and <span class="math display">\[
-D(a_1) \cap D(a_2)=D(a_1 \cdot a_2)
-\]</span></p>
-</div>
-</div>
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<ol type="1">
-<li><p>Suppose that <span class="math inline">\(U\)</span> is an open subset of <span class="math inline">\(\Spec A\)</span>, then <span class="math display">\[
-U=\Spec A- \text{zeroes}(I)=\{x \in \Spec A: i(x) \neq 0 \ \text{for some} \ i \in I\}=\bigcup D(i)_{i \in I}
-\]</span></p></li>
-<li><p><span class="math display">\[
-D(a_1) \cap D(a_2)=\{x \in \Spec A:a_1(x)\neq 0, a_2(x)\neq 0\}=\{x \in \Spec A: a_1(x) \cdot a_2(x) \neq 0\}=D(a_1 \cdot a_2)
-\]</span>.</p></li>
-</ol>
-</div>
-</div>
+<section id="linear-algebra" class="level3">
+<h3 data-anchor-id="linear-algebra">linear algebra</h3>
+<ul>
+<li><a href="../../../Reading/Algebra/Bourbaki-Chapter2/section11-graded-structure.html">graded ring and module</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
