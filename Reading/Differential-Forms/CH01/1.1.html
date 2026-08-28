@@ -94,39 +94,19 @@ MathJax = {
 };
 </script>
 <style>
-.Corollary {
-  --color1: #83a3b8;
-  --color2: #2c3e50;
-}
-.Question {
-  --color1: #be9e83;
-  --color2: #d35400;
-}
-.Example {
-  --color1: #c6f6db;
-  --color2: #d3f0e0;
-}
 .Theorem {
   --color1: #83a3b8;
   --color2: #2c3e50;
-}
-.Exercise {
-  --color1: #be9e83;
-  --color2: #d35400;
-}
-.Definition {
-  --color1: #c6f6db;
-  --color2: #d3f0e0;
 }
 .Claim {
   --color1: #83a3b8;
   --color2: #2c3e50;
 }
-.Lemma {
-  --color1: #83a3b8;
-  --color2: #2c3e50;
+.Geometric Interpretation {
+  --color1: #c6f6db;
+  --color2: #d3f0e0;
 }
-.Proposition {
+.Lemma {
   --color1: #83a3b8;
   --color2: #2c3e50;
 }
@@ -134,9 +114,29 @@ MathJax = {
   --color1: #be9e83;
   --color2: #d35400;
 }
-.Geometric Interpretation {
+.Proposition {
+  --color1: #83a3b8;
+  --color2: #2c3e50;
+}
+.Definition {
   --color1: #c6f6db;
   --color2: #d3f0e0;
+}
+.Exercise {
+  --color1: #be9e83;
+  --color2: #d35400;
+}
+.Example {
+  --color1: #c6f6db;
+  --color2: #d3f0e0;
+}
+.Question {
+  --color1: #be9e83;
+  --color2: #d35400;
+}
+.Corollary {
+  --color1: #83a3b8;
+  --color2: #2c3e50;
 }
 </style>
 
@@ -294,13 +294,13 @@ Warning
 <div class="callout-body-container callout-body">
 <p>Here by differentiable functions we mean smooth functions in the most textbooks.</p>
 <p>It’s quite important for beginners to make the convention: <span class="math inline">\((dx_i)_p \in  (\mathbb{R}^n_p)^*\)</span> denotes the <a href="../../../Reading/Differential-Forms/Classical-Analysis/0.1.html#differential-of-coordinate-function">differential of the coordinate function <span class="math inline">\(x_i\)</span></a> at the point <span class="math inline">\(p \in \mathbb{R}^n\)</span> which is a linear mapping;</p>
-<span class="math inline">\(dx_i\)</span> denotes the differential form of degree 1, as we shall define below. $$
-<span class="math display">\[\begin{aligned}
+<p><span class="math inline">\(dx_i\)</span> denotes the differential form of degree 1, as we shall define below.</p>
+<p><span class="math display">\[
+\begin{aligned}
 dx_i:\mathbb{R}^n&amp;\rightarrow\bigsqcup_{p\in \mathbb{R}^n} (\mathbb{R}^n_p)^*\\
 p &amp;\mapsto (dx_i)_p
-
-\end{aligned}\]</span>
-<p>$$</p>
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <section id="notations" class="level3">
@@ -588,7 +588,17 @@ d\omega&amp;=d(xyz)\wedge dx+d(yz) \wedge dy +d(x+z)\wedge dz \\
 &amp;=-xzdx\wedge dy+(1-xy)dx\wedge dz-ydy\wedge dz
 \end{aligned}
 \]</span></p>
-<p>We now present some properties of exterior differentiation. (3) is probably the most important one and (4) means that the operation <span class="math inline">\(d\)</span> commmutes with substitution of variables. :::{.Proposition} 1. <span class="math inline">\(d(\omega_1+\omega_2)=d\omega_1+d\omega_2\)</span>, where <span class="math inline">\(\omega_1,\omega_2\)</span> are <span class="math inline">\(k\)</span>-forms 2. <span class="math inline">\(d(\omega\wedge\varphi)=d\omega\wedge\varphi+(-1)^k\omega\wedge d\varphi\)</span>, where <span class="math inline">\(\omega\)</span> is a <span class="math inline">\(k\)</span>-form and <span class="math inline">\(\varphi\)</span> is an <span class="math inline">\(s\)</span>-form 3. <span class="math inline">\(d(d\omega)=d^2\omega=0\)</span> 4. <span class="math inline">\(d(f^*\omega)=f^*(d\omega)\)</span>, where <span class="math inline">\(\omega\)</span> is a <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbb{R}^m\)</span> and <span class="math inline">\(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> is a differentiable map.</p>
+</div></details>
+</div>
+<p>We now present some properties of exterior differentiation. (3) is probably the most important one and (4) means that the operation <span class="math inline">\(d\)</span> commmutes with substitution of variables.</p>
+<div id="cnb-14-Proposition" class="Proposition">
+<details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 5</strong></summary><div>
+<ol type="1">
+<li><span class="math inline">\(d(\omega_1+\omega_2)=d\omega_1+d\omega_2\)</span>, where <span class="math inline">\(\omega_1,\omega_2\)</span> are <span class="math inline">\(k\)</span>-forms</li>
+<li><span class="math inline">\(d(\omega\wedge\varphi)=d\omega\wedge\varphi+(-1)^k\omega\wedge d\varphi\)</span>, where <span class="math inline">\(\omega\)</span> is a <span class="math inline">\(k\)</span>-form and <span class="math inline">\(\varphi\)</span> is an <span class="math inline">\(s\)</span>-form</li>
+<li><span class="math inline">\(d(d\omega)=d^2\omega=0\)</span></li>
+<li><span class="math inline">\(d(f^*\omega)=f^*(d\omega)\)</span>, where <span class="math inline">\(\omega\)</span> is a <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbb{R}^m\)</span> and <span class="math inline">\(f:\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> is a differentiable map.</li>
+</ol>
 </div></details>
 </div>
 <div class="proof">
