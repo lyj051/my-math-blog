@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>What I cannot create, I don’t understand. – Wonderings of Lee</title>
+<title>Kempf-Algebraic Varieties – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -73,17 +73,7 @@ ul.task-list li input[type="checkbox"] {
   --color1: #3498db;
   --color2: #2c3e50;
 }
-.Exercise {
-  --color1: #E8D5A3;
-}
-.Example {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Remark {
-  --color1: #E8D5A3;
-}
-.Lemma {
+.Corollary {
   --color1: #3498db;
   --color2: #2c3e50;
 }
@@ -91,13 +81,13 @@ ul.task-list li input[type="checkbox"] {
   --color1: #3498db;
   --color2: #2c3e50;
 }
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Corollary {
+.Lemma {
   --color1: #3498db;
   --color2: #2c3e50;
+}
+.Geometric Interpretation {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
 }
 .Proposition {
   --color1: #3498db;
@@ -106,9 +96,19 @@ ul.task-list li input[type="checkbox"] {
 .Question {
   --color1: #E8D5A3;
 }
-.Geometric Interpretation {
+.Remark {
+  --color1: #E8D5A3;
+}
+.Example {
   --color1: #2a7d4f;
   --color2: #1d5a3a;
+}
+.Definition {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Exercise {
+  --color1: #E8D5A3;
 }
 </style>
 
@@ -122,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Wonderings of Lee</span>
     </a>
   </div>
@@ -133,19 +133,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Recipe/index.html"> 
+    <a class="nav-link" href="../../Recipe/index.html"> 
 <span class="menu-text">Recipe</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Digestion/index.html"> 
+    <a class="nav-link" href="../../Digestion/index.html"> 
 <span class="menu-text">Digestion</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Gym/index.html"> 
+    <a class="nav-link" href="../../Gym/index.html"> 
 <span class="menu-text">Gym</span></a>
   </li>  
 </ul>
@@ -156,7 +156,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -176,9 +176,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#recipe" id="toc-recipe" class="nav-link active" data-scroll-target="#recipe">Recipe</a></li>
-  <li><a href="#digestion" id="toc-digestion" class="nav-link" data-scroll-target="#digestion">Digestion</a></li>
-  <li><a href="#gym" id="toc-gym" class="nav-link" data-scroll-target="#gym">Gym</a></li>
+  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
   </ul>
 </nav>
     </div>
@@ -187,7 +185,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">What I cannot create, I don’t understand.</h1>
+<h1 class="title">Kempf-Algebraic Varieties</h1>
 </div>
 
 
@@ -204,33 +202,27 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to my mathematical notes.</p>
-<p>This website contains three kinds of notes:</p>
+<p><a href="G. Kempf - Algebraic Varieties.pdf">Here is the textbook</a></p>
+<section id="notes" class="level2">
+<h2 data-anchor-id="notes">Notes</h2>
 <ul>
-<li><strong>Recipe</strong> — notes organized around books I read.</li>
-<li><strong>Digestion</strong> — ideas, motivations, and connections reconstructed from my reading.</li>
-<li><strong>Gym</strong> - toolbox of many techniques and exercises for exams</li>
-</ul>
-<section id="recipe" class="level2">
-<h2 data-anchor-id="recipe">Recipe</h2>
+<li><h3 id="chapter-1-algebraic-varieties-definition-and-existence">Chapter 1: Algebraic Varieties: definition and existence</h3>
 <ul>
-<li><p>I keep notes on books in different subjects.</p></li>
-<li><p>Each book in this column offers a clear, sustained narrative that leads you through the topic from start to finish.</p></li>
-</ul>
-<p><a href="./Recipe/index.html">Recipe →</a></p>
-</section>
-<section id="digestion" class="level2">
-<h2 data-anchor-id="digestion">Digestion</h2>
-<p>This section collects ideas that emerged from connecting different books and viewpoints.</p>
-<p><a href="./Digestion/index.html">Digestion and Reconstruction →</a></p>
-</section>
-<section id="gym" class="level2">
-<h2 data-anchor-id="gym">Gym</h2>
+<li><a href="../../Recipe/Algebraic-Varieties/CH01/1.1.html">spaces with functons</a></li>
+<li><a href="../../Recipe/Algebraic-Varieties/CH01/1.2.html">varieties</a></li>
+<li><a href="../../Recipe/Algebraic-Varieties/CH01/1.3.html">the existence of affine varieties</a></li>
+<li><a href="../../Recipe/Algebraic-Varieties/CH01/1.4.html">the nullstellensatz</a></li>
+<li><a href="../../Recipe/Algebraic-Varieties/CH01/1.5.html">the rest of the proof of existence of affine varieties.subvarieties</a></li>
+<li><a href="../../Recipe/Algebraic-Varieties/CH01/1.6.html">examples</a></li>
+<li><a href="../../Recipe/Algebraic-Varieties/CH01/1.7.html">determinantial varieties</a></li>
+</ul></li>
+<li><h3 id="chpater-2-the-preparation-lemma-and-some-consequences">Chpater 2: The preparation lemma and some consequences</h3>
 <ul>
-<li><p>Some useful techniques and commonly encountered structures.</p></li>
-<li><p>elegant problems in exams</p></li>
+<li><a href="../../Recipe/Algebraic-Varieties/CH02/2.1.html">the lemma</a></li>
+<li><a href="../../Recipe/Algebraic-Varieties/CH02/2.2.html">the Hilbert basis theorem</a></li>
+<li><a href="../../Recipe/Algebraic-Varieties/CH02/2.3.html">Irreducible Components</a></li>
+</ul></li>
 </ul>
-<p><a href="./Gym/index.html">techniques and structures →</a></p>
 
 
 </section>

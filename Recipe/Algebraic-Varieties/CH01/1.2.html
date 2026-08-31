@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eugene Lee">
-<meta name="dcterms.date" content="2026-08-11">
+<meta name="dcterms.date" content="2026-07-30">
 
-<title>The rest of the proof of existence of affine varieties/subvarieties – Wonderings of Lee</title>
+<title>Varieties – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,15 +70,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-  window.MathJax = {
-    tex: {
-      packages: {'[+]': ['tikzcd']}
-    },
-    loader: {load: ['[tex]/tikzcd']}
-  };
-</script>
 <style>
+  /* 设置正文两端对齐 */
   body, p, li {
     text-align: justify;
     text-justify: inter-word;
@@ -88,36 +81,12 @@ ul.task-list li input[type="checkbox"] {
     overflow-y: hidden;
   }
 </style>
-<script>
-MathJax = {
-  tex: { macros: { Spec: "\\operatorname{Spec}" } }
-};
-</script>
 <style>
-.Corollary {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Exercise {
-  --color1: #E8D5A3;
-}
 .Geometric Interpretation {
   --color1: #2a7d4f;
   --color2: #1d5a3a;
 }
-.Proposition {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
 .Theorem {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Claim {
   --color1: #3498db;
   --color2: #2c3e50;
 }
@@ -128,10 +97,29 @@ MathJax = {
 .Question {
   --color1: #E8D5A3;
 }
+.Claim {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Corollary {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Proposition {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
 .Remark {
   --color1: #E8D5A3;
 }
 .Example {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Exercise {
+  --color1: #E8D5A3;
+}
+.Definition {
   --color1: #2a7d4f;
   --color2: #1d5a3a;
 }
@@ -192,12 +180,16 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Reading/index.html"> 
-<span class="menu-text">Reading Notes</span></a>
+    <a class="nav-link" href="../../../Recipe/index.html"> 
+<span class="menu-text">Recipe</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Reconstrcution/index.html"> 
+    <a class="nav-link" href="../../../Digestion/index.html"> 
 <span class="menu-text">Digestion</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../Gym/index.html"> 
+<span class="menu-text">Gym</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -230,7 +222,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">The rest of the proof of existence of affine varieties/subvarieties</h1>
+<h1 class="title">Varieties</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Algebraic Geometry</div>
     <div class="quarto-category">Preliminary</div>
@@ -252,7 +244,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 11, 2026</p>
+      <p class="date">July 30, 2026</p>
     </div>
   </div>
   
@@ -264,72 +256,55 @@ window.Quarto = {
 </header>
 
 
-<p><strong><em>Again, we assume the base field <span class="math inline">\(k\)</span> is an algebraically closed in this section.</em></strong></p>
-<p>We will first show the following result:</p>
+<p><strong><em>We shall assume the field <span class="math inline">\(k\)</span> is algebraically closed in this note.</em></strong></p>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be spaces with functions. The global effect of pull-back defines a mapping</p>
 <p><span class="math display">\[
-\text{The subring } A \subseteq \mathcal{O}(\Spec A) \ \text{is all of } \mathcal{O}(\Spec A).
+*: Morphism(X,Y) \to k \text{-}Alg \text{-} Hom_{k}(\mathcal{O}(Y),\mathcal{O}(X))
 \]</span></p>
-<p>in other words, we have <span class="math display">\[
-A \cong \mathcal{O}(\Spec A)
-\]</span> where <span class="math inline">\(A\)</span> is a finitely-generate <span class="math inline">\(k\)</span>-algebra which has no nilpotents.</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Proof">
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Defintion">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Proof
+<span class="screen-reader-only">Important</span>Defintion
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(f(x)\)</span> be a function in <span class="math inline">\(\mathcal{O}(\Spec A)\)</span>. We need to verify that <span class="math inline">\(f\)</span> is in <span class="math inline">\(A\)</span>. By definition, we have an open cover <span class="math inline">\(\Spec A=\bigcup U_{\alpha}\)</span> by open subsets such that <span class="math inline">\(f(u)=\tfrac{g_{\alpha}(u)}{h_{\alpha}(u)}\)</span> when <span class="math inline">\(u\)</span> in <span class="math inline">\(U_{\alpha}\)</span> where <span class="math inline">\(g_{\alpha},h_{\alpha}\)</span> are in <span class="math inline">\(A\)</span> and <span class="math inline">\(h_{\alpha}(u)\)</span> is never zero on <span class="math inline">\(U_{\alpha}\)</span>. We may assume that <span class="math inline">\(U_{\alpha}=D(k_{\alpha})\)</span> for some <span class="math inline">\(k_{\alpha} \in A\)</span>. Doing the rename <span class="math display">\[
-f(u)=\frac{(k_{\alpha}g_{\alpha})(u)}{(k_{\alpha}h_{\alpha})(u)}  \text{ on } D(k_{\alpha}\cdot h_{\alpha})=D(K_{\alpha})
-\]</span> We may assume that <span class="math inline">\(h_{\alpha}=k_{\alpha}\)</span>.</p>
-<p>Next consider the function <span class="math inline">\(h_{\alpha}^{2}f\)</span>. This equals <span class="math inline">\(h_{\alpha}g_{\alpha}\)</span> on <span class="math inline">\(D(h_{\alpha})\)</span> as <span class="math display">\[
-h_{\alpha}^{2}f=h_{\alpha}^{2} \cdot \frac{g_{\alpha}}{h_{\alpha}}=h_{\alpha}g_{\alpha} \text{ on } U_{\alpha}
+<section id="affine-variety" class="level4">
+<h4 data-anchor-id="affine-variety">Affine Variety</h4>
+<p>Provided that <span class="math inline">\(\mathcal{O}(Y)\)</span> is a finitely generated <span class="math inline">\(k\)</span>-algebra, a space with functions <span class="math inline">\(Y\)</span> is said to be an <em>affine variety</em> if the mapping <span class="math inline">\(*\)</span> defined above is bijective for every space with functions <span class="math inline">\(X\)</span>.</p>
+</section>
+<section id="algebraic-variety" class="level4">
+<h4 data-anchor-id="algebraic-variety">Algebraic Variety</h4>
+<p>An <em>algebraic variety</em> <span class="math inline">\(X\)</span> is defined to be a space with functions <span class="math inline">\(X\)</span> which has a finite open covering <span class="math inline">\(U_{1},\dots,U_{n}\)</span> where each <span class="math inline">\(U_{i}\)</span> is affine. (Recall that an <span style="color: red;">open</span> subset of a space with functions carries the structure of space with functions naturally)</p>
+</section>
+<section id="morphism" class="level4">
+<h4 data-anchor-id="morphism">Morphism</h4>
+<p>A <em>morphism</em> between algebraic varieties is just a morphism of spaces with functions.</p>
+</section>
+</div>
+</div>
+<p>Next we give the first examples of varieties: the <em>affine line</em> <span class="math inline">\(\mathbb{A}^{1}\)</span> and the <em>projective line</em> <span class="math inline">\(\mathbb{P}^{1}\)</span>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Example">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example
+</div>
+</div>
+<section id="mathbba1" class="level4 callout-body-container callout-body">
+<h4 data-anchor-id="mathbba1"><span class="math inline">\(\mathbb{A}^{1}\)</span></h4>
+<p>The underlying set of <span class="math inline">\(\mathbb{A}^{1}\)</span> is just the field <span class="math inline">\(k\)</span>.</p>
+<p>The topology of it is the <em>cofinite topology</em>, i.e.&nbsp;the closed subsets of <span class="math inline">\(\mathbb{A}^{1}\)</span> are the whole set and the finite subsets.</p>
+<p>The regular functions on open set <span class="math inline">\(U\)</span>: if <span class="math inline">\(U\)</span> is empty, <span class="math inline">\(\mathcal{O}(U)=\{0\}\)</span>. Otherwise, if <span class="math inline">\(U=\mathbb{A}^{1}-\{x_{1},\dots,x_{n}\}\)</span> then <span class="math inline">\(\mathcal{O}(U)\)</span> consists of the rational functions <span class="math inline">\(g\)</span> such that <span class="math inline">\(g\)</span> has no poles anywhere in <span class="math inline">\(U\)</span>; i.e.&nbsp;<span class="math inline">\(g\)</span> admits a representation: <span class="math display">\[
+U\to k, x \mapsto \frac{p(x)}{\prod(x-x_{i})^{m_{i}}} \ \text{where $p$ is a polynomial and the $m_{i}$ non-negative integers.}
 \]</span></p>
-<p>Moreover both of them vanish outside <span class="math inline">\(U_{\alpha}\)</span>, and thus <span class="math inline">\(h_{\alpha}^{2}f \equiv h_{\alpha}g_{\alpha}\)</span> as functions on the whole <span class="math inline">\(\Spec A\)</span> and</p>
-<p>Since <span class="math inline">\(\Spec A=\bigcup{D(h_\alpha)}\)</span>, by the corollary in the last section, it follows that <span class="math display">\[
-1_{A}=\sum_{\text{finite}}a_{\alpha}h_{\alpha}^{2}
-\]</span> for some <span class="math inline">\(a_{\alpha} \in A\)</span>. Therefore we have (<span style="color: #FFA500;">use the technique called <em>partition of unity</em> where the result above comes into play</span>): <span class="math display">\[
-f=f \cdot 1_{A}=\sum_{\text{finite}}a_{\alpha}(fh_{\alpha}^{2}) \equiv \sum_{\text{finite}}a_{\alpha}h_{\alpha}g_{\alpha}
-\]</span> which is a function in <span class="math inline">\(A\)</span>. We have thus proved that any global regular function in <span class="math inline">\(\mathcal{O}(\Spec A)\)</span> is in <span class="math inline">\(A\)</span>.</p>
+<p>In particular, <span class="math inline">\(\mathcal{O}(\mathbb{A}^{1}) \cong k[T]\)</span> is (isomorphic to) a polynomial ring in one variable.</p>
+</section>
 </div>
-</div>
-<p>It remains to show that <span class="math inline">\(\Spec A\)</span> is affine, i.e.</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Theorem">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Theorem
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><span class="math display">\[
-\operatorname{Mor}(X,\Spec A) \xrightarrow{*} \operatorname{Hom}_{k}(A,\mathcal{O}(X))
-\]</span> is a bijection.</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Proof">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Proof
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(\delta_{x}:\mathcal{O}(X) \to k\)</span> be evaluation of a function at a point <span class="math inline">\(x\)</span>. Let <span class="math inline">\(f:X \to \Spec A\)</span> be a morphism. Let <span class="math inline">\(a\)</span> be an element of A (treated as the <span class="math inline">\(k\)</span>-algebra consisting of functions) and <span class="math inline">\(x\)</span> be a point of <span class="math inline">\(X\)</span>. Then, by definiton of <span class="math inline">\(f^{*}\)</span>, <span class="math inline">\(a(f(x))=(f^*a)(x)\)</span>, or, rather, <span class="math inline">\(\delta_{f(x)}\)</span> is the composition <span class="math display">\[
-A\xrightarrow{f^{*}}\mathcal{O}(X)\xrightarrow{\delta_{x}}k
-\]</span> It follows that <span class="math inline">\(f \neq g \rightarrow f^{*} \neq g^{*}\)</span> as <span class="math display">\[
-f^{*}=g^{*} \Rightarrow  \delta_{x}\circ g^{*}= \delta_{x} \circ f^{*} \iff \delta_{f(x)}=\delta_{g(x)} \iff f=g
-\]</span> The last equality holds because that <span class="math display">\[
-\delta_{f(x)}(a)=\delta_{A\xrightarrow{f(x)}k}(a)=f(x)(a)
-\]</span> i.e the point <span class="math inline">\(f(x)\)</span> is the same as the homomorphism <span class="math inline">\(\delta_{f(x)}\)</span>. Thus we have proved that <span class="math inline">\(*\)</span> is injective.</p>
-<p>Conversely let <span class="math inline">\(\phi:A \rightarrow \mathcal{O}(X)\)</span> be a <span class="math inline">\(k\)</span>-algebra homomorphism. Define <span class="math inline">\(f \equiv r(\phi)\)</span> by the formula <span class="math inline">\(\delta_{f(x)}=\delta_{x}\circ \phi\)</span>. We shall show that <span class="math inline">\(f\)</span> is a morphism.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -340,22 +315,53 @@ f^{*}=g^{*} \Rightarrow  \delta_{x}\circ g^{*}= \delta_{x} \circ f^{*} \iff \del
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Proof:</p>
-<p>As <span class="math inline">\(f^{-1}(D(h))=\{x\in X : \phi (h)(x) \neq0\}\)</span> where <span class="math inline">\(h \in A\)</span>, <span class="math inline">\(f\)</span> is continuous.</p>
-<p>Assume that <span class="math inline">\(h\)</span> admits a form <span class="math inline">\(a(x)/b(x), a,b \in A\)</span> on <span class="math inline">\(\mathcal{O}_{\Spec A}(D(b))\)</span> and we expect that <span class="math inline">\(h\circ f \in \mathcal{O}_{X}(f^{-1}(D(b)))\)</span>.</p>
-<p>Indeed we have <span class="math display">\[(h \circ f)(x)=h(f(x))=h(\delta_{x} \circ \phi)=\frac{a(\delta_{x} \circ \phi)}{b(\delta_{x} \circ \phi)}=\frac{\phi(a)(x)}{\phi(b)(x)} \in \mathcal{O}_{X}(f^{-1}(D(b)))
+<p>Verify that <span class="math inline">\(\mathbb{A}^{1}\)</span> is a space with functions.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Proof
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Suppose that open set <span class="math inline">\(U=k-\{x_{1},\dots,x_{n}\}\)</span> is the union of a family of open subsets <span class="math inline">\(U_{\alpha}\)</span> where <span class="math inline">\(U_{\alpha}=k-\{x_{\alpha_{1}},\dots,x_{\alpha_{k_{\alpha}}}\}\)</span> where <span class="math inline">\(k_{\alpha}\)</span> is finite for each <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\bigcap{\{x_{\alpha_{1}},\dots,x_{\alpha_{k_{\alpha}}}\}=\{x_{1},\dots,x_{n}\}}\)</span>. If <span class="math inline">\(f\)</span> is a regular function on <span class="math inline">\(U\)</span> then <span class="math inline">\(f\)</span> admits a representation of <span class="math inline">\(\frac{p(x)}{\prod_{i=1}^{n}(x-x_{i})^{m_{i}}}, m_{i} \in \mathbb{Z}_{\geq 0}\)</span>, then clearly <span class="math inline">\(f\)</span> adimits a form <span class="math inline">\(\frac{p(x)}{\prod_{i=1}^{n}(x-x_{i})^{m_{i}}}\)</span> on <span class="math inline">\(U_{\alpha}\)</span> since <span class="math inline">\(U_{\alpha} \subseteq U\)</span> and <span class="math inline">\(f \restriction_{U_{\alpha}} \in \mathcal{O}(U_{\alpha})\)</span> since <span class="math inline">\(\{x_{1},\dots,x_{n}\} \subseteq\{x_{\alpha_{1}},\dots,x_{\alpha_{k_{\alpha}}}\}\)</span>.</li>
+</ol>
+<div class="callout callout-style-default callout-caution no-icon callout-titled" title="Observation">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Caution</span>Observation
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ol type="1">
+<li>Given <span class="math inline">\(U=k-\{x_1,\dots,x_n\}\)</span>, we observe that we characterize <span class="math inline">\(f=\frac{p(x)}{\prod_{i=1}^{n}(x-x_{i})^{m_{i}}}, m_{i} \in \mathbb{Z}_{\geq 0}\)</span> as <span class="math inline">\(\frac{p(x)}{q(x)}\)</span> where polynomial <span class="math inline">\(q(x)\)</span> vanishes nowhere in <span class="math inline">\(U\)</span>.</li>
+<li>Given any two open sets <span class="math inline">\(U_1,U_2\)</span>, <span class="math inline">\(U_1 \cap U_2\)</span> is an infinite set since <span class="math inline">\(k\)</span> is infinite.</li>
+</ol>
+</div>
+</div>
+<p><span style="color: #DE5D83;"> Conversely, if <span class="math inline">\(f:U \to k\)</span> takes the form of <span class="math inline">\(\frac{p_{\alpha}(x)}{q_{\alpha}(x)}\)</span> (as we observed) on each <span class="math inline">\(U_{\alpha}\)</span>, then clearly <span class="math inline">\(\frac{p_{\alpha}(x)}{q_{\alpha}(x)}=\frac{p_{\beta}(x)}{q_{\beta}(x)}\)</span> on <span class="math inline">\(U_{\alpha} \cap U_{\beta}\)</span> since they are all restricted by <span class="math inline">\(f\)</span> which implies that <span class="math inline">\(p_{\alpha}(x){q_{\beta}(x)}-{p_{\beta}(x)}{q_{\alpha}(x)}\)</span> has infinitely many roots for observation 2. It follows that <span class="math inline">\(\frac{p_{\alpha}(x)}{q_{\alpha}(x)}=\frac{p_{\beta}(x)}{q_{\beta}(x)}\)</span> on the whole <span class="math inline">\(U\)</span> for any <span class="math inline">\(\alpha,\beta\)</span>, and thus the global function <span class="math inline">\(f\)</span> admits a representation <span class="math inline">\(\frac{p(x)}{q(x)} \in k(x)\)</span>.</span></p>
+<p>Now we show that <span class="math inline">\(q(x)\)</span> has no roots in <span class="math inline">\(U\)</span> which leads to that it’s a constant. Assume not: $q(x_0)=0,x_0 U_{_0} U $. Then in the field of fractional functions <span class="math inline">\(k(x)\)</span> we have <span class="math inline">\(\frac{p(x)}{q(x)}=\frac{p_{\alpha_{0}}(x)}{q_{\alpha_{0}}(x)} \in \mathcal{O}(U_{\alpha_{0}})\)</span> and here we can assume <span class="math inline">\(gcd(p,q)=1\)</span> (implies that they have no commen roots in <span class="math inline">\(k\)</span>). It follows that <span class="math inline">\(p(x)q_{\alpha_{0}}(x)=p_{\alpha_{0}}(x)q(x)\)</span> which implies that <span class="math inline">\(q_{\alpha_{0}}(x_0)=0\)</span>. Contradiction with <span class="math inline">\(q_{\alpha_0}\)</span> vanishes nowhere in <span class="math inline">\(U_{\alpha_0}\)</span>. Hence <span class="math inline">\(q(x)=c\prod(x-t_i)^{s_i},t_i \in k-U\)</span> and we get the form <span class="math inline">\(\frac{1}{c}p(x)/\prod(x-t_i)^{s_i},t_i \in k-U\)</span> as we expected.</p>
+<p></p>
+<ol start="2" type="1">
+<li>Suppose that <span class="math display">\[
+g=\frac{p(x)}{\prod(x-x_i)^{m_i }}\in\mathcal{O}(U)
+\]</span>，then <span class="math inline">\(D(g)=\{x\in U:p(x) \neq0\}=k-\{x_{1},\dots,x_{n}\}-\{r_1,\dots,r_{m}\}\)</span> where <span class="math inline">\(r_j\)</span> are the roots of <span class="math inline">\(p\)</span> in <span class="math inline">\(k\)</span> is an open set. And <span class="math inline">\(\frac{1}{g(x)}=\frac{\prod(x-x_i)^{m_i}}{(x-r_{j})^{k_j}}\in D(g)\)</span> where <span class="math inline">\(p\)</span> splits into <span class="math inline">\(\prod(x-r_{j})^{k_j}\)</span> in <span class="math inline">\(k\)</span> since <span class="math inline">\(k\)</span> is algebraically closed.</li>
+</ol>
+</div>
+</div>
+<p>This is a technical and detailed proof. We may need the following elementary result (use Bézout theorem to verify): <span class="math display">\[
+(f, g) = 1 \text{ in } k[x]   \Longleftrightarrow  (f, g) = 1 \text{ in } K[x] \ \forall K/k \Longleftrightarrow  \nexists \alpha \in \bar{k} : f(\alpha) = g(\alpha) = 0.
 \]</span></p>
-</div>
-</div>
-<p>Clearly <span class="math inline">\(r \circ * = \operatorname{id}_{\operatorname{Mor}(X,\Spec A)}\)</span> as <span class="math display">\[
-(r \circ *) (f)(x)=r(f^{*})(x)=\delta_{x} \circ f^{*}=\delta_{f(x)}=f(x)
-\]</span> where <span class="math inline">\(x \in X\)</span></p>
-<p><span class="math inline">\(* \circ r = \operatorname{id}_{\operatorname{Mor}(A,\mathcal{O}(X))}\)</span> as <span class="math display">\[
-((* \circ r)(\phi))(a)=(r(\phi)^{*})(a)=a \circ (r(\phi))=\delta_{r(\phi)(-)}(a)=\delta_{-} \circ \phi \circ a=\phi \circ a
-\]</span> where <span class="math inline">\(a \in A\)</span>.</p>
-</div>
-</div>
-<p><span style="color: #F08080;"><strong>We have now constructed all affine varieties up to isomorphism which allows us to establish the following categorical result.</strong></span></p>
+<p>Next we show that <span class="math inline">\(\mathbb{A}^{1}\)</span> is indeed an affine variety.</p>
+<p>Let <span class="math inline">\(Y\)</span> be any space with functions. A mapping <span class="math inline">\(f:Y \to \mathbb{A}^{1}=k\)</span> is just a <span class="math inline">\(k\)</span>-valued function.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled" title="Claim">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -366,65 +372,48 @@ f^{*}=g^{*} \Rightarrow  \delta_{x}\circ g^{*}= \delta_{x} \circ f^{*} \iff \del
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><span style="color: #587F55;">Show that the category of affine varieties over an algebraically closed field <span class="math inline">\(k\)</span> with morphisms is contravariantly equivalent to the category of finitely generated <span class="math inline">\(k\)</span>-algebras with no nilpotents with <span class="math inline">\(k\)</span>-algebra homomorphisms.</span></p>
-</div>
-</div>
-<p>Recall the definition of equivalence of categories.</p>
-<p>Given two categories <span class="math inline">\(\mathcal{C}\)</span> and <span class="math inline">\(\mathcal{D}\)</span>, we say that they are equivalent if there exist funtors <span class="math inline">\(\mathcal{C}\xrightarrow{\mathcal{F}}\mathcal{D}\)</span> and <span class="math inline">\(\mathcal{D}\xrightarrow{\mathcal{G}}\mathcal{C}\)</span> such that <span class="math inline">\(\mathcal{F}\circ \mathcal{G} \simeq \operatorname{id}_{D}\)</span> and <span class="math inline">\(\mathcal{G}\circ \mathcal{F} \simeq \operatorname{id}_{C}\)</span>. It is important to stress that equivalence is not equality; it allows objects to be isomorphic, not identical.</p>
-<p>The following lemma is always useful to check that if two categories are equivalent:</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Lemma">
+<p><span class="math inline">\(f\)</span> is a morphism if and only if <span class="math inline">\(f\)</span> is regular on <span class="math inline">\(Y\)</span>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Proof">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Lemma
+<span class="screen-reader-only">Note</span>Proof
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Given two categories <span class="math inline">\(\mathcal{C}\)</span> and <span class="math inline">\(\mathcal{D}\)</span> and a functor <span class="math inline">\(\mathcal{C} \xrightarrow{\mathcal{F}} \mathcal{D}\)</span>, <span class="math inline">\(\mathcal{C}\)</span> is equivalent to <span class="math inline">\(\mathcal{D}\)</span> if the functor satisfies the following two conditions:</p>
-<ol type="1">
-<li><p>Fully Faithful:</p>
-<p>For any two objects <span class="math inline">\(A, B \in \mathcal{C}\)</span>, the map<br>
-<span class="math display">\[
-\operatorname{Hom}_{\mathcal{C}}(A,B) \longrightarrow \operatorname{Hom}_{\mathcal{D}}(F(A),F(B))
-\]</span> is a bijection (a one-to-one correspondence). This guarantees that the structure of morphisms (arrows) is perfectly preserved.</p></li>
-<li><p>Essentially Surjective:</p>
-<p>For every object <span class="math inline">\(Y \in \mathcal{D}\)</span>, there exists an object <span class="math inline">\(X \in \mathcal{C}\)</span> such that <span class="math inline">\(F(X)\)</span> is isomorphic to <span class="math inline">\(Y\)</span> in <span class="math inline">\(\mathcal{D}\)</span>, i.e.<br>
-<span class="math display">\[
-F(X) \cong Y.
-\]</span> This ensures that no structure is left out.</p></li>
-</ol>
+<p>“Only if”: The coordinate function <span class="math inline">\(x:k\to k; t \mapsto t\)</span> is regular on <span class="math inline">\(\mathbb{A}^1\)</span> and then <span class="math inline">\(f(x)\)</span> is regular on <span class="math inline">\(Y\)</span> since <span class="math inline">\(f\)</span> is a morphism and <span class="math inline">\(f^{-1}(k)=Y\)</span>.</p>
+<p>“if”: Suppose that <span class="math inline">\(f\)</span> is regular on <span class="math inline">\(Y\)</span>. <span class="math inline">\(f\)</span> is continuous since <span class="math inline">\(f^{-1}(\{t_1,\dots,t_n\})=Y-D(F)\)</span>, where <span class="math inline">\(F=\prod_{i=1}^{n} (f-t_{i})\)</span>, is the complement of an open set <span class="math inline">\(D(f)\)</span>. To show that <span class="math inline">\(f\)</span> pulls back regualr function <span class="math inline">\(g=\frac{p(x)}{q(x)}\)</span> on <span class="math inline">\(U=\mathbb{A}^1-\{t_1,\dots,t_n\}\)</span>, we notice that: <span class="math display">\[
+g \circ f=\frac{p(f(y))}{q(f(y))}=\frac{p(f(y))}{\prod_{i=1}^{n} (f(y)-t_i)^{m_{i}}}
+\]</span> which is regular on <span class="math inline">\(D(f)=f^{-1}(k-\{t_1,\dots,t_n\})\)</span> by definition.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Proof of claim">
+<p>At last we obtain that <span class="math inline">\(\mathbb{A}^{1}\)</span> is affine: <span class="math display">\[
+*:Morphism(Y,\mathbb{A}^{1}) \cong \mathcal{O}(Y) \cong k \text{-} Alg \text{-} Hom (\mathcal{O}(\mathbb{A}^1),\mathcal{O}(Y))
+\]</span> The last equality holds for that <span class="math inline">\(\mathcal{O}(\mathbb{A}^1)=k[T]\)</span> and the <span class="math inline">\(k\)</span>-algebra maps are totally determined by the regular functions on <span class="math inline">\(Y\)</span> as the images of <span class="math inline">\(T\)</span>.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important no-icon callout-titled" title="Example">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Proof of claim
+<span class="screen-reader-only">Important</span>Example
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Consider the functor <span class="math display">\[
-X \to \mathcal{O}(X),f \to f^{*}
-\]</span> Then we see these two categories are equivalent by the lemma.</p>
-</div>
-</div>
-<p>In the first section we know that an open subset of a space with function is naturally a space with functions and the inclusion map is a morphism. In general let <span class="math inline">\(X\)</span> be a subset of a space with functions <span class="math inline">\(Y\)</span>. Then <span class="math inline">\(X\)</span> has an induced structure of a <em>space with functions</em>.</p>
-<div class="callout callout-style-default callout-note no-icon callout-titled" title="Defintion">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Defintion
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Explicitly give <span class="math inline">\(X\)</span> the subspace topology. A regular function <span class="math inline">\(f\)</span> on an open set <span class="math inline">\(U\)</span> of <span class="math inline">\(X\)</span> is a function of the following form:</p>
-<p>There is an open cover <span class="math inline">\(U=\bigcup{X\cap V_{\alpha}}\)</span> where the <span class="math inline">\(V_{\alpha}\)</span> are open subsets of <span class="math inline">\(Y\)</span> such that <span class="math inline">\(f(y)=g_{\alpha}(y)\)</span> on <span class="math inline">\(X\cap V_{\alpha}\)</span> where <span class="math inline">\(g_{\alpha}\)</span> is regular on <span class="math inline">\(V_{\alpha}\)</span>.</p>
+<p>As a set <span class="math inline">\(\mathbb{P}^{1}=k \cup \{\infty\}\)</span> where <span class="math inline">\(\infty\)</span> is a set disjoint from <span class="math inline">\(\mathbb{P}^{1}\)</span>.</p>
+<p>Topolgy:The closed subsets are finite sets, i.e.&nbsp;the open sets are like <span class="math inline">\(\mathbb{P}^{1}-\{x_1,\dots,x_n\}\)</span>.</p>
+<p>Regular functions: The regular functions <span class="math inline">\(g\in \mathcal{O}(\mathbb{P}^1-\{x_1,\dots,x_n\})\)</span> admit a form of rational functions without poles except at <span class="math inline">\(x_1,\dots,x_n\)</span> where <span class="math inline">\(g\)</span> has no poles at <span class="math inline">\(\infty\)</span> is equvalent to saying <span class="math inline">\(g(\frac{1}{y})\)</span> has no pole at <span class="math inline">\(y=0\)</span>.</p>
+<p>It is a space with functions.</p>
+<p>To see that it is indeed a variety, it has an open covering <span class="math inline">\((\mathbb{P}^{1}-\{\infty\})\cup (\mathbb{P}^{1}-\{0\})\)</span> isomorphic to two affine lines: <span class="math display">\[
+\begin{aligned}
+\mathbb{P}^{1}-\{\infty\} &amp; \xrightarrow[Id]{\simeq} \mathbb{A}^1 \\
+\mathbb{P}^{1}-\{0\} &amp; \xrightarrow[\frac{1}{x}]{\simeq} \mathbb{A}^1 \quad \text{where} \frac{1}{\infty}=0
+\end{aligned}
+\]</span></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
@@ -437,7 +426,7 @@ X \to \mathcal{O}(X),f \to f^{*}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Check that <span class="math inline">\(X\)</span> is a space with functions and the induction <span class="math inline">\(X\hookrightarrow Y\)</span> is a morphism.</p>
+<p>Verify that <span class="math inline">\(\mathcal{O}(\mathbb{P}^{1})=k\)</span></p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
@@ -450,52 +439,21 @@ X \to \mathcal{O}(X),f \to f^{*}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Suppose that <span class="math inline">\(V \subseteq Y\)</span> is open and <span class="math inline">\(g \in \mathcal{O}_{Y}(V)\)</span>. We expect that <span class="math inline">\(i^*(g)\equiv g \circ i\)</span> is regualr on <span class="math inline">\(i^{-1}(V)=V \cap X\)</span>. Consider the values <span class="math inline">\(i^*(g)\)</span> takes on this set:</p>
-<p>for any <span class="math inline">\(x \in V \cap X\)</span>, we have : <span class="math display">\[
-(i^*(g))(x)=(g \circ i)(x)=g(x)
-\]</span></p>
-<p>thus <span class="math inline">\(i^*(g)\)</span> is the restriction of <span class="math inline">\(g\)</span> on the subset <span class="math inline">\(X \cap V\)</span> i.e.&nbsp;<span class="math inline">\(f \restriction_{X \cap V}\)</span>.</p>
-<p>Take the open cover <span class="math inline">\(U=X \cap V\)</span> (where <span class="math inline">\(\alpha=1,V_{\alpha}=V\)</span>) and <span class="math inline">\(i^*(g)\)</span> coincides with a regualr function <span class="math inline">\(g\)</span> on the intersection <span class="math inline">\(X\cap V\)</span>.</p>
+<p>Suppose that <span class="math inline">\(f \in \mathcal{O}(\mathbb{P}^{1})\)</span>, then <span class="math inline">\(f \restriction_{(\mathbb{P}^{1}-\{\infty\})\cap(\mathbb{P}^{1}-\{0\})=k^{\times}}\)</span> admits a representation</p>
+<p><span class="math inline">\(f \restriction_{(\mathbb{P}^{1}-\{\infty\})}\)</span> admits a representation <span class="math inline">\(\frac{p_{1}(x)}{q_{1}(x)}\)</span> where <span class="math inline">\(deg(p_{1}(x)) \leq deg(q_{1}(x)) \quad \text{or} \quad =\text{constant}\)</span> and $ f _{(^{1}-{})}$ admits a representation <span class="math inline">\(p_{2}(x)\)</span>. Therefore, <span class="math inline">\(\frac{p_{1}(x)}{q_{1}(x)}=p_{2}(x)\)</span> or <span class="math inline">\(p_{2}(x)=\text{constant}\)</span> on <span class="math inline">\((\mathbb{P}^{1}-\{\infty\})\cap(\mathbb{P}^{1}-\{0\})=k^{\times}\)</span> which only happens when <span class="math inline">\(f \restriction_{(\mathbb{P}^{1}-\{\infty\})}\)</span> and <span class="math inline">\(f \restriction_{(\mathbb{P}^{1}-\{0\})}\)</span> are constant. Hence <span class="math inline">\(f \in \mathcal{O}(\mathbb{P}^{1})\)</span> if and only if <span class="math inline">\(f=\text{constant}\in k\)</span>.</p>
 </div>
 </div>
-<p>With this notation we have</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Theorem">
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Theorem
+<span class="screen-reader-only">Note</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<div class="callout callout-style-default callout-tip no-icon callout-titled" title="Definition of locally closed subsapce">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Definition of locally closed subsapce
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>A subset <span class="math inline">\(L\)</span> of a topological space <span class="math inline">\(X\)</span> is said to be locally closed at a point <span class="math inline">\(x\in L\)</span> if there exists a neighborhood <span class="math inline">\(V\)</span> of <span class="math inline">\(x\)</span> in <span class="math inline">\(X\)</span> such that <span class="math inline">\(L\cap V\)</span> is a closed subset of the subspace <span class="math inline">\(V\)</span>. One says that <span class="math inline">\(L\)</span> is locally closed in <span class="math inline">\(X\)</span> if it is locally closed at each of its points.</p>
-<p><strong>Remark</strong>:</p>
-<p>Let <span class="math inline">\(F\)</span> be a closed subset of <span class="math inline">\(X\)</span> such that for every point <span class="math inline">\(x\)</span> of <span class="math inline">\(X\)</span>, there is a neighborhood <span class="math inline">\(V\)</span> of <span class="math inline">\(x\)</span> in <span class="math inline">\(X\)</span> such that <span class="math inline">\(V\cap F\)</span> is closed in the subspace <span class="math inline">\(V\)</span>; it then follows from Prop. 3 of I, p.&nbsp;18 that <span class="math inline">\(F\)</span> is closed in <span class="math inline">\(X\)</span>. On the other hand, it follows immediately that in general there exist locally closed sets that are not closed in <span class="math inline">\(X\)</span>.</p>
-<div id="prp-my-proposition" class="theorem proposition">
-<p><span class="theorem-title"><strong>Proposition 1</strong></span> Let <span class="math inline">\(L\)</span> be a subset of a topological space <span class="math inline">\(X\)</span>. The following conditions are equivalent:</p>
-<ol type="a">
-<li><p><span class="math inline">\(L\)</span> is locally closed;</p></li>
-<li><p><span class="math inline">\(L\)</span> is an open subset of the subspace <span class="math inline">\(\overline{L}\)</span>, the closure of <span class="math inline">\(L\)</span> in <span class="math inline">\(X\)</span>;</p></li>
-<li><p><span class="math inline">\(L\)</span> is the intersection of an open set and a closed set of <span class="math inline">\(X\)</span>.</p></li>
-</ol>
-</div>
-</div>
-</div>
-</div>
-<p>A locally closed subspace of a variety is a variety called a subvariety. A closed subspace of an affine variety is affine and in this case a regular function on the subspace lifts to a regular function on the ambient variety.</p>
+<p>Show that <span class="math inline">\(\mathbb{P}^{1}\)</span> is not affine.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
@@ -508,34 +466,20 @@ X \to \mathcal{O}(X),f \to f^{*}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<ol type="1">
-<li><span style="color: #6dad29;">A closed subspace of an affine variety is affine.</span></li>
-</ol>
-<p>Let <span class="math inline">\(Y=\Spec A\)</span> where <span class="math inline">\(A\)</span> is a finitely generated <span class="math inline">\(k\)</span>-algera with no nilpotents. A closed subset <span class="math inline">\(X\)</span> of <span class="math inline">\(\Spec A\)</span> is of the form <span class="math inline">\(\operatorname{zeroes}(P)=\operatorname{zeroes}(P\cdot A)=\operatorname{zeroes}(\sqrt{P \cdot A}), P \subseteq A\)</span>. Then clearly set-theoretically <span class="math inline">\(X=\Spec (A/\sqrt{P \cdot A})\)</span>. One simply checks directly from the definitions that:</p>
-<p><strong><span class="math inline">\(\Spec (A/I)\)</span> where <span class="math inline">\(I\)</span> is a radical ideal of <span class="math inline">\(A\)</span> has the induced structure as a space with functions.</strong></p>
-<p>Therefore <span class="math inline">\(X\)</span> is affine if it is closed in an affine and clearly any regular functions on the closed subset is of the form <span class="math inline">\(f+I\)</span> which lifts to a regular functon <span class="math inline">\(f\)</span> (maybe not unique) on the ambient variety.</p>
-<ol start="2" type="1">
-<li><span style="color: #6dad29;">If <span class="math inline">\(X \subseteq Y\)</span> is open and <span class="math inline">\(Y\)</span> is an affine variety then <span class="math inline">\(X\)</span> has a finite covering by open affines.</span></li>
-</ol>
-<p>As <span class="math inline">\(X\)</span> is open, <span class="math inline">\(X=\bigcup{D(a_{i})}\)</span> where the <span class="math inline">\(a_i\)</span> are in <span class="math inline">\(A\)</span>. Then the <span class="math inline">\(D(a_{i})\)</span> are the affines <span class="math inline">\(\Spec (A_{(a_{i})})\)</span>. To see that there are only finitely many necessary <span class="math inline">\(D(a_{i})\)</span> we use</p>
-<div id="quasi-compact" class="Lemma">
-<details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 1</strong></summary><div>
-<p><a href="../../../Reading/Algebraic-Varieties/CH02/2.2.html#lemma2.2">Any open subset of a variety is quasi-compact.</a></p>
-</div></details>
+<p>Suppose not, <span class="math inline">\(\mathbb{P}^{1}\)</span> is an affine variety. By definition, for the field <span class="math inline">\({k}\)</span> we have <span class="math inline">\(Mor(\mathbb{A}^{1},\mathbb{P}^{1}) \cong Hom_{k}(\mathcal{O}(\mathbb{P}^{1}),\mathcal{O}(\mathbb{A}^{1})) \cong Hom_{k}(k,k[T])\)</span>. But the latter corresponds to the ideals (<span class="math inline">\(0,k\)</span>) of <span class="math inline">\(k\)</span> which contradicts the fact that the first has at least two nontrivial morphisms (<span class="math inline">\(0,\mathbb{A}^{1} \to \mathbb{P}^{1}-\{0\},\mathbb{A}^{1} \to \mathbb{P}^{1}-\{\infty\}\)</span>).</p>
 </div>
 </div>
-</div>
-<div id="nte-lemma-if-a-map-is-mor" class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
+<div class="callout callout-style-default callout-note no-icon callout-titled" title="Exercise">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Note&nbsp;1: Exercise
+<span class="screen-reader-only">Note</span>Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Let <span class="math inline">\(X\)</span> be a subspace of a space with functions <span class="math inline">\(Y\)</span>. For any space with functions <span class="math inline">\(Z\)</span> a mapping <span class="math inline">\(Z \to X\)</span> is a morphism if the composition <span class="math inline">\(Z \to X \to Y\)</span> is a morphism.</p>
+<p>Let <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> be two affine varieties. Show that <span class="math inline">\(X \cong Y\)</span> as spaces with functions if and only if <span class="math inline">\(\mathcal{O}(X) \cong \mathcal{O}(Y)\)</span> as <span class="math inline">\(k\)</span>-algebras.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
@@ -548,27 +492,8 @@ Note&nbsp;1: Exercise
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Suppose that <span class="math inline">\(f : Z \rightarrow X\)</span>, <span class="math inline">\(i: X \hookrightarrow Y\)</span> and the composition <span class="math inline">\(h=i \circ f:Z \rightarrow Y\)</span>. We expect to show that:</p>
-<p>If <span class="math inline">\(h\)</span> is a morphism, then <span class="math inline">\(f:Z \rightarrow X\)</span> is a morphism.</p>
-<ol type="1">
-<li><span class="math inline">\(f\)</span> is continuous.</li>
-</ol>
-<p>Let <span class="math inline">\(U \subseteq X\)</span> be open. Then there exists an open subset of <span class="math inline">\(V\)</span> such that <span class="math inline">\(U=X \cap V=i^{-1}(V)\)</span>. Then <span class="math display">\[
-f^{-1}(U)=f^{-1}(i^{-1}(V))=(i \circ f)^{-1}(V)=h^{-1}(V)
-\]</span> which is an open subset of <span class="math inline">\(Z\)</span> as <span class="math inline">\(h\)</span> is continuous.</p>
-<ol start="2" type="1">
-<li><span class="math inline">\(f\)</span> pulls-back regular functions to regular functions.</li>
-</ol>
-<p>Let <span class="math inline">\(U \subseteq X\)</span> be open and <span class="math inline">\(g \in \mathcal{O}_{X}(U)\)</span>. We want to show that <span class="math inline">\(f^{*}(g)=g \circ f\)</span> is regualr on <span class="math inline">\(f^{-1}(U)\)</span>.</p>
-<p>As <span class="math inline">\(g\)</span> is regular on the open subset <span class="math inline">\(U\)</span> of <span class="math inline">\(X\)</span>, by definition, there exists a family of open subsets <span class="math inline">\(V_{\alpha}\)</span> of <span class="math inline">\(Y\)</span> such that <span class="math inline">\(U= \bigcup_{\alpha}(X \cap V_{\alpha})\)</span> and <span class="math inline">\(g=g_{\alpha}\)</span> on each <span class="math inline">\(X \cap V_{\alpha}\)</span> where <span class="math inline">\(g_{\alpha}\in \mathcal{O}_{Y}(V_{\alpha})\)</span>. Next we use <span class="math inline">\(f^{-1}\)</span> to pull-back the open cover <span class="math inline">\(U\)</span> to <span class="math inline">\(f^{-1}(U) \subseteq Z\)</span>, i.e.&nbsp;<span class="math inline">\(W_{\alpha}=f^{-1}(X \cap V_{\alpha})\)</span> is an open cover of <span class="math inline">\(f^{-1}(U)\)</span>.</p>
-<p>On each open set <span class="math inline">\(W_{\alpha}\)</span> we consider <span class="math inline">\(g \circ f\)</span>:</p>
-<p>When <span class="math inline">\(z \in W_{\alpha}\)</span>, we have <span class="math inline">\(f(z) \in X \cap V_{\alpha}\)</span>, thus: <span class="math display">\[
-(g \circ f)(z)=g(f(z))=g_{\alpha}(f(z))=g_{\alpha}(i(f(z)))=g_{\alpha}(h(z))
-\]</span></p>
-<p>then on each <span class="math inline">\(W_{\alpha}\)</span> we have <span class="math display">\[
-(g \circ f)\restriction_{W_{\alpha}}=g_{\alpha} \circ h=h^{*}(g_{\alpha})
-\]</span></p>
-<p>As <span class="math inline">\(h\)</span> is a morphism we have <span class="math inline">\(h^{*}(g)\)</span> is regular on <span class="math inline">\(h^{-1}(V_{\alpha})=W_{\alpha}\)</span>. Gluing up all the local functions we know that <span class="math inline">\(h^{*}(g)=g \circ f\)</span> is regular on <span class="math inline">\(f^{-1}(U)\)</span>.</p>
+<p>Suppose that <span class="math inline">\(X \cong Y\)</span>, then for some morphism <span class="math inline">\(g:X \to Y\)</span>, we have <span class="math inline">\(f: Y \to X\)</span> such that <span class="math inline">\(f\circ g=id_{X}\)</span> and <span class="math inline">\(g \circ f=id_{Y}\)</span>. Then <span class="math inline">\(g^{*} \circ f^{*}=id_{\mathcal{O}(X)}\)</span> and <span class="math inline">\(f^{*} \circ g^{*}=id_{\mathcal{O}(Y)}\)</span> where <span class="math inline">\(g^{*}:\mathcal{O}(Y) \to \mathcal{O}(X)\)</span> and <span class="math inline">\(f^{*}:\mathcal{O}(X) \to \mathcal{O}(Y)\)</span>.</p>
+<p>Conversely we suppose that <span class="math inline">\(X,Y\)</span> are affine varieties and as <span class="math inline">\(k\)</span>-algebras <span class="math inline">\(\mathcal{O}(X) \cong \mathcal{O}(Y)\)</span>. Then for some map <span class="math inline">\(G:\mathcal{O}(Y) \to \mathcal{O}(X)\)</span> we have <span class="math inline">\(F:\mathcal{O}(X) \to \mathcal{O}(Y)\)</span> such that <span class="math inline">\(F \circ G =id_{\mathcal{O}(Y)}, G \circ F =id_{\mathcal{O}(X)}\)</span>. Since <span class="math inline">\(X,Y\)</span> are affine varieties (<span class="math inline">\(*\)</span> is bijective), there exist unique morphisms <span class="math inline">\(g:X \to Y\)</span> and <span class="math inline">\(f: Y \to X\)</span> such that <span class="math inline">\(g^{*}=G,f^{*}=F\)</span> and thus <span class="math inline">\(g\circ f=id_{Y},f\circ g=id_{X}\)</span>.</p>
 </div>
 </div>
 
@@ -641,7 +566,7 @@ f^{-1}(U)=f^{-1}(i^{-1}(V))=(i \circ f)^{-1}(V)=h^{-1}(V)
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Eugene Lee">
+<meta name="dcterms.date" content="2026-08-21">
 
-<title>What I cannot create, I don’t understand. – Wonderings of Lee</title>
+<title>The Hilbert basis theorem – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +25,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -68,40 +70,56 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script>
+  window.MathJax = {
+    tex: {
+      packages: {'[+]': ['tikzcd']}
+    },
+    loader: {load: ['[tex]/tikzcd']}
+  };
+</script>
+<style>
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+<script>
+MathJax = {
+  tex: { macros: { Spec: "\\operatorname{Spec}" } }
+};
+</script>
 <style>
 .Claim {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Exercise {
-  --color1: #E8D5A3;
-}
-.Example {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Remark {
-  --color1: #E8D5A3;
-}
-.Lemma {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Theorem {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Corollary {
   --color1: #3498db;
   --color2: #2c3e50;
 }
 .Proposition {
   --color1: #3498db;
   --color2: #2c3e50;
+}
+.Corollary {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Example {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Theorem {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Lemma {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Exercise {
+  --color1: #E8D5A3;
 }
 .Question {
   --color1: #E8D5A3;
@@ -110,9 +128,46 @@ ul.task-list li input[type="checkbox"] {
   --color1: #2a7d4f;
   --color2: #1d5a3a;
 }
+.Remark {
+  --color1: #E8D5A3;
+}
+.Definition {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles-html.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -122,7 +177,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Wonderings of Lee</span>
     </a>
   </div>
@@ -133,19 +188,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Recipe/index.html"> 
+    <a class="nav-link" href="../../../Recipe/index.html"> 
 <span class="menu-text">Recipe</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Digestion/index.html"> 
+    <a class="nav-link" href="../../../Digestion/index.html"> 
 <span class="menu-text">Digestion</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./Gym/index.html"> 
+    <a class="nav-link" href="../../../Gym/index.html"> 
 <span class="menu-text">Gym</span></a>
   </li>  
 </ul>
@@ -156,7 +211,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -176,9 +231,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#recipe" id="toc-recipe" class="nav-link active" data-scroll-target="#recipe">Recipe</a></li>
-  <li><a href="#digestion" id="toc-digestion" class="nav-link" data-scroll-target="#digestion">Digestion</a></li>
-  <li><a href="#gym" id="toc-gym" class="nav-link" data-scroll-target="#gym">Gym</a></li>
+  <li><a href="#noetherian-ring" id="toc-noetherian-ring" class="nav-link active" data-scroll-target="#noetherian-ring">Noetherian Ring</a></li>
+  <li><a href="#hilbert-basis-theorem" id="toc-hilbert-basis-theorem" class="nav-link" data-scroll-target="#hilbert-basis-theorem">Hilbert Basis Theorem</a></li>
+  <li><a href="#noetherian-topology" id="toc-noetherian-topology" class="nav-link" data-scroll-target="#noetherian-topology">Noetherian Topology</a></li>
   </ul>
 </nav>
     </div>
@@ -187,14 +242,31 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">What I cannot create, I don’t understand.</h1>
-</div>
+<h1 class="title">The Hilbert basis theorem</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Algebraic Geometry</div>
+    <div class="quarto-category">Preliminary</div>
+    <div class="quarto-category">Algebraic Varieties by G.Kempf</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eugene Lee </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 21, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -204,33 +276,104 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to my mathematical notes.</p>
-<p>This website contains three kinds of notes:</p>
+<section id="noetherian-ring" class="level2">
+<h2 data-anchor-id="noetherian-ring">Noetherian Ring</h2>
+<p>A ring <span class="math inline">\(A\)</span> is <em>noetherian</em> if any ideal of <span class="math inline">\(A\)</span> is finitely generated.</p>
+<div id="cnb-1-Proposition" class="Proposition">
+<details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 1</strong></summary><div>
+<p>A ring <span class="math inline">\(A\)</span> is noetherian if and only if the following property holds:</p>
+<p>Any submodule of a finitely generated <span class="math inline">\(A\)</span>-module <span class="math inline">\(M\)</span> is finitely generated.</p>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Only need to show that the direction <span class="math inline">\(\Rightarrow\)</span>; we use the induction on the number <span class="math inline">\(n\)</span> of generators of <span class="math inline">\(M\)</span>.</p>
+<ol type="1">
+<li><p><span class="math inline">\(n=1\)</span>; then submodule of <span class="math inline">\(M=A\,x\)</span> admits the form <span class="math inline">\(I\,x\)</span> where <span class="math inline">\(I\)</span> is an ideal of <span class="math inline">\(A\)</span>; as <span class="math inline">\(I\)</span> is f.g., so is <span class="math inline">\(I\,x\)</span>.</p></li>
+<li><p>suppose the proposition holds for <span class="math inline">\(n=k\)</span></p></li>
+<li><p><span class="math inline">\(n=k+1\)</span>; suppose that <span class="math inline">\(M=\sum_{i=1}^{k+1} A\, e_i\)</span>, <span class="math inline">\(N=\sum_{i=1}^{k} A\, e_i\)</span> and <span class="math inline">\(K \subset M\)</span> is a submodule;</p></li>
+</ol>
 <ul>
-<li><strong>Recipe</strong> — notes organized around books I read.</li>
-<li><strong>Digestion</strong> — ideas, motivations, and connections reconstructed from my reading.</li>
-<li><strong>Gym</strong> - toolbox of many techniques and exercises for exams</li>
+<li><p><span class="math inline">\(N\cap K\)</span> is clearly a submodule of <span class="math inline">\(N\)</span>; by the induction hypothesis, <span class="math inline">\(N \cap K\)</span> is f.g. <span class="math inline">\(A\)</span>-module, say <span class="math inline">\(A\,t_1+\dots+A\,t_s\)</span></p></li>
+<li><p>hence we wish to find out the generators left;let us divide out the submodule <span class="math inline">\(N\cap K\)</span> in <span class="math inline">\(K\)</span> and observe that:</p>
+<p><span class="math display">\[
+\frac{K}{N\cap K} \cong \frac{N+K}{N} \subseteq \frac{M}{N} \cong A\,e_{k+1}\,(\operatorname{mod} N)
+\]</span></p>
+<p>by 1 and the isomorphism, we know the submodule <span class="math inline">\(\frac{K}{N\cap K}\)</span> is finitely generated, say <span class="math inline">\(A\,v_1+\dots+A\,v_t\)</span>.</p></li>
+<li><p>let us use the <span id="lifting-technique"><strong>lifting</strong></span> technique; choose representations <span class="math inline">\(k_i \in K\)</span> such that <span class="math inline">\(v_i=k_i\, \operatorname{mod}{N\cap K}\)</span></p></li>
+<li><p>It’s straightforward to check that <span class="math inline">\(t_1,\dots,t_s,k_1,\dots,k_t\)</span> generate <span class="math inline">\(K\)</span>; thus <span class="math inline">\(K\)</span> is a finitely generated <span class="math inline">\(A\)</span>-module.</p></li>
 </ul>
-<section id="recipe" class="level2">
-<h2 data-anchor-id="recipe">Recipe</h2>
-<ul>
-<li><p>I keep notes on books in different subjects.</p></li>
-<li><p>Each book in this column offers a clear, sustained narrative that leads you through the topic from start to finish.</p></li>
-</ul>
-<p><a href="./Recipe/index.html">Recipe →</a></p>
+</div>
+<p>Notice the follwing counterexample (non-Noetherian ring):</p>
+<div class="callout callout-style-default callout-warning no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Warning
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Let <span class="math inline">\(R=\mathbb{Z}[X_1,\dots,X_n,\dots]\)</span> and <span class="math inline">\(M=R\)</span>; then clearly <span class="math inline">\(M\)</span> is a finitely generated <span class="math inline">\(R\)</span>-module. However, the submodule <span class="math inline">\(N=(X_1,\dots,X_n,\dots)\)</span> is not finitely generated as a <span class="math inline">\(R\)</span>-module.</p>
+</div>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>The elements in <span class="math inline">\(N\)</span> are polynomials without constant terms in finitely many variables. Assume that there exists a system of finite generators <span class="math inline">\(f_1,\dots,f_k\)</span> and the biggest index of variables in these generators is <span class="math inline">\(m\)</span>; then <span class="math inline">\(X_{m+1}\)</span> admits a form: <span class="math display">\[
+X_{m+1}=\sum_{i=1}^{k} g_if_i, \qquad g_i\in \mathbb{Z}[X_1,\dots,X_n,\dots],\,f_i\in\mathbb{Z}[X_1,\dots,X_m]
+\]</span> Let <span class="math display">\[
+X_i
+\begin{cases}
+&amp;\to0;i \neq m+1 \\
+&amp;\to1;i=m+1
+\end{cases}
+\]</span> thus we get the contradiction: <span class="math display">\[
+1=\sum g_i(0,\dots,1,\dots)f_i(0,\dots,0)=0
+\]</span></p>
+</div>
 </section>
-<section id="digestion" class="level2">
-<h2 data-anchor-id="digestion">Digestion</h2>
-<p>This section collects ideas that emerged from connecting different books and viewpoints.</p>
-<p><a href="./Digestion/index.html">Digestion and Reconstruction →</a></p>
+<section id="hilbert-basis-theorem" class="level2">
+<h2 data-anchor-id="hilbert-basis-theorem">Hilbert Basis Theorem</h2>
+<div id="cnb-2-Theorem" class="Theorem">
+<details class="Theorem fobx-simplebox fobx-default" open=""><summary><strong>Theorem 2</strong></summary><div>
+<p>A finitely generated <span class="math inline">\(k\)</span>-algebra <span class="math inline">\(A\)</span> is noetherian.</p>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(\psi:k[X_1,\dots,X_n]\rightarrow A\)</span> be a surjection. Let <span class="math inline">\(I\)</span> be an ideal of <span class="math inline">\(A\)</span>. To show that <span class="math inline">\(I\)</span> is finitely generated it sufffices to show the same for the ideal <span class="math inline">\(I^\prime=\psi^{-1}(I)\unlhd k[X_1,\dots,X_n]\)</span>. If <span class="math inline">\(I^\prime=0\)</span> there is no problem; otherwise there exists a non-zero polynomial <span class="math inline">\(f\)</span> in <span class="math inline">\(I^\prime\)</span>. By Noether’s normalisation lemma, we may assume that <span class="math inline">\(f\)</span> is monic in <span class="math inline">\(X_n\)</span>.</p>
+<p>By induction we may assume that <span class="math inline">\(k[X_1,\dots,X_{n-1}]=B\)</span> is noetherian. Consider <span class="math inline">\(I^\prime/(f) \subseteq k[X_1,\dots,X_n]/(f)\)</span>. This is a <span class="math inline">\(B\)</span>-submodule of a <span class="math inline">\(B\)</span>-module which is finitely generated. Then <a href="../../../Recipe/Algebraic-Varieties/CH02/2.2.html#lifting-technique">lift</a> these generators to <span class="math inline">\(I\prime\)</span> and we know that <span class="math inline">\(I^\prime\)</span> is a finitely generated <span class="math inline">\(B\)</span>-module; thus noetherian.</p>
+</div>
+<p>Next we show <a href="../../../Recipe/Algebraic-Varieties/CH01/1.5.html#quasi-compact">the lemma</a> used before; by the previous reasoning we only need to show the following lemma:</p>
+<div id="cnb-3-Lemma" class="Lemma">
+<details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 3</strong></summary><div>
+<p><span id="lemma2.2">An open subset <span class="math inline">\(U\)</span> of an affine variety <span class="math inline">\(\operatorname{Spec} \, A\)</span> is quasi-compact.</span></p>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(U=\bigcup D(f_i)\)</span> for <span class="math inline">\(f_i\)</span> in <span class="math inline">\(A\)</span>. Then the complement of <span class="math inline">\(U\)</span> is <span class="math display">\[
+\operatorname{zeores}((f_i))=\operatorname{zeroes}((f_{i_1}),\dots,f_{i_r})
+\]</span> for some finite number <span class="math inline">\(r\)</span> by Hilbert basis theorem and definition of noetherian ring;</p>
+<p>Thus <span class="math inline">\(U=D(f_{i_1})\cup\ldots\cup D(f_{i_r})\)</span> is a finite subcovering.</p>
+</div>
+<hr>
 </section>
-<section id="gym" class="level2">
-<h2 data-anchor-id="gym">Gym</h2>
-<ul>
-<li><p>Some useful techniques and commonly encountered structures.</p></li>
-<li><p>elegant problems in exams</p></li>
-</ul>
-<p><a href="./Gym/index.html">techniques and structures →</a></p>
+<section id="noetherian-topology" class="level2">
+<h2 data-anchor-id="noetherian-topology">Noetherian Topology</h2>
+<p>A topological space such that every open subset is quasi-compact is called <strong>noetherian</strong>. As a variety is the finite union of open affines, we have proved that :</p>
+<div id="cnb-4-Theorem" class="Theorem">
+<details class="Theorem fobx-simplebox fobx-default" open=""><summary><strong>Theorem 4</strong></summary><div>
+<p>Any variety has a noetherian topology.</p>
+</div></details>
+</div>
+<p>There is a <strong>chain condition</strong> that charaterizes noetherian space.</p>
+<div id="cnb-5-Lemma" class="Lemma">
+<details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 5</strong></summary><div>
+<p>Let <span class="math inline">\(X\)</span> be a topological space. Then <span class="math inline">\(X\)</span> is noetherian if and only if any descending chain <span class="math inline">\(X_1\supseteq X_2 \supseteq \dots\)</span> of closed subsets becomes stationary eventually: <span class="math inline">\(X_r=X_{r+1}=\dots\)</span> for some <span class="math inline">\(r\)</span>.</p>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Assume that <span class="math inline">\(X\)</span> is noetherian and we have an arbitrary descending chain <span class="math inline">\(X_i\)</span> of closed subsets. The open set <span class="math inline">\(U=X-\cap X_i\)</span> is quasi-compact. Now <span class="math inline">\(U\)</span> has the chain <span class="math inline">\(X_1\cap U \supseteq X_2\cap U \supseteq \dots\)</span> of closed subsets which has empty intersection. Thus <span class="math inline">\(X_r\cap U=\emptyset\)</span> for some <span class="math inline">\(r\)</span> as <span class="math inline">\(U\)</span> is quasi-compact; this means <span class="math inline">\(X_r \subseteq \cap X_i\)</span> and thus <span class="math inline">\(X_r=X_{r+1}=\dots\)</span>.</p>
+<p>Conversely suppose that <span class="math inline">\(U\)</span> is not quasi-compact, then there exists <span class="math inline">\(U_1\supseteq U_2 \supseteq\dots\)</span> which is a infinite descending chain of closed subsets of <span class="math inline">\(U\)</span> such that <span class="math inline">\(\cap U_i=\emptyset\)</span>; Consider <span class="math inline">\(X_i=\text{ closure of } U_i \subseteq X\)</span>; If any descending chain of closed subsets is stationary, then <span class="math inline">\(X_r=X_{r+1}=\dots\)</span> for some <span class="math inline">\(r\)</span>. As <span class="math inline">\(U_i=U \cap X_i\)</span>, we have <span class="math inline">\(\cap U_i=U_r=\emptyset\)</span>; Contradiction.</p>
+</div>
 
 
 </section>

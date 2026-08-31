@@ -94,6 +94,17 @@ MathJax = {
 };
 </script>
 <style>
+.Geometric Interpretation {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Theorem {
+  --color1: #3498db;
+  --color2: #2c3e50;
+}
+.Question {
+  --color1: #E8D5A3;
+}
 .Corollary {
   --color1: #3498db;
   --color2: #2c3e50;
@@ -101,37 +112,26 @@ MathJax = {
 .Exercise {
   --color1: #E8D5A3;
 }
-.Geometric Interpretation {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Proposition {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Theorem {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Claim {
-  --color1: #3498db;
-  --color2: #2c3e50;
+.Remark {
+  --color1: #E8D5A3;
 }
 .Lemma {
   --color1: #3498db;
   --color2: #2c3e50;
 }
-.Question {
-  --color1: #E8D5A3;
+.Claim {
+  --color1: #3498db;
+  --color2: #2c3e50;
 }
-.Remark {
-  --color1: #E8D5A3;
+.Proposition {
+  --color1: #3498db;
+  --color2: #2c3e50;
 }
 .Example {
+  --color1: #2a7d4f;
+  --color2: #1d5a3a;
+}
+.Definition {
   --color1: #2a7d4f;
   --color2: #1d5a3a;
 }
@@ -192,12 +192,16 @@ window.Quarto = {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Reading/index.html"> 
-<span class="menu-text">Reading Notes</span></a>
+    <a class="nav-link" href="../../../Recipe/index.html"> 
+<span class="menu-text">Recipe</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../../Reconstrcution/index.html"> 
+    <a class="nav-link" href="../../../Digestion/index.html"> 
 <span class="menu-text">Digestion</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../Gym/index.html"> 
+<span class="menu-text">Gym</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -520,7 +524,7 @@ X \to \mathcal{O}(X),f \to f^{*}
 <p>As <span class="math inline">\(X\)</span> is open, <span class="math inline">\(X=\bigcup{D(a_{i})}\)</span> where the <span class="math inline">\(a_i\)</span> are in <span class="math inline">\(A\)</span>. Then the <span class="math inline">\(D(a_{i})\)</span> are the affines <span class="math inline">\(\Spec (A_{(a_{i})})\)</span>. To see that there are only finitely many necessary <span class="math inline">\(D(a_{i})\)</span> we use</p>
 <div id="quasi-compact" class="Lemma">
 <details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 1</strong></summary><div>
-<p><a href="../../../Reading/Algebraic-Varieties/CH02/2.2.html#lemma2.2">Any open subset of a variety is quasi-compact.</a></p>
+<p><a href="../../../Recipe/Algebraic-Varieties/CH02/2.2.html#lemma2.2">Any open subset of a variety is quasi-compact.</a></p>
 </div></details>
 </div>
 </div>
@@ -641,7 +645,7 @@ f^{-1}(U)=f^{-1}(i^{-1}(V))=(i \circ f)^{-1}(V)=h^{-1}(V)
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
