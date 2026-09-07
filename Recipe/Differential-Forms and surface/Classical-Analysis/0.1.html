@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Eugene Lee">
+<meta name="dcterms.date" content="2026-08-23">
 
-<title>Digestion and Reconstruction – Wonderings of Lee</title>
+<title>Differential of Functions – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -91,26 +93,46 @@ body {
   font-size: 90% !important;
   }
 </style>
+<script>
+  window.MathJax = {
+    tex: {
+      packages: {'[+]': ['tikzcd']}
+    },
+    loader: {load: ['[tex]/tikzcd']}
+  };
+</script>
 <style>
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+<script>
+MathJax = {
+  tex: { macros: { Spec: "\\operatorname{Spec}" } }
+};
+</script>
+<style>
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
 .Lemma {
   --color1: #6B7F8F;
   --color2: #2c3e50;
+}
+.Question {
+  --color1: #E8D5A3;
 }
 .Theorem {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Details {
-  --color1: #E8D5A3;
-}
-.Proposition {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Remark {
-  --color1: #E8D5A3;
-}
-.Claim {
+.Corollary {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
@@ -118,31 +140,64 @@ body {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Exercise {
+.Details {
   --color1: #E8D5A3;
-}
-.Geometric Interpretation {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Reminder {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Corollary {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
 }
 .Definition {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Question {
+.Exercise {
   --color1: #E8D5A3;
+}
+.Remark {
+  --color1: #E8D5A3;
+}
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles-html.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -152,7 +207,7 @@ body {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Wonderings of Lee</span>
     </a>
   </div>
@@ -163,19 +218,19 @@ body {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Recipe/index.html"> 
+    <a class="nav-link" href="../../../Recipe/index.html"> 
 <span class="menu-text">Recipe</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Digestion/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../Digestion/index.html"> 
 <span class="menu-text">Digestion</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Gym/index.html"> 
+    <a class="nav-link" href="../../../Gym/index.html"> 
 <span class="menu-text">Gym</span></a>
   </li>  
 </ul>
@@ -186,7 +241,7 @@ body {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -207,14 +262,29 @@ body {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Digestion and Reconstruction</h1>
-</div>
+<h1 class="title">Differential of Functions</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Classical Analysis</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eugene Lee </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 23, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -224,8 +294,34 @@ body {
 </header>
 
 
-<p>Unlike chapter-by-chapter summaries, the notes here are centered around specific <em>concepts, theories, and motivations</em> which are my own reflections and digestion.</p>
-<p>The goal is to build intuition, find out necessities of concepts, and highlight interdisciplinary connections.</p>
+<p><strong><em>This note is mainly from Multidimensional Real Analysis I by J.J.DUISTERMAAT and J.A.C.KOLK and Zorich’s Analysis I,II.</em></strong></p>
+<p>The reformulation of <em>differential</em> without <span class="math inline">\(\epsilon,\delta\)</span> is due to Hadamard.</p>
+<div id="differentiable-mapping-and-its-differential-at-a-point" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 1: </strong>differentiable mapping and its differential at a point</summary><div>
+<p>Let <span class="math inline">\(U\subseteq \mathbb{R}^n\)</span> be an open set, let <span class="math inline">\(a \in U\)</span> and <span class="math inline">\(f:U \rightarrow \mathbb{R}^m\)</span>. Then <span class="math inline">\(f\)</span> is said to be a <em>differentiable mapping</em> at <span class="math inline">\(a\)</span> if there exists <span class="math inline">\((df)_a\in \operatorname{Lin}(\mathbb{R}^n,\mathbb{R}^m)\)</span> such that <span class="math display">\[
+\operatorname{lim}_{x \to a}\frac{\| f(x)-f(a)-(df)_a(x-a)\Vert }{\|x-a \Vert }=0
+\]</span> <span class="math inline">\((df)_a\)</span> is calledd the <em>total derivative</em> of <span class="math inline">\(f\)</span> at <span class="math inline">\(a\)</span> (or <em>differential</em> at <span class="math inline">\(a\)</span>).</p>
+</div></details>
+</div>
+<div id="version-2" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 2: </strong>Version 2</summary><div>
+<p>A function <span class="math inline">\(f:E \rightarrow \mathbb{R}^m\)</span> defined on a set <span class="math inline">\(E\subset \mathbb{R}^n\)</span> is <em>differentiable</em> at the point <span class="math inline">\(a\in E\)</span> which is a <em>interior point</em> (or weaker, <em>limit point</em>) of <span class="math inline">\(E\)</span>, if <span class="math display">\[
+f(a+h)-f(a)=L(a)h+\alpha(a;h)
+\]</span> where <span class="math inline">\(f(a+h)-f(a)=F(a)(-)\)</span> may be seen as a function of variable <span class="math inline">\(h\in \{h\in \mathbb{R}^n:a+h \in E\}\equiv S_{a}\)</span>; <span class="math inline">\(L(a):\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> is a linear map defined on the space <span class="math inline">\(\mathbb{R}^n\)</span>; <span class="math inline">\(\alpha(a;h)\)</span> is defined to be a function <span class="math inline">\(S_a \rightarrow \mathbb{R}^m\)</span> such that <span class="math inline">\(\alpha(a;h)=o (h)\)</span></p>
+</div></details>
+</div>
+<div id="uniqueness-of-differential-at-a-point" class="Proposition">
+<details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 1: </strong>Uniqueness of differential at a point</summary><div>
+<p>If a function <span class="math inline">\(f:E \rightarrow \mathbb{R}^m\)</span> defined on a subset <span class="math inline">\(E \subset \mathbb{R}^n\)</span> is differentiable at an interior point <span class="math inline">\(a\in E\)</span> of that set, then the function has a partial derivative at that point with respect to each variable, and the differential of the function is <strong>uniquely</strong> determined by <span class="math inline">\(a\)</span> and admits the form: <span class="math display">\[
+(df)_a(h)=\frac{\partial f}{\partial x_1}\vert _{a} h^1+\dots+\frac{\partial f}{\partial x_n}\vert _{a} h^n, \qquad h\in \mathbb{R}^n
+\]</span> Thus we know that if <span class="math inline">\(F(a)\)</span> admits of the form of <a href="../../../Recipe/Differential-Forms and surface/Classical-Analysis/0.1.html#version-2">version 2</a>, it’s uniquely written in this form.</p>
+</div></details>
+</div>
+<div id="differential-of-coordinate-function" class="Example">
+<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 3: </strong>Differential of coordinate function</summary><div>
+<p>The coordinate functions <span class="math inline">\(x_i\)</span>’s on <span class="math inline">\(\mathbb{R}^n\)</span> are the functions which map <span class="math inline">\((a_1,\dots,a_n)\)</span> to <span class="math inline">\(a_i\)</span>; clearly coordinate functions are differentiable at each point; thus we can define their differentials at each point, denoted by <span class="math inline">\(({dx_i})_{p}, p \in \mathbb{R}^n\)</span>; keep in mind that <span class="math inline">\(({dx_i})_p\)</span> are just the linear mappings from <span class="math inline">\(\mathbb{R}^n\)</span> to <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div></details>
+</div>
 
 
 
@@ -303,7 +399,7 @@ body {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

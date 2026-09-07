@@ -37,11 +37,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-16dae8cedaa19c97822e133ce451a5ca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-2d97162bb98e0fa2cba187e56f5ddf80.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -70,6 +71,28 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+</style>
+
+<style>
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+
+<style>
+.MathJax {
+  font-size: 90% !important;
+  }
+</style>
 <script>
   window.MathJax = {
     tex: {
@@ -94,51 +117,58 @@ MathJax = {
 };
 </script>
 <style>
-.Proposition {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Corollary {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Remark {
-  --color1: #E8D5A3;
-}
-.Claim {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Theorem {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Geometric Interpretation {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Lemma {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Example {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
 .Question {
   --color1: #E8D5A3;
 }
 .Exercise {
   --color1: #E8D5A3;
 }
+.Lemma {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Theorem {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Corollary {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Details {
+  --color1: #E8D5A3;
+}
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Remark {
+  --color1: #E8D5A3;
+}
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Example {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Definition {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
 </style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -170,7 +200,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles-html.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -226,20 +256,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#irreducible-space" id="toc-irreducible-space" class="nav-link active" data-scroll-target="#irreducible-space">Irreducible Space</a>
-  <ul class="collapse">
-  <li><a href="#relation-between-noetherian-and-irreducible-spaces" id="toc-relation-between-noetherian-and-irreducible-spaces" class="nav-link" data-scroll-target="#relation-between-noetherian-and-irreducible-spaces">Relation between noetherian and irreducible spaces</a></li>
-  </ul></li>
-  <li><a href="#component" id="toc-component" class="nav-link" data-scroll-target="#component">Component</a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -280,7 +297,7 @@ window.Quarto = {
 
 
 <section id="irreducible-space" class="level2">
-<h2 data-anchor-id="irreducible-space">Irreducible Space</h2>
+<h2 class="anchored" data-anchor-id="irreducible-space">Irreducible Space</h2>
 <p>A topological space <span class="math inline">\(X\)</span> is said to be <strong>irreducible</strong> if whenever <span class="math inline">\(X=X_1 \cup X_2\)</span> where <span class="math inline">\(X_1,X_2\)</span> are closed subsets then <span class="math inline">\(X=X_1 \text{ or } X_2\)</span>. An irreducible topological space is necessarily connected but not conversely as the following example shows.</p>
 <div id="cnb-1-Example" class="Example">
 <details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 1</strong></summary><div>
@@ -317,7 +334,7 @@ Warning
 <p><span class="proof-title"><em>Proof</em>. </span>We have <span class="math inline">\(Z=(Z\cap W_1)\cup\dots\cup(Z\cap W_p)\)</span> and <span class="math inline">\(Z\cap W_i\)</span> is a closed subset of <span class="math inline">\(Z\)</span>; as <span class="math inline">\(Z\)</span> is irreducible, <span class="math inline">\(Z=Z\cap W_i\)</span> for some <span class="math inline">\(i\)</span>; thus, <span class="math inline">\(Z \subset W_i\)</span>.</p>
 </div>
 <section id="relation-between-noetherian-and-irreducible-spaces" class="level3">
-<h3 data-anchor-id="relation-between-noetherian-and-irreducible-spaces">Relation between noetherian and irreducible spaces</h3>
+<h3 class="anchored" data-anchor-id="relation-between-noetherian-and-irreducible-spaces">Relation between noetherian and irreducible spaces</h3>
 <p>We will next see that a noetherian space is not too far removed from being irreducible.</p>
 <div id="cnb-4-Lemma" class="Lemma">
 <details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 3</strong></summary><div>
@@ -331,7 +348,7 @@ Warning
 </section>
 </section>
 <section id="component" class="level2">
-<h2 data-anchor-id="component">Component</h2>
+<h2 class="anchored" data-anchor-id="component">Component</h2>
 <p>To be more precise about the structure of a noetherian space, one introduces the idea of <strong>components</strong>. A component of <span class="math inline">\(X\)</span> is just a maximal irreducible closed subspace of <span class="math inline">\(X\)</span>. In fact, we have:</p>
 <div id="cnb-5-Proposition" class="Proposition">
 <details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 4</strong></summary><div>
@@ -361,7 +378,7 @@ Warning
 <hr>
 </section>
 <section id="exercise" class="level2">
-<h2 data-anchor-id="exercise">Exercise</h2>
+<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
 <div id="exercise-2.3.1" class="Exercise">
 <details class="Exercise fobx-simplebox fobx-default" open=""><summary><strong>Exercise 1</strong></summary><div>
 <p>Show that a topological space <span class="math inline">\(X\)</span> is irreducible if and only if any non-empty open subset of <span class="math inline">\(X\)</span> is dense.</p>
@@ -464,6 +481,13 @@ W_1\cap Y=U_1,\quad W_2\cap Y=U_2
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

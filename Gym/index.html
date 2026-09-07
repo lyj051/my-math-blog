@@ -35,11 +35,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -69,53 +70,82 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Remark {
-  --color1: #E8D5A3;
+body {
+  font-family: "Times New Roman", Times, serif;
 }
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
+</style>
+
+<style>
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+
+<style>
+.MathJax {
+  font-size: 90% !important;
+  }
+</style>
+<style>
 .Exercise {
   --color1: #E8D5A3;
 }
-.Theorem {
-  --color1: #3498db;
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Claim {
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Lemma {
-  --color1: #3498db;
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Definition {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Theorem {
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
 .Question {
   --color1: #E8D5A3;
 }
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Remark {
+  --color1: #E8D5A3;
+}
 .Example {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
-.Proposition {
-  --color1: #3498db;
+.Lemma {
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Claim {
-  --color1: #3498db;
-  --color2: #2c3e50;
+.Details {
+  --color1: #E8D5A3;
 }
 .Corollary {
-  --color1: #3498db;
+  --color1: #6B7F8F;
   --color2: #2c3e50;
-}
-.Geometric Interpretation {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
 }
 </style>
 
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -171,18 +201,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#algebraic-structure" id="toc-algebraic-structure" class="nav-link active" data-scroll-target="#algebraic-structure">Algebraic structure</a>
-  <ul class="collapse">
-  <li><a href="#bourbaki" id="toc-bourbaki" class="nav-link" data-scroll-target="#bourbaki">Bourbaki</a></li>
-  </ul></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -206,9 +225,9 @@ ul.task-list li input[type="checkbox"] {
 
 
 <section id="algebraic-structure" class="level2">
-<h2 data-anchor-id="algebraic-structure">Algebraic structure</h2>
+<h2 class="anchored" data-anchor-id="algebraic-structure">Algebraic structure</h2>
 <section id="bourbaki" class="level3">
-<h3 data-anchor-id="bourbaki">Bourbaki</h3>
+<h3 class="anchored" data-anchor-id="bourbaki">Bourbaki</h3>
 <ul>
 <li>[Chapter2]
 <ul>
@@ -223,6 +242,13 @@ ul.task-list li input[type="checkbox"] {
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

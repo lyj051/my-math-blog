@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Eugene Lee">
-<meta name="dcterms.date" content="2026-08-23">
+<meta name="dcterms.date" content="2026-09-03">
 
-<title>Differential of Functions – Wonderings of Lee</title>
+<title>Differentiable Manifolds – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -93,31 +93,12 @@ body {
   font-size: 90% !important;
   }
 </style>
-<script>
-  window.MathJax = {
-    tex: {
-      packages: {'[+]': ['tikzcd']}
-    },
-    loader: {load: ['[tex]/tikzcd']}
-  };
-</script>
 <style>
-  body, p, li {
-    text-align: justify;
-    text-justify: inter-word;
-  }
-  mjx-container[display="true"] {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-</style>
-<script>
-MathJax = {
-  tex: { macros: { Spec: "\\operatorname{Spec}" } }
-};
-</script>
-<style>
-.Proposition {
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Theorem {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
@@ -125,25 +106,13 @@ MathJax = {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Question {
-  --color1: #E8D5A3;
-}
-.Example {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Theorem {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
 .Details {
   --color1: #E8D5A3;
 }
-.Definition {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
+.Remark {
+  --color1: #E8D5A3;
 }
-.Geometric Interpretation {
+.Example {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
@@ -151,19 +120,27 @@ MathJax = {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Exercise {
+.Question {
   --color1: #E8D5A3;
+}
+.Definition {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 .Lemma {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Remark {
+.Exercise {
   --color1: #E8D5A3;
 }
-.Claim {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 </style>
 
@@ -197,7 +174,6 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles-html.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -262,9 +238,10 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Differential of Functions</h1>
+<h1 class="title">Differentiable Manifolds</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">Classical Analysis</div>
+    <div class="quarto-category">Differential Forms and Applications</div>
+    <div class="quarto-category">P.Do Carmo</div>
   </div>
   </div>
 
@@ -282,7 +259,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 23, 2026</p>
+      <p class="date">September 3, 2026</p>
     </div>
   </div>
   
@@ -294,33 +271,146 @@ window.Quarto = {
 </header>
 
 
-<p><strong><em>This note is mainly from Multidimensional Real Analysis I by J.J.DUISTERMAAT and J.A.C.KOLK and Zorich’s Analysis I,II.</em></strong></p>
-<p>The reformulation of <em>differential</em> without <span class="math inline">\(\epsilon,\delta\)</span> is due to Hadamard.</p>
-<div id="differentiable-mapping-and-its-differential-at-a-point" class="Definition">
-<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 1: </strong>differentiable mapping and its differential at a point</summary><div>
-<p>Let <span class="math inline">\(U\subseteq \mathbb{R}^n\)</span> be an open set, let <span class="math inline">\(a \in U\)</span> and <span class="math inline">\(f:U \rightarrow \mathbb{R}^m\)</span>. Then <span class="math inline">\(f\)</span> is said to be a <em>differentiable mapping</em> at <span class="math inline">\(a\)</span> if there exists <span class="math inline">\((df)_a\in \operatorname{Lin}(\mathbb{R}^n,\mathbb{R}^m)\)</span> such that <span class="math display">\[
-\operatorname{lim}_{x \to a}\frac{\| f(x)-f(a)-(df)_a(x-a)\Vert }{\|x-a \Vert }=0
-\]</span> <span class="math inline">\((df)_a\)</span> is calledd the <em>total derivative</em> of <span class="math inline">\(f\)</span> at <span class="math inline">\(a\)</span> (or <em>differential</em> at <span class="math inline">\(a\)</span>).</p>
+<div id="cnb-1-Definition" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 1</strong></summary><div>
+<p>An <span class="math inline">\(n\)</span>-dimensional <strong>differentiable manifold</strong> is a set <span class="math inline">\(M\)</span> together with a family of injective maps <span class="math inline">\(f_{\alpha}:U_{\alpha}\rightarrow M\)</span> of open sets <span class="math inline">\(U_{\alpha}\subset \mathbf{R}^n\)</span> into <span class="math inline">\(M\)</span> such that:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\bigcup_{\alpha}f_{\alpha}(U_{\alpha})=M\)</span>.</p></li>
+<li><p>For each pair <span class="math inline">\(\alpha,\beta\)</span>, with <span class="math inline">\(f_{\alpha}(U_\alpha)\cap f_\beta(U_\beta)=W\neq \emptyset\)</span>, the sets <span class="math inline">\(f_\alpha^{-1}(W)\)</span> and <span class="math inline">\(f_\beta^{-1}(W)\)</span> are open sets in <span class="math inline">\(\mathbf{R}^n\)</span> and the maps <span class="math inline">\(f^{-1}_\beta\circ f_\alpha,f^{-1}_\alpha\circ f_\beta\)</span> are differentiable.</p></li>
+<li><p>The family <span class="math inline">\(\{(U_\alpha,f_\alpha)\}\)</span> is maximal relative to conditions 1,2.</p></li>
+</ol>
+<p>A family <span class="math inline">\(\{(U_\alpha,f_\alpha)\}=\mathcal{A}\)</span> satisfying the conditions 1 and 2 is called a <strong>differentiable structure</strong> (or <strong>atlas</strong>) on <span class="math inline">\(M\)</span>. A pair <span class="math inline">\((U_\alpha,f_\alpha)\in\mathcal{A}\)</span> with <span class="math inline">\(p\in f_\alpha(U_\alpha)\)</span> is called a <strong>parametrization</strong> (or <strong>coordinate system</strong>,or <strong>chart</strong>) of <span class="math inline">\(M\)</span> at <span class="math inline">\(p\)</span>; <span class="math inline">\(f_\alpha(U_\alpha)\)</span> is called a <strong>coordinate neighbourhood</strong> of <span class="math inline">\(p\)</span>.</p>
 </div></details>
 </div>
-<div id="version-2" class="Definition">
-<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 2: </strong>Version 2</summary><div>
-<p>A function <span class="math inline">\(f:E \rightarrow \mathbb{R}^m\)</span> defined on a set <span class="math inline">\(E\subset \mathbb{R}^n\)</span> is <em>differentiable</em> at the point <span class="math inline">\(a\in E\)</span> which is a <em>interior point</em> (or weaker, <em>limit point</em>) of <span class="math inline">\(E\)</span>, if <span class="math display">\[
-f(a+h)-f(a)=L(a)h+\alpha(a;h)
-\]</span> where <span class="math inline">\(f(a+h)-f(a)=F(a)(-)\)</span> may be seen as a function of variable <span class="math inline">\(h\in \{h\in \mathbb{R}^n:a+h \in E\}\equiv S_{a}\)</span>; <span class="math inline">\(L(a):\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> is a linear map defined on the space <span class="math inline">\(\mathbb{R}^n\)</span>; <span class="math inline">\(\alpha(a;h)\)</span> is defined to be a function <span class="math inline">\(S_a \rightarrow \mathbb{R}^m\)</span> such that <span class="math inline">\(\alpha(a;h)=o (h)\)</span></p>
+<p>Condition 3 is a technical condition. Actually we can always extend a differentiable structure into a maximal one, by adjoining to the given structure all parametrizations that together with some parametrization of the given structure satisfy condition 2.</p>
+<div id="maxiaml-atlas" class="Lemma">
+<details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 1</strong></summary><div>
+<p>If <span class="math inline">\(\mathcal{A}=\{(U_\alpha,h_\alpha)\}\)</span> is a differentiable structure on <span class="math inline">\(M\)</span>, then <span class="math inline">\(\mathcal{A}\)</span> is contained in a unique maximal differentiable structure on <span class="math inline">\(M\)</span>.</p>
 </div></details>
 </div>
-<div id="uniqueness-of-differential-at-a-point" class="Proposition">
-<details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 1: </strong>Uniqueness of differential at a point</summary><div>
-<p>If a function <span class="math inline">\(f:E \rightarrow \mathbb{R}^m\)</span> defined on a subset <span class="math inline">\(E \subset \mathbb{R}^n\)</span> is differentiable at an interior point <span class="math inline">\(a\in E\)</span> of that set, then the function has a partial derivative at that point with respect to each variable, and the differential of the function is <strong>uniquely</strong> determined by <span class="math inline">\(a\)</span> and admits the form: <span class="math display">\[
-(df)_a(h)=\frac{\partial f}{\partial x_1}\vert _{a} h^1+\dots+\frac{\partial f}{\partial x_n}\vert _{a} h^n, \qquad h\in \mathbb{R}^n
-\]</span> Thus we know that if <span class="math inline">\(F(a)\)</span> admits of the form of <a href="../../../Recipe/Differential-Forms/Classical-Analysis/0.1.html#version-2">version 2</a>, it’s uniquely written in this form.</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(\mathcal{A}^\prime\)</span> be the following set; <span class="math display">\[
+\mathcal{A}^\prime=\{(V,g):\mathcal{A}\cup(V,g)\text{ is a differentiable structure}\}
+\]</span> We check that <span class="math inline">\(\mathcal{A}^\prime\)</span> is a differentiable structure on <span class="math inline">\(M\)</span> and then it’s clearly the unique maxiaml atlas containing <span class="math inline">\(\mathcal{A}\)</span>.</p>
+<p>Let <span class="math inline">\((U,f),(V,g)\)</span> be any two charts in <span class="math inline">\(\mathcal{A}\)</span> with <span class="math inline">\(f(U)\cap g(V)=W\neq \emptyset\)</span>. We wish to show that <span class="math inline">\(g^{-1}\circ f:f^{-1}(W)\rightarrow \mathbf{R}^n\)</span> and <span class="math inline">\(f^{-1}\circ g\)</span> are differentiable.</p>
+<p>Clearly we have <span class="math inline">\(W=\bigcup_{\alpha}h_{\alpha}(U_\alpha)\cap W=\bigcup_{\alpha}W_\alpha\)</span> and thus <span class="math inline">\(f^{-1}(W)=\bigcup_\alpha f^{-1}(W_\alpha)\)</span>; Since <span class="math inline">\(F_\alpha=f(U)\cap h_\alpha(U_\alpha)\supset W_\alpha\)</span>, <span class="math inline">\(f^{-1}(F_\alpha)\supset f^{-1}(W_\alpha)\)</span>; then <span class="math inline">\(h_{\alpha}^{-1}\circ f\)</span> is differentiable on <span class="math inline">\(f^{-1}(W_\alpha)\)</span>; Since <span class="math inline">\(G_\alpha=g(V)\cap h_\alpha(U_\alpha)\supset W_\alpha\)</span>, <span class="math inline">\(g^{-1}\circ h_\alpha\)</span> is differentiable on <span class="math inline">\(h_{\alpha}(W_\alpha)\)</span>. Thus <span class="math inline">\(g^{-1}\circ f=g^{-1}\circ h_{\alpha}\circ h_{\alpha}^{-1}\circ f\)</span> is differentiable on <span class="math inline">\(f^{-1}(W)\)</span>; this completes the proof.</p>
+</div>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span></p>
+<ol type="a">
+<li><p>A differentiable structure on a set <span class="math inline">\(M\)</span> induces in a natural way a topology in <span class="math inline">\(M\)</span>. It suffices to define that <span class="math inline">\(A\subset M\)</span> is an open set if <span class="math inline">\(f_{\alpha}^{-1}(A\cap f_{\alpha}(U_{\alpha}))\)</span> is an open set in <span class="math inline">\(\mathbf{R}^n\)</span>, for all <span class="math inline">\(\alpha\)</span>. It is easily checked that this defines a topology in <span class="math inline">\(M\)</span> in which the sets <span class="math inline">\(f_{\alpha}(U_{\alpha})\)</span> are open and the maps <span class="math inline">\(f_\alpha\)</span> are continuos.</p></li>
+<li><p>The natural topology defined above can be very strange. In particular, it can happen that one (or both) of the following axioms do not hold:</p>
+<ol type="1">
+<li><p><em>Axiom of Hausdorff</em>: Give two distinct points of <span class="math inline">\(M\)</span> there exist neighbourhoods of these points that do not intersect.</p></li>
+<li><p><em>Axiom of countable basis</em>: <span class="math inline">\(M\)</span> can be covered by a countable number of coordinate neighbourhoods (we say then that <span class="math inline">\(M\)</span> has a countable basis)</p></li>
+</ol>
+<p>Axiom 1 is essential to prove that the limit of a convering sequence is unique, and axiom 2 is essential for the existence of a partition of unity.</p></li>
+<li><p>We shall assume, from now on, that all the manifolds to be considered are Hausdorff and have a countable basis.</p></li>
+</ol>
+</div>
+<div id="cnb-3-Example" class="Example">
+<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 2</strong></summary><div>
+<p>The simplest example of a differentiable structure consists of <span class="math inline">\(\mathbf{R}^n\)</span> with an atlas <span class="math inline">\(\mathcal{A}\)</span> of only one pair, <span class="math inline">\((\mathbf{R}^n,\operatorname{id})\)</span>. We can easily make the atlas bigger;We can adjoin <span class="math inline">\((U,f)\)</span> if <span class="math inline">\(U\xrightarrow{f}V\)</span> are homeomorphic with <span class="math inline">\(f,f^{-1}\)</span> are differentiable. Indeed we can adjoin as many such <span class="math inline">\(f\)</span>’s as we like (<a href="../../../Recipe/Differential-Forms/CH03/3.2.html#maxiaml-atlas">proof</a>).</p>
 </div></details>
 </div>
-<div id="differential-of-coordinate-function" class="Example">
-<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 3: </strong>Differential of coordinate function</summary><div>
-<p>The coordinate functions <span class="math inline">\(x_i\)</span>’s on <span class="math inline">\(\mathbb{R}^n\)</span> are the functions which map <span class="math inline">\((a_1,\dots,a_n)\)</span> to <span class="math inline">\(a_i\)</span>; clearly coordinate functions are differentiable at each point; thus we can define their differentials at each point, denoted by <span class="math inline">\(({dx_i})_{p}, p \in \mathbb{R}^n\)</span>; keep in mind that <span class="math inline">\(({dx_i})_p\)</span> are just the linear mappings from <span class="math inline">\(\mathbb{R}^n\)</span> to <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<p>Less trivial examples are the following ones.</p>
+<div id="the-real-projective-plane-p2mathbfr" class="Example">
+<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 3: </strong>The real projective plane <span class="math inline">\(P^2(\mathbf{R})\)</span></summary><div>
+<p>We will denote by <span class="math inline">\(P^2(\mathbf{R})\)</span> the all lines in <span class="math inline">\(\mathbf{R}^3\)</span> that pass through the origin <span class="math inline">\((0,0,0)\)</span> of <span class="math inline">\(\mathbf{R}^3\)</span>, i.e., <span class="math inline">\(P^2(\mathbf{R})\)</span> is the set of all ‘directions’ in <span class="math inline">\(\mathbf{R}^3\)</span>.</p>
+<p>We want to introduce a differentiable structure in <span class="math inline">\(P^2(\mathbf{R})\)</span>. For that, let <span class="math inline">\((x,y,z)\in \mathbf{R}^3\)</span>, and notice that <span class="math inline">\(P^2(\mathbf{R})\)</span> is the quotient space of <span class="math inline">\(\mathbf{R}^3-\{(0,0,0)\}\)</span> by the equivalence relation <span class="math inline">\(\sim\)</span>: <span class="math display">\[
+(x,y,z)\sim(\lambda x,\lambda y,\lambda z),\qquad \lambda\in\mathbf{R},\quad \lambda\neq0
+\]</span> The points of <span class="math inline">\(P^2(\mathbf{R})\)</span> will be denoted by <span class="math inline">\([x,y,z]\)</span>.</p>
+<p>We now define sets <span class="math inline">\(V_1,V_2,V_3\)</span> in <span class="math inline">\(P^2(\mathbf{R})\)</span> by: <span class="math display">\[
+\begin{aligned}
+&amp;V_1=\{[x,y,z]:x\neq0\}\\
+&amp;V_2=\{[x,y,z]:y\neq0\}\\
+&amp;V_3=\{[x,y,z]:z\neq0\}
+\end{aligned}
+\]</span> and maps <span class="math inline">\(f_i:\mathbf{R}^2\rightarrow V_i,\,i=1,2,3\)</span> by <span class="math display">\[
+f_1(u,v)=[1,u,v],\quad
+f_2(u,v)=[u,1,v],\quad
+f_3(u,v)=[u,v,1]
+\]</span> where <span class="math inline">\((u,v)\in \mathbf{R}^2\)</span>.</p>
+<p>Geometrically <span class="math inline">\(V_2\)</span>, for instance, is the set of all lines that pass through origin and do not belong to the plane <span class="math inline">\(xOz\)</span>. We claim that the family <span class="math inline">\(\{(\mathbf{R}^2,f_i)\}\)</span> is a differentiable structure for <span class="math inline">\(P^2(\mathbf{R})\)</span>.</p>
+<p>Actually we need only show that <span class="math inline">\(f_i^{-1}(V_i\cap V_i)\)</span> is open in <span class="math inline">\(\mathbf{R}^2\)</span> and <span class="math inline">\(f_j^{-1}\circ f_i\)</span> is differentiable. Let us consider the case <span class="math inline">\(i=1,j=2\)</span>; the other cases are entirely analogous.</p>
+<p>The points of <span class="math inline">\(f_1^{-1}(V_1\cap V_2)\)</span> are of the form <span class="math inline">\((u,v)\)</span> with <span class="math inline">\(u\neq0\)</span>; thus the set <span class="math inline">\(f_1^{-1}(V_1\cap V_2)\)</span> is open in <span class="math inline">\(\mathbf{R}^2\)</span> and <span class="math display">\[
+f_2^{-1}\circ f_1(u,v)=f_2^{-1}([1,u,v])=f_2^{-1}(1/u,1,v/u)=(1/u,v/u)
+\]</span> is differentiable, as we claimed.</p>
 </div></details>
+</div>
+<video width="75%" controls="" autoplay="" loop="" muted="">
+<source src="video/KleinBottleSweep.mp4" type="video/mp4">
+</video>
+<div id="the-klein-bottle" class="Example">
+<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 4: </strong>The Klein bottle</summary><div>
+<p>The Klein bottle is the subset of <span class="math inline">\(\mathbf{R}^4\)</span> defined as follows (its projection in <span class="math inline">\(\mathbf{R}^3\)</span> is given in the video above); let <span class="math inline">\(Ox,Oy,Oz,Ow\)</span> be the four coordinate axis in <span class="math inline">\(\mathbf{R}^4\)</span>. Let <span class="math inline">\(S\)</span> be a circ with radius <span class="math inline">\(r\)</span>, contained in the plane <span class="math inline">\(xOz\)</span>, with center <span class="math inline">\(C\)</span> in the axix <span class="math inline">\(Ox\)</span> so that <span class="math inline">\(C\)</span> is at a distance <span class="math inline">\(a&gt;r\)</span> from 0. The Klein bottle is generated by rotating this circ around <span class="math inline">\(Oz\)</span> in such a way that when the center <span class="math inline">\(C\)</span> has described a rotation of an angle <span class="math inline">\(u\)</span> in the plane <span class="math inline">\(xOz\)</span>, the plane of <span class="math inline">\(S\)</span> has described a rotation of an angle <span class="math inline">\(u\)</span> around <span class="math inline">\(Oc\)</span> in the <span class="math inline">\(3\)</span>-space <span class="math inline">\(OCOzOw\)</span> (this is possible because we are in <span class="math inline">\(\mathbf{R}^4\)</span> but the projection of the moving circle in <span class="math inline">\(\mathbf{R}^3\)</span> is twisted into a line where the intersection happens when <span class="math inline">\(u=\pi\)</span>).</p>
+<p>Let <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> be as in video, then we can describe the surface as: <span class="math display">\[
+\begin{aligned}
+&amp;F(u,v)=(x,y,z,w)\qquad 0\leq u&lt;2\pi ,0\leq v&lt;2\pi \\
+&amp;x(u,v)=(r\cos v+a)\cos u \\
+&amp;y(u,v)=(r\cos v+a)\sin u \\
+&amp;z(u,v)=r\sin v \cos \frac{u}{2}\\
+&amp;w(u,v)=r\sin v\sin \frac{u}{2}
+\end{aligned}
+\]</span> via simple calculus we know that circ <span class="math inline">\(S\)</span> keeps its shape of a circle in <span class="math inline">\(\mathbf{R}^4\)</span>;however, when projected into <span class="math inline">\(\mathbf{R}^3\)</span>, the shape is broken and the surface even has self-intersection; to see that we notice that when <span class="math inline">\(u=\pi\)</span> , <span class="math inline">\(\operatorname{proj}\circ F(\pi,2\pi-v)=\operatorname{proj}\circ F(\pi,v)=(-(r\cos v+a),0,0)\)</span> and circle is twisted into the line <span class="math inline">\([-a-r,-a+r]\)</span>.</p>
+</div></details>
+</div>
+<p>Let’s show that the Klein bottle is indeed a differentiable manifold.</p>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(U_1=\{(u,v)\in\mathbf{R}^2:0&lt;u&lt;2\pi,0&lt;v&lt;2\pi\}\)</span> and define a map <span class="math inline">\(f_1=U_1 \rightarrow \mathbf{R}^4\)</span> by <span class="math display">\[
+f_1(u,v)=
+\begin{cases}
+&amp;x= (r\cos v+a)\cos u \\
+&amp;y=(r\cos v+a)\sin u \\
+&amp;z=r\sin v \cos \frac{u}{2}\\
+&amp;w=r\sin v\sin \frac{u}{2}
+\end{cases}
+\]</span> It’s clear that <span class="math inline">\(f_1(U_1)\)</span> contains the points of the Klein bottle that are not on the circs <span class="math inline">\(u=0\)</span> and <span class="math inline">\(v=0\)</span>. We claim that <span class="math inline">\(f_1\)</span> is injective.</p>
+<p>To this end, let us first assume that <span class="math inline">\(z\neq 0\)</span>. Then both <span class="math inline">\(\sin v\)</span> and <span class="math inline">\(\cos \frac{u}{2}\)</span> are nonzero. Since <span class="math inline">\(0&lt;u/2&lt;\pi\)</span>, the expression <span class="math inline">\(\frac{w}{z}=\tan \frac{u}{2}\)</span> determines <span class="math inline">\(u\)</span>. By knowing <span class="math inline">\(u\)</span>, we can use that <span class="math display">\[
+\sin v=\frac{w}{r\sin \frac{u}{2}},\quad \cos v=\frac{\frac{y}{\sin u}-a}{r}
+\]</span> to determine <span class="math inline">\(v\)</span>. If <span class="math inline">\(z=0\)</span>, then <span class="math inline">\(v=\pi\)</span> or <span class="math inline">\(u=\pi\)</span>, and the injectivity is easily checked.</p>
+<p>It can be shown that if we we change the origin of <span class="math inline">\(u\)</span> and the origin of <span class="math inline">\(v\)</span>, we can cover the whole Klein bottle by the images of maps similar to the above. For instance, if we define a map <span class="math inline">\(f_2:U_2\rightarrow \mathbf{R}^4\)</span> given by <span class="math display">\[
+f_2=
+\begin{cases}
+&amp;x=-(r\cos v^\prime+a)\sin u^\prime \\
+&amp;y=(r\cos v^\prime+a)\cos u^\prime \\
+&amp;z=r\sin v^\prime \cos (\frac{u^\prime}{2}+\frac{\pi}{4})\\
+&amp;w=r\sin v^\prime\sin (\frac{u^\prime}{2}+\frac{\pi}{4})\\
+\end{cases}
+\qquad 0&lt;u^\prime,v^\prime&lt;2\pi
+\]</span> Geometrically this means that we measure <span class="math inline">\(u^\prime\)</span> from <span class="math inline">\(Oy\)</span>; we see that <span class="math inline">\(f_2(U_2)\)</span> induces the points of the Klein bottle with <span class="math inline">\(u=0\)</span> and that <span class="math inline">\(f_2\)</span> is injective. Notice that <span class="math inline">\(f_1(U_1)\cap f_2(U_2)=W\)</span> is not connected but has two connected components: <span class="math display">\[
+W_1=\{f_1(u,v):\frac{\pi}{2}&lt;u&lt;2\pi,0&lt;v&lt;2\pi\},\, W_2=\{f_1(u,v):0&lt;u&lt;\frac{\pi}{2},0&lt;v&lt;2\pi\}
+\]</span> The change of coordinates is given by: <span class="math display">\[
+\begin{aligned}
+&amp;f_2^{-1}\circ f_1\,(u,v)=
+\begin{cases}
+&amp;u^\prime=u-\frac{\pi}{2}\\
+&amp;v^\prime=v
+\end{cases}\qquad \text{in } f^{-1}(W_1) \\
+&amp;f_2^{-1}\circ f_1(u,v)=
+\begin{cases}
+&amp;u^\prime=u+\frac{3\pi}{2} \\
+&amp;v^\prime=2\pi-v
+\end{cases}\qquad \text{in } f^{-1}(W_2)
+\end{aligned}
+\]</span> which is clearly differentiable;</p>
+<p>In a similar way, we can find an injective map <span class="math inline">\(f_3:U_3\rightarrow \mathbf{R}^4\)</span> which induces the points with <span class="math inline">\(v=0\)</span>; for instance: <span class="math display">\[
+f_3=
+\begin{cases}
+&amp;x=(-r\sin v^{\prime\prime}+a)\cos u^{\prime\prime} \\
+&amp;y=(-r\sin v^{\prime\prime}+a)\sin u^{\prime\prime} \\
+&amp;z=r\cos v^{\prime\prime} \cos \frac{u^{\prime\prime}}{2}\\
+&amp;w=r\cos v^{\prime\prime} \sin \frac{u^{\prime\prime}}{2}\\
+\end{cases}
+\qquad 0&lt;u^{\prime\prime},v^{\prime\prime}&lt;2\pi
+\]</span>.</p>
+<p>It is also not difficult to check that the changes of coordinates are differentiable and this shows that <span class="math inline">\(\{(U_i,f_i)\}\)</span> is a differentiable structure on the Klein bottle.</p>
+</div>
+<video width="75%" controls="" autoplay="" loop="" muted="">
+<source src="video/KleinBottleFig33.mp4" type="video/mp4">
+</video>
+<div class="proof remark">
+<p><span class="proof-title"><em>Remark</em>. </span>The Klein bottle (projected in <span class="math inline">\(\mathbf{R}^3\)</span>) can be thought of as a twisted torus in the following sense (like the video above): The torus is obtained from a rectangle by identifying the opposite sides. In the Klein bottle, one of the sides is reflected across its center before performing the identification. Indeed the model in this case is another projection of Klein bottle which looks more like a real bottle. And it’s not a regular surface in <span class="math inline">\(\mathbf{R}^3\)</span> for it has obvious self-intersections on this model.</p>
 </div>
 
 

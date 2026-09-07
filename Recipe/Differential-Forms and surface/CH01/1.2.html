@@ -117,21 +117,26 @@ MathJax = {
 };
 </script>
 <style>
-.Exercise {
-  --color1: #E8D5A3;
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
-.Details {
+.Exercise {
   --color1: #E8D5A3;
 }
 .Lemma {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Example {
+.Reminder {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Remark {
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Question {
   --color1: #E8D5A3;
 }
 .Corollary {
@@ -142,28 +147,23 @@ MathJax = {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
+.Remark {
+  --color1: #E8D5A3;
+}
 .Definition {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Reminder {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
+.Details {
+  --color1: #E8D5A3;
 }
 .Theorem {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Question {
-  --color1: #E8D5A3;
-}
-.Geometric Interpretation {
+.Example {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
-}
-.Proposition {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
 }
 </style>
 
@@ -675,7 +675,7 @@ Tip&nbsp;2
 </div>
 <ol start="6" type="1">
 <li><p>Let <span class="math inline">\(v_{1},v_{2}\)</span> be two vectors in <span class="math inline">\(\mathbf{R}^{3}\)</span> and let <span class="math inline">\(\phi_{1}\leftrightarrow v_{1},\phi_{2}\leftrightarrow v_{2}\)</span> be the one-forms given by the correspondence in (c). Define the vector product <span class="math inline">\(v_{1}\times v_{2}\leftrightarrow \ast (\phi_{1}\wedge \phi_{2})\)</span> and describe geometrically the vector <span class="math inline">\(v_{1}\times v_{2}\)</span>.</p></li>
-<li><p>A <span class="math inline">\(k\)</span>-form <span class="math inline">\(\omega\)</span> in <span class="math inline">\(\mathbf{R}^{n}\)</span> is decomposable if <span class="math inline">\(\omega(p)\)</span> is decomposable for each <span class="math inline">\(p\in \mathbf{R}^{n}\)</span>. Every <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbf{R}^{n}\)</span> is a linear combination of decomposable <span class="math inline">\(k\)</span>-forms of the type <span class="math inline">\(d x_{i_{1}}\wedge \ldots \wedge d x_{i_{k}}\)</span>. Show that with the above definition, <span class="math inline">\(\ast (d x_{i_{1}}\wedge \ldots \wedge d x_{i_{k}})\)</span> gives the same expression as in <a href="../../../Recipe/Differential-Forms/CH01/1.2.html#hodge-star-operation">Exercise 10</a>.</p></li>
+<li><p>A <span class="math inline">\(k\)</span>-form <span class="math inline">\(\omega\)</span> in <span class="math inline">\(\mathbf{R}^{n}\)</span> is decomposable if <span class="math inline">\(\omega(p)\)</span> is decomposable for each <span class="math inline">\(p\in \mathbf{R}^{n}\)</span>. Every <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbf{R}^{n}\)</span> is a linear combination of decomposable <span class="math inline">\(k\)</span>-forms of the type <span class="math inline">\(d x_{i_{1}}\wedge \ldots \wedge d x_{i_{k}}\)</span>. Show that with the above definition, <span class="math inline">\(\ast (d x_{i_{1}}\wedge \ldots \wedge d x_{i_{k}})\)</span> gives the same expression as in <a href="../../../Recipe/Differential-Forms and surface/CH01/1.2.html#hodge-star-operation">Exercise 10</a>.</p></li>
 </ol>
 </div></details>
 </div>
@@ -690,7 +690,7 @@ Tip&nbsp;2
 <li>As <span class="math inline">\(\langle v_i,- \rangle=\varphi_i\)</span>, the linear independence of <span class="math inline">\(v_i\)</span> follows from the linear independence of <span class="math inline">\(\varphi_i\)</span>.</li>
 <li>Suppose that <span class="math inline">\(\beta_1\wedge\ldots\wedge\beta_k\)</span> is another representation of <span class="math inline">\(\varphi\)</span> and <span class="math inline">\(u_1,\ldots,u_k\)</span> are the corresponded vectors. As <span class="math inline">\(\beta_i\)</span> is a linear combination of <span class="math inline">\(v_i\)</span>’s, so is each <span class="math inline">\(u_i\)</span>. Then the subspace spanned by the <span class="math inline">\(u_i\)</span>’s are contained in that spanned by <span class="math inline">\(v_i\)</span>’s. Conversely, the subspace spanned by the <span class="math inline">\(v_i\)</span>’s are contained in that spanned by <span class="math inline">\(u_i\)</span>’s. Thus the subspace of a decomposible <span class="math inline">\(k\)</span>-form <span class="math inline">\(\varphi\)</span> does not depend on its representation.</li>
 </ul></li>
-<li><p>By the definition of <a href="../../../Recipe/Differential-Forms/CH01/1.2.html#volume">volume</a>, set the <span class="math inline">\(k\)</span>-volume element <span class="math inline">\(\nu(e_1,\ldots,e_k)\)</span> where <span class="math inline">\((e_i)\)</span>’s is the canonical basis of <span class="math inline">\(\operatorname{Subspace}(\varphi)\)</span>; It follows that <span class="math display">\[
+<li><p>By the definition of <a href="../../../Recipe/Differential-Forms and surface/CH01/1.2.html#volume">volume</a>, set the <span class="math inline">\(k\)</span>-volume element <span class="math inline">\(\nu(e_1,\ldots,e_k)\)</span> where <span class="math inline">\((e_i)\)</span>’s is the canonical basis of <span class="math inline">\(\operatorname{Subspace}(\varphi)\)</span>; It follows that <span class="math display">\[
 \operatorname{vol}(v_1,\ldots,v_k)=\nu(v_1,\ldots,v_k)=\nu(\sum a_{1j}u_1,\ldots,a_{kj}b_k)=\det(a_{ij})\nu(u_1,\ldots,u_k)=\nu(u_1,\ldots,u_k)
 \]</span></p></li>
 <li><p>Let <span class="math inline">\(v_1, \ldots, v_k\)</span> span <span class="math inline">\(W=\operatorname{Subsapce}(\varphi)\)</span> and set <span class="math inline">\(\lambda=\operatorname{vol}(v_1,\ldots,v_k)\)</span></p>
@@ -988,7 +988,7 @@ a_x+b_y+c_z=0
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

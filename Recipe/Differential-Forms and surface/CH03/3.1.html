@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Eugene Lee">
+<meta name="dcterms.date" content="2026-09-02">
 
-<title>Digestion and Reconstruction – Wonderings of Lee</title>
+<title>Regular surface – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -92,38 +94,30 @@ body {
   }
 </style>
 <style>
-.Lemma {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Theorem {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Details {
-  --color1: #E8D5A3;
-}
-.Proposition {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
+.Definition {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 .Remark {
   --color1: #E8D5A3;
 }
-.Claim {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Example {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Exercise {
+.Details {
   --color1: #E8D5A3;
 }
 .Geometric Interpretation {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
+}
+.Example {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Lemma {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Exercise {
+  --color1: #E8D5A3;
 }
 .Reminder {
   --color1: #7C8B6B;
@@ -133,15 +127,52 @@ body {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Definition {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Theorem {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 .Question {
   --color1: #E8D5A3;
 }
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -152,7 +183,7 @@ body {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Wonderings of Lee</span>
     </a>
   </div>
@@ -163,19 +194,19 @@ body {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Recipe/index.html"> 
+    <a class="nav-link" href="../../../Recipe/index.html"> 
 <span class="menu-text">Recipe</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Digestion/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../Digestion/index.html"> 
 <span class="menu-text">Digestion</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Gym/index.html"> 
+    <a class="nav-link" href="../../../Gym/index.html"> 
 <span class="menu-text">Gym</span></a>
   </li>  
 </ul>
@@ -186,7 +217,7 @@ body {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -207,14 +238,30 @@ body {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Digestion and Reconstruction</h1>
-</div>
+<h1 class="title">Regular surface</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Differential Geometry of curves and surfaces</div>
+    <div class="quarto-category">P.Do Carmo</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eugene Lee </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 2, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -224,8 +271,20 @@ body {
 </header>
 
 
-<p>Unlike chapter-by-chapter summaries, the notes here are centered around specific <em>concepts, theories, and motivations</em> which are my own reflections and digestion.</p>
-<p>The goal is to build intuition, find out necessities of concepts, and highlight interdisciplinary connections.</p>
+<p>We will start with the most familiar example of a differentiable manifold, namely a <strong>regular surface</strong> in <span class="math inline">\(\mathbf{R}^3\)</span>. Roughly speacking, a regular surface in <span class="math inline">\(\mathbf{R}^3\)</span> is obtained by taking pieces of a plane, deforming them, and arranging them in such a way that the resulting figure has no sharp points, edges, or self-intersections and so that it makes sense to speak of a tangent plane at points of the figure. The idea is to define a set that is, in a certain sense, two-dimensional and that also is smooth enough so that the ususal notions of calculus can be extended to it.</p>
+<div id="cnb-1-Definition" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 1</strong></summary><div>
+<p>A subset <span class="math inline">\(S\subset \mathbf{R}^3\)</span> is called a regular surface if, for each <span class="math inline">\(p\in S\)</span>, there exist a neighbourhood <span class="math inline">\(V\)</span> of <span class="math inline">\(p\)</span> in <span class="math inline">\(\mathbf{R}^3\)</span> and a map <span class="math inline">\(\mathbf{x}:U\rightarrow V\cap S\)</span> of an open set <span class="math inline">\(U\)</span> in <span class="math inline">\(\mathbf{R}^2\)</span> onto <span class="math inline">\(V\cap S\)</span> such that:</p>
+<ol type="1">
+<li><p><span class="math inline">\(\mathbf{x}\)</span> is a differentiable. This means that if we write <span class="math display">\[
+\mathbf{x}=(x(u,v),y(u,v),z(u,v)), \quad (u,v)\in U
+\]</span> the functions <span class="math inline">\(x,y,z\)</span> have continuous partial derivatives of all orders in <span class="math inline">\(U\)</span>.</p></li>
+<li><p><span class="math inline">\(\mathbf{x}\)</span> is a homeomorphism. This means that <span class="math inline">\(\mathbf{x}\)</span> has an inverse <span class="math inline">\(\mathbf{x}^{-1}:V\cap S \rightarrow U\)</span> which is continuous.</p></li>
+<li><p>(The regularity condition) For each <span class="math inline">\(q\in U\)</span>, the differential <span class="math inline">\((d\mathbf{x})_q:\mathbf{R}^2\rightarrow\mathbf{R}^3\)</span> is one-to-one.</p></li>
+</ol>
+<p>The mapping <span class="math inline">\(\mathbf{x}\)</span> is called a <strong>parametrization</strong> or <strong>a system of local coordinates</strong> in a neighbourhood of <span class="math inline">\(p\)</span>. The neighbourhood <span class="math inline">\(V\cap S\)</span> of <span class="math inline">\(p\)</span> in <span class="math inline">\(S\)</span> is called a <strong>coordinate neighbourhood</strong>.</p>
+</div></details>
+</div>
 
 
 
@@ -303,7 +362,7 @@ body {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

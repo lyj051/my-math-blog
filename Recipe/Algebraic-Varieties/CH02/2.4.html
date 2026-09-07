@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Eugene Lee">
+<meta name="dcterms.date" content="2026-08-31">
 
-<title>Digestion and Reconstruction – Wonderings of Lee</title>
+<title>Affine and finite morphisms – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -92,9 +94,28 @@ body {
   }
 </style>
 <style>
+.Remark {
+  --color1: #E8D5A3;
+}
+.Corollary {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
 .Lemma {
   --color1: #6B7F8F;
   --color2: #2c3e50;
+}
+.Example {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 .Theorem {
   --color1: #6B7F8F;
@@ -103,33 +124,14 @@ body {
 .Details {
   --color1: #E8D5A3;
 }
-.Proposition {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Remark {
-  --color1: #E8D5A3;
-}
-.Claim {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Example {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Exercise {
+.Question {
   --color1: #E8D5A3;
 }
 .Geometric Interpretation {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Reminder {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Corollary {
+.Proposition {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
@@ -137,11 +139,40 @@ body {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Question {
+.Exercise {
   --color1: #E8D5A3;
 }
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -152,7 +183,7 @@ body {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Wonderings of Lee</span>
     </a>
   </div>
@@ -163,19 +194,19 @@ body {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Recipe/index.html"> 
+    <a class="nav-link" href="../../../Recipe/index.html"> 
 <span class="menu-text">Recipe</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Digestion/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../Digestion/index.html"> 
 <span class="menu-text">Digestion</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Gym/index.html"> 
+    <a class="nav-link" href="../../../Gym/index.html"> 
 <span class="menu-text">Gym</span></a>
   </li>  
 </ul>
@@ -186,7 +217,7 @@ body {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -207,14 +238,31 @@ body {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Digestion and Reconstruction</h1>
-</div>
+<h1 class="title">Affine and finite morphisms</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Algebraic Geometry</div>
+    <div class="quarto-category">Preliminary</div>
+    <div class="quarto-category">Algebraic Varieties by G.Kempf</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eugene Lee </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 31, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -224,10 +272,126 @@ body {
 </header>
 
 
-<p>Unlike chapter-by-chapter summaries, the notes here are centered around specific <em>concepts, theories, and motivations</em> which are my own reflections and digestion.</p>
-<p>The goal is to build intuition, find out necessities of concepts, and highlight interdisciplinary connections.</p>
+<section id="definition-of-affine-and-finite-morphism" class="level2">
+<h2 class="anchored" data-anchor-id="definition-of-affine-and-finite-morphism">Definition of affine and finite morphism</h2>
+<p>A morphism between varieties <span class="math inline">\(f:X \rightarrow Y\)</span> is <strong>affine</strong> if there is an open cover <span class="math inline">\(Y=\cup U_i\)</span> by affines <span class="math inline">\(U_i\)</span> such that the open subsets <span class="math inline">\(f^{-1}(U_i)\)</span> of <span class="math inline">\(X\)</span> are affine.</p>
+<p>If we furthermore choose the cover such that each <span class="math inline">\(\mathcal{O}_{X}(f^{-1}(U_i))\)</span> is a <span class="math inline">\(\mathcal{O}_{Y}(U_i)\)</span>-module of finite type then the morphism <span class="math inline">\(f\)</span> is said to be <strong>finite</strong>;more precisely, <span class="math display">\[
+f_i^*: \mathcal{O}_{Y}(U_i) \rightarrow \mathcal{O}_{X}(f^{-1}(U_i))
+\]</span> is a homomorphism of finite type.</p>
+<p>If <span class="math inline">\(Y\)</span> is a point <span class="math inline">\(P\)</span>, <span class="math inline">\(f:X \rightarrow Y\)</span> is affine if and only if <span class="math inline">\(X\)</span> is affine and <span class="math inline">\(f:X \rightarrow P\)</span> is finite if and only if <span class="math inline">\(X\)</span> is a finite set.</p>
+<p>As for embedding we have</p>
+<div id="cnb-1-Lemma" class="Lemma">
+<details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 1</strong></summary><div>
+<ol type="a">
+<li>Let <span class="math inline">\(i:X\hookrightarrow Y\)</span> be the inclusion of a closed subvariety. Then <span class="math inline">\(i\)</span> is finite.</li>
+<li>Let <span class="math inline">\(f\)</span> be a regular function on a variety <span class="math inline">\(X\)</span>. Then the inclusion <span class="math inline">\(j:D(f)\rightarrow X\)</span> is affine.</li>
+</ol>
+</div></details>
+</div>
+<p>At first, let’s review the structure of a closed subsapce in an affine variety. (the proof is <a href="../../../Recipe/Algebraic-Varieties/CH01/1.5.html#thm-charaterization-subvarieties">here</a>)</p>
+<div id="cnb-2-Reminder" class="Reminder" data-collapse="true">
+<details class="Reminder fobx-simplebox fobx-default"><summary><strong>Reminder 1</strong></summary><div>
+<p>Let <span class="math inline">\(X\)</span> be an affine variety.</p>
+<ul>
+<li><p>Denote the <span class="math inline">\(k\)</span>-algebra of all the (global) regular functions on <span class="math inline">\(X\)</span> by <span class="math inline">\(A\)</span> and let <span class="math inline">\(Y \subset X\)</span> be a closed subset; Denote the ideal of functions vanishing on <span class="math inline">\(Y\)</span> by <span class="math inline">\(I\)</span>; Then the charaterization of <span class="math inline">\(Y\)</span> is <span class="math display">\[
+\begin{aligned}
+Y \cong \operatorname{Spec}(A/I); \quad \mathcal{O}_{X}(Y) \cong A/I
+\end{aligned}
+\]</span></p></li>
+<li><p>A subsapce <span class="math inline">\(Y\subseteq X\)</span> is an affine variety if and only if it’s closed.</p></li>
+</ul>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span></p>
+<ol type="a">
+<li><p><span class="math inline">\(i\)</span> is affine for <span class="math inline">\(i^{-1}(U)=U\cap X\)</span> where <span class="math inline">\(U\subset Y\)</span> is any open affine is a closed subspace of the affine variety <span class="math inline">\(U\)</span>. Denote the ideal of <span class="math inline">\(\mathcal{O}_{X}(U)\)</span> vanishing on <span class="math inline">\(U\cap X\)</span> by <span class="math inline">\(\mathcal{I}(U\cap X)\)</span>; then by Reminder, we have<br>
+<span class="math display">\[
+\mathcal{O}_{X}(U\cap X) \cong \mathcal{O}_{X}(U)/\mathcal{I}(U\cap X)
+\]</span> thus <span class="math inline">\(\mathcal{O}_{X}(U\cap X)\)</span> is a <span class="math inline">\(\mathcal{O}_X(U)\)</span>-module of finite type where the generator is just <span class="math inline">\(1 \,(\operatorname{mod}\, \mathcal{I}(U\cap X))\)</span>.</p></li>
+<li><p>Restrict <span class="math inline">\(f\)</span> to <span class="math inline">\(U\)</span>; we obtain that <span class="math inline">\(D(f)\cap U=D(f\restriction_{U})\)</span> and thus we have <span class="math inline">\(D(f\restriction_{U})\cong \operatorname{Spec} ([\mathcal{O}_X(U)]_{f\restriction_U})\)</span> which is affine.</p></li>
+</ol>
+</div>
+<hr>
+</section>
+<section id="topological-properties-of-finite-morphisms" class="level2">
+<h2 class="anchored" data-anchor-id="topological-properties-of-finite-morphisms">Topological properties of finite morphisms</h2>
+<p>Topologically finite morphisms are special.</p>
+<div id="cnb-3-Lemma" class="Lemma">
+<details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 2</strong></summary><div>
+<p>Let <span class="math inline">\(f:X \rightarrow Y\)</span> be a finite morphism. Let <span class="math inline">\(Z\)</span> be a closed subset of <span class="math inline">\(X\)</span>. Then its image <span class="math inline">\(f(Z)\)</span> is closed.</p>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>As the property is local on <span class="math inline">\(Y\)</span> we may assume that <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are affine and thus <span class="math inline">\(\mathcal{O}(X)\)</span> is a <span class="math inline">\(\mathcal{O}(Y)\)</span>-module of finite type. As <span class="math inline">\(Z\)</span> is closed, we have the surjection <span class="math inline">\(i^*:\mathcal{O}(X)\rightarrow \mathcal{O}(Z)\)</span>. Let <span class="math inline">\(I\)</span> be the kernel of the composition <span class="math inline">\(\psi\)</span>: <span class="math display">\[
+\mathcal{O}(Y) \xrightarrow{f^*}\mathcal{O}(X)\xrightarrow{i^*}\mathcal{O}(Z)
+\]</span> Then we have an inclusion: <span class="math display">\[
+A=\mathcal{O}(Y)/I \hookrightarrow \mathcal{O}(Z)=B
+\]</span> and <span class="math inline">\(B\)</span> is an <span class="math inline">\(A\)</span>-module of finite type.</p>
+<p>By definition a point <span class="math inline">\(y\)</span> of <span class="math inline">\(Y\)</span> is contained in the image <span class="math inline">\(f(Z)\)</span> if and only if <span class="math inline">\(\delta_{y}:\mathcal{O}(Y)\rightarrow k\)</span> is the composition of <span class="math inline">\(\psi\)</span> with <span class="math inline">\(\delta_z:\mathcal{O}(Z)\rightarrow k\)</span> for some <span class="math inline">\(z\)</span> in <span class="math inline">\(Z\)</span>.</p>
+<div id="cnb-4-Details" class="Details" data-collapse="true">
+<details class="Details fobx-simplebox fobx-default"><summary><strong>Details 1</strong></summary><div>
+<p><span class="math display">\[
+\begin{aligned}
+&amp;y=f(z) \iff \delta_y=\delta_{f(z)} \quad \text{notice that here } Y \cong \operatorname{Spec}(A) \text{ for some algebra } A \text{ as } Y \text{ is affine } \\
+&amp; \delta_{f(z)}= \delta_z \circ \psi \quad \text{ for: } \\
+&amp;\delta_{f(z)}(h)=(h\circ f)(z)=(h\circ f\circ i)(z) \\
+&amp;(\delta_z \circ \psi)(h)=(i^* \circ f^*)(h)(z)=(h\circ f \circ i)(z) \\
+&amp; \Rightarrow \delta_y=\delta_z \circ \psi
+\end{aligned}
+\]</span></p>
+</div></details>
+</div>
+<p>thus <span class="math inline">\(f(Z)\subset \operatorname{zeores}(I)\)</span> and it suffices to show the reverse inclusion now. In other words if <span class="math inline">\(y\)</span> is in <span class="math inline">\(\operatorname{zeroes}(I)\)</span> then <span class="math inline">\(\delta_y\)</span> factor into the homomorphism <span class="math inline">\(\overline{\delta_y}:A \rightarrow k\)</span> by the first isomorphism theroem. By <a href="../../../Recipe/Algebraic-Varieties/CH01/1.4.html#imt-thm-142">Lemma</a> there is a homomorphism <span class="math inline">\(\delta_z:B \rightarrow k\)</span> where <span class="math inline">\(z\)</span> is a point of <span class="math inline">\(Z\)</span> which can be extended to <span class="math inline">\(\overline{\delta_y}\)</span>; thus <span class="math inline">\(f(y)=z\)</span>, and we are done.</p>
+</div>
+<p>Let’s explain and visualize this proof using commutative diagram:</p>
+<!-- https://q.uiver.app/#q=WzAsNSxbMiwxLCJcXG1hdGhjYWx7T30oWikiXSxbMiwwLCJcXG1hdGhjYWx7T30oWSkiXSxbMSwxLCJcXG1hdGhjYWx7T30oWSkvSSJdLFswLDAsImsiXSxbNCwxLCJcXG1hdGhjYWx7T30oWCkiXSxbMSwyLCJcXHBpIiwyXSxbMCwyLCJcXG92ZXJsaW5le2leKlxcY2lyYyBmXip9Il0sWzEsMCwiaV4qXFxjaXJjIGZeKiJdLFsxLDMsIlxcZGVsdGFfe3l9IiwyXSxbMiwzLCJcXG92ZXJsaW5le1xcZGVsdGFfe3l9fSJdLFswLDMsIlxcZGVsdGFfeiIsMl0sWzEsNCwiZl4qIl0sWzQsMCwiaV4qIl1d -->
+<div style="display: flex; 
+            justify-content: center; 
+            margin: 0.6em 0 0.8em 0;">
+    <iframe src="https://q.uiver.app/#q=WzAsNSxbMiwxLCJcXG1hdGhjYWx7T30oWikiXSxbMiwwLCJcXG1hdGhjYWx7T30oWSkiXSxbMSwxLCJcXG1hdGhjYWx7T30oWSkvSSJdLFswLDAsImsiXSxbNCwxLCJcXG1hdGhjYWx7T30oWCkiXSxbMSwyLCJcXHBpIiwyXSxbMCwyLCJcXG92ZXJsaW5le2leKlxcY2lyYyBmXip9Il0sWzEsMCwiaV4qXFxjaXJjIGZeKiJdLFsxLDMsIlxcZGVsdGFfe3l9IiwyXSxbMiwzLCJcXG92ZXJsaW5le1xcZGVsdGFfe3l9fSJdLFswLDMsIlxcZGVsdGFfeiIsMl0sWzEsNCwiZl4qIl0sWzQsMCwiaV4qIl1d&amp;embed" width="100%" height="380" style="max-width: 420px; 
+                   height: 380px; 
+                   border: none; 
+                   border-radius: 10px; 
+                   box-shadow: 0 2px 6px rgba(0,0,0,0.06);">
+    </iframe>
+</div>
+<p>We have another property of finite morphisms</p>
+<div id="cnb-5-Lemma" class="Lemma">
+<details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 3</strong></summary><div>
+<p>Let <span class="math inline">\(f:X \rightarrow Y\)</span> be a finite morphism and let <span class="math inline">\(Z_1\subsetneq Z_2\)</span> be two closed subsets of <span class="math inline">\(X\)</span> where <span class="math inline">\(Z_2\)</span> is irreducible. Then <span class="math inline">\(f(Z_1)\subsetneq f(Z_2)\)</span>.</p>
+</div></details>
+</div>
+<p>Before we prove this let us see what it says in a special case.</p>
+<div id="cnb-6-Corollary" class="Corollary">
+<details class="Corollary fobx-simplebox fobx-default" open=""><summary><strong>Corollary 4</strong></summary><div>
+<p>If <span class="math inline">\(f:X \rightarrow Y\)</span> is a finite morphism and <span class="math inline">\(y\)</span> is a point of <span class="math inline">\(Y\)</span> then the fiber <span class="math inline">\(f^{-1}(y)\)</span> is finite.</p>
+</div></details>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="proof of Corollary">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>proof of Corollary
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>As <span class="math inline">\(f^{-1}(y)\subseteq X\)</span> is a subspace of a noetherian space <span class="math inline">\(X\)</span>, it’s also a noetherian space. Thus it will suffice to show that each irreducible component <span class="math inline">\(Z_i\)</span> of <span class="math inline">\(f^{-1}(y)\)</span> is finite. Let <span class="math inline">\(z\)</span> be a point of <span class="math inline">\(Z_i\)</span>. Let <span class="math inline">\(Z_i^\prime=\{z\}\)</span>. Then <span class="math inline">\(f(Z_i)=f(Z_i^\prime)=\{y\}\)</span>. Hence <span class="math inline">\(Z_i=Z_i^\prime\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>It suffices to show that the affine case; then <span class="math inline">\(\mathcal{O}(X)\)</span> is a <span class="math inline">\(\mathcal{O}(Y)\)</span>-module of finite type. Furthermore, we may assume that <span class="math inline">\(Z_2=X\)</span> is irreducible and <span class="math inline">\(Y=f(X)\)</span>. Thus <span class="math inline">\(\mathcal{O}(X)\)</span> is an integral domain and is finitely generated as a module over the ring <span class="math inline">\(\mathcal{O}(Y)\)</span>.</p>
+<p>We need to show that there is a non-constant regular function <span class="math inline">\(g\)</span> on <span class="math inline">\(Y\)</span> such that <span class="math inline">\(f^*(g)\)</span> vanishes on <span class="math inline">\(Z_1\)</span> because this will show that <span class="math inline">\(f(Z_1) \subset \operatorname{zeroes}(g) \subsetneq f(X)=Y\)</span>.</p>
+<p>As <span class="math inline">\(Z_1\subsetneq X\)</span> is closed, there is a non-constant regular function <span class="math inline">\(h\)</span> on <span class="math inline">\(X\)</span> which vanishes on <span class="math inline">\(Z_1\)</span>. Consider the <span class="math inline">\(\mathcal{O}(Y)\)</span>-submodule of <span class="math inline">\(\mathcal{O}(X)\)</span> generated by <span class="math inline">\(\{h^i:i\in \mathbb{N}\}\)</span>. This is finitely generated over <span class="math inline">\(\mathcal{O}(Y)\)</span> because <span class="math inline">\(\mathcal{O}(Y)\)</span> is noetherian (<span class="math inline">\(\operatorname{f.g.}\,k\text{-}\)</span> algebra) and <span class="math inline">\(\mathcal{O}(X)\)</span> is a <span class="math inline">\(\mathcal{O}(Y)\)</span>-module of finite type. Then for <span class="math inline">\(i&gt;&gt;0\)</span>, <span class="math inline">\(h^i=\sum_{0\leq j&lt;i}(f^*g_j)h^j\)</span> where <span class="math inline">\(g_j\in \mathcal{O}(Y)\)</span>. We may assume that <span class="math inline">\(g_0\neq 0\)</span>. Thus <span class="math inline">\(f^*g_0\)</span> vanishes on <span class="math inline">\(Z_1\)</span>. <span class="math inline">\(g_0\)</span> is the non-constant regular function as expected.</p>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

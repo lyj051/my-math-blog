@@ -37,11 +37,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -70,6 +71,28 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+</style>
+
+<style>
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+
+<style>
+.MathJax {
+  font-size: 90% !important;
+  }
+</style>
 <script>
   window.MathJax = {
     tex: {
@@ -94,51 +117,58 @@ MathJax = {
 };
 </script>
 <style>
-.Geometric Interpretation {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Theorem {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Question {
+.Details {
   --color1: #E8D5A3;
 }
-.Corollary {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Exercise {
-  --color1: #E8D5A3;
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 .Remark {
   --color1: #E8D5A3;
 }
-.Lemma {
-  --color1: #3498db;
+.Definition {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Question {
+  --color1: #E8D5A3;
+}
+.Exercise {
+  --color1: #E8D5A3;
+}
+.Example {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Theorem {
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Claim {
-  --color1: #3498db;
+.Lemma {
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
 .Proposition {
-  --color1: #3498db;
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Example {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
+.Corollary {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 </style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -170,7 +200,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles-html.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -226,9 +256,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -463,13 +491,13 @@ X \to \mathcal{O}(X),f \to f^{*}
 </div>
 </div>
 <p>With this notation we have</p>
-<div class="callout callout-style-default callout-important no-icon callout-titled" title="Theorem">
+<div id="imp-charaterization-subvarieties" class="callout callout-style-default callout-important no-icon callout-titled" title="Theorem">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Theorem
+Important&nbsp;1: Theorem
 </div>
 </div>
 <div class="callout-body-container callout-body">
@@ -581,6 +609,13 @@ f^{-1}(U)=f^{-1}(i^{-1}(V))=(i \circ f)^{-1}(V)=h^{-1}(V)
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

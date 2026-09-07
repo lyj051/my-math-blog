@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Eugene Lee">
+<meta name="dcterms.date" content="2026-09-02">
 
-<title>Digestion and Reconstruction – Wonderings of Lee</title>
+<title>Dimension – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +25,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -92,25 +94,22 @@ body {
   }
 </style>
 <style>
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
 .Lemma {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Theorem {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Details {
-  --color1: #E8D5A3;
-}
-.Proposition {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
 .Remark {
   --color1: #E8D5A3;
 }
-.Claim {
+.Theorem {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
@@ -118,30 +117,62 @@ body {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
+.Details {
+  --color1: #E8D5A3;
+}
 .Exercise {
   --color1: #E8D5A3;
 }
-.Geometric Interpretation {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
-.Reminder {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
+.Question {
+  --color1: #E8D5A3;
 }
 .Corollary {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
 .Definition {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Question {
-  --color1: #E8D5A3;
-}
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -152,7 +183,7 @@ body {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Wonderings of Lee</span>
     </a>
   </div>
@@ -163,19 +194,19 @@ body {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Recipe/index.html"> 
+    <a class="nav-link" href="../../../Recipe/index.html"> 
 <span class="menu-text">Recipe</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Digestion/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../Digestion/index.html"> 
 <span class="menu-text">Digestion</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Gym/index.html"> 
+    <a class="nav-link" href="../../../Gym/index.html"> 
 <span class="menu-text">Gym</span></a>
   </li>  
 </ul>
@@ -186,7 +217,7 @@ body {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -207,14 +238,31 @@ body {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Digestion and Reconstruction</h1>
-</div>
+<h1 class="title">Dimension</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Algebraic Geometry</div>
+    <div class="quarto-category">Preliminary</div>
+    <div class="quarto-category">Algebraic Varieties by G.Kempf</div>
+  </div>
+  </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Eugene Lee </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 2, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -224,10 +272,19 @@ body {
 </header>
 
 
-<p>Unlike chapter-by-chapter summaries, the notes here are centered around specific <em>concepts, theories, and motivations</em> which are my own reflections and digestion.</p>
-<p>The goal is to build intuition, find out necessities of concepts, and highlight interdisciplinary connections.</p>
+<p>A topological space <span class="math inline">\(X\)</span> is said to have dimension <span class="math inline">\(\leq n\)</span> if, for any strictly decreasing chain <span class="math inline">\(Z_p\subsetneq Z_{p-1}\subsetneq \dots \subsetneq Z_0\)</span> of non-empty irreducible closed subsets of <span class="math inline">\(X\)</span>, the length <span class="math inline">\(p\)</span> of the chain <span class="math inline">\(\leq n\)</span>. The minimum <span class="math inline">\(n\)</span> that satisfies this condition is called the <strong>dimension</strong> of <span class="math inline">\(X\)</span>. Clearly, for a noetherian topological space <span class="math inline">\(X\)</span>, <span class="math inline">\(\operatorname{dim}X=\text{maximum of dimensions of the components of } X\)</span>.</p>
+<p>In algebraic geometry, this naive notion of dimension is quite good. An affine variety of dimension zero is a finite collection of points. An affine variety of dimension one is a finite union of irreducible curves plus a finite number of isolated points.</p>
+<section id="how-finite-morphisms-behave-w.r.t.-dimension" class="level2">
+<h2 class="anchored" data-anchor-id="how-finite-morphisms-behave-w.r.t.-dimension">How finite morphisms behave w.r.t. dimension</h2>
+<p>We will first study how finite morphisms behave with respect to dimension.</p>
+<div id="cnb-1-Lemma" class="Lemma">
+<details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 1</strong></summary><div>
+<p>Let <span class="math inline">\(f:X\rightarrow Y\)</span> be a finite surjective morphism between varieties. Then <span class="math inline">\(\operatorname{dim}X = \operatorname{dim} Y\)</span>.</p>
+</div></details>
+</div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

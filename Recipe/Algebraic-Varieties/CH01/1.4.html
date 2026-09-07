@@ -37,11 +37,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -70,6 +71,28 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+</style>
+
+<style>
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+
+<style>
+.MathJax {
+  font-size: 90% !important;
+  }
+</style>
 <script>
   window.MathJax = {
     tex: {
@@ -94,51 +117,58 @@ MathJax = {
 };
 </script>
 <style>
-.Geometric Interpretation {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Corollary {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Lemma {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 .Remark {
-  --color1: #E8D5A3;
-}
-.Example {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Question {
   --color1: #E8D5A3;
 }
 .Exercise {
   --color1: #E8D5A3;
 }
-.Claim {
-  --color1: #3498db;
-  --color2: #2c3e50;
+.Definition {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
-.Proposition {
-  --color1: #3498db;
-  --color2: #2c3e50;
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
-.Corollary {
-  --color1: #3498db;
-  --color2: #2c3e50;
+.Details {
+  --color1: #E8D5A3;
 }
 .Theorem {
-  --color1: #3498db;
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Lemma {
-  --color1: #3498db;
-  --color2: #2c3e50;
+.Example {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Question {
+  --color1: #E8D5A3;
 }
 </style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -170,7 +200,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles-html.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -226,9 +256,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -297,7 +325,7 @@ Warning
 </div>
 </div>
 <section id="noethers-normalization-lemma" class="level3 callout-body-container callout-body">
-<h3 data-anchor-id="noethers-normalization-lemma">Noether’s Normalization Lemma</h3>
+<h3 class="anchored" data-anchor-id="noethers-normalization-lemma">Noether’s Normalization Lemma</h3>
 <p>Let <span class="math inline">\(k\)</span> be a field and <span class="math inline">\(A\)</span> be a non-zero finitely-generated <span class="math inline">\(k\)</span>-algebra. Then there exists an injection <span class="math inline">\(B\xrightarrow{\subset}A\)</span> where <span class="math inline">\(B\)</span> is a polynomial ring <span class="math inline">\(k[X_1,\dots,X_d]\)</span> i.e there exist <span class="math inline">\(d\geq0\)</span> algebraically independent elements <span class="math inline">\(x_1,\dots,x_d \in A\)</span>, such that <span class="math inline">\(A\)</span> is a finitely generated <span class="math inline">\(B\)</span>-module.</p>
 </section>
 </div>
@@ -317,7 +345,7 @@ A \ \text{is integral over} \ B  \iff A \ \text{is finitely generated as} \ B \t
 </div>
 </div>
 <section id="this-proof-is-from-andrea-ferrettis-commutative-algebra" class="level4 callout-body-container callout-body">
-<h4 data-anchor-id="this-proof-is-from-andrea-ferrettis-commutative-algebra">this proof is from Andrea Ferretti’s <em>Commutative Algebra</em></h4>
+<h4 class="anchored" data-anchor-id="this-proof-is-from-andrea-ferrettis-commutative-algebra">this proof is from Andrea Ferretti’s <em>Commutative Algebra</em></h4>
 <p>Let <span class="math inline">\(y_1,\dots,y_m\)</span> be a minimal set of generators of <span class="math inline">\(A\)</span>. We argue by induction over <span class="math inline">\(m\)</span>, the base case <span class="math inline">\(m=0,1\)</span> is trivial.</p>
 <p>If <span class="math inline">\(y_1,\dots,y_m\)</span> are already algebracially independent then there is nothing to prove (just take <span class="math inline">\(B=A\)</span> which is obviously finite), so assume that there is some polynomial <span class="math inline">\(f\)</span> over <span class="math inline">\(k\)</span> such that <span class="math inline">\(f(y_1,\dots,y_m)=0\)</span>. (wlog. we can also assume that <span class="math inline">\(y_{i}\)</span> is not nilpotent) <span style="color: #ee82ee;">We can try to alter the set of generators and use the relation given by <span class="math inline">\(f\)</span> to write one of the generators in terms of the other ones.</span></p>
 <p>We perform the change of variable <span class="math display">\[
@@ -625,19 +653,20 @@ x_j=\sum_{k=1}^{n}y_k^jx_k \Rightarrow \sum_{k\neq j}(-y_k^j)x_k+(1-y_j^j)x_j=0
 </div>
 </div>
 <div style="color: #999999;">
-<p>Preparation: 1. If <span class="math inline">\(A\)</span> is a <span class="math inline">\(k\)</span>-algebra, <span class="math inline">\(A\xrightarrow{\varphi}k\)</span> is onto where <span class="math inline">\(\varphi \in \operatorname{Hom}_k(A,k)\)</span>. Then <span class="math inline">\(\operatorname{ker}(\varphi)\)</span> is maximal ideal.</p>
-<ol start="2" type="1">
-<li>If <span class="math inline">\(x,y \in \operatorname{Hom}_{k}(A,K)\)</span> and further <span class="math inline">\(\operatorname{ker}(x)=\operatorname{ker}(y)\)</span>, then <span class="math inline">\(x \equiv y\)</span>.</li>
+<p>Preparation:</p>
+<ol type="1">
+<li><p>If <span class="math inline">\(A\)</span> is a <span class="math inline">\(k\)</span>-algebra, <span class="math inline">\(A\xrightarrow{\varphi}k\)</span> is onto where <span class="math inline">\(\varphi \in \operatorname{Hom}_k(A,k)\)</span>. Then <span class="math inline">\(\operatorname{ker}(\varphi)\)</span> is maximal ideal.</p></li>
+<li><p>If <span class="math inline">\(x,y \in \operatorname{Hom}_{k}(A,k)\)</span> and further <span class="math inline">\(\operatorname{ker}(x)=\operatorname{ker}(y)\)</span>, then <span class="math inline">\(x \equiv y\)</span>.</p></li>
 </ol>
-Proof: $$
-<span class="math display">\[\begin{aligned}
+<p>Proof: <span class="math display">\[
+\begin{aligned}
 &amp;\overline{x} \circ \overline{y}^{-1} \equiv id_{k} \\
 &amp; \Rightarrow \overline{x} \circ \overline{y}^{-1} \circ \overline{y} \equiv id_{k} \circ \overline{y}  \\
 &amp; \Rightarrow \overline{x} \equiv \overline{y}\\
 &amp; \Rightarrow \overline{x} \circ \pi \equiv \overline{y} \circ \pi \\
 &amp; \Rightarrow x \equiv y
-\end{aligned}\]</span>
-<p>$$</p>
+\end{aligned}
+\]</span></p>
 </div>
 <div class="callout callout-style-default callout-tip no-icon callout-titled" title="Proof">
 <div class="callout-header d-flex align-content-center">
@@ -658,6 +687,13 @@ Proof: $$
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

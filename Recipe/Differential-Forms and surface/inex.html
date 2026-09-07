@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Digestion and Reconstruction – Wonderings of Lee</title>
+<title>Differential forms and applications – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,25 +23,25 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -100,48 +100,77 @@ body {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Details {
+.Question {
   --color1: #E8D5A3;
-}
-.Proposition {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
 }
 .Remark {
   --color1: #E8D5A3;
-}
-.Claim {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Example {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Exercise {
-  --color1: #E8D5A3;
-}
-.Geometric Interpretation {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Reminder {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
 }
 .Corollary {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Details {
+  --color1: #E8D5A3;
+}
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Example {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
 .Definition {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Question {
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Exercise {
   --color1: #E8D5A3;
 }
 </style>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -152,7 +181,7 @@ body {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Wonderings of Lee</span>
     </a>
   </div>
@@ -163,19 +192,19 @@ body {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Recipe/index.html"> 
+    <a class="nav-link" href="../../Recipe/index.html"> 
 <span class="menu-text">Recipe</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../Digestion/index.html" aria-current="page"> 
+    <a class="nav-link" href="../../Digestion/index.html"> 
 <span class="menu-text">Digestion</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../Gym/index.html"> 
+    <a class="nav-link" href="../../Gym/index.html"> 
 <span class="menu-text">Gym</span></a>
   </li>  
 </ul>
@@ -186,7 +215,7 @@ body {
 <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="../index.xml"> <i class="bi bi-rss" role="img">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -207,7 +236,7 @@ body {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Digestion and Reconstruction</h1>
+<h1 class="title">Differential forms and applications</h1>
 </div>
 
 
@@ -224,10 +253,22 @@ body {
 </header>
 
 
-<p>Unlike chapter-by-chapter summaries, the notes here are centered around specific <em>concepts, theories, and motivations</em> which are my own reflections and digestion.</p>
-<p>The goal is to build intuition, find out necessities of concepts, and highlight interdisciplinary connections.</p>
+<section id="preparation-from-classical-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="preparation-from-classical-analysis">Preparation from classical analysis</h2>
+<ul>
+<li><a href="../../Recipe/Differential-Forms and surface/Classical-Analysis/0.1.html">differential of a differentiable function</a></li>
+</ul>
+</section>
+<section id="chapter-1" class="level2">
+<h2 class="anchored" data-anchor-id="chapter-1">Chapter 1</h2>
+<ul>
+<li><a href="../../Recipe/Differential-Forms and surface/CH01/1.1.html">differential forms in <span class="math inline">\(\mathbb{R}^n\)</span></a></li>
+<li><a href="../../Recipe/Differential-Forms and surface/CH01/1.2.html">Exercises and Solutions</a> ## Chapter 3</li>
+<li><a href="../Differential-Forms/CH03/3.1.qmd">Regular surface</a></li>
+</ul>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -303,7 +344,7 @@ body {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

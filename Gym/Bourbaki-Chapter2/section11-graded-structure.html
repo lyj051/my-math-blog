@@ -37,11 +37,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -70,6 +71,28 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<style>
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+</style>
+
+<style>
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+
+<style>
+.MathJax {
+  font-size: 90% !important;
+  }
+</style>
 <script>
   window.MathJax = {
     tex: {
@@ -94,51 +117,58 @@ MathJax = {
 };
 </script>
 <style>
-.Exercise {
-  --color1: #E8D5A3;
-}
-.Lemma {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Example {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Claim {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Theorem {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
 .Question {
   --color1: #E8D5A3;
 }
-.Geometric Interpretation {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Definition {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Details {
+  --color1: #E8D5A3;
+}
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Corollary {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Example {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Lemma {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Exercise {
+  --color1: #E8D5A3;
+}
+.Theorem {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 .Remark {
   --color1: #E8D5A3;
 }
-.Proposition {
-  --color1: #3498db;
-  --color2: #2c3e50;
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Corollary {
-  --color1: #3498db;
+.Claim {
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
 </style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-svg.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -170,7 +200,7 @@ window.Quarto = {
 <link rel="stylesheet" href="styles-html.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -226,17 +256,7 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#graded-commutative-groups" id="toc-graded-commutative-groups" class="nav-link active" data-scroll-target="#graded-commutative-groups">GRADED COMMUTATIVE GROUPS</a></li>
-  <li><a href="#graded-rings-and-modules" id="toc-graded-rings-and-modules" class="nav-link" data-scroll-target="#graded-rings-and-modules">GRADED RINGS AND MODULES</a></li>
-  <li><a href="#graded-polynomial-rings" id="toc-graded-polynomial-rings" class="nav-link" data-scroll-target="#graded-polynomial-rings">GRADED POLYNOMIAL RINGS</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -276,7 +296,7 @@ window.Quarto = {
 
 <p><strong><em>This note is entirely taken from <span class="math inline">\(\S11.1,\S 11.2\)</span> in Chapter <span class="math inline">\(\mathrm{II}\)</span> of Bourbaki’s Algebra and is for my own review only.</em></strong></p>
 <section id="graded-commutative-groups" class="level3">
-<h3 data-anchor-id="graded-commutative-groups">GRADED COMMUTATIVE GROUPS</h3>
+<h3 class="anchored" data-anchor-id="graded-commutative-groups">GRADED COMMUTATIVE GROUPS</h3>
 <div class="callout callout-style-default callout-note no-icon callout-titled" title="DEFINITION">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -287,7 +307,7 @@ window.Quarto = {
 </div>
 </div>
 <section id="graded-commutative-group-of-type-delta" class="level4 callout-body-container callout-body">
-<h4 data-anchor-id="graded-commutative-group-of-type-delta">Graded Commutative Group of Type <span class="math inline">\(\Delta\)</span></h4>
+<h4 class="anchored" data-anchor-id="graded-commutative-group-of-type-delta">Graded Commutative Group of Type <span class="math inline">\(\Delta\)</span></h4>
 <p>Given a commutative group <span class="math inline">\(G\)</span> written additively and a set <span class="math inline">\(\Delta\)</span>, a gradation of type <span class="math inline">\(\Delta\)</span> on <span class="math inline">\(G\)</span> is a family <span class="math inline">\((G_{\lambda})_{\lambda \in \Delta}\)</span> of subgroups of <span class="math inline">\(G\)</span>, of which <span class="math inline">\(G\)</span> is the direct sum, i.e <span class="math inline">\(G=\bigoplus_{\lambda \in \Delta}G_{\lambda}\)</span>. Then the set <span class="math inline">\(G\)</span>, with the structure defined by its group law and its gradation, is called a <em>graded (commutative) group of type <span class="math inline">\(\Delta\)</span></em>.</p>
 </section>
 </div>
@@ -312,7 +332,7 @@ Caution
 <li><p>Every <span class="math inline">\(0 \neq y \in G\)</span> may be written uniquely as a finite sum <span class="math inline">\(\sum_{\lambda}y_{\lambda}\)</span> of homogeneous elements with <span class="math inline">\(y_{\lambda}\in G_{\lambda}\)</span>; <span class="math inline">\(y_{\lambda}\)</span> is called the <em>component of degree <span class="math inline">\(\lambda\)</span></em>.</p></li>
 </ul>
 <section id="examples-of-graded-groups" class="level4">
-<h4 data-anchor-id="examples-of-graded-groups">Examples of Graded Groups</h4>
+<h4 class="anchored" data-anchor-id="examples-of-graded-groups">Examples of Graded Groups</h4>
 <ol type="1">
 <li><p>Given any commutative monoid with identity <span class="math inline">\(0\)</span> and a commutative group <span class="math inline">\(G\)</span>, a gradation <span class="math inline">\((G_{\lambda})_{\lambda \in \Delta}\)</span> is defined on <span class="math inline">\(G\)</span> by taking <span class="math inline">\(G_0=G\)</span> and <span class="math inline">\(G_{\lambda}=\{0\}, \lambda \neq 0\)</span>; this gradation is called <em>trivial</em>.</p></li>
 <li><p>Let <span class="math inline">\(\Delta,\Delta^{\prime}\)</span> be two sets and <span class="math inline">\(\rho\)</span> a mapping of <span class="math inline">\(\Delta \to \Delta^{\prime}\)</span>. Let <span class="math inline">\(G_{\lambda}\)</span> be a gradation of type <span class="math inline">\(\Delta\)</span> on a commutative group <span class="math inline">\(G\)</span>; for <span class="math inline">\(\mu \in \Delta^{\prime}\)</span>, let <span class="math inline">\(A_{\mu}\)</span> be the sum of the <span class="math inline">\(G_{\lambda}\)</span> such that <span class="math inline">\(\mu(\lambda)=\mu\)</span>; Clearly <span class="math inline">\(A_{\mu}\)</span> is a gradation of type <span class="math inline">\(\Delta^{\prime}\)</span> (by associativity of direct sum) on <span class="math inline">\(G\)</span>, said to be <em>derived</em> from <span class="math inline">\((G_{\lambda})_{\lambda \in \Delta}\)</span> by means of the mapping <span class="math inline">\(\rho\)</span>.</p></li>
@@ -329,7 +349,7 @@ Caution
 </section>
 </section>
 <section id="graded-rings-and-modules" class="level3">
-<h3 data-anchor-id="graded-rings-and-modules">GRADED RINGS AND MODULES</h3>
+<h3 class="anchored" data-anchor-id="graded-rings-and-modules">GRADED RINGS AND MODULES</h3>
 <p>Henceforth we shall assume that <span class="math inline">\(\Delta\)</span> is always a commutative mononid with identity <span class="math inline">\(0\)</span>.</p>
 <div class="callout callout-style-default callout-important no-icon callout-titled" title="DEFINITION">
 <div class="callout-header d-flex align-content-center">
@@ -341,7 +361,7 @@ Caution
 </div>
 </div>
 <section id="graded-ring-of-type-delta" class="level4 callout-body-container callout-body">
-<h4 data-anchor-id="graded-ring-of-type-delta">Graded Ring of Type <span class="math inline">\(\Delta\)</span></h4>
+<h4 class="anchored" data-anchor-id="graded-ring-of-type-delta">Graded Ring of Type <span class="math inline">\(\Delta\)</span></h4>
 <p>Given a ring <span class="math inline">\(A\)</span> and a gradation <span class="math inline">\((A_{\lambda})\)</span> of type <span class="math inline">\(\Delta\)</span> on the additive group <span class="math inline">\(A\)</span>, this gradation is said to be compatible with the ring structure on <span class="math inline">\(A\)</span> if <span class="math display">\[
 A_{\lambda}A_{\mu} \subseteq A_{\lambda +\mu} \text{ for all } \lambda,\mu \in \Delta
 \]</span> The ring <span class="math inline">\(A\)</span> with this gradation is then called a graded ring of type <span class="math inline">\(\Delta\)</span>.</p>
@@ -372,7 +392,7 @@ A_{\lambda}A_{\mu} \subseteq A_{\lambda +\mu} \text{ for all } \lambda,\mu \in \
 </div>
 </div>
 <section id="graded-module-of-type-delta" class="level4 callout-body-container callout-body">
-<h4 data-anchor-id="graded-module-of-type-delta">Graded Module of Type <span class="math inline">\(\Delta\)</span></h4>
+<h4 class="anchored" data-anchor-id="graded-module-of-type-delta">Graded Module of Type <span class="math inline">\(\Delta\)</span></h4>
 <p>Let <span class="math inline">\(A\)</span> be a graded ring of type <span class="math inline">\(\Delta\)</span>, <span class="math inline">\((A_{\lambda})\)</span> its gradation and <span class="math inline">\(M\)</span> a left <span class="math inline">\(A\)</span>-module; a gradation <span class="math inline">\((M_{\lambda})\)</span> of type <span class="math inline">\(\Delta\)</span> on the additive group <span class="math inline">\(M\)</span> is compatible with the <span class="math inline">\(A\)</span>-module structure on <span class="math inline">\(M\)</span> if <span class="math display">\[
 A_{\lambda}M_{\mu} \subseteq M_{\lambda + \mu} \text{ for all } \lambda,\mu \in \Delta
 \]</span> The module <span class="math inline">\(M\)</span> with this gradation is then called a left <em>graded module of type <span class="math inline">\(\Delta\)</span></em> over the graded ring <span class="math inline">\(A\)</span>.</p>
@@ -381,7 +401,7 @@ A_{\lambda}M_{\mu} \subseteq M_{\lambda + \mu} \text{ for all } \lambda,\mu \in 
 <p>When the elements of <span class="math inline">\(\Delta\)</span> are cancellable, it follows from Prop before that the <span class="math inline">\(M_{\lambda}\)</span> are <span class="math inline">\(A_0\)</span>-modules.</p>
 <p>Clearly if <span class="math inline">\(A\)</span> is a graded ring of type <span class="math inline">\(\Delta\)</span> then the left module <span class="math inline">\(A_s\)</span> is a graded module of type <span class="math inline">\(\Delta\)</span>.</p>
 <section id="examples-of-graded-rings-and-modules" class="level4">
-<h4 data-anchor-id="examples-of-graded-rings-and-modules">Examples of Graded Rings and Modules</h4>
+<h4 class="anchored" data-anchor-id="examples-of-graded-rings-and-modules">Examples of Graded Rings and Modules</h4>
 <ol type="1">
 <li><p>On any ring <span class="math inline">\(A\)</span>, the trivial gradation of type <span class="math inline">\(\Delta\)</span> is compatible with its structure of ring. For a gradation <span class="math inline">\((M_{\lambda})\)</span> of type <span class="math inline">\(\Delta\)</span> on an <span class="math inline">\(A\)</span>-module to be compatible with the <span class="math inline">\(A\)</span>-module structure, it is necessary and sufficient that the <span class="math inline">\(M_{\lambda}\)</span> be submodules of <span class="math inline">\(M\)</span>.</p></li>
 <li><p>Let <span class="math inline">\(A\)</span> be a graded ring of type <span class="math inline">\(\Delta\)</span>, <span class="math inline">\(M\)</span> a graded <span class="math inline">\(A\)</span>-module of type <span class="math inline">\(\Delta\)</span> and <span class="math inline">\(\rho\)</span> a homomorphism of <span class="math inline">\(\Delta\)</span> into a commutative monoid <span class="math inline">\(\Delta^{\prime}\)</span>. Then <span class="math inline">\(A\)</span> is also a graded ring of type <span class="math inline">\(\Delta^{\prime}\)</span> for the gradation derived from <span class="math inline">\(\rho\)</span>; Same for <span class="math inline">\(M\)</span>. sketch of proof:</p></li>
@@ -414,7 +434,7 @@ A_{\lambda}M_{\mu} \subseteq M_{\lambda + \mu} \text{ for all } \lambda,\mu \in 
 </section>
 </section>
 <section id="graded-polynomial-rings" class="level3">
-<h3 data-anchor-id="graded-polynomial-rings">GRADED POLYNOMIAL RINGS</h3>
+<h3 class="anchored" data-anchor-id="graded-polynomial-rings">GRADED POLYNOMIAL RINGS</h3>
 <div id="callout-definition-of-standard-grading" class="callout callout-style-default callout-note no-icon callout-titled" title="DEFINITION">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -425,7 +445,7 @@ A_{\lambda}M_{\mu} \subseteq M_{\lambda + \mu} \text{ for all } \lambda,\mu \in 
 </div>
 </div>
 <section id="standard-grading" class="level4 callout-body-container callout-body">
-<h4 data-anchor-id="standard-grading">Standard Grading</h4>
+<h4 class="anchored" data-anchor-id="standard-grading">Standard Grading</h4>
 <p>We will introduce a grading on the polynomial ring <span class="math inline">\(S=k[x_1,\dots,x_n]\)</span> over a field <span class="math inline">\(k\)</span>. Set <span class="math inline">\(\operatorname{deg}(x_i)=1\)</span> for each <span class="math inline">\(i\)</span> and <span class="math inline">\(\operatorname{deg}({x_1^{c_1}\dots x_n^{c_n}})=\sum c_i\)</span> for each monomial. For <span class="math inline">\(i \in \mathbb{N}_{\geq 0}\)</span>,we denote by <span class="math inline">\(S_i\)</span> the <span class="math inline">\(k\)</span>-vector space spanned by all monomials of degree <span class="math inline">\(i\)</span>. In particular, <span class="math inline">\(S_0=k\)</span>. A polynomial <span class="math inline">\(u\)</span> is said to be <em>homogeneous</em> if <span class="math inline">\(u \in S_i\)</span> for some <span class="math inline">\(i\)</span>, and in this case we say that <span class="math inline">\(u\)</span> has <em>degree <span class="math inline">\(i\)</span></em> and write <span class="math inline">\(\operatorname{deg}(u)=i\)</span>. Clearly we have a direct sum decomposition <span class="math inline">\(S=\oplus_{i \in \mathbb{N}}S_i\)</span> of <span class="math inline">\(S\)</span> as a group. Moreover <span class="math inline">\(S_iS_j \subseteq S_{i+j}\)</span> holds then <span class="math inline">\((S_i)_{i \in \mathbb{N}}\)</span> is a gradation of type <span class="math inline">\(\Delta=\mathbb{N}\)</span> on <span class="math inline">\(S\)</span>. We say that <span class="math inline">\(S\)</span> with this gradation is <em>standard graded</em>. The ideal generated by all polynomials of positive degree <span class="math inline">\((x_1,\dots,x_n)\)</span> and it is called the <em>irrelevant maximal ideal</em>.</p>
 <ul>
 <li><p>for instance, let <span class="math inline">\(A=k[x,y]\)</span>. In this case, <span class="math inline">\(A_0=k\)</span>, <span class="math inline">\(A_1\)</span> is the <span class="math inline">\(k\)</span>-vector-sapce of all linear forms, <span class="math inline">\(A_2\)</span> is the space of all quadrics, etc. The polynomial <span class="math inline">\(x^3y^2-2xy^4\)</span> is homogeneous as its terms all of degree <span class="math inline">\(5\)</span>. The polynomial <span class="math inline">\(x^3y^2-2xy^4+2y^3-10x^4\)</span> is not.</p></li>
@@ -477,6 +497,13 @@ f=\sum_{\iota \in I}a_{\iota}j_{\iota}=\sum_{\iota \in I}(\sum_{n \in \mathbb{N}
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

@@ -35,11 +35,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-0f5833d40e20a1cd6e15b81897e4b43d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
@@ -69,28 +70,54 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 <style>
-.Claim {
-  --color1: #3498db;
-  --color2: #2c3e50;
+body {
+  font-family: "Times New Roman", Times, serif;
+}
+</style>
+
+<style>
+  body, p, li {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+  mjx-container[display="true"] {
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+</style>
+
+<style>
+.MathJax {
+  font-size: 90% !important;
+  }
+</style>
+<style>
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 .Corollary {
-  --color1: #3498db;
-  --color2: #2c3e50;
-}
-.Theorem {
-  --color1: #3498db;
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
 .Lemma {
-  --color1: #3498db;
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Geometric Interpretation {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
 .Proposition {
-  --color1: #3498db;
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Example {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Theorem {
+  --color1: #6B7F8F;
   --color2: #2c3e50;
 }
 .Question {
@@ -99,23 +126,26 @@ ul.task-list li input[type="checkbox"] {
 .Remark {
   --color1: #E8D5A3;
 }
-.Example {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
-}
-.Definition {
-  --color1: #2a7d4f;
-  --color2: #1d5a3a;
+.Details {
+  --color1: #E8D5A3;
 }
 .Exercise {
   --color1: #E8D5A3;
+}
+.Definition {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 </style>
 
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -171,15 +201,7 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#notes" id="toc-notes" class="nav-link active" data-scroll-target="#notes">Notes</a></li>
-  </ul>
-</nav>
-    </div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
@@ -204,9 +226,9 @@ ul.task-list li input[type="checkbox"] {
 
 <p><a href="G. Kempf - Algebraic Varieties.pdf">Here is the textbook</a></p>
 <section id="notes" class="level2">
-<h2 data-anchor-id="notes">Notes</h2>
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
 <ul>
-<li><h3 id="chapter-1-algebraic-varieties-definition-and-existence">Chapter 1: Algebraic Varieties: definition and existence</h3>
+<li><h3 id="chapter-1-algebraic-varieties-definition-and-existence" class="anchored">Chapter 1: Algebraic Varieties: definition and existence</h3>
 <ul>
 <li><a href="../../Recipe/Algebraic-Varieties/CH01/1.1.html">spaces with functons</a></li>
 <li><a href="../../Recipe/Algebraic-Varieties/CH01/1.2.html">varieties</a></li>
@@ -216,11 +238,12 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="../../Recipe/Algebraic-Varieties/CH01/1.6.html">examples</a></li>
 <li><a href="../../Recipe/Algebraic-Varieties/CH01/1.7.html">determinantial varieties</a></li>
 </ul></li>
-<li><h3 id="chpater-2-the-preparation-lemma-and-some-consequences">Chpater 2: The preparation lemma and some consequences</h3>
+<li><h3 id="chpater-2-the-preparation-lemma-and-some-consequences" class="anchored">Chpater 2: The preparation lemma and some consequences</h3>
 <ul>
 <li><a href="../../Recipe/Algebraic-Varieties/CH02/2.1.html">the lemma</a></li>
 <li><a href="../../Recipe/Algebraic-Varieties/CH02/2.2.html">the Hilbert basis theorem</a></li>
 <li><a href="../../Recipe/Algebraic-Varieties/CH02/2.3.html">Irreducible Components</a></li>
+<li><a href="../../Recipe/Algebraic-Varieties/CH02/2.4.html">Affine and finite morphisms</a></li>
 </ul></li>
 </ul>
 
@@ -230,6 +253,13 @@ ul.task-list li input[type="checkbox"] {
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     

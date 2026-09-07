@@ -117,23 +117,15 @@ MathJax = {
 };
 </script>
 <style>
-.Claim {
-  --color1: #83a3b8;
-  --color2: #2c3e50;
-}
 .Lemma {
   --color1: #83a3b8;
   --color2: #2c3e50;
 }
-.Example {
-  --color1: #c6f6db;
-  --color2: #d3f0e0;
-}
-.Geometric Interpretation {
-  --color1: #c6f6db;
-  --color2: #d3f0e0;
-}
 .Question {
+  --color1: #be9e83;
+  --color2: #d35400;
+}
+.Exercise {
   --color1: #be9e83;
   --color2: #d35400;
 }
@@ -145,7 +137,15 @@ MathJax = {
   --color1: #83a3b8;
   --color2: #2c3e50;
 }
+.Geometric Interpretation {
+  --color1: #c6f6db;
+  --color2: #d3f0e0;
+}
 .Proposition {
+  --color1: #83a3b8;
+  --color2: #2c3e50;
+}
+.Corollary {
   --color1: #83a3b8;
   --color2: #2c3e50;
 }
@@ -153,13 +153,13 @@ MathJax = {
   --color1: #c6f6db;
   --color2: #d3f0e0;
 }
-.Exercise {
-  --color1: #be9e83;
-  --color2: #d35400;
-}
-.Corollary {
+.Claim {
   --color1: #83a3b8;
   --color2: #2c3e50;
+}
+.Example {
+  --color1: #c6f6db;
+  --color2: #d3f0e0;
 }
 </style>
 
@@ -303,7 +303,7 @@ Warning
 </div>
 <div class="callout-body-container callout-body">
 <p>Here by differentiable functions we mean smooth functions in the most textbooks.</p>
-<p>It’s quite important for beginners to make the convention: <span class="math inline">\((dx_i)_p \in  (\mathbb{R}^n_p)^*\)</span> denotes the <a href="../../../Recipe/Differential-Forms/Classical-Analysis/0.1.html#differential-of-coordinate-function">differential of the coordinate function <span class="math inline">\(x_i\)</span></a> at the point <span class="math inline">\(p \in \mathbb{R}^n\)</span> which is a linear mapping;</p>
+<p>It’s quite important for beginners to make the convention: <span class="math inline">\((dx_i)_p \in  (\mathbb{R}^n_p)^*\)</span> denotes the <a href="../../../Recipe/Differential-Forms and surface/Classical-Analysis/0.1.html#differential-of-coordinate-function">differential of the coordinate function <span class="math inline">\(x_i\)</span></a> at the point <span class="math inline">\(p \in \mathbb{R}^n\)</span> which is a linear mapping;</p>
 <p><span class="math inline">\(dx_i\)</span> denotes the differential form of degree 1, as we shall define below.</p>
 <p><span class="math display">\[
 \begin{aligned}
@@ -329,7 +329,7 @@ p &amp;\mapsto (dx_i)_p
 (dx_i)_p(e_j)=1 \text{ if } i=j; \ =0 \text{ if } i\neq j
 \]</span></p></li>
 </ul>
-<p>Indeed, <span class="math inline">\((dx_i)_p\)</span>’s as dual basis defined above are the <a href="../../../Recipe/Differential-Forms/Classical-Analysis/0.1.html#differential-of-coordinate-function">differentials of the coordinate functions <span class="math inline">\(x_i\)</span>’s at the point <span class="math inline">\(p\)</span></a>.</p>
+<p>Indeed, <span class="math inline">\((dx_i)_p\)</span>’s as dual basis defined above are the <a href="../../../Recipe/Differential-Forms and surface/Classical-Analysis/0.1.html#differential-of-coordinate-function">differentials of the coordinate functions <span class="math inline">\(x_i\)</span>’s at the point <span class="math inline">\(p\)</span></a>.</p>
 <ul>
 <li>clearly, <span class="math inline">\((df)_p \in (\mathbb{R}_p^3)^{*}\)</span> for any <span class="math inline">\(f\)</span> differentiable at <span class="math inline">\(p\)</span>.</li>
 </ul>
@@ -471,7 +471,7 @@ Warning
 <details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 5</strong></summary><div>
 <p>Let <span class="math inline">\(f: \mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> be a differentiable map. Then <span class="math inline">\(f\)</span> induces a map <span class="math inline">\(f^*\)</span> that takes <span class="math inline">\(k\)</span>-forms in <span class="math inline">\(\mathbb{R}^m\)</span> into <span class="math inline">\(k\)</span>-forms in <span class="math inline">\(\mathbb{R}^n\)</span> and is defined as follow;let <span class="math inline">\(\omega\)</span> be a <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbb{R}^m\)</span>. By definition, <span class="math inline">\(f^*(\omega)\)</span> is the <span class="math inline">\(k\)</span>-form in <span class="math inline">\(\mathbb{R}^n\)</span> given by <span class="math display">\[
 (f^*\omega)(p)(v_1,\dots,v_k)=\omega(f(p))(df_p(v_1),\dots,df_p(v_k))
-\]</span> Here <span class="math inline">\(p \in \mathbb{R}^n\)</span>, <span class="math inline">\(v_1,\dots,v_k\in \mathbb{R}^n_p\)</span>, and <span class="math inline">\(df_p: \mathbb{R}^n_p \rightarrow \mathbb{R}^m_{f(p)}\)</span> is the <a href="../../../Recipe/Differential-Forms/Classical-Analysis/0.1.html#differentiable-mapping-and-its-differential-at-a-point">differential of the map <span class="math inline">\(f\)</span> at <span class="math inline">\(p\)</span></a></p>
+\]</span> Here <span class="math inline">\(p \in \mathbb{R}^n\)</span>, <span class="math inline">\(v_1,\dots,v_k\in \mathbb{R}^n_p\)</span>, and <span class="math inline">\(df_p: \mathbb{R}^n_p \rightarrow \mathbb{R}^m_{f(p)}\)</span> is the <a href="../../../Recipe/Differential-Forms and surface/Classical-Analysis/0.1.html#differentiable-mapping-and-its-differential-at-a-point">differential of the map <span class="math inline">\(f\)</span> at <span class="math inline">\(p\)</span></a></p>
 <p>We set the convention that if <span class="math inline">\(g\)</span> is a <span class="math inline">\(0\)</span>-form, <span class="math display">\[
 f^*(g)=g\circ f
 \]</span></p>
@@ -789,7 +789,7 @@ d(f^*\varphi)
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/lyj051\.github\.io\/my-math-blog\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
