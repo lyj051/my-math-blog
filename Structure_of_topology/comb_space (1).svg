@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="800" viewBox="0 0 760 800">
+  <title>The comb space Y</title>
+  <desc>A comb space formed by vertical segments at x=0 and x=1/n for positive integers n, together with the horizontal base from (0,0) to (1,0).</desc>
+  <rect width="760" height="800" fill="white"/>
+  <g fill="#111" font-family="Times New Roman, Times, serif">
+    <g font-size="23" text-anchor="middle">
+      <text x="56" y="94">(0,1)</text>
+      <text x="206" y="94">(1/n,1)</text>
+      <text x="357" y="94">(1/2,1)</text>
+      <text x="655" y="94">(1,1)</text>
+      <text x="56" y="776">(0,0)</text>
+      <text x="206" y="776">(1/n,0)</text>
+      <text x="357" y="776">(1/2,0)</text>
+      <text x="655" y="776">(1,0)</text>
+    </g>
+  </g>
+  <g fill="none" stroke="#111" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+    <!-- limit spine and representative teeth -->
+    <path d="M56 116 V742"/>
+    <path d="M94 116 V742"/>
+    <path d="M131 116 V742"/>
+    <path d="M206 116 V742"/>
+    <path d="M357 116 V742"/>
+    <path d="M655 116 V742"/>
+    <!-- horizontal base -->
+    <path d="M56 742 H655"/>
+  </g>
+  <!-- Dotted continuation indicating infinitely many teeth -->
+  <g fill="#111">
+    <circle cx="75" cy="550" r="2.1"/><circle cx="93" cy="550" r="2.1"/><circle cx="112" cy="550" r="2.1"/>
+    <circle cx="130" cy="550" r="2.1"/><circle cx="149" cy="550" r="2.1"/><circle cx="168" cy="550" r="2.1"/>
+    <circle cx="187" cy="550" r="2.1"/><circle cx="206" cy="550" r="2.1"/>
+    <circle cx="263" cy="550" r="2.1"/><circle cx="282" cy="550" r="2.1"/><circle cx="301" cy="550" r="2.1"/>
+    <circle cx="320" cy="550" r="2.1"/>
+    <!-- subtle tiny marks in the lower-left area as in the source scan -->
+    <circle cx="74" cy="582" r="1.1"/><circle cx="76" cy="586" r="1.1"/><circle cx="74" cy="590" r="1.1"/>
+  </g>
+</svg>

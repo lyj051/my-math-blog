@@ -93,54 +93,62 @@ body {
   font-size: 90% !important;
   }
 </style>
+<script src="https://tikzjax.com/v1/tikzjax.js"></script>
 <style>
-.Claim {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Theorem {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
 .Reminder {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Details {
-  --color1: #E8D5A3;
+.Definition {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
-.Remark {
+.Notation {
   --color1: #E8D5A3;
 }
 .Example {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Corollary {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
+.Characterization {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Remark {
+  --color1: #E8D5A3;
+}
+.Exercise {
+  --color1: #E8D5A3;
+}
+.Details {
+  --color1: #E8D5A3;
 }
 .Question {
   --color1: #E8D5A3;
 }
-.Definition {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Proposition {
+.Theorem {
   --color1: #6B7F8F;
   --color2: #2c3e50;
+}
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 .Lemma {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Exercise {
-  --color1: #E8D5A3;
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
-.Geometric Interpretation {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
+.Corollary {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 </style>
 
@@ -308,14 +316,30 @@ window.Quarto = {
 <li><p>We shall assume, from now on, that all the manifolds to be considered are Hausdorff and have a countable basis.</p></li>
 </ol>
 </div>
+<p>After defining the natural topology on the manifold, we have the equivalent charaterization of differentiable structure:</p>
+<div class="Charaterization">
+<p>Given a (Hausdorff, second-countable) topological space <span class="math inline">\(M\)</span>, we say <span class="math inline">\(\mathcal{A}=\{(U_\alpha,f_\alpha)\}\)</span> is a differentiable structure on <span class="math inline">\(M\)</span> or atlas if each <span class="math inline">\(U_\alpha\subset \mathbf{R}^n\)</span> is open and each map <span class="math inline">\(f_\alpha:U_\alpha\rightarrow M\)</span> is a homeomorphism and <span class="math inline">\(f_\alpha^{-1}\circ f_\beta:f^{-1}_\beta(W)\rightarrow\mathbf{R}^n\)</span> where <span class="math inline">\(W=f_\alpha(U_\alpha)\cap f_\beta(U_\beta)\)</span> is differentiable for each pair of <span class="math inline">\((\alpha,\beta)\)</span> (this is automatically satisfied when <span class="math inline">\(f_\alpha(U_\alpha)\cap f_\beta(U_\beta)=\emptyset\)</span>).</p>
+</div>
+<p>Again we can extend any differentiable structure into a maximal one.</p>
 <div id="cnb-3-Example" class="Example">
 <details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 2</strong></summary><div>
 <p>The simplest example of a differentiable structure consists of <span class="math inline">\(\mathbf{R}^n\)</span> with an atlas <span class="math inline">\(\mathcal{A}\)</span> of only one pair, <span class="math inline">\((\mathbf{R}^n,\operatorname{id})\)</span>. We can easily make the atlas bigger;We can adjoin <span class="math inline">\((U,f)\)</span> if <span class="math inline">\(U\xrightarrow{f}V\)</span> are homeomorphic with <span class="math inline">\(f,f^{-1}\)</span> are differentiable. Indeed we can adjoin as many such <span class="math inline">\(f\)</span>’s as we like (<a href="../../../Recipe/Differential-Forms/CH03/3.2.html#maxiaml-atlas">proof</a>).</p>
 </div></details>
 </div>
+<p>When <span class="math inline">\(n=1\)</span>, we consider the two structures on <span class="math inline">\(\mathbf{R}\)</span>: <span class="math inline">\((R,\mathcal{U})\)</span> where <span class="math inline">\(\mathcal{U}\)</span> is the maximal atlas containing <span class="math inline">\(\operatorname{id}\)</span> and <span class="math inline">\((\mathbf{R},\mathcal{V})\)</span> where <span class="math inline">\(\mathcal{V}\)</span> is the maximal atlas containing the homeomorphism <span class="math inline">\(x\mapsto x^{3}\)</span>, which is not differentiable, together with all charts differentiable-related to it. Although <span class="math inline">\((R,\mathcal{U})\)</span> and <span class="math inline">\((\mathbf{R},\mathcal{V})\)</span> are not the same, there is a one-to-one and onto function <span class="math inline">\(f:\mathbf{R}\rightarrow \mathbf{R}\)</span> such that <span class="math display">\[
+x\in\mathcal{U} \text{  if and only if  } f\circ x\in\mathcal{V}
+\]</span> namely, the obvious function <span class="math inline">\(f(x)=x^{3}\)</span>. Thus <span class="math inline">\((R,\mathcal{U})\)</span> and <span class="math inline">\((\mathbf{R},\mathcal{V})\)</span> are the sort of structures one would want to call ‘isomorphic’. The term actually used is <strong>diffeomorphic</strong>:</p>
+<div id="diffeomorphism" class="Definition">
+<details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 3: </strong>diffeomorphism</summary><div>
+<p>Two differentiable manifolds <span class="math inline">\((M,\mathcal{A})\)</span> and <span class="math inline">\((N,\mathcal{B})\)</span> are diffeomorphic if there is one to one and onto map <span class="math inline">\(f:M\rightarrow N\)</span> such that <span class="math display">\[
+x\in \mathcal{A} \text{ if and only if } f\circ x \in \mathcal{B}
+\]</span> The map <span class="math inline">\(f\)</span> is called a <strong>diffeomorphism</strong> and clearly <span class="math inline">\(f^{-1}\)</span> is a diffeomorphism also.</p>
+</div></details>
+</div>
+<p>The <a href="../../../Recipe/Differential-Forms/CH03/3.3.html#diffeomorphismlocal-diffeomorphism">another definition</a> of diffeomorphism based on the definition of differentiable map between manifolds is given in the next section.</p>
 <p>Less trivial examples are the following ones.</p>
 <div id="the-real-projective-plane-p2mathbfr" class="Example">
-<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 3: </strong>The real projective plane <span class="math inline">\(P^2(\mathbf{R})\)</span></summary><div>
+<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 4: </strong>The real projective plane <span class="math inline">\(P^2(\mathbf{R})\)</span></summary><div>
 <p>We will denote by <span class="math inline">\(P^2(\mathbf{R})\)</span> the all lines in <span class="math inline">\(\mathbf{R}^3\)</span> that pass through the origin <span class="math inline">\((0,0,0)\)</span> of <span class="math inline">\(\mathbf{R}^3\)</span>, i.e., <span class="math inline">\(P^2(\mathbf{R})\)</span> is the set of all ‘directions’ in <span class="math inline">\(\mathbf{R}^3\)</span>.</p>
 <p>We want to introduce a differentiable structure in <span class="math inline">\(P^2(\mathbf{R})\)</span>. For that, let <span class="math inline">\((x,y,z)\in \mathbf{R}^3\)</span>, and notice that <span class="math inline">\(P^2(\mathbf{R})\)</span> is the quotient space of <span class="math inline">\(\mathbf{R}^3-\{(0,0,0)\}\)</span> by the equivalence relation <span class="math inline">\(\sim\)</span>: <span class="math display">\[
 (x,y,z)\sim(\lambda x,\lambda y,\lambda z),\qquad \lambda\in\mathbf{R},\quad \lambda\neq0
@@ -334,7 +358,7 @@ f_3(u,v)=[u,v,1]
 <p>Geometrically <span class="math inline">\(V_2\)</span>, for instance, is the set of all lines that pass through origin and do not belong to the plane <span class="math inline">\(xOz\)</span>. We claim that the family <span class="math inline">\(\{(\mathbf{R}^2,f_i)\}\)</span> is a differentiable structure for <span class="math inline">\(P^2(\mathbf{R})\)</span>.</p>
 <p>Actually we need only show that <span class="math inline">\(f_i^{-1}(V_i\cap V_i)\)</span> is open in <span class="math inline">\(\mathbf{R}^2\)</span> and <span class="math inline">\(f_j^{-1}\circ f_i\)</span> is differentiable. Let us consider the case <span class="math inline">\(i=1,j=2\)</span>; the other cases are entirely analogous.</p>
 <p>The points of <span class="math inline">\(f_1^{-1}(V_1\cap V_2)\)</span> are of the form <span class="math inline">\((u,v)\)</span> with <span class="math inline">\(u\neq0\)</span>; thus the set <span class="math inline">\(f_1^{-1}(V_1\cap V_2)\)</span> is open in <span class="math inline">\(\mathbf{R}^2\)</span> and <span class="math display">\[
-f_2^{-1}\circ f_1(u,v)=f_2^{-1}([1,u,v])=f_2^{-1}(1/u,1,v/u)=(1/u,v/u)
+f_2^{-1}\circ f_1(u,v)=f_2^{-1}([1,u,v])=f_2^{-1}([1/u,1,v/u])=(1/u,v/u)
 \]</span> is differentiable, as we claimed.</p>
 </div></details>
 </div>
@@ -342,7 +366,7 @@ f_2^{-1}\circ f_1(u,v)=f_2^{-1}([1,u,v])=f_2^{-1}(1/u,1,v/u)=(1/u,v/u)
 <source src="video/KleinBottleSweep.mp4" type="video/mp4">
 </video>
 <div id="the-klein-bottle" class="Example">
-<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 4: </strong>The Klein bottle</summary><div>
+<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 5: </strong>The Klein bottle</summary><div>
 <p>The Klein bottle is the subset of <span class="math inline">\(\mathbf{R}^4\)</span> defined as follows (its projection in <span class="math inline">\(\mathbf{R}^3\)</span> is given in the video above); let <span class="math inline">\(Ox,Oy,Oz,Ow\)</span> be the four coordinate axis in <span class="math inline">\(\mathbf{R}^4\)</span>. Let <span class="math inline">\(S\)</span> be a circ with radius <span class="math inline">\(r\)</span>, contained in the plane <span class="math inline">\(xOz\)</span>, with center <span class="math inline">\(C\)</span> in the axix <span class="math inline">\(Ox\)</span> so that <span class="math inline">\(C\)</span> is at a distance <span class="math inline">\(a&gt;r\)</span> from 0. The Klein bottle is generated by rotating this circ around <span class="math inline">\(Oz\)</span> in such a way that when the center <span class="math inline">\(C\)</span> has described a rotation of an angle <span class="math inline">\(u\)</span> in the plane <span class="math inline">\(xOz\)</span>, the plane of <span class="math inline">\(S\)</span> has described a rotation of an angle <span class="math inline">\(u\)</span> around <span class="math inline">\(Oc\)</span> in the <span class="math inline">\(3\)</span>-space <span class="math inline">\(OCOzOw\)</span> (this is possible because we are in <span class="math inline">\(\mathbf{R}^4\)</span> but the projection of the moving circle in <span class="math inline">\(\mathbf{R}^3\)</span> is twisted into a line where the intersection happens when <span class="math inline">\(u=\pi\)</span>).</p>
 <p>Let <span class="math inline">\(u\)</span> and <span class="math inline">\(v\)</span> be as in video, then we can describe the surface as: <span class="math display">\[
 \begin{aligned}
@@ -410,7 +434,106 @@ f_3=
 <source src="video/KleinBottleFig33.mp4" type="video/mp4">
 </video>
 <div class="proof remark">
-<p><span class="proof-title"><em>Remark</em>. </span>The Klein bottle (projected in <span class="math inline">\(\mathbf{R}^3\)</span>) can be thought of as a twisted torus in the following sense (like the video above): The torus is obtained from a rectangle by identifying the opposite sides. In the Klein bottle, one of the sides is reflected across its center before performing the identification. Indeed the model in this case is another projection of Klein bottle which looks more like a real bottle. And it’s not a regular surface in <span class="math inline">\(\mathbf{R}^3\)</span> for it has obvious self-intersections on this model.</p>
+<p><span class="proof-title"><em>Remark</em>. </span>The Klein bottle (projected in <span class="math inline">\(\mathbf{R}^3\)</span>) can be thought of as a twisted torus in the following sense (like the video above): The torus is obtained from a rectangle by identifying the opposite sides. In the Klein bottle, one of the sides is reflected across its center before performing the identification. Indeed the model in this case is another projection of Klein bottle (after a differentiable homeomorphism) which looks more like a real bottle. And it’s not a regular surface in <span class="math inline">\(\mathbf{R}^3\)</span> for it has obvious self-intersections on this model.</p>
+</div>
+<p>Next we show a non-example which is even not a topological manifold.</p>
+<div id="double-cone" class="Example">
+<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 6: </strong>Double-cone</summary><div>
+<p>We consider <span class="math inline">\(M:=\{(y^1,y^2,y^3)\in\mathbf{R}^3:(y^1)^2=(y^2)^2+(y^3)^2\}\)</span>, the double cone.</p>
+<p>Since <span class="math inline">\(M\subset \mathbf{R}^3\)</span>, it’s clearly Hausdorff and has a countable basis.</p>
+<p>But <span class="math inline">\(M\)</span> is not a <span class="math inline">\(2\)</span>-dimensional manifold. If it were, then there would exist an open subset <span class="math inline">\(U\subset M\)</span> with <span class="math inline">\(0\in U\)</span>, an open subset <span class="math inline">\(V\subset \mathbf{R}^2\)</span> and a homeomorphism <span class="math inline">\(x:U\rightarrow V\)</span> with <span class="math inline">\(x(0)=0\)</span>.</p>
+<p>Wlog, assume that <span class="math inline">\(V=B_r(x(0))\)</span> with <span class="math inline">\(r&gt;0\)</span>. Choose <span class="math inline">\(q_1,q_2\in U\)</span> with <span class="math inline">\(q_1^1&gt;0\)</span> and <span class="math inline">\(q_2^1&lt;0\)</span>. Furthermore choose a continuous path <span class="math inline">\(c:[0,1]\rightarrow V\)</span> with <span class="math display">\[
+c(0)=x(q_1),c(1)=x(q_2) \text{ and } c(t)\neq x(0) \text{ for all } t\in[0,1]
+\]</span></p>
+<p>Define the continuos path <span class="math inline">\(\tilde{c}:=x^{-1}\circ c:[0,1]\rightarrow U\)</span>. Then <span class="math display">\[
+\tilde{c}(0)=q_1,\tilde{c}(1)=q_2
+\]</span> that is, we have <span class="math inline">\(\tilde{c}^1(0)&gt;0\)</span> while <span class="math inline">\(\tilde{c}^1(1)&lt;0\)</span>. Applying the mean value theorem we find, that there exists a <span class="math inline">\(t\in (0,1)\)</span> with <span class="math inline">\(\tilde{c}^1(t)=0\)</span>. Then by the definition of <span class="math inline">\(M\)</span>, <span class="math inline">\(\tilde{c}(t)=(0,0,0)\)</span> and consequently <span class="math inline">\(c(t)=x(\tilde{c}(t))=x(0)\)</span>, which contradicts the choice of <span class="math inline">\(c\)</span>. Hence, <span class="math inline">\(M\)</span> is not a <span class="math inline">\(2\)</span>-dimensional topological manifold.</p>
+</div></details>
+</div>
+<div style="width: 100%; display: flex; flex-direction: column; align-items: center;">
+<script type="text/tikz">
+\begin{tikzpicture}[scale=1]
+
+% left cone
+\draw (-1,2) -- (0,0);
+\draw (1,2) -- (0,0);
+\draw (0,0) -- (-1,-2);
+\draw (0,0) -- (1,-2);
+
+% top ellipse
+\draw (-1,2) .. controls (-0.5,2.3) and (0.5,2.3) .. (1,2);
+\draw (-1,2) .. controls (-0.5,1.7) and (0.5,1.7) .. (1,2);
+
+% bottom ellipse
+\draw (-1,-2) .. controls (-0.5,-1.7) and (0.5,-1.7) .. (1,-2);
+\draw (-1,-2) .. controls (-0.5,-2.3) and (0.5,-2.3) .. (1,-2);
+
+% blue curve
+\draw[blue,thick]
+(0.1,1.5)
+.. controls (0.1,1) and (-0.1,0.5) ..
+(0,0)
+.. controls (0.1,-0.5) and (0.1,-1) ..
+(0.1,-1.5);
+
+% points
+\fill (0.1,1.5) circle (2pt);
+\fill (0,0) circle (2pt);
+\fill (0.1,-1.5) circle (2pt);
+
+% labels
+\node[left] at (0.1,1.5) {$q_1$};
+\node[right] at (0,0) {$0$};
+\node[left] at (0.1,-1.5) {$q_2$};
+\node[left] at (-0.8,1.4) {$M$};
+
+% arrow
+\draw[->] (1.4,0) -- (2.5,0);
+
+\node at (1.9,0.35) {$\approx$};
+\node at (1.9,-0.35) {$x$};
+
+% right region
+\draw (3.2,-1.2)
+.. controls (3,-0.5) and (3.2,0.5) ..
+(3.5,1.3)
+.. controls (4,1.8) and (4.7,1.4) ..
+(4.8,0.7)
+.. controls (5,0) and (4.8,-0.8) ..
+(4.5,-1.2)
+.. controls (4,-1.6) and (3.4,-1.6) ..
+(3.2,-1.2);
+
+% inner region
+\draw (3.5,-0.7)
+.. controls (3.3,0) and (3.5,0.8) ..
+(3.8,1.1)
+.. controls (4.2,1.4) and (4.6,1.1) ..
+(4.7,0.5)
+.. controls (4.8,-0.2) and (4.6,-0.8) ..
+(4.3,-1)
+.. controls (3.9,-1.1) and (3.6,-1) ..
+(3.5,-0.7);
+
+% blue segment
+\draw[blue,thick] (3.9,0.9) -- (3.9,-0.8);
+
+\fill (3.9,0.9) circle (2pt);
+\fill (4.3,0.05) circle (2pt);
+\fill (3.9,-0.8) circle (2pt);
+
+\node[right] at (3.9,0.9) {$x(q_1)$};
+\node[right] at (4.3,0.05) {$x(0)$};
+\node[right] at (3.9,-0.8) {$x(q_2)$};
+
+\node at (3.5,0) {$c$};
+\node at (3.2,-1.45) {$V$};
+
+\end{tikzpicture}
+</script>
+<div style="margin-top: 10px; text-align: center;">
+    <strong>figure 1.</strong> double-cone
+</div>
 </div>
 
 

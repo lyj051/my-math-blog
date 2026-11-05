@@ -94,42 +94,23 @@ body {
   }
 </style>
 <style>
-.Remark {
+.Characterization {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Question {
   --color1: #E8D5A3;
 }
-.Corollary {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
+.Exercise {
+  --color1: #E8D5A3;
 }
-.Reminder {
+.Geometric Interpretation {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
 .Claim {
   --color1: #6B7F8F;
   --color2: #2c3e50;
-}
-.Lemma {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Example {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Theorem {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Details {
-  --color1: #E8D5A3;
-}
-.Question {
-  --color1: #E8D5A3;
-}
-.Geometric Interpretation {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
 }
 .Proposition {
   --color1: #6B7F8F;
@@ -139,8 +120,34 @@ body {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Exercise {
+.Notation {
   --color1: #E8D5A3;
+}
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Remark {
+  --color1: #E8D5A3;
+}
+.Details {
+  --color1: #E8D5A3;
+}
+.Theorem {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Lemma {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Corollary {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Example {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 </style>
 
@@ -317,7 +324,7 @@ Y \cong \operatorname{Spec}(A/I); \quad \mathcal{O}_{X}(Y) \cong A/I
 <section id="topological-properties-of-finite-morphisms" class="level2">
 <h2 class="anchored" data-anchor-id="topological-properties-of-finite-morphisms">Topological properties of finite morphisms</h2>
 <p>Topologically finite morphisms are special.</p>
-<div id="cnb-3-Lemma" class="Lemma">
+<div id="finite_map_closed" class="Lemma">
 <details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 2</strong></summary><div>
 <p>Let <span class="math inline">\(f:X \rightarrow Y\)</span> be a finite morphism. Let <span class="math inline">\(Z\)</span> be a closed subset of <span class="math inline">\(X\)</span>. Then its image <span class="math inline">\(f(Z)\)</span> is closed.</p>
 </div></details>
@@ -357,7 +364,7 @@ A=\mathcal{O}(Y)/I \hookrightarrow \mathcal{O}(Z)=B
     </iframe>
 </div>
 <p>We have another property of finite morphisms</p>
-<div id="cnb-5-Lemma" class="Lemma">
+<div id="ftmap_strictly_containing" class="Lemma">
 <details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 3</strong></summary><div>
 <p>Let <span class="math inline">\(f:X \rightarrow Y\)</span> be a finite morphism and let <span class="math inline">\(Z_1\subsetneq Z_2\)</span> be two closed subsets of <span class="math inline">\(X\)</span> where <span class="math inline">\(Z_2\)</span> is irreducible. Then <span class="math inline">\(f(Z_1)\subsetneq f(Z_2)\)</span>.</p>
 </div></details>

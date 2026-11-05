@@ -94,31 +94,17 @@ body {
   }
 </style>
 <style>
-.Claim {
+.Corollary {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Reminder {
+.Geometric Interpretation {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
-}
-.Lemma {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Remark {
-  --color1: #E8D5A3;
 }
 .Theorem {
   --color1: #6B7F8F;
   --color2: #2c3e50;
-}
-.Example {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Details {
-  --color1: #E8D5A3;
 }
 .Exercise {
   --color1: #E8D5A3;
@@ -127,16 +113,37 @@ body {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Question {
-  --color1: #E8D5A3;
-}
-.Corollary {
+.Claim {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Geometric Interpretation {
+.Example {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
+}
+.Characterization {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Remark {
+  --color1: #E8D5A3;
+}
+.Notation {
+  --color1: #E8D5A3;
+}
+.Details {
+  --color1: #E8D5A3;
+}
+.Reminder {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Question {
+  --color1: #E8D5A3;
+}
+.Lemma {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 .Definition {
   --color1: #7C8B6B;
@@ -277,11 +284,16 @@ window.Quarto = {
 <section id="how-finite-morphisms-behave-w.r.t.-dimension" class="level2">
 <h2 class="anchored" data-anchor-id="how-finite-morphisms-behave-w.r.t.-dimension">How finite morphisms behave w.r.t. dimension</h2>
 <p>We will first study how finite morphisms behave with respect to dimension.</p>
-<div id="cnb-1-Lemma" class="Lemma">
+<div id="finite-mor-dim" class="Lemma">
 <details class="Lemma fobx-simplebox fobx-default" open=""><summary><strong>Lemma 1</strong></summary><div>
 <p>Let <span class="math inline">\(f:X\rightarrow Y\)</span> be a finite surjective morphism between varieties. Then <span class="math inline">\(\operatorname{dim}X = \operatorname{dim} Y\)</span>.</p>
 </div></details>
 </div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Let <span class="math inline">\(Z_p\supsetneq Z_{p-1}\supsetneq \dots \supsetneq Z_0\)</span> be a chain of non-empty irreducible closed subsets of <span class="math inline">\(X\)</span>. Set <span class="math inline">\(W_i=f(Z_i)\)</span>. Then <span class="math inline">\(W_p\supsetneq W_{p-1}\supsetneq \dots \supsetneq W_0\)</span> is a strictly decreasing chain of closed subsets of <span class="math inline">\(Y\)</span> (by <a href="../../../Recipe/Algebraic-Varieties/CH02/2.4.html#finite_map_closed">lemma 2</a> and <a href="../../../Recipe/Algebraic-Varieties/CH02/2.4.html#ftmap_strictly_containing">lemma 3</a>). Therefore <span class="math inline">\(\operatorname{dim}X\leq \operatorname{dim} Y\)</span>.</p>
+<p>Conversely let <span class="math inline">\(W_p\supsetneq \dots \supsetneq W_0\)</span> be a sequence in <span class="math inline">\(Y\)</span>. We need to see that we can find a sequence of <span class="math inline">\(Z_i\)</span> in <span class="math inline">\(X\)</span> such that <span class="math inline">\(f(Z_i)=W_i\)</span>. The variety <span class="math inline">\(f^{-1}(W_p)=K_1\cup\dots\cup K_i\)</span> where the <span class="math inline">\(K_i\)</span>’s are the irreducible components of <span class="math inline">\(f^{-1}W_p\)</span>. Thus as <span class="math inline">\(f\)</span> is surjective <span class="math inline">\(W_p=f(K_1)\cup\dots\cup f(K_i)\)</span> where the <span class="math inline">\(f(K_j)\)</span> are closed and irreducible. As <span class="math inline">\(W_p\)</span> is irreducible, <span class="math inline">\(W_p=f(K_j)\)</span> for some <span class="math inline">\(j\)</span>. Set <span class="math inline">\(Z_p=K_j\)</span>. Consider the finite surjective morphism <span class="math inline">\(f\restriction_{Z_p}: Z_p\rightarrow W_p\)</span>. By induction on <span class="math inline">\(p\)</span> we may find the required <span class="math inline">\(Z_{p-1}\supsetneq \dots \supsetneq Z_0\)</span> in <span class="math inline">\(Z_p\)</span>. This constructs the required sequence <span class="math inline">\(Z_i\)</span>.</p>
+</div>
+<p>Next we will check that we have the right definition of dimension in the simplest case.</p>
 
 
 </section>

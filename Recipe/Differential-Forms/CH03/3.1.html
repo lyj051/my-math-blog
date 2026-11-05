@@ -9,7 +9,7 @@
 <meta name="author" content="Eugene Lee">
 <meta name="dcterms.date" content="2026-09-02">
 
-<title>Regular surface – Wonderings of Lee</title>
+<title>Concepts and examples in 3-dimensinal space – Wonderings of Lee</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -94,21 +94,49 @@ body {
   }
 </style>
 <style>
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
 .Definition {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Geometric Interpretation {
+.Example {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
+}
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 .Theorem {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Example {
+.Exercise {
+  --color1: #E8D5A3;
+}
+.Details {
+  --color1: #E8D5A3;
+}
+.Reminder {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
+}
+.Question {
+  --color1: #E8D5A3;
+}
+.Notation {
+  --color1: #E8D5A3;
+}
+.Corollary {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Lemma {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 .Claim {
   --color1: #6B7F8F;
@@ -117,30 +145,9 @@ body {
 .Remark {
   --color1: #E8D5A3;
 }
-.Proposition {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Corollary {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Reminder {
+.Characterization {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
-}
-.Details {
-  --color1: #E8D5A3;
-}
-.Question {
-  --color1: #E8D5A3;
-}
-.Exercise {
-  --color1: #E8D5A3;
-}
-.Lemma {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
 }
 </style>
 
@@ -238,7 +245,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Regular surface</h1>
+<h1 class="title">Concepts and examples in 3-dimensinal space</h1>
   <div class="quarto-categories">
     <div class="quarto-category">Differential Geometry of curves and surfaces</div>
     <div class="quarto-category">P.Do Carmo</div>
@@ -271,6 +278,8 @@ window.Quarto = {
 </header>
 
 
+<section id="regular-surface" class="level2">
+<h2 class="anchored" data-anchor-id="regular-surface">Regular surface</h2>
 <p>We will start with the most familiar example of a differentiable manifold, namely a <strong>regular surface</strong> in <span class="math inline">\(\mathbf{R}^3\)</span>. Roughly speacking, a regular surface in <span class="math inline">\(\mathbf{R}^3\)</span> is obtained by taking pieces of a plane, deforming them, and arranging them in such a way that the resulting figure has no sharp points, edges, or self-intersections and so that it makes sense to speak of a tangent plane at points of the figure. The idea is to define a set that is, in a certain sense, two-dimensional and that also is smooth enough so that the ususal notions of calculus can be extended to it.</p>
 <div id="cnb-1-Definition" class="Definition">
 <details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 1</strong></summary><div>
@@ -303,11 +312,41 @@ window.Quarto = {
 </div></details>
 </div>
 <p>The most familiar example of regular surface is a sphere but we have to check condition carefully:</p>
-<div id="cnb-3-Example" class="Example">
-
+<div id="unit-sphere" class="Example">
+<details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 2</strong></summary><div>
+<p>Let us show that the unit sphere <span class="math display">\[
+S^2=\{(x,y,z)\in\mathbf{R}^3:x^2+y^2+z^2=1\}
+\]</span> is a regular surface.</p>
+</div></details>
+</div>
+<div class="proof">
+<p><span class="proof-title"><em>Proof</em>. </span>Set <span class="math inline">\(\mathbf{x}_1\)</span> as follows: <span class="math display">\[
+\begin{aligned}
+\mathbf{x}_1:\mathbf{R}^2\supset U=\{(x,y):x^2+y^2&lt;1\} &amp;\rightarrow S^2 \\
+(x,y)&amp;\mapsto (x,y,+\sqrt{1-x^2-y^2})
+\end{aligned}
+\]</span></p>
+<p>Condition 1 is satisfied since component functions <span class="math inline">\(x,y,\sqrt{1-x^2-y^2}\)</span> have partial derivatives of all orders.</p>
+<p>Condition 2 is satisfied since <span class="math inline">\(\pi(x,y,z)=(x,y)\)</span> is a differentiable inverse of <span class="math inline">\(\mathbf{x}_1\)</span>.</p>
+<p>Condition 3 is satisfied since there exists one Jacobian determinant <span class="math inline">\(\frac{\partial (x,y)}{\partial (x,y)}=1\)</span> which is non-zero.</p>
+<p>It’s easy to see that we can cover the whole sphere with similar parametrizations and then we verify that sphere is a regular surface.</p>
+</div>
+</section>
+<section id="change-of-parameters-differentiable-functions-on-surfaces" class="level2">
+<h2 class="anchored" data-anchor-id="change-of-parameters-differentiable-functions-on-surfaces">Change of parameters; Differentiable functions on surfaces</h2>
+<p>It is important that we be able to define what it means for a function <span class="math inline">\(f:S\rightarrow R\)</span> to be differentiable at a point <span class="math inline">\(p\)</span> of a regular surface <span class="math inline">\(S\)</span>.</p>
+<p>A natural way to proceed is to choose a coordinate neighborhood of <span class="math inline">\(p\)</span>, with coordinates <span class="math inline">\(u, v\)</span>, and say that <span class="math inline">\(f\)</span> is differentiable at <span class="math inline">\(p\)</span> if its expression (i.e.&nbsp;<span class="math inline">\(f\circ \mathbf{x}\)</span> where <span class="math inline">\(\mathbf{x}\)</span> is the corresponded parametrization such that <span class="math inline">\(p\in \mathbf{x}(U)\)</span>) in the coordinates u and v admits continuous partial derivatives of all orders.</p>
+<p>However, given a parametrization system (fixed) on a regular surface <span class="math inline">\(S\)</span>, we notice that one point can belong to various coordinate neighborhoods(in the sphere of Example 2 any point of the interior of the first octant belongs to three of the given coordinate neighborhoods);Moreover, other coordinate systems could be chosen in a neighborhood of p (the points referred to on the sphere could also be parametrized by geographical coordinates or by stereographic projection).</p>
+<p>For the above definition to make sense, it is necessary that it does not depend on the chosen system of coordinates. In other words, it must be shown that when <span class="math inline">\(p\)</span> belongs to two coordinate neighborhoods, with parameters <span class="math inline">\((u, v)\)</span> and <span class="math inline">\((\xi,\eta)\)</span>, it is possible to pass from one of these pairs of coordinates to the other by means of a differentiable transformation.</p>
+<p>The following proposition shows that this is true.</p>
+<div id="change-of-parameters" class="Proposition">
+<details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 1: </strong>Change of parameters</summary><div>
+<p>Let <span class="math inline">\(p\)</span> be a point of a regular surface <span class="math inline">\(S\)</span>, and let <span class="math inline">\({x}:\mathbf{R}^2\supset U\rightarrow S;\quad {y}:\mathbf{R}^2\supset V \rightarrow  S\)</span> be two parametrizations of S such that <span class="math inline">\(p\in  x(U) \cap y(V) = W\)</span>. Then the “change of coordinates” <span class="math inline">\(h=x^{-1}\circ y:y^{-1}(W)\rightarrow x^{-1}(W)\)</span> is a difleomorphism; that is, <span class="math inline">\(h\)</span> is differentiable and has a differentiable inverse <span class="math inline">\(h^{-1}\)</span>.</p>
+</div></details>
 </div>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

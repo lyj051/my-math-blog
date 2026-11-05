@@ -42,6 +42,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-adfa98a5d34b0e39ebeda459a371d153.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/quarto-contrib/foldbox/foldbox.css" rel="stylesheet">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -92,22 +95,16 @@ body {
   }
 </style>
 <style>
-.Proposition {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Question {
+.Exercise {
   --color1: #E8D5A3;
+}
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 .Corollary {
   --color1: #6B7F8F;
   --color2: #2c3e50;
-}
-.Details {
-  --color1: #E8D5A3;
-}
-.Remark {
-  --color1: #E8D5A3;
 }
 .Theorem {
   --color1: #6B7F8F;
@@ -117,35 +114,48 @@ body {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Exercise {
-  --color1: #E8D5A3;
+.Example {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
 }
 .Claim {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Lemma {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Example {
+.Characterization {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
+}
+.Notation {
+  --color1: #E8D5A3;
+}
+.Remark {
+  --color1: #E8D5A3;
+}
+.Question {
+  --color1: #E8D5A3;
 }
 .Definition {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Geometric Interpretation {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
+.Details {
+  --color1: #E8D5A3;
+}
+.Lemma {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 </style>
 
 
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -201,9 +211,11 @@ body {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -231,7 +243,10 @@ body {
 <li><strong>Digestion</strong> — ideas, motivations, and connections reconstructed from my reading.</li>
 <li><strong>Gym</strong> - toolbox of many techniques and exercises for exams</li>
 </ul>
-<section id="recipe" class="level2">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p><a href="./Recipe/Differential-Forms/CH03/video/crossed_cap.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="./Recipe/Differential-Forms/CH03/video/crossed_cap.gif" class="img-fluid" style="width:100.0%"></a></p>
+</div></div><section id="recipe" class="level2">
 <h2 class="anchored" data-anchor-id="recipe">Recipe</h2>
 <ul>
 <li><p>I keep notes on books in different subjects.</p></li>
@@ -657,6 +672,38 @@ body {
   });
   </script>
 </div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

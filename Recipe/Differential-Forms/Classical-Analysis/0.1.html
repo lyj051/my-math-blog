@@ -93,57 +93,30 @@ body {
   font-size: 90% !important;
   }
 </style>
-<script>
-  window.MathJax = {
-    tex: {
-      packages: {'[+]': ['tikzcd']}
-    },
-    loader: {load: ['[tex]/tikzcd']}
-  };
-</script>
 <style>
-  body, p, li {
-    text-align: justify;
-    text-justify: inter-word;
-  }
-  mjx-container[display="true"] {
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-</style>
-<script>
-MathJax = {
-  tex: { macros: { Spec: "\\operatorname{Spec}" } }
-};
-</script>
-<style>
-.Proposition {
+.Theorem {
   --color1: #6B7F8F;
   --color2: #2c3e50;
+}
+.Claim {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
+}
+.Notation {
+  --color1: #E8D5A3;
+}
+.Exercise {
+  --color1: #E8D5A3;
 }
 .Reminder {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Question {
-  --color1: #E8D5A3;
-}
 .Example {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
-.Theorem {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
-}
-.Details {
-  --color1: #E8D5A3;
-}
 .Definition {
-  --color1: #7C8B6B;
-  --color2: #A8B5A0;
-}
-.Geometric Interpretation {
   --color1: #7C8B6B;
   --color2: #A8B5A0;
 }
@@ -151,19 +124,30 @@ MathJax = {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Exercise {
+.Remark {
   --color1: #E8D5A3;
+}
+.Characterization {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Proposition {
+  --color1: #6B7F8F;
+  --color2: #2c3e50;
 }
 .Lemma {
   --color1: #6B7F8F;
   --color2: #2c3e50;
 }
-.Remark {
+.Question {
   --color1: #E8D5A3;
 }
-.Claim {
-  --color1: #6B7F8F;
-  --color2: #2c3e50;
+.Geometric Interpretation {
+  --color1: #7C8B6B;
+  --color2: #A8B5A0;
+}
+.Details {
+  --color1: #E8D5A3;
 }
 </style>
 
@@ -197,7 +181,6 @@ window.Quarto = {
 };
 </script>
 
-<link rel="stylesheet" href="styles-html.css">
 </head>
 
 <body class="nav-fixed fullcontent quarto-light">
@@ -307,19 +290,26 @@ window.Quarto = {
 <details class="Definition fobx-simplebox fobx-default" open=""><summary><strong>Definition 2: </strong>Version 2</summary><div>
 <p>A function <span class="math inline">\(f:E \rightarrow \mathbb{R}^m\)</span> defined on a set <span class="math inline">\(E\subset \mathbb{R}^n\)</span> is <em>differentiable</em> at the point <span class="math inline">\(a\in E\)</span> which is a <em>interior point</em> (or weaker, <em>limit point</em>) of <span class="math inline">\(E\)</span>, if <span class="math display">\[
 f(a+h)-f(a)=L(a)h+\alpha(a;h)
-\]</span> where <span class="math inline">\(f(a+h)-f(a)=F(a)(-)\)</span> may be seen as a function of variable <span class="math inline">\(h\in \{h\in \mathbb{R}^n:a+h \in E\}\equiv S_{a}\)</span>; <span class="math inline">\(L(a):\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> is a linear map defined on the space <span class="math inline">\(\mathbb{R}^n\)</span>; <span class="math inline">\(\alpha(a;h)\)</span> is defined to be a function <span class="math inline">\(S_a \rightarrow \mathbb{R}^m\)</span> such that <span class="math inline">\(\alpha(a;h)=o (h)\)</span></p>
+\]</span> where <span class="math inline">\(f(a+h)-f(a)=F(a)(h)\)</span> may be seen as a function of variable <span class="math inline">\(h\in \{h\in \mathbb{R}^n:a+h \in E\}\equiv S_{a}\)</span>; <span class="math inline">\(L(a):\mathbb{R}^n \rightarrow \mathbb{R}^m\)</span> is a linear map defined on the space <span class="math inline">\(\mathbb{R}^n\)</span>; <span class="math inline">\(\alpha(a;h)\)</span> is defined to be a function <span class="math inline">\(S_a \rightarrow \mathbb{R}^m\)</span> such that <span class="math inline">\(\alpha(a;h)=o (h)\)</span></p>
 </div></details>
 </div>
 <div id="uniqueness-of-differential-at-a-point" class="Proposition">
 <details class="Proposition fobx-simplebox fobx-default" open=""><summary><strong>Proposition 1: </strong>Uniqueness of differential at a point</summary><div>
 <p>If a function <span class="math inline">\(f:E \rightarrow \mathbb{R}^m\)</span> defined on a subset <span class="math inline">\(E \subset \mathbb{R}^n\)</span> is differentiable at an interior point <span class="math inline">\(a\in E\)</span> of that set, then the function has a partial derivative at that point with respect to each variable, and the differential of the function is <strong>uniquely</strong> determined by <span class="math inline">\(a\)</span> and admits the form: <span class="math display">\[
 (df)_a(h)=\frac{\partial f}{\partial x_1}\vert _{a} h^1+\dots+\frac{\partial f}{\partial x_n}\vert _{a} h^n, \qquad h\in \mathbb{R}^n
-\]</span> Thus we know that if <span class="math inline">\(F(a)\)</span> admits of the form of <a href="../../../Recipe/Differential-Forms/Classical-Analysis/0.1.html#version-2">version 2</a>, it’s uniquely written in this form.</p>
+\]</span> Thus we know that if <span class="math inline">\(F(a)(h)\)</span> admits of the form of <a href="../../../Recipe/Differential-Forms/Classical-Analysis/0.1.html#version-2">version 2</a>, it’s uniquely written in this form.</p>
 </div></details>
 </div>
 <div id="differential-of-coordinate-function" class="Example">
 <details class="Example fobx-simplebox fobx-default" open=""><summary><strong>Example 3: </strong>Differential of coordinate function</summary><div>
 <p>The coordinate functions <span class="math inline">\(x_i\)</span>’s on <span class="math inline">\(\mathbb{R}^n\)</span> are the functions which map <span class="math inline">\((a_1,\dots,a_n)\)</span> to <span class="math inline">\(a_i\)</span>; clearly coordinate functions are differentiable at each point; thus we can define their differentials at each point, denoted by <span class="math inline">\(({dx_i})_{p}, p \in \mathbb{R}^n\)</span>; keep in mind that <span class="math inline">\(({dx_i})_p\)</span> are just the linear mappings from <span class="math inline">\(\mathbb{R}^n\)</span> to <span class="math inline">\(\mathbb{R}\)</span>.</p>
+</div></details>
+</div>
+<div id="chain-rule-of-differentiation-for-products-of-differentiable-functions" class="Theorem">
+<details class="Theorem fobx-simplebox fobx-default" open=""><summary><strong>Theorem 2: </strong>Chain rule of differentiation for products of differentiable functions</summary><div>
+<p>Let <span class="math inline">\(D\subset \mathbf{R}^n\)</span> and <span class="math inline">\(f:D\rightarrow \mathbf{R}^m\)</span>; Suppose that <span class="math inline">\(g:\mathbf{R}^m\supset\!\rightarrow \mathbf{R}^k\)</span> is differentiable on an open set containing <span class="math inline">\(f(D)\)</span>. Then <span class="math inline">\(g\circ f\)</span> is differentiable on <span class="math inline">\(D\)</span>, and if <span class="math inline">\(p\in D\)</span> and <span class="math inline">\(q=f(p)\)</span>, then <span class="math display">\[
+\big(d(g\circ f)\big)_p=(dg)_q\circ (df)_p\,.
+\]</span></p>
 </div></details>
 </div>
 
